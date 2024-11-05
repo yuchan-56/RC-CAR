@@ -1,6 +1,6 @@
 using UnityEngine;
 using UnityEngine.EventSystems;
-public class MainTitle : BaseScene,IPointerClickHandler
+public class MainTitle : BaseScene
 //MainTitle 클래스는 메인 메뉴 화면을 담당하는 클래스라고 할 수 있습니다. 마우스 클릭이나 터치를 감지하여 컷씬 UI를 보여주거나 주석 처리된 부분처럼 다른 씬으로 전환하는 역할을 수행할 수 있습니다. 
 
 {
@@ -19,11 +19,8 @@ public class MainTitle : BaseScene,IPointerClickHandler
         Init();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public void IsStart()
     {
-        //Managers.UI.ShowPopUpUI<UI_CutScene>();
-
-
-        // Managers.Scene.LoadScene(Define.Scene.MainGame);
+        Managers.Scene.LoadScene(Define.Scene.TitleScene);
     }
 }

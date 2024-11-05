@@ -19,12 +19,11 @@ public class DataManager
         public Define.WholeGameData gameData;
         public Define.Items Items;
         public Define.VolumeData volumeData = new Define.VolumeData();
-        public Define.Blesses Blesses;
 
     public void Init()
     {
-        StatDict = LoadJson<StatData, int, Stat>("StatData").MakeDict(); // LoadJson함수로 StatData.json 데이터가 저장된
-                                                                         // Stat 객체들이 담긴 Dictionary를 만들어 프로퍼티에 리턴
+      
+                                                                       
     }
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
