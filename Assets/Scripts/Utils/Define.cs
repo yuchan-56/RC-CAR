@@ -165,7 +165,9 @@ public class Define
         Unknown,
         TitleScene,
         MainGame,
-        MainTitle
+        MainTitle,
+        S1_1,
+        S1_2
     }
     public enum Sound
     {

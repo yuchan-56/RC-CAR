@@ -12,10 +12,9 @@ public interface ILoader<Key, Value>
 
 public class DataManager
  {
-    public Dictionary<int, Stat> StatDict { get; private set; } = new Dictionary<int, Stat>(); // 스탯관련 데이터들을 담은 Dictionary (key, value= 스탯 객체)
+    // public Dictionary<int, Stat> StatDict { get; private set; } = new Dictionary<int, Stat>(); // 스탯관련 데이터들을 담은 Dictionary (key, value= 스탯 객체)
 
-  /*  public Dictionary<int, int> currentLevel = new Dictionary<int, int>();
-        public Dictionary<int, float> currentStat = new Dictionary<int, float>();*/
+        public Dictionary<int, int> currentLevel = new Dictionary<int, int>();
         public Define.WholeGameData gameData;
         public Define.Items Items;
         public Define.VolumeData volumeData = new Define.VolumeData();

@@ -12,5 +12,8 @@ public class TitleScene : BaseScene
     protected override void Init()
     {
         base.Init();
+        Managers.UI.ShowPopUpUI<EveryTimeSchedule>();
+
+      
     }
 }
