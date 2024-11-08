@@ -43,17 +43,17 @@ public class Enemy : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.name == "PlayerTrigger") // Trigger Collider의 태그를 확인
+        if (other.gameObject.name == "PlayerTrigger")
         {
-            isFollowing = true; // 플레이어를 따라가기 시작
+            isFollowing = true;
         }
     }
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (other.gameObject.name == "PlayerTrigger") // Trigger Collider의 태그를 확인
+        if (other.gameObject.name == "PlayerTrigger")
         {
-            isFollowing = false; // 플레이어를 따라가지 않음
+            isFollowing = false;
             stopPosition = transform.position;
         }
     }
