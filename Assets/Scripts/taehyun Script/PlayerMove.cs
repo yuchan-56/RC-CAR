@@ -2,11 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class playermoveandjump : MonoBehaviour
+public class PlayerMove : MonoBehaviour
 {
-    float movespeed = 35f;//gravityscale 4
-    float maxspeed = 6f;
-    float jumpforce = 16f;
+    float movespeed = 30f;//gravityscale 4
+    float maxspeed = 5f;
+    float jumpforce = 10f;
     bool ismovingleft = false;
     bool ismovingright = false;
     bool isground = true;
