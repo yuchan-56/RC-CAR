@@ -15,6 +15,7 @@ public class DataManager
     // public Dictionary<int, Stat> StatDict { get; private set; } = new Dictionary<int, Stat>(); // 스탯관련 데이터들을 담은 Dictionary (key, value= 스탯 객체)
 
         public Dictionary<int, int> currentLevel = new Dictionary<int, int>();
+    public string Stage;
         public Define.WholeGameData gameData;
         public Define.Items Items;
         public Define.VolumeData volumeData = new Define.VolumeData();
