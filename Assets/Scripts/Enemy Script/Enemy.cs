@@ -6,8 +6,8 @@ public class Enemy : MonoBehaviour
 {
     // 좌우이동 + following player
     public Transform player;
-    public float speed = 2f;
-    public float wanderDistance = 2f;
+    public float speed = 1.5f;
+    public float wanderDistance = 1.5f;
     private Vector2 stopPosition;
     private bool isFollowing = false;
 
