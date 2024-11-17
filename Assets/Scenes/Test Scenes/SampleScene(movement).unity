@@ -393,7 +393,7 @@ CapsuleCollider2D:
   m_GameObject: {fileID: 348369694}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 01c57f5975a89de4db14b9bb84c64c7f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -430,9 +430,9 @@ GameObject:
   - component: {fileID: 461232337}
   - component: {fileID: 461232339}
   - component: {fileID: 461232338}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -461,7 +461,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 461232336}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 01c57f5975a89de4db14b9bb84c64c7f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -560,9 +560,9 @@ GameObject:
   - component: {fileID: 587016898}
   - component: {fileID: 587016897}
   - component: {fileID: 587016896}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -576,7 +576,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 587016895}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 01c57f5975a89de4db14b9bb84c64c7f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1678,9 +1678,9 @@ GameObject:
   - component: {fileID: 1992461543}
   - component: {fileID: 1992461545}
   - component: {fileID: 1992461544}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Square (1)
-  m_TagString: Ground
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1709,7 +1709,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 1992461542}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 01c57f5975a89de4db14b9bb84c64c7f, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
