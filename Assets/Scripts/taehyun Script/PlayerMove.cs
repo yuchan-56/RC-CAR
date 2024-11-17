@@ -1,3 +1,4 @@
+using Microsoft.Win32.SafeHandles;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -21,11 +22,12 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        
 
     }
     void FixedUpdate()
     {
+        CheckGround();
         if (ismovingleft && rigid.velocity.x > -maxspeed)
             rigid.AddForce(Vector2.left * movespeed);
         else if (ismovingright && rigid.velocity.x < maxspeed)
@@ -35,17 +37,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (isground)
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
-    }
 
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-            isground = true;
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Ground"))
-            isground = false;
     }
     public void OnLeftButtonDown()
     {
@@ -63,5 +55,14 @@ public class PlayerMove : MonoBehaviour
     {
         ismovingright = false;
     }
-
+    void CheckGround()
+    {
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,0.6f, LayerMask.GetMask("groundLayer"));
+        if (hit.collider != null)
+        {
+            isground = true;
+        }
+        else
+            isground = false;
+    }
 }
