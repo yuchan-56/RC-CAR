@@ -6,10 +6,12 @@ public class Enemy : MonoBehaviour
 {
     // 좌우이동 + following player
     public Transform player;
-    public float speed = 2f;
-    public float wanderDistance = 2f;
+    public float speed = 1.5f;
+    public float wanderDistance = 1.5f;
     private Vector2 stopPosition;
     private bool isFollowing = false;
+
+    private bool movingRight = true;
 
     // Shooting
     public GameObject bulletPref;
@@ -61,7 +63,10 @@ public class Enemy : MonoBehaviour
     void Wander()
     {
         float xPos = Mathf.PingPong(Time.time * speed, 5) - (5 / 2);
-        transform.position = Vector2.Lerp(transform.position, new Vector3(stopPosition.x + xPos, transform.position.y), Time.deltaTime * speed);
+        
+        if (movingRight) { transform.position = Vector2.Lerp(transform.position, new Vector3(stopPosition.x + xPos, transform.position.y), Time.deltaTime * speed); }
+        else { transform.position = Vector2.Lerp(transform.position, new Vector3(stopPosition.x - xPos, transform.position.y), Time.deltaTime * speed); }
+    
     }
 
     void FollowPlayer()
@@ -79,4 +84,14 @@ public class Enemy : MonoBehaviour
             bulletrb.velocity = direction * bulletSpeed;
         }
     }
+    
+    /*
+    private void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.CompareTag("Wall"))
+        {
+            movingRight = !movingRight;
+        }
+    }
+    */
 }

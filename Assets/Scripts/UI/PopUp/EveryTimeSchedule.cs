@@ -34,7 +34,9 @@ public class EveryTimeSchedule : UI_Popup
 
         if(!string.IsNullOrEmpty(StageName))
         {
-            Managers.UI.ShowPopUpUI<EveryTimeSchedule>();
+            Managers.Data.Stage = StageName;
+
+            Managers.UI.ShowPopUpUI<StageInfo>();
        
         }
 
