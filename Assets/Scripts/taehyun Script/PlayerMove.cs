@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     float jumpforce = 10f;
     bool ismovingleft = false;
     bool ismovingright = false;
-    bool isground = true;
+    bool isground = false;
     Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
@@ -47,7 +47,7 @@ public class PlayerMove : MonoBehaviour
     {
         ismovingright = true;
     }
-    public void OnLeftButtonUp()
+    public void OnLeftButtonUp()    
     {
         ismovingleft = false;
     }
@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
     }
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,0.6f, LayerMask.GetMask("groundLayer"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,0.2f, LayerMask.GetMask("groundLayer"));
         if (hit.collider != null)
         {
             isground = true;
