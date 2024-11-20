@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    float movespeed = 30f;//gravityscale 2
+    float movespeed = 25f;//gravityscale 2
     float maxspeed = 5f;
     float jumpforce = 9f;
     bool ismovingleft = false;
