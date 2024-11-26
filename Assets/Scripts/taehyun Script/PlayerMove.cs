@@ -1,16 +1,23 @@
 using Microsoft.Win32.SafeHandles;
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    float movespeed = 30f;//gravityscale 2
+    float movespeed = 25f;//gravityscale 2
     float maxspeed = 5f;
-    float jumpforce = 10f;
+    float jumpforce = 9f;
     bool ismovingleft = false;
     bool ismovingright = false;
     bool isground = false;
+    float dashSpeed = 8f;
+    float dashDuration = 0.2f;
+    float dashCoolDown = 2f;
+    bool isDashing = false;
+    bool canDash = true;
+
     Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
@@ -21,7 +28,6 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
 
     }
     void FixedUpdate()
@@ -56,12 +62,36 @@ public class PlayerMove : MonoBehaviour
     }
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,0.2f, LayerMask.GetMask("groundLayer"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,1f, LayerMask.GetMask("groundLayer"));
         if (hit.collider != null)
         {
             isground = true;
         }
         else
             isground = false;
+    }
+
+    public void TriggerDash() {
+
+        if (canDash)
+            StartCoroutine(Dash());
+    }
+    public IEnumerator Dash()
+    {
+        float dashDirection = (ismovingleft) ? -1 : (ismovingright) ? 1 : 0;
+        isDashing = true;
+        canDash = false;
+
+        if (dashDirection == 0)
+        {
+            isDashing = false;
+            canDash = true;
+            yield break;
+        }
+        rigid.velocity=new Vector2 (dashDirection * dashSpeed, rigid.velocity.y);
+        yield return new WaitForSeconds(dashDuration);
+        isDashing = false;
+        yield return new WaitForSeconds(dashCoolDown);
+        canDash = true;
     }
 }

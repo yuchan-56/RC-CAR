@@ -6,12 +6,15 @@ public class Enemy : MonoBehaviour
 {
     // 좌우이동 + following player
     public Transform player;
-    public float speed = 1.5f;
-    public float wanderDistance = 1.5f;
+    public float speed = 2f;
+    public float wanderDistance = 2f;
     private Vector2 stopPosition;
     private bool isFollowing = false;
 
-    private bool movingRight = true;
+    // 거리 제한
+    public float minDistance = 2f;
+    public float maxDistance = 3f;
+
 
     // Shooting
     public GameObject bulletPref;
@@ -19,6 +22,9 @@ public class Enemy : MonoBehaviour
     float bulletSpeed = 10.0f;
     float spawnInterval = 0.6f;
     float nextSpawn = 0f;
+
+    // hp
+    public float hp = 10.0f; 
     
     void Start()
     {
@@ -27,9 +33,14 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        
         if (isFollowing)
         {
-            FollowPlayer();
+            if (distanceToPlayer > minDistance)
+            {
+                FollowPlayer();
+            }
             
             if (shootOn && Time.time >= nextSpawn)
             {
@@ -63,10 +74,7 @@ public class Enemy : MonoBehaviour
     void Wander()
     {
         float xPos = Mathf.PingPong(Time.time * speed, 5) - (5 / 2);
-        
-        if (movingRight) { transform.position = Vector2.Lerp(transform.position, new Vector3(stopPosition.x + xPos, transform.position.y), Time.deltaTime * speed); }
-        else { transform.position = Vector2.Lerp(transform.position, new Vector3(stopPosition.x - xPos, transform.position.y), Time.deltaTime * speed); }
-    
+        transform.position = Vector2.Lerp(transform.position, new Vector3(stopPosition.x + xPos, transform.position.y), Time.deltaTime * speed);
     }
 
     void FollowPlayer()
@@ -84,14 +92,4 @@ public class Enemy : MonoBehaviour
             bulletrb.velocity = direction * bulletSpeed;
         }
     }
-    
-    /*
-    private void OnCollisionEnter2D(Collision2D collision)
-    {
-        if (collision.gameObject.CompareTag("Wall"))
-        {
-            movingRight = !movingRight;
-        }
-    }
-    */
 }
