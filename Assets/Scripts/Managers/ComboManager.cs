@@ -6,6 +6,8 @@ using UnityEngine.EventSystems;
 
 public class ComboManager : MonoBehaviour
 {
+    public DashAttack dashAttack;
+    public JumpAttack jumpAttack;
     public HashSet<string> InputButton;
 
     GameObject CurrentObject;
@@ -29,7 +31,7 @@ public class ComboManager : MonoBehaviour
 
                 raycastResults.Clear();
                 EventSystem.current.RaycastAll(pointerData, raycastResults);
-                
+
                 if (raycastResults.Count > 0)
                 {
                     CurrentObject = raycastResults[0].gameObject;
@@ -39,7 +41,7 @@ public class ComboManager : MonoBehaviour
             }
         }
 
-        else if(Input.GetMouseButtonUp(0))
+        else if (Input.GetMouseButtonUp(0))
         {
             switch (InputButton.Count)
             {
@@ -54,6 +56,7 @@ public class ComboManager : MonoBehaviour
                         {
                             Debug.Log("skill 2 active");
                         }
+
                         else
                         {
                             Debug.Log("skill 3 active");
@@ -67,16 +70,19 @@ public class ComboManager : MonoBehaviour
                         if (InputButton.Contains("Button1") && InputButton.Contains("Button2"))
                         {
                             Debug.Log("Combo 1 active");
+                            
                         }
 
                         else if (InputButton.Contains("Button2") && InputButton.Contains("Button3"))
                         {
                             Debug.Log("Combo 2 active");
+                            dashAttack.SkillMotionActive();
                         }
 
                         else
                         {
                             Debug.Log("Combo 3 active");
+                            jumpAttack.SkillMotionActive();
                         }
 
                         break;
