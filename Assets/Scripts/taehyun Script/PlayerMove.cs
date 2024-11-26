@@ -13,9 +13,9 @@ public class PlayerMove : MonoBehaviour
     float deceleration = 8f;
     float jumpforce = 8f;
     bool isground = false;
-    float dashSpeed = 30f;
-    float dashDuration = 0.2f;
-    float dashCoolDown = 2f;
+    float dashSpeed = 20f;
+    float dashDuration = 0.1f;
+    float dashCoolDown = 1f;
     bool isDashing = false;
     bool canDash = true;
 
@@ -29,6 +29,10 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        {
+            TriggerDash();
+        }
 
     }
     void FixedUpdate()
@@ -38,15 +42,18 @@ public class PlayerMove : MonoBehaviour
         if (Input.GetKey(KeyCode.RightArrow))
             movedirection = 1;
         CheckGround();
-        if (movedirection != 0)
+        if (!isDashing)
         {
-            currentspeed = Mathf.Lerp(currentspeed, movedirection * maxspeed, acceleration * Time.fixedDeltaTime);
+            if (movedirection != 0)
+            {
+                currentspeed = Mathf.Lerp(currentspeed, movedirection * maxspeed, acceleration * Time.fixedDeltaTime);
+            }
+            else
+            {
+                currentspeed = Mathf.Lerp(currentspeed, 0, deceleration * Time.fixedDeltaTime);
+            }
+            rigid.velocity = new Vector2(currentspeed, rigid.velocity.y);
         }
-        else { 
-            currentspeed = Mathf.Lerp(currentspeed, 0, deceleration * Time.fixedDeltaTime);
-        }
-        rigid.velocity = new Vector2(currentspeed, rigid.velocity.y);
- 
         
     }
     public void jump()
@@ -84,19 +91,14 @@ public class PlayerMove : MonoBehaviour
 
     public void TriggerDash() {
 
-        if (canDash)
+        if (canDash && movedirection != 0)
             StartCoroutine(Dash());
     }
    public IEnumerator Dash()
     {
-
-        if (movedirection == 0)
-        {
-            isDashing = false;
-            canDash = true;
-            yield break;
-        }
-        rigid.velocity=new Vector2 (movedirection * dashSpeed, rigid.velocity.y);
+        isDashing = true;
+        canDash = false;
+        rigid.velocity = new Vector2(movedirection * dashSpeed, rigid.velocity.y);
         isDashing = true;
         canDash = false;
         yield return new WaitForSeconds(dashDuration);
