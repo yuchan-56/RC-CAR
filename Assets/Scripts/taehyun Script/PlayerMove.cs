@@ -6,15 +6,16 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    float movespeed = 25f;//gravityscale 2
-    float maxspeed = 5f;
-    float jumpforce = 9f;
-    bool ismovingleft = false;
-    bool ismovingright = false;
+    float maxspeed = 7f;
+    float currentspeed;
+    float movedirection;
+    float acceleration = 8f;
+    float deceleration = 8f;
+    float jumpforce = 8f;
     bool isground = false;
-    float dashSpeed = 8f;
-    float dashDuration = 0.2f;
-    float dashCoolDown = 2f;
+    float dashSpeed = 20f;
+    float dashDuration = 0.1f;
+    float dashCoolDown = 1f;
     bool isDashing = false;
     bool canDash = true;
 
@@ -28,15 +29,32 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space) && canDash)
+        {
+            TriggerDash();
+        }
 
     }
     void FixedUpdate()
     {
+        if (Input.GetKey(KeyCode.LeftArrow))
+            movedirection = -1;
+        if (Input.GetKey(KeyCode.RightArrow))
+            movedirection = 1;
         CheckGround();
-        if (ismovingleft && rigid.velocity.x > -maxspeed)
-            rigid.AddForce(Vector2.left * movespeed);
-        else if (ismovingright && rigid.velocity.x < maxspeed)
-            rigid.AddForce(Vector2.right * movespeed);
+        if (!isDashing)
+        {
+            if (movedirection != 0)
+            {
+                currentspeed = Mathf.Lerp(currentspeed, movedirection * maxspeed, acceleration * Time.fixedDeltaTime);
+            }
+            else
+            {
+                currentspeed = Mathf.Lerp(currentspeed, 0, deceleration * Time.fixedDeltaTime);
+            }
+            rigid.velocity = new Vector2(currentspeed, rigid.velocity.y);
+        }
+        
     }
     public void jump()
     {
@@ -46,19 +64,19 @@ public class PlayerMove : MonoBehaviour
     }
     public void OnLeftButtonDown()
     {
-        ismovingleft = true;
+        movedirection = -1;
+
     }
+
     public void OnRightButtonDown()
     {
-        ismovingright = true;
+        movedirection=1;
+
     }
-    public void OnLeftButtonUp()    
+    public void ButtonUp()
     {
-        ismovingleft = false;
-    }
-    public void OnRightButtonUp()
-    {
-        ismovingright = false;
+        movedirection = 0;
+
     }
     void CheckGround()
     {
@@ -73,22 +91,16 @@ public class PlayerMove : MonoBehaviour
 
     public void TriggerDash() {
 
-        if (canDash)
+        if (canDash && movedirection != 0)
             StartCoroutine(Dash());
     }
-    public IEnumerator Dash()
+   public IEnumerator Dash()
     {
-        float dashDirection = (ismovingleft) ? -1 : (ismovingright) ? 1 : 0;
         isDashing = true;
         canDash = false;
-
-        if (dashDirection == 0)
-        {
-            isDashing = false;
-            canDash = true;
-            yield break;
-        }
-        rigid.velocity=new Vector2 (dashDirection * dashSpeed, rigid.velocity.y);
+        rigid.velocity = new Vector2(movedirection * dashSpeed, rigid.velocity.y);
+        isDashing = true;
+        canDash = false;
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);
