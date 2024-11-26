@@ -16,4 +16,8 @@ public class TitleScene : BaseScene
 
       
     }
+    private void Start()
+    {
+        Init();
+    }
 }
