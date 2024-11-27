@@ -35,6 +35,8 @@ public class Enemy : MonoBehaviour
     public float hp = 100f;
     public Slider hpSlider;
     public GameObject hpSliderPrefab; // Slider 프리팹 연결
+
+    public float attackedRange = 1.5f;
     
     void Start()
     {
@@ -55,7 +57,6 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-
         if (isFollowing)
         {
             if (distanceToPlayer > minDistance) 
@@ -85,9 +86,24 @@ public class Enemy : MonoBehaviour
 
         // 스페이스바를 눌렀을 때 HP 감소
         /// 임시
-        if (Input.GetKeyDown(KeyCode.Space))
+        /// 버튼 이벤트 받아야함!!
+        if (distanceToPlayer <= attackedRange)
         {
-            TakeDamage(10f);
+            if (Input.GetKeyDown(KeyCode.X)) // 일반 공격 버튼
+            {
+                TakeDamage(10f);
+                Debug.Log("E.hp -10");
+            }
+            else if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.Space)) // 대쉬 + 공격
+            {
+                TakeDamage(20f);
+                Debug.Log("E.hp -20");
+            }
+            else if (Input.GetKeyDown(KeyCode.C) && Input.GetKey(KeyCode.Space)) // 점프 + 공격
+            {
+                TakeDamage(15f);
+                Debug.Log("E.hp -15");
+            }
         }
 
         // HP 슬라이더 위치 업데이트
