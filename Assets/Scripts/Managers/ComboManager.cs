@@ -9,7 +9,7 @@ public class ComboManager : MonoBehaviour
     public DashAttack dashAttack;
     public JumpAttack jumpAttack;
     public HashSet<string> InputButton;
-
+    public PlayerMove player;
     GameObject CurrentObject;
 
     List<RaycastResult> raycastResults = new List<RaycastResult>();
@@ -47,9 +47,10 @@ public class ComboManager : MonoBehaviour
             {
                 case 1:
                     {
-                        if (InputButton.Contains("Button1"))
+                        if (InputButton.Contains("Button1")) // jump
                         {
                             Debug.Log("skill 1 active");
+                            player.jump(); 
                         }
 
                         else if (InputButton.Contains("Button2"))
@@ -60,6 +61,10 @@ public class ComboManager : MonoBehaviour
                         else
                         {
                             Debug.Log("skill 3 active");
+                            foreach(var button in InputButton)
+                            {
+                                Debug.Log(button);
+                            }
                         }
 
                         break;

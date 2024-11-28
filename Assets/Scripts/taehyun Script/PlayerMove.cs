@@ -58,8 +58,13 @@ public class PlayerMove : MonoBehaviour
     }
     public void jump()
     {
+
         if (isground)
+        {
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+            Debug.Log("Jump");
+        }
+        else Debug.Log("Cant Jump");
 
     }
     public void OnLeftButtonDown()
@@ -80,7 +85,7 @@ public class PlayerMove : MonoBehaviour
     }
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,1f, LayerMask.GetMask("groundLayer"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,2.5f, LayerMask.GetMask("groundLayer")); // 10f는 캐릭터의 크기 즉, 5/2 = 2.5f
         if (hit.collider != null)
         {
             isground = true;
