@@ -114,6 +114,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerSpeech: {fileID: 0}
+  text: {fileID: 4041447390434940974}
 --- !u!1 &5006582920351517414
 GameObject:
   m_ObjectHideFlags: 0

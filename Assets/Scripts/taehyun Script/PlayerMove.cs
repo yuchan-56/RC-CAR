@@ -19,11 +19,13 @@ public class PlayerMove : MonoBehaviour
     bool isDashing = false;
     bool canDash = true;
 
+    private CameraMove camera;
     Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        camera = FindObjectOfType<CameraMove>();// CmeraUpdate받기
     }
 
     // Update is called once per frame
@@ -58,8 +60,13 @@ public class PlayerMove : MonoBehaviour
     }
     public void jump()
     {
+
         if (isground)
+        {
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+            Debug.Log("Jump");
+        }
+        else Debug.Log("Cant Jump");
 
     }
     public void OnLeftButtonDown()
@@ -80,7 +87,7 @@ public class PlayerMove : MonoBehaviour
     }
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,1f, LayerMask.GetMask("groundLayer"));
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,2.5f, LayerMask.GetMask("groundLayer")); // 10f는 캐릭터의 크기 즉, 5/2 = 2.5f
         if (hit.collider != null)
         {
             isground = true;
@@ -105,5 +112,23 @@ public class PlayerMove : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.tag);
+        if (collision.tag == "NextJump")
+        {
+            Debug.Log("triggerOn");
+            float fixedY = this.gameObject.transform.position.y;
+            float newX = this.gameObject.transform.position.x+8f;
+            this.gameObject.transform.position = new Vector2(newX,fixedY);
+            camera.CameraUpdate();
+            return;
+        }
+        if(collision.tag == "Final")
+        {
+            Managers.UI.ShowPopUpUI<StageInfo>();
+        }
     }
 }
