@@ -19,11 +19,13 @@ public class PlayerMove : MonoBehaviour
     bool isDashing = false;
     bool canDash = true;
 
+    private CameraMove camera;
     Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
+        camera = FindObjectOfType<CameraMove>();// CmeraUpdate¹Þ±â
     }
 
     // Update is called once per frame
@@ -110,5 +112,23 @@ public class PlayerMove : MonoBehaviour
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);
         canDash = true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        Debug.Log(collision.tag);
+        if (collision.tag == "NextJump")
+        {
+            Debug.Log("triggerOn");
+            float fixedY = this.gameObject.transform.position.y;
+            float newX = this.gameObject.transform.position.x+8f;
+            this.gameObject.transform.position = new Vector2(newX,fixedY);
+            camera.CameraUpdate();
+            return;
+        }
+        if(collision.tag == "Final")
+        {
+            Managers.UI.ShowPopUpUI<StageInfo>();
+        }
     }
 }

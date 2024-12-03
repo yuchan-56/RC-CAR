@@ -26,4 +26,9 @@ public class GameManager
        
     }
 
+    public void GoJump()
+    {
+        
+    }
+
 }
