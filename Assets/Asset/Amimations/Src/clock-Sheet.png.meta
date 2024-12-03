@@ -1,0 +1,536 @@
+fileFormatVersion: 2
+guid: f00a62c4d0163436c9a5619a71fee483
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 12
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 137
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Server
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: clock-Sheet_24
+      rect:
+        serializedVersion: 2
+        x: 30
+        y: 41
+        width: 120
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e06183335b1aa43c2bd03aa21200869a
+      internalID: 834578352
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_25
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 41
+        width: 119
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 16a88aaf651ad40788da68040de9ebc1
+      internalID: 358684379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_26
+      rect:
+        serializedVersion: 2
+        x: 413
+        y: 41
+        width: 122
+        height: 128
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 095976ec8caaf4d35a46487105beab5a
+      internalID: -323413335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_27
+      rect:
+        serializedVersion: 2
+        x: 607
+        y: 41
+        width: 119
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: feb77433acdbd4984ae592dea7e9372b
+      internalID: 1766953287
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_29
+      rect:
+        serializedVersion: 2
+        x: 798
+        y: 41
+        width: 122
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 74c2e2c9bb676419a8fe1fbee395bae4
+      internalID: 1010405276
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_31
+      rect:
+        serializedVersion: 2
+        x: 991
+        y: 41
+        width: 119
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3078b705abd824fcb801e42a3849b08d
+      internalID: 1458252361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_32
+      rect:
+        serializedVersion: 2
+        x: 1181
+        y: 41
+        width: 122
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 733388d51bc574991a6af29cc8049ebd
+      internalID: 263106299
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_33
+      rect:
+        serializedVersion: 2
+        x: 1375
+        y: 41
+        width: 119
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56ade60f8779f4a04b20550d1fccedec
+      internalID: -59254260
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_35
+      rect:
+        serializedVersion: 2
+        x: 1560
+        y: 41
+        width: 128
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6a019a54b1a674083b9f052f70c10bee
+      internalID: 1908640221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_37
+      rect:
+        serializedVersion: 2
+        x: 1755
+        y: 41
+        width: 123
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 261595e8376e44a87908ec41ba466f73
+      internalID: 1721245905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_38
+      rect:
+        serializedVersion: 2
+        x: 1948
+        y: 41
+        width: 123
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b349d6b0eb8544634a4b5dd1ff1d8db4
+      internalID: 186852010
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_39
+      rect:
+        serializedVersion: 2
+        x: 2142
+        y: 41
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 442a5b2bb8fc54531aaed09334519f1a
+      internalID: -2118198295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_40
+      rect:
+        serializedVersion: 2
+        x: 2334
+        y: 41
+        width: 122
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f31481ffc3436445fbdc98e623dc46f9
+      internalID: 742979454
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_43
+      rect:
+        serializedVersion: 2
+        x: 2526
+        y: 41
+        width: 120
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dd002798522547c8a37093fe52d09a6
+      internalID: -1301965130
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: clock-Sheet_44
+      rect:
+        serializedVersion: 2
+        x: 2717
+        y: 41
+        width: 122
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1b19aa355a6804ccfa27e9daf4764f02
+      internalID: -1233435484
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      clock-Sheet_0: -835872405
+      clock-Sheet_1: 1921674504
+      clock-Sheet_10: 898547259
+      clock-Sheet_11: -4593150
+      clock-Sheet_12: -1093150759
+      clock-Sheet_13: -1588342819
+      clock-Sheet_14: -972585205
+      clock-Sheet_15: -988949111
+      clock-Sheet_16: 1639952791
+      clock-Sheet_17: -1952651004
+      clock-Sheet_18: -232499073
+      clock-Sheet_19: 1343675629
+      clock-Sheet_2: 1323119304
+      clock-Sheet_20: 2091217332
+      clock-Sheet_21: -419095608
+      clock-Sheet_22: 1747976192
+      clock-Sheet_23: 1148951093
+      clock-Sheet_24: 834578352
+      clock-Sheet_25: 358684379
+      clock-Sheet_26: -323413335
+      clock-Sheet_27: 1766953287
+      clock-Sheet_28: -425250334
+      clock-Sheet_29: 1010405276
+      clock-Sheet_3: -907809386
+      clock-Sheet_30: 994388533
+      clock-Sheet_31: 1458252361
+      clock-Sheet_32: 263106299
+      clock-Sheet_33: -59254260
+      clock-Sheet_34: -895819822
+      clock-Sheet_35: 1908640221
+      clock-Sheet_36: -525824664
+      clock-Sheet_37: 1721245905
+      clock-Sheet_38: 186852010
+      clock-Sheet_39: -2118198295
+      clock-Sheet_4: 1321031275
+      clock-Sheet_40: 742979454
+      clock-Sheet_41: 2114530201
+      clock-Sheet_42: -701865453
+      clock-Sheet_43: -1301965130
+      clock-Sheet_44: -1233435484
+      clock-Sheet_45: 2031549980
+      clock-Sheet_46: -926987755
+      clock-Sheet_47: -1107418541
+      clock-Sheet_48: 660685250
+      clock-Sheet_49: 167342123
+      clock-Sheet_5: 1767649938
+      clock-Sheet_50: 1924015646
+      clock-Sheet_51: 202846751
+      clock-Sheet_52: 1120113009
+      clock-Sheet_53: 903368005
+      clock-Sheet_54: -2117531775
+      clock-Sheet_55: 997964058
+      clock-Sheet_56: 246352102
+      clock-Sheet_57: -1579083123
+      clock-Sheet_58: 1446480220
+      clock-Sheet_59: 234812907
+      clock-Sheet_6: 1283872455
+      clock-Sheet_60: 1888033868
+      clock-Sheet_61: 649418648
+      clock-Sheet_62: -1327204815
+      clock-Sheet_63: 1300618817
+      clock-Sheet_64: 2040830413
+      clock-Sheet_65: -65664603
+      clock-Sheet_66: 2131140271
+      clock-Sheet_67: 890820209
+      clock-Sheet_68: -317545762
+      clock-Sheet_69: 1198853277
+      clock-Sheet_7: 1848223341
+      clock-Sheet_70: 416893612
+      clock-Sheet_71: -548050543
+      clock-Sheet_72: -2050993723
+      clock-Sheet_73: -1725889079
+      clock-Sheet_74: 866499187
+      clock-Sheet_75: -1223212669
+      clock-Sheet_76: -1518491052
+      clock-Sheet_77: -465619574
+      clock-Sheet_78: -130939815
+      clock-Sheet_79: -376294185
+      clock-Sheet_8: 1270451390
+      clock-Sheet_80: -1494459682
+      clock-Sheet_9: -1798073898
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
