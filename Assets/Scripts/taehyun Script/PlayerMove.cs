@@ -106,8 +106,6 @@ public class PlayerMove : MonoBehaviour
         isDashing = true;
         canDash = false;
         rigid.velocity = new Vector2(movedirection * dashSpeed, rigid.velocity.y);
-        isDashing = true;
-        canDash = false;
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);
