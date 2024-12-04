@@ -11,10 +11,10 @@ public class PlayerMove : MonoBehaviour
     float movedirection;
     float acceleration = 8f;
     float deceleration = 8f;
-    float jumpforce = 8f;
+    float jumpforce = 10f;
     bool isground = false;
-    float dashSpeed = 20f;
-    float dashDuration = 0.1f;
+    float dashSpeed = 25f;
+    public float dashDuration = 0.2f;
     float dashCoolDown = 1f;
     bool isDashing = false;
     bool canDash = true;
