@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 
 public class ComboManager : MonoBehaviour
 {
-    public DashAttack2 dashAttack;
+    public DashAttack dashAttack;
     public JumpAttack jumpAttack;
     public PlayerAttack playerAttack;
     public HashSet<string> InputButton;
@@ -65,6 +65,7 @@ public class ComboManager : MonoBehaviour
                             Debug.Log("skill 3 active");
                             foreach(var button in InputButton)
                             {
+                                playerAttack.SkillMotionActive("Attack");
                                 Debug.Log(button);
 
                             }
@@ -84,15 +85,16 @@ public class ComboManager : MonoBehaviour
                         else if (InputButton.Contains("Button2") && InputButton.Contains("Button3"))//대쉬+공격
                         {
                             Debug.Log("Combo 2 active");
-                            dashAttack.PerformDashAttack();
-                            playerAttack.SkillMotionActive("Dash");
+                            player.TriggerDash();
+                            playerAttack.SkillMotionActive("DashAttack");
 
                         }
 
                         else
                         {
-                            Debug.Log("Combo 3 active");
-                            jumpAttack.SkillMotionActive();
+                            Debug.Log("Combo 3 active");//점프+공격
+                            playerAttack.SkillMotionActive("JumpAttack");
+                            player.jump();
                         }
 
                         break;

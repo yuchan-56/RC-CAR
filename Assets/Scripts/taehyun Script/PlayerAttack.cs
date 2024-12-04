@@ -5,12 +5,15 @@ using UnityEngine;
 public class PlayerAttack : MonoBehaviour
 {
     public Transform attackpoint;
-    public Vector2 NormalAttackRange;
-    public Vector2 dashAttackRange;
+
     public Vector2 attackRange;
+    public Vector2 normalAttackRange;
+    public Vector2 dashAttackRange;
+    public Vector2 jumpAttackRange;
     public LayerMask enemyLayers;
     public int attackDamage = 10;
     private bool isAttacking = false;
+    private bool isFacingRight = true;
     public void SkillMotionActive(string AttackType)
     {
         if (isAttacking)
@@ -22,15 +25,21 @@ public class PlayerAttack : MonoBehaviour
     {
         isAttacking = true;
         Animator animator = GetComponent<Animator>();
-        if (AttackType == "Normal")
+        if (AttackType == "Attack")
         {
             animator.SetTrigger("BasicAttack");
-            attackRange = NormalAttackRange;
+            attackRange = normalAttackRange;
         }
-        else if (AttackType == "Dash")
+        else if (AttackType == "DashAttack")
         {
             animator.SetTrigger("DashAttack");
-            attackRange = (Vector2)transform.right*dashAttackRange;
+            attackRange = dashAttackRange;
+        }
+        else if (AttackType == "JumpAttack")
+        {
+            animator.SetTrigger("JumpAttack");
+            attackRange = jumpAttackRange;
+
         }
         yield return new WaitForSeconds(0.1f);
         Attack();
@@ -46,9 +55,9 @@ public class PlayerAttack : MonoBehaviour
         }
     
     }
-    private void OnDrawGizmosSelected()
+    private void OnDrawGizmos()
     {
-        if (attackpoint == null) return;
+        if (attackpoint == null|| !isAttacking) return;
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(attackpoint.position, attackRange);
     }
