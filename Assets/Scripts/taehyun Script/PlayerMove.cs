@@ -18,6 +18,7 @@ public class PlayerMove : MonoBehaviour
     float dashCoolDown = 1f;
     bool isDashing = false;
     bool canDash = true;
+    private Vector2 initialScale;
 
     private CameraMove camera;
     Rigidbody2D rigid;
@@ -27,6 +28,7 @@ public class PlayerMove : MonoBehaviour
         Managers.Game.GameStart(); // Player가 들어오면 게임시작으로 간주.
         rigid = GetComponent<Rigidbody2D>();
         camera = FindObjectOfType<CameraMove>();// CmeraUpdate받기
+        initialScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -50,6 +52,7 @@ public class PlayerMove : MonoBehaviour
             if (movedirection != 0)
             {
                 currentspeed = Mathf.Lerp(currentspeed, movedirection * maxspeed, acceleration * Time.fixedDeltaTime);
+                FlipUsingScale(movedirection);
             }
             else
             {
@@ -99,6 +102,10 @@ public class PlayerMove : MonoBehaviour
         }
         else
             isground = false;
+    }
+    private void FlipUsingScale(float direction)
+    {
+        transform.localScale = new Vector2(direction > 0 ? Mathf.Abs(initialScale.x) : -Mathf.Abs(initialScale.x), initialScale.y); 
     }
 
     public void TriggerDash() {
