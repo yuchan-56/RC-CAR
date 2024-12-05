@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Managers.Game.GameStart(); // Player가 들어오면 게임시작으로 간주.
         rigid = GetComponent<Rigidbody2D>();
         camera = FindObjectOfType<CameraMove>();// CmeraUpdate받기
     }
@@ -61,7 +62,7 @@ public class PlayerMove : MonoBehaviour
     public void jump()
     {
 
-        if (isground)
+        if (isground&&Managers.Game.currentState == GameManager.GameState.Battle) // 현재 전투가능 여부 체크)
         {
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             Debug.Log("Jump");
@@ -71,19 +72,23 @@ public class PlayerMove : MonoBehaviour
     }
     public void OnLeftButtonDown()
     {
-        movedirection = -1;
+        if (Managers.Game.currentState == GameManager.GameState.Battle) // 현재 전투가능 여부 체크
+        {
+            movedirection = -1;
+        }
 
     }
 
     public void OnRightButtonDown()
     {
-        movedirection=1;
-
+        if (Managers.Game.currentState == GameManager.GameState.Battle) // 현재 전투가능 여부 체크
+        {
+            movedirection = 1;
+        }
     }
     public void ButtonUp()
     {
-        movedirection = 0;
-
+            movedirection = 0;
     }
     void CheckGround()
     {
@@ -121,7 +126,7 @@ public class PlayerMove : MonoBehaviour
             float fixedY = this.gameObject.transform.position.y;
             float newX = this.gameObject.transform.position.x+8f;
             this.gameObject.transform.position = new Vector2(newX,fixedY);
-            camera.CameraUpdate();
+            camera.CameraUpdate(newX);
             return;
         }
         if(collision.tag == "Final")

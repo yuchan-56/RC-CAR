@@ -9,6 +9,7 @@ public class GameManager
     //게임 상태를 나눠서 상태에 따라 스크립트들이 돌아가게 함
     public enum GameState
     {
+        CameraMoving,
         Battle,
         Store,
         Bless,
@@ -23,7 +24,7 @@ public class GameManager
     //인게임 데이터 초기화 
     public void GameStart()
     {
-       
+        currentState = GameState.Battle;
     }
 
     public void GoJump()
