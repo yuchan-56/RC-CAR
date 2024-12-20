@@ -127,7 +127,7 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
         Debug.Log(collision.tag);
-        if (collision.tag == "NextJump")
+        if (collision.tag == "NextJumpRight")
         {
             Debug.Log("triggerOn");
             float fixedY = this.gameObject.transform.position.y;
@@ -136,6 +136,18 @@ public class PlayerMove : MonoBehaviour
             camera.CameraUpdate(newX);
             return;
         }
+        else if(collision.tag == "NextJumpUp")
+        {
+            Debug.Log("triggerOn");
+
+            float fixedY = this.gameObject.transform.position.y + 20f;
+            float newX = this.gameObject.transform.position.x ;
+            this.gameObject.transform.position = new Vector2(newX, fixedY);
+          
+            camera.CameraGoUp();//Å×½ºÆ®
+            return;
+        }
+
         if(collision.tag == "Final")
         {
             Managers.UI.ShowPopUpUI<StageInfo>();

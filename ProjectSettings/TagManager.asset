@@ -7,6 +7,8 @@ TagManager:
   - Ground
   - NextJump
   - Final
+  - NextJumpRight
+  - NextJumpUp
   layers:
   - Default
   - TransparentFX
