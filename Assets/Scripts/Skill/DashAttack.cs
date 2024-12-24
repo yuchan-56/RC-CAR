@@ -10,6 +10,7 @@ public class DashAttack : MonoBehaviour
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = false;
         SkillActive_DashAttack = false;
     }
 

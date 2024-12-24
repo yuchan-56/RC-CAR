@@ -3,13 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JumpAttack : MonoBehaviour
-{
+{ 
     BoxCollider2D boxCollider2D;
     bool SkillActive_JumpAttack;
 
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
+        boxCollider2D.enabled = false;
         SkillActive_JumpAttack = false;
     }
 

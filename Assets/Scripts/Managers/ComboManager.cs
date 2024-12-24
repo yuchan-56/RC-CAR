@@ -48,13 +48,13 @@ public class ComboManager : MonoBehaviour
             {
                 case 1:
                     {
-                        if (InputButton.Contains("Button1")) // jump
+                        if (InputButton.Contains("Jump")) // Jump
                         {
                             Debug.Log("skill 1 active");
                             player.jump(); 
                         }
 
-                        else if (InputButton.Contains("Button2"))
+                        else if (InputButton.Contains("Dash")) //Dash
                         {
                             Debug.Log("skill 2 active");
                             player.TriggerDash();
@@ -62,7 +62,7 @@ public class ComboManager : MonoBehaviour
 
                         else
                         {
-                            Debug.Log("skill 3 active");
+                            Debug.Log("skill 3 active"); //Atack
                             foreach(var button in InputButton)
                             {
                                 playerAttack.SkillMotionActive("Attack");
@@ -76,17 +76,18 @@ public class ComboManager : MonoBehaviour
 
                 case 2:
                     {
-                        if (InputButton.Contains("Button1") && InputButton.Contains("Button2"))//점프+대쉬
+                        if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))//점프+대쉬
                         {
                             Debug.Log("Combo 1 active");
                             
                         }
 
-                        else if (InputButton.Contains("Button2") && InputButton.Contains("Button3"))//대쉬+공격
+                        else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))//대쉬+공격
                         {
                             Debug.Log("Combo 2 active");
                             player.TriggerDash();
                             playerAttack.SkillMotionActive("DashAttack");
+                            dashAttack.SkillMotionActive();
 
                         }
 
@@ -95,6 +96,7 @@ public class ComboManager : MonoBehaviour
                             Debug.Log("Combo 3 active");//점프+공격
                             playerAttack.SkillMotionActive("JumpAttack");
                             player.jump();
+                            jumpAttack.SkillMotionActive();
                         }
 
                         break;
