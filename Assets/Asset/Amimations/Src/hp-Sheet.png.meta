@@ -34,7 +34,7 @@ TextureImporter:
   maxTextureSize: 2048
   textureSettings:
     serializedVersion: 2
-    filterMode: 1
+    filterMode: 0
     aniso: 1
     mipBias: 0
     wrapU: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -137,8 +137,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4e18cbab8761748d7852363d69da4a87
-      internalID: -106794199
+      spriteID: 8f6d1a108ae5b4c6b83a633ce1edf15a
+      internalID: 1789264929
       vertices: []
       indices: 
       edges: []
@@ -158,8 +158,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 65578b8bf737e4d788c83302f278df13
-      internalID: -1917710130
+      spriteID: 46ce2ea5cd1954ed5ba1be5930d608b1
+      internalID: 1271764090
       vertices: []
       indices: 
       edges: []
@@ -179,8 +179,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cc3bc15bfd0949b3ba231e50bb9e1b8
-      internalID: -1071943673
+      spriteID: 49b03e92194314749b2d8545982bdbf3
+      internalID: 1006008961
       vertices: []
       indices: 
       edges: []
@@ -200,8 +200,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b4c674b55ca794e10882dfab6adf2798
-      internalID: -681704388
+      spriteID: 4a254710a5ec2402193cc66df4f6bb15
+      internalID: 43864884
       vertices: []
       indices: 
       edges: []
@@ -217,10 +217,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      hp-Sheet_0: -106794199
-      hp-Sheet_1: -1917710130
-      hp-Sheet_2: -1071943673
-      hp-Sheet_3: -681704388
+      hp-Sheet_0: 1789264929
+      hp-Sheet_1: 1271764090
+      hp-Sheet_2: 1006008961
+      hp-Sheet_3: 43864884
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
