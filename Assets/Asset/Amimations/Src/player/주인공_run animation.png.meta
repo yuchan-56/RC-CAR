@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 5bde0af828eee1d419191700441376a0
+guid: 7781432177f0146d7ab83a08c00b6fb9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,33 +123,12 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_dash motion - character_0"
+      name: "\uC8FC\uC778\uACF5_run animation_0"
       rect:
         serializedVersion: 2
-        x: 33
-        y: 0
-        width: 15
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5a4925ead652f874087921dd791c05a8
-      internalID: -842121093
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_dash motion - character_1"
-      rect:
-        serializedVersion: 2
-        x: 81
-        y: 0
-        width: 13
+        x: 9
+        y: 1
+        width: 19
         height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -158,20 +137,41 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11977c61451bc024197f010209c9eb87
-      internalID: 1017291652
+      spriteID: 1ecaf73795ee1446482e65cf0a365eca
+      internalID: -1855528832
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_dash motion - character_2"
+      name: "\uC8FC\uC778\uACF5_run animation_1"
       rect:
         serializedVersion: 2
-        x: 127
+        x: 59
         y: 0
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41ffcb945b896421aadd11d8740f2ac7
+      internalID: -681807316
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_run animation_2"
+      rect:
+        serializedVersion: 2
+        x: 105
+        y: 1
         width: 17
-        height: 27
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,61 +179,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f404f9ad66a668341abd8db63d2831d8
-      internalID: 1845382227
+      spriteID: 73e30b769435149eb9ac1722291c34a8
+      internalID: -78785377
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_dash motion - character_3"
+      name: "\uC8FC\uC778\uACF5_run animation_3"
       rect:
         serializedVersion: 2
-        x: 170
-        y: 0
-        width: 22
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: aad7da65e0e4a8d44a102568ad728145
-      internalID: 998913506
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_dash motion - character_4"
-      rect:
-        serializedVersion: 2
-        x: 218
-        y: 0
-        width: 22
-        height: 27
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: dcce041cf99901c469860cf8c0bef0d1
-      internalID: -1952863164
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_dash motion - character_5"
-      rect:
-        serializedVersion: 2
-        x: 271
-        y: 0
-        width: 15
+        x: 153
+        y: 1
+        width: 18
         height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -242,18 +200,39 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 40252782a508b9443ba9d57f9d910f35
-      internalID: -10608456
+      spriteID: b2e13b02392aa4552bffccee586798ac
+      internalID: 1394216995
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_dash motion - character_6"
+      name: "\uC8FC\uC778\uACF5_run animation_4"
       rect:
         serializedVersion: 2
-        x: 321
+        x: 203
         y: 0
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5e399b1eda8dd4d1da3255b3f560431e
+      internalID: 1394156578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_run animation_5"
+      rect:
+        serializedVersion: 2
+        x: 250
+        y: 1
         width: 15
         height: 29
       alignment: 0
@@ -263,29 +242,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2d97862afb0eb404e9f40e3459f42e88
-      internalID: -1680085034
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_dash motion - character_7"
-      rect:
-        serializedVersion: 2
-        x: 369
-        y: 0
-        width: 15
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 28a29c1200de3c642a7a16f09aac07d3
-      internalID: 250856985
+      spriteID: 750fb4380ae884415b0ab0266d79ec54
+      internalID: 1815537764
       vertices: []
       indices: 
       edges: []
@@ -301,14 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uC8FC\uC778\uACF5_dash motion - character_0": -842121093
-      "\uC8FC\uC778\uACF5_dash motion - character_1": 1017291652
-      "\uC8FC\uC778\uACF5_dash motion - character_2": 1845382227
-      "\uC8FC\uC778\uACF5_dash motion - character_3": 998913506
-      "\uC8FC\uC778\uACF5_dash motion - character_4": -1952863164
-      "\uC8FC\uC778\uACF5_dash motion - character_5": -10608456
-      "\uC8FC\uC778\uACF5_dash motion - character_6": -1680085034
-      "\uC8FC\uC778\uACF5_dash motion - character_7": 250856985
+      "\uC8FC\uC778\uACF5_run animation_0": -1855528832
+      "\uC8FC\uC778\uACF5_run animation_1": -681807316
+      "\uC8FC\uC778\uACF5_run animation_2": -78785377
+      "\uC8FC\uC778\uACF5_run animation_3": 1394216995
+      "\uC8FC\uC778\uACF5_run animation_4": 1394156578
+      "\uC8FC\uC778\uACF5_run animation_5": 1815537764
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: f871b2e9d8aafc941b5a9d5ebf76dbc8
+guid: 23005346fe2b04313a353d8ec85c4bde
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 48
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC8FC\uC778_run animation_0"
+      name: "\uC8FC\uC778\uACF5_AA motion_0"
       rect:
         serializedVersion: 2
-        x: 9
-        y: 1
-        width: 19
-        height: 28
+        x: 5
+        y: 0
+        width: 13
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 03754535d216e435ba939ed71567bf9f
-      internalID: 1382620475
+      spriteID: f60ea43bec9bc43509764faef0b86fc0
+      internalID: -139932982
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778_run animation_1"
+      name: "\uC8FC\uC778\uACF5_AA motion_1"
       rect:
         serializedVersion: 2
-        x: 59
+        x: 52
         y: 0
         width: 14
-        height: 28
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,40 +158,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f5acdf67eed345808e827fdb0fd999c
-      internalID: 19432857
+      spriteID: db09ef6d000cc4e97850debf8b986f55
+      internalID: 61315554
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778_run animation_2"
+      name: "\uC8FC\uC778\uACF5_AA motion_2"
       rect:
         serializedVersion: 2
-        x: 105
-        y: 1
+        x: 97
+        y: 0
         width: 17
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: f73f37b9d692c437eb7ea7c014a16491
-      internalID: 538857241
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778_run animation_3"
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 1
-        width: 18
         height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -200,17 +179,17 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6453c22fa8dc8470a81ce918497d951a
-      internalID: 336283186
+      spriteID: 21158d0e029614bc0824fec2dc4da7c5
+      internalID: 1645536279
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778_run animation_4"
+      name: "\uC8FC\uC778\uACF5_AA motion_3"
       rect:
         serializedVersion: 2
-        x: 203
+        x: 152
         y: 0
         width: 14
         height: 28
@@ -221,19 +200,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ed029681ff228495197f97ed837f84b7
-      internalID: -1529824804
+      spriteID: 0e32cd4791e37432694adc287216fd0c
+      internalID: -1177774288
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778_run animation_5"
+      name: "\uC8FC\uC778\uACF5_AA motion_4"
       rect:
         serializedVersion: 2
-        x: 250
-        y: 1
-        width: 15
+        x: 199
+        y: 0
+        width: 26
         height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -242,8 +221,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1b068e3f53430487a96f188ad48a9862
-      internalID: -592874297
+      spriteID: 2bc2ec50db3c24ab6b60f2fe3f7f147c
+      internalID: 1287729706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_AA motion_5"
+      rect:
+        serializedVersion: 2
+        x: 247
+        y: 0
+        width: 21
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bce1fbbc563f94c8fb0e7d7d9e3ebc71
+      internalID: 173666576
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_AA motion_6"
+      rect:
+        serializedVersion: 2
+        x: 295
+        y: 0
+        width: 12
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 061135e1f846549bca26f7afc599aa1f
+      internalID: -688641633
       vertices: []
       indices: 
       edges: []
@@ -259,12 +280,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uC8FC\uC778_run animation_0": 1382620475
-      "\uC8FC\uC778_run animation_1": 19432857
-      "\uC8FC\uC778_run animation_2": 538857241
-      "\uC8FC\uC778_run animation_3": 336283186
-      "\uC8FC\uC778_run animation_4": -1529824804
-      "\uC8FC\uC778_run animation_5": -592874297
+      "\uC8FC\uC778\uACF5_AA motion_0": -139932982
+      "\uC8FC\uC778\uACF5_AA motion_1": 61315554
+      "\uC8FC\uC778\uACF5_AA motion_2": 1645536279
+      "\uC8FC\uC778\uACF5_AA motion_3": -1177774288
+      "\uC8FC\uC778\uACF5_AA motion_4": 1287729706
+      "\uC8FC\uC778\uACF5_AA motion_5": 173666576
+      "\uC8FC\uC778\uACF5_AA motion_6": -688641633
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

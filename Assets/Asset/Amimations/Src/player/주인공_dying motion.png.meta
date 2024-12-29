@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 1573c58cb7ad444f88d8e12297756e26
+guid: b112345a818c44d1fb492af8b79ba597
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 48
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -123,10 +123,10 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_JUMP_0"
+      name: "\uC8FC\uC778\uACF5_dying motion_0"
       rect:
         serializedVersion: 2
-        x: 6
+        x: 1
         y: 0
         width: 13
         height: 29
@@ -137,40 +137,19 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 87f29e0a778a046789a21af5a56979ab
-      internalID: 1735572133
+      spriteID: c8a542cfeaf8a476f9ce8ceed0062910
+      internalID: -254526692
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_JUMP_1"
+      name: "\uC8FC\uC778\uACF5_dying motion_1"
       rect:
         serializedVersion: 2
-        x: 38
+        x: 35
         y: 0
-        width: 15
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 049dab6e230aa4eaf9e35998f6dccd93
-      internalID: -899973954
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_JUMP_2"
-      rect:
-        serializedVersion: 2
-        x: 67
-        y: 0
-        width: 20
+        width: 13
         height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -179,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 639abc1b456144b699ac0e33adfecff1
-      internalID: 202047333
+      spriteID: 90fe3e152b63642558e87dccf6ad5722
+      internalID: 254616937
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_JUMP_3"
+      name: "\uC8FC\uC778\uACF5_dying motion_2"
       rect:
         serializedVersion: 2
-        x: 100
+        x: 67
         y: 0
-        width: 18
-        height: 30
+        width: 13
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cf2c08740e2ba4313960c0bd78ea636d
-      internalID: -376473116
+      spriteID: 461c07e656eae4953951edbf3b196751
+      internalID: -1037466523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_JUMP_4"
+      name: "\uC8FC\uC778\uACF5_dying motion_3"
       rect:
         serializedVersion: 2
-        x: 132
+        x: 97
         y: 0
-        width: 18
-        height: 30
+        width: 29
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 68119b03206f94c4d84c20b8e3856190
-      internalID: 164568611
+      spriteID: 4ef745f0be8944f6cb80184a8066af4f
+      internalID: 934470795
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_JUMP_5"
+      name: "\uC8FC\uC778\uACF5_dying motion_4"
       rect:
         serializedVersion: 2
-        x: 162
+        x: 129
         y: 0
-        width: 20
-        height: 33
+        width: 30
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -242,20 +221,62 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ccf75a1444d954f90882d0c99d6cce8a
-      internalID: -186761599
+      spriteID: 1812cb047573b46be9be590a48201a36
+      internalID: -525252072
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_JUMP_6"
+      name: "\uC8FC\uC778\uACF5_dying motion_8"
+      rect:
+        serializedVersion: 2
+        x: 289
+        y: 0
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f7f8593bd5194d3ca774829a709014c
+      internalID: -1455749258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dying motion_9"
+      rect:
+        serializedVersion: 2
+        x: 161
+        y: 0
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a9678bf58f12b44cfa5e4f2896ff1162
+      internalID: -1797381440
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dying motion_10"
       rect:
         serializedVersion: 2
         x: 193
         y: 0
-        width: 21
-        height: 31
+        width: 30
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -263,20 +284,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4a3b4fbff1b14811b0cb9884f14b8b5
-      internalID: -1973474131
+      spriteID: 8592cfd59b65044938a7725742070e63
+      internalID: -1893773486
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_JUMP_7"
+      name: "\uC8FC\uC778\uACF5_dying motion_11"
       rect:
         serializedVersion: 2
-        x: 227
+        x: 225
         y: 0
-        width: 20
-        height: 28
+        width: 30
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -284,20 +305,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 79bedf2a082a6499ba2c79ddf3084186
-      internalID: 1420250763
+      spriteID: e550c736973434ba28fd192ba11868a5
+      internalID: -1963907737
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_JUMP_8"
+      name: "\uC8FC\uC778\uACF5_dying motion_12"
       rect:
         serializedVersion: 2
         x: 257
         y: 0
-        width: 21
-        height: 27
+        width: 30
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -305,8 +326,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c87fbfd14f883411782c599bdfef85ff
-      internalID: -1393600130
+      spriteID: 143a720e6b3e945dfa84eb58a3e8da69
+      internalID: 488333546
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dying motion_13"
+      rect:
+        serializedVersion: 2
+        x: 321
+        y: 0
+        width: 30
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 147c6f6d231514e7d9c3fd639fc8000d
+      internalID: -906615057
       vertices: []
       indices: 
       edges: []
@@ -322,15 +364,20 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uC8FC\uC778\uACF5_JUMP_0": 1735572133
-      "\uC8FC\uC778\uACF5_JUMP_1": -899973954
-      "\uC8FC\uC778\uACF5_JUMP_2": 202047333
-      "\uC8FC\uC778\uACF5_JUMP_3": -376473116
-      "\uC8FC\uC778\uACF5_JUMP_4": 164568611
-      "\uC8FC\uC778\uACF5_JUMP_5": -186761599
-      "\uC8FC\uC778\uACF5_JUMP_6": -1973474131
-      "\uC8FC\uC778\uACF5_JUMP_7": 1420250763
-      "\uC8FC\uC778\uACF5_JUMP_8": -1393600130
+      "\uC8FC\uC778\uACF5_dying motion_0": -254526692
+      "\uC8FC\uC778\uACF5_dying motion_1": 254616937
+      "\uC8FC\uC778\uACF5_dying motion_10": -1893773486
+      "\uC8FC\uC778\uACF5_dying motion_11": -1963907737
+      "\uC8FC\uC778\uACF5_dying motion_12": 488333546
+      "\uC8FC\uC778\uACF5_dying motion_13": -906615057
+      "\uC8FC\uC778\uACF5_dying motion_2": -1037466523
+      "\uC8FC\uC778\uACF5_dying motion_3": 934470795
+      "\uC8FC\uC778\uACF5_dying motion_4": -525252072
+      "\uC8FC\uC778\uACF5_dying motion_5": 1422846726
+      "\uC8FC\uC778\uACF5_dying motion_6": -1847909730
+      "\uC8FC\uC778\uACF5_dying motion_7": -386763742
+      "\uC8FC\uC778\uACF5_dying motion_8": -1455749258
+      "\uC8FC\uC778\uACF5_dying motion_9": -1797381440
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
