@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
     bool isDashing = false;
     bool canDash = true;
     private Vector2 initialScale;
-
+    public Animator animator;
     private CameraMove camera;
     Rigidbody2D rigid;
     // Start is called before the first frame update
@@ -29,6 +29,7 @@ public class PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         camera = FindObjectOfType<CameraMove>();// CmeraUpdate받기
         initialScale = transform.localScale;
+        animator = GetComponent<Animator>(); 
     }
 
     // Update is called once per frame
@@ -43,9 +44,15 @@ public class PlayerMove : MonoBehaviour
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
+        { 
             movedirection = -1;
+            animator.SetBool("player_run", true);
+        }
         if (Input.GetKey(KeyCode.RightArrow))
+        {
             movedirection = 1;
+            animator.SetBool("player_run", true);
+        }
         CheckGround();
         if (!isDashing)
         {
@@ -69,6 +76,8 @@ public class PlayerMove : MonoBehaviour
         {
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             Debug.Log("Jump");
+            animator.SetBool("player_jump", true);
+
         }
         else Debug.Log("Cant Jump");
 
@@ -78,6 +87,7 @@ public class PlayerMove : MonoBehaviour
         if (Managers.Game.currentState == GameManager.GameState.Battle) // 현재 전투가능 여부 체크
         {
             movedirection = -1;
+            animator.SetBool("player_run", true);
         }
 
     }
@@ -87,11 +97,13 @@ public class PlayerMove : MonoBehaviour
         if (Managers.Game.currentState == GameManager.GameState.Battle) // 현재 전투가능 여부 체크
         {
             movedirection = 1;
+            animator.SetBool("player_run", true);
         }
     }
     public void ButtonUp()
     {
             movedirection = 0;
+        animator.SetBool("player_run", false);
     }
     void CheckGround()
     {
@@ -101,7 +113,11 @@ public class PlayerMove : MonoBehaviour
             isground = true;
         }
         else
+        {
+            animator.SetBool("player_jump", false);
             isground = false;
+            
+        }
     }
     private void FlipUsingScale(float direction)
     {

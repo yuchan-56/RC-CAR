@@ -51,13 +51,11 @@ public class ComboManager : MonoBehaviour
                         if (InputButton.Contains("Jump")) // Jump
                         {
                             Debug.Log("skill 1 active");
-                            player.jump(); 
                         }
 
                         else if (InputButton.Contains("Dash")) //Dash
                         {
                             Debug.Log("skill 2 active");
-                            player.TriggerDash();
                         }
 
                         else
@@ -95,7 +93,6 @@ public class ComboManager : MonoBehaviour
                         {
                             Debug.Log("Combo 3 active");//점프+공격
                             playerAttack.SkillMotionActive("JumpAttack");
-                            player.jump();
                             jumpAttack.SkillMotionActive();
                         }
 
