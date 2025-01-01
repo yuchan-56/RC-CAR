@@ -121,7 +121,91 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash effect_0"
+      rect:
+        serializedVersion: 2
+        x: 158
+        y: 0
+        width: 21
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e8b204a63462b4015a6b5c72ffcf223a
+      internalID: 2047806523
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash effect_1"
+      rect:
+        serializedVersion: 2
+        x: 200
+        y: 0
+        width: 25
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 47c3d84fbb7714ff5b699dc2d359b15d
+      internalID: -1355499373
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash effect_2"
+      rect:
+        serializedVersion: 2
+        x: 253
+        y: 0
+        width: 22
+        height: 27
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d059a1f8b68f40f895822114a184aba
+      internalID: 64951644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash effect_3"
+      rect:
+        serializedVersion: 2
+        x: 309
+        y: 0
+        width: 14
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 725a2e0552dd442f99e68bbfdbddb52e
+      internalID: 2003934190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +216,11 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\uC8FC\uC778\uACF5_dash effect_0": 2047806523
+      "\uC8FC\uC778\uACF5_dash effect_1": -1355499373
+      "\uC8FC\uC778\uACF5_dash effect_2": 64951644
+      "\uC8FC\uC778\uACF5_dash effect_3": 2003934190
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

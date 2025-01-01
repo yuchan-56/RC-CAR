@@ -121,7 +121,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_uppercut effect_0"
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 6
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9d0b17659d8bf4eb5939462d2ed32553
+      internalID: -1637337977
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_uppercut effect_1"
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 20
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1214407dab5d148e49b076dc5bdfeee8
+      internalID: 1056007558
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_uppercut effect_2"
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 9
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4211042bbd830488aaf36cc3c4c2ce37
+      internalID: -1649587943
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_uppercut effect_3"
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 2
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312d4cb6986e7409b88ffc3204c4e5c8
+      internalID: 1477759817
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_uppercut effect_4"
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 11
+        width: 12
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 09c0239ecf31a453f85456c64a4a5829
+      internalID: -1594990925
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_uppercut effect_5"
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b48b7236c066b4c31b759ec1e54cd341
+      internalID: 206409472
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_uppercut effect_6"
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 226f2b3642dd546c1ab507dd5c5c3776
+      internalID: 503327806
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_uppercut effect_7"
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 2
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 95328323fd8544623852b448722c43a9
+      internalID: -1027630854
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +300,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\uC8FC\uC778\uACF5_uppercut effect_0": -1637337977
+      "\uC8FC\uC778\uACF5_uppercut effect_1": 1056007558
+      "\uC8FC\uC778\uACF5_uppercut effect_2": -1649587943
+      "\uC8FC\uC778\uACF5_uppercut effect_3": 1477759817
+      "\uC8FC\uC778\uACF5_uppercut effect_4": -1594990925
+      "\uC8FC\uC778\uACF5_uppercut effect_5": 206409472
+      "\uC8FC\uC778\uACF5_uppercut effect_6": 503327806
+      "\uC8FC\uC778\uACF5_uppercut effect_7": -1027630854
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

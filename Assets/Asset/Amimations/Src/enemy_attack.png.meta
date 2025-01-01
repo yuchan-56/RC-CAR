@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c45baed011ed04b15ab45c4d1e3548cf
+guid: 6807fef07e1b5439986fc2412a109c1e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_0"
+      name: enemy_attack_0
       rect:
         serializedVersion: 2
-        x: 98
-        y: 3
-        width: 9
-        height: 7
+        x: 10
+        y: 0
+        width: 11
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcbaf9ccd9d8d48aeb660fa63ac66ce4
-      internalID: -263042565
+      spriteID: 94112baa110524e5dae8af7114937311
+      internalID: 279735268
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_1"
+      name: enemy_attack_1
       rect:
         serializedVersion: 2
-        x: 145
-        y: 9
-        width: 13
-        height: 10
+        x: 42
+        y: 0
+        width: 15
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d38f5bac949c748afbe906b69b538dd2
-      internalID: -1652686246
+      spriteID: a7ffe97e6e9e847b0b310196a65a6e00
+      internalID: 1531534478
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_2"
+      name: enemy_attack_2
       rect:
         serializedVersion: 2
-        x: 196
-        y: 8
-        width: 21
-        height: 7
+        x: 75
+        y: 0
+        width: 15
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c69b7a5b62594bd9831884a12336e08
-      internalID: 1672472270
+      spriteID: 72a660396964e44c98eb4bb4a54f43fe
+      internalID: -1230212774
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_3"
+      name: enemy_attack_3
       rect:
         serializedVersion: 2
-        x: 268
-        y: 7
-        width: 20
-        height: 21
+        x: 108
+        y: 0
+        width: 17
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 603fb2abe0db74a14bcb92f47b4e23a3
-      internalID: 705363667
+      spriteID: 914864dde95544dee948d79b4fbe16d2
+      internalID: 1852794873
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_4"
+      name: enemy_attack_4
       rect:
         serializedVersion: 2
-        x: 57
-        y: 2
-        width: 5
-        height: 6
+        x: 140
+        y: 0
+        width: 14
+        height: 28
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,8 +221,71 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f0dfcdd8b7d54900a9bb60823f7fa41
-      internalID: -1851187046
+      spriteID: bc2009f381e844c07859cc9f42678674
+      internalID: -1078601256
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_attack_5
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 22
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 495a226332c9443f2ae13b36d51d44c2
+      internalID: -1385734824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_attack_6
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 23
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b8fcb46a81e2499ba29bc05b2230bde
+      internalID: 2110350081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_attack_7
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 0
+        width: 14
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f06db4ed045b46a5ae5a2576a7f4974
+      internalID: 791673965
       vertices: []
       indices: 
       edges: []
@@ -238,11 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uC8FC\uC778\uACF5_AA effect_0": -263042565
-      "\uC8FC\uC778\uACF5_AA effect_1": -1652686246
-      "\uC8FC\uC778\uACF5_AA effect_2": 1672472270
-      "\uC8FC\uC778\uACF5_AA effect_3": 705363667
-      "\uC8FC\uC778\uACF5_AA effect_4": -1851187046
+      enemy_attack_0: 279735268
+      enemy_attack_1: 1531534478
+      enemy_attack_2: -1230212774
+      enemy_attack_3: 1852794873
+      enemy_attack_4: -1078601256
+      enemy_attack_5: -1385734824
+      enemy_attack_6: 2110350081
+      enemy_attack_7: 791673965
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

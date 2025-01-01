@@ -121,7 +121,112 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: AA effect ult_0
+      rect:
+        serializedVersion: 2
+        x: 98
+        y: 3
+        width: 9
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf832663fa5ba4e53bc0c35403bccd30
+      internalID: -1080602732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AA effect ult_1
+      rect:
+        serializedVersion: 2
+        x: 145
+        y: 9
+        width: 13
+        height: 10
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25c9d9bfe3dfc4ef1bd75e017d74d2dd
+      internalID: 1406508902
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AA effect ult_2
+      rect:
+        serializedVersion: 2
+        x: 196
+        y: 8
+        width: 21
+        height: 7
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 12a8e458a67c8474d9ff928d606f7926
+      internalID: 337583304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AA effect ult_3
+      rect:
+        serializedVersion: 2
+        x: 268
+        y: 7
+        width: 20
+        height: 21
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ba7825f8d986d4988bb934ad8b45839c
+      internalID: 256022450
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: AA effect ult_4
+      rect:
+        serializedVersion: 2
+        x: 57
+        y: 2
+        width: 5
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73eaf0cf1aae344c5a43c25e8942255a
+      internalID: 2012197251
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +237,12 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      AA effect ult_0: -1080602732
+      AA effect ult_1: 1406508902
+      AA effect ult_2: 337583304
+      AA effect ult_3: 256022450
+      AA effect ult_4: 2012197251
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -121,7 +121,175 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: uppercut effect ult_0
+      rect:
+        serializedVersion: 2
+        x: 110
+        y: 6
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2ebce71b8220e47f487151226b2ce46d
+      internalID: 1686682720
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uppercut effect ult_1
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 20
+        width: 11
+        height: 6
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67a696c9202e4639a3cf0db2ad05862
+      internalID: -1117479568
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uppercut effect ult_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 9
+        width: 9
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0053b39a8907472f886139314941231
+      internalID: -2033480548
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uppercut effect ult_3
+      rect:
+        serializedVersion: 2
+        x: 346
+        y: 2
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 94b20a3dae1c94001b73277be9d6430e
+      internalID: 30259556
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uppercut effect ult_4
+      rect:
+        serializedVersion: 2
+        x: 403
+        y: 11
+        width: 12
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: edcf5c408bc854291ad50622c2f3524c
+      internalID: 255161655
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uppercut effect ult_5
+      rect:
+        serializedVersion: 2
+        x: 52
+        y: 1
+        width: 8
+        height: 5
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f24d4795231894bb8ac62913a4313104
+      internalID: -944687365
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uppercut effect ult_6
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 1
+        width: 10
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 46277ed1f338e4c96a7be16fc0091c78
+      internalID: 1345304825
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: uppercut effect ult_7
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 2
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e86c73449efb4d729ebf27bb66f2c9f
+      internalID: -1460779775
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +300,15 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      uppercut effect ult_0: 1686682720
+      uppercut effect ult_1: -1117479568
+      uppercut effect ult_2: -2033480548
+      uppercut effect ult_3: 30259556
+      uppercut effect ult_4: 255161655
+      uppercut effect ult_5: -944687365
+      uppercut effect ult_6: 1345304825
+      uppercut effect ult_7: -1460779775
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

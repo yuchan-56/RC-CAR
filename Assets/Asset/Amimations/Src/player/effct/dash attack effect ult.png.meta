@@ -121,7 +121,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: dash attack effect ult_0
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 6
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 808f65c1dfb6848af84afa5700260744
+      internalID: 542738694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash attack effect ult_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 8
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8664149623b864ab68530fa3a1382642
+      internalID: -984258498
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash attack effect ult_2
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 6
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8434bb2666dba4f0e8a3fe140a0adab5
+      internalID: -1614699464
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash attack effect ult_3
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 4
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8d6fe0d899af845869afa0239ee5a058
+      internalID: 1522206166
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash attack effect ult_4
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 4
+        width: 27
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00e8b179a559f4624b1be5035a645ffb
+      internalID: 1659242315
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash attack effect ult_5
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 0
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 511b9978070c84afd836f98f94541a36
+      internalID: 1817991081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash attack effect ult_6
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 2
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fe39bc389d04a495d9fbe4d420c09df6
+      internalID: 2036438113
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash attack effect ult_7
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 6
+        width: 9
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cf584fdf5d0044ef2ba975d53a0fd828
+      internalID: -1260902616
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dash attack effect ult_8
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 1
+        width: 8
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b15e6b912df1f4bd0aa536cbd6595b9e
+      internalID: -1989242344
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +321,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      dash attack effect ult_0: 542738694
+      dash attack effect ult_1: -984258498
+      dash attack effect ult_2: -1614699464
+      dash attack effect ult_3: 1522206166
+      dash attack effect ult_4: 1659242315
+      dash attack effect ult_5: 1817991081
+      dash attack effect ult_6: 2036438113
+      dash attack effect ult_7: -1260902616
+      dash attack effect ult_8: -1989242344
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

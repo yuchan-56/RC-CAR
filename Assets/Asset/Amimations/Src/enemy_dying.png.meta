@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c45baed011ed04b15ab45c4d1e3548cf
+guid: a8011510b80624c2a88b47e2f7c8edd3
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_0"
+      name: enemy_dying_0
       rect:
         serializedVersion: 2
-        x: 98
-        y: 3
-        width: 9
-        height: 7
+        x: 15
+        y: 0
+        width: 11
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,20 +137,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fcbaf9ccd9d8d48aeb660fa63ac66ce4
-      internalID: -263042565
+      spriteID: 63843482f9c6c47ef83a45f7a73b5dea
+      internalID: -16455872
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_1"
+      name: enemy_dying_1
       rect:
         serializedVersion: 2
-        x: 145
-        y: 9
-        width: 13
-        height: 10
+        x: 44
+        y: 0
+        width: 12
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -158,20 +158,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d38f5bac949c748afbe906b69b538dd2
-      internalID: -1652686246
+      spriteID: 1cec236321e564b16af07f90c1e0c7ef
+      internalID: 1360953069
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_2"
+      name: enemy_dying_2
       rect:
         serializedVersion: 2
-        x: 196
-        y: 8
-        width: 21
-        height: 7
+        x: 76
+        y: 0
+        width: 12
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -179,20 +179,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5c69b7a5b62594bd9831884a12336e08
-      internalID: 1672472270
+      spriteID: 1192740c18ccf4cbeb955087ba1446c3
+      internalID: 591487681
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_3"
+      name: enemy_dying_3
       rect:
         serializedVersion: 2
-        x: 268
-        y: 7
-        width: 20
-        height: 21
+        x: 96
+        y: 0
+        width: 29
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -200,20 +200,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 603fb2abe0db74a14bcb92f47b4e23a3
-      internalID: 705363667
+      spriteID: a24716b8e7cf448bf9202952a9e7fc6b
+      internalID: -734670195
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_AA effect_4"
+      name: enemy_dying_4
       rect:
         serializedVersion: 2
-        x: 57
-        y: 2
-        width: 5
-        height: 6
+        x: 129
+        y: 0
+        width: 27
+        height: 29
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -221,8 +221,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0f0dfcdd8b7d54900a9bb60823f7fa41
-      internalID: -1851187046
+      spriteID: 4cd229431760943dc82abb9e0fe36970
+      internalID: 1068590361
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: enemy_dying_5
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 27
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ab594e1e65af84b19bed740448587e87
+      internalID: 1189094541
       vertices: []
       indices: 
       edges: []
@@ -238,11 +259,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uC8FC\uC778\uACF5_AA effect_0": -263042565
-      "\uC8FC\uC778\uACF5_AA effect_1": -1652686246
-      "\uC8FC\uC778\uACF5_AA effect_2": 1672472270
-      "\uC8FC\uC778\uACF5_AA effect_3": 705363667
-      "\uC8FC\uC778\uACF5_AA effect_4": -1851187046
+      enemy_dying_0: -16455872
+      enemy_dying_1: 1360953069
+      enemy_dying_2: 591487681
+      enemy_dying_3: -734670195
+      enemy_dying_4: 1068590361
+      enemy_dying_5: -118718828
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

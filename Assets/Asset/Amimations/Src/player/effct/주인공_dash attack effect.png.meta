@@ -121,7 +121,196 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash attack effect_0"
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 6
+        width: 15
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0f54d4dcb9bb481e80976f157e18e85
+      internalID: -783468035
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash attack effect_1"
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 8
+        width: 17
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 76c2ef3b0892547b49be7b668aa210d3
+      internalID: 843204807
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash attack effect_2"
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 6
+        width: 19
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61593004f95c441efbb23a3475cf8299
+      internalID: 437903709
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash attack effect_3"
+      rect:
+        serializedVersion: 2
+        x: 258
+        y: 4
+        width: 18
+        height: 18
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4f46ecd073e1448da64716cdeb4d910
+      internalID: 1352679019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash attack effect_4"
+      rect:
+        serializedVersion: 2
+        x: 326
+        y: 4
+        width: 27
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6de4711e14f794327948d30333aebd2e
+      internalID: 194008071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash attack effect_5"
+      rect:
+        serializedVersion: 2
+        x: 412
+        y: 0
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 775ad6cecf3f442d4b423d3b1882cf71
+      internalID: -303714510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash attack effect_6"
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 2
+        width: 16
+        height: 20
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d84db882a3cc4894a11f3648837516f
+      internalID: 1080480057
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash attack effect_7"
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 6
+        width: 9
+        height: 22
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f7a62a426e174c55a62d9df5dddd35d
+      internalID: 273545056
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_dash attack effect_8"
+      rect:
+        serializedVersion: 2
+        x: 577
+        y: 1
+        width: 8
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 85553d8fc342745109b3bc29a24b77ee
+      internalID: 1690940094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -132,7 +321,16 @@ TextureImporter:
     edges: []
     weights: []
     secondaryTextures: []
-    nameFileIdTable: {}
+    nameFileIdTable:
+      "\uC8FC\uC778\uACF5_dash attack effect_0": -783468035
+      "\uC8FC\uC778\uACF5_dash attack effect_1": 843204807
+      "\uC8FC\uC778\uACF5_dash attack effect_2": 437903709
+      "\uC8FC\uC778\uACF5_dash attack effect_3": 1352679019
+      "\uC8FC\uC778\uACF5_dash attack effect_4": 194008071
+      "\uC8FC\uC778\uACF5_dash attack effect_5": -303714510
+      "\uC8FC\uC778\uACF5_dash attack effect_6": 1080480057
+      "\uC8FC\uC778\uACF5_dash attack effect_7": 273545056
+      "\uC8FC\uC778\uACF5_dash attack effect_8": 1690940094
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
