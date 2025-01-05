@@ -74,15 +74,15 @@ public class ComboManager : MonoBehaviour
 
                 case 2:
                     {
-                        if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))//а║га+╢К╫╛
+                        if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))//О©╫О©╫О©╫О©╫+О©╫К╫╛
                         {
-                            Debug.Log("Combo 1 active");
+                            Debug.Log("JumpDash active");
                             
                         }
 
-                        else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))//╢К╫╛+╟Ь╟щ
+                        else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))//О©╫К╫╛+О©╫О©╫О©╫О©╫
                         {
-                            Debug.Log("Combo 2 active");
+                            Debug.Log("DashAttack active");
                             player.TriggerDash();
                             playerAttack.SkillMotionActive("DashAttack");
                             dashAttack.SkillMotionActive();
@@ -91,7 +91,7 @@ public class ComboManager : MonoBehaviour
 
                         else
                         {
-                            Debug.Log("Combo 3 active");//а║га+╟Ь╟щ
+                            Debug.Log("JumpAttack active");//О©╫О©╫О©╫О©╫+О©╫О©╫О©╫О©╫
                             playerAttack.SkillMotionActive("JumpAttack");
                             jumpAttack.SkillMotionActive();
                         }
@@ -101,7 +101,7 @@ public class ComboManager : MonoBehaviour
 
                 case 3:
                     {
-                        Debug.Log("Combo 4 active");
+                        Debug.Log("Ultimate skill active");
                         break;
                     }
             }
