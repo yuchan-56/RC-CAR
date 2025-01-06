@@ -76,7 +76,7 @@ public class PlayerMove : MonoBehaviour
         {
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             Debug.Log("Jump");
-            animator.SetBool("player_jump", true);
+            animator.SetTrigger("jump");
 
         }
         else Debug.Log("Cant Jump");
@@ -114,7 +114,6 @@ public class PlayerMove : MonoBehaviour
         }
         else
         {
-            animator.SetBool("player_jump", false);
             isground = false;
             
         }
@@ -127,7 +126,11 @@ public class PlayerMove : MonoBehaviour
     public void TriggerDash() {
 
         if (canDash && movedirection != 0)
+        { 
             StartCoroutine(Dash());
+            animator.SetTrigger("dash");
+
+        }
     }
    public IEnumerator Dash()
     {

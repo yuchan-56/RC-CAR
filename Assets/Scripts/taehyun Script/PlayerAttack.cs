@@ -14,6 +14,7 @@ public class PlayerAttack : MonoBehaviour
     public int attackDamage = 10;
     private bool isAttacking = false;
     private bool isFacingRight = true;
+    private int UltimateDamageUpRate = 100;//100분율 기주
     public void SkillMotionActive(string AttackType)
     {
         if (isAttacking)
@@ -61,6 +62,14 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.color = Color.red;
         Gizmos.DrawWireCube(attackpoint.position, attackRange);
     }
+
+    //for ultimate skill by choijeanwoo
+    public int UlitmateDamageUp()
+    {
+        int UlitmateDamage = attackDamage * (UltimateDamageUpRate / 100);
+        return UlitmateDamage;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
