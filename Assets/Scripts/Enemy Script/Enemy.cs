@@ -27,7 +27,7 @@ public class Enemy : MonoBehaviour
     // Throw
     public GameObject throwableObjPrefab;
     public bool throwOn = false;
-    public float throwForce = 8f;
+    public float throwForce = 12f;
     public float throwCooldown = 3f; // 던지기 공격 쿨다운 5초
     private float nextThrowAttack = 0f;
 
@@ -109,7 +109,7 @@ public class Enemy : MonoBehaviour
         // HP 슬라이더 위치 업데이트
         if (hpSlider != null)
         {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1f, 0));
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.7f, 0));
             hpSlider.transform.position = screenPosition;
         }
     }
