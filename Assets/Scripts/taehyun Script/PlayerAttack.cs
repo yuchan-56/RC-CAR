@@ -15,9 +15,11 @@ public class PlayerAttack : MonoBehaviour
     private bool isAttacking = false;
     private bool isFacingRight = true;
     private int UltimateDamageUpRate = 100;//100분율 기주
+    private bool isAttackOnCooldown = false; // 쿨타임 상태 확인
+    public float attackCooldown = 0.5f;      // 쿨타임 지속 시간 (초)
     public void SkillMotionActive(string AttackType)
     {
-        if (isAttacking)
+        if (isAttacking || isAttackOnCooldown)
             return;
         StartCoroutine(PerformAttack(AttackType));
     
@@ -25,26 +27,36 @@ public class PlayerAttack : MonoBehaviour
     IEnumerator PerformAttack(string AttackType)
     {
         isAttacking = true;
+        isAttackOnCooldown = true;
         Animator animator = GetComponent<Animator>();
         if (AttackType == "Attack")
         {
             animator.SetTrigger("BasicAttack");
             attackRange = normalAttackRange;
+            isAttackOnCooldown = false;
+
         }
         else if (AttackType == "DashAttack")
         {
             animator.SetTrigger("DashAttack");
+            animator.ResetTrigger("dash");
             attackRange = dashAttackRange;
+            yield return new WaitForSeconds(attackCooldown);
+            isAttackOnCooldown = false;
+
         }
         else if (AttackType == "JumpAttack")
         {
+            
             animator.SetTrigger("JumpAttack");
+            animator.ResetTrigger("jump");
             attackRange = jumpAttackRange;
+            yield return new WaitForSeconds(attackCooldown);
+            isAttackOnCooldown = false;
 
         }
-        yield return new WaitForSeconds(0.1f);
-        Attack();
-        yield return new WaitForSeconds(0.3f);
+        Attack();//데미지적용
+        yield return new WaitForSeconds(0.4f);//공격 애니메이션 대기
         isAttacking = false;
     }
     void Attack() {

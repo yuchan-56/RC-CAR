@@ -58,7 +58,7 @@ public class ComboManager : MonoBehaviour
                             Debug.Log("skill 2 active");
                         }
 
-                        else
+                        else if (InputButton.Contains("Attack"))
                         {
                             Debug.Log("skill 3 active"); //Atack
                             foreach(var button in InputButton)
@@ -74,26 +74,27 @@ public class ComboManager : MonoBehaviour
 
                 case 2:
                     {
-                        if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))//����+�뽬
+                        if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))//점프대쉬
                         {
                             Debug.Log("JumpDash active");
+                            player.jump();
+                            player.TriggerDash();
                             
                         }
 
-                        else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))//�뽬+����
+                        else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))//대쉬어택
                         {
                             Debug.Log("DashAttack active");
                             player.TriggerDash();
                             playerAttack.SkillMotionActive("DashAttack");
-                            dashAttack.SkillMotionActive();
 
                         }
 
                         else
                         {
-                            Debug.Log("JumpAttack active");//����+����
+                            Debug.Log("JumpAttack active");//점프어택
+                            player.jump();
                             playerAttack.SkillMotionActive("JumpAttack");
-                            jumpAttack.SkillMotionActive();
                         }
 
                         break;
