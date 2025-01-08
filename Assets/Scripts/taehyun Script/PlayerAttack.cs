@@ -75,22 +75,4 @@ public class PlayerAttack : MonoBehaviour
         Gizmos.DrawWireCube(attackpoint.position, attackRange);
     }
 
-    //for ultimate skill by choijeanwoo
-    public int UlitmateDamageUp()
-    {
-        int UlitmateDamage = attackDamage * (UltimateDamageUpRate / 100);
-        return UlitmateDamage;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

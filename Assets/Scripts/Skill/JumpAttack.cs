@@ -19,7 +19,10 @@ public class JumpAttack : MonoBehaviour
     {
         SkillActive_JumpAttack = true;
         boxCollider2D.enabled = true;
-        Invoke("SkillMotionDeactive", 1f);
+        if (SkillActive_JumpAttack == true)
+        {
+            Invoke("SkillMotionDeactive", 1f);
+        }
     }
 
     void SkillMotionDeactive()

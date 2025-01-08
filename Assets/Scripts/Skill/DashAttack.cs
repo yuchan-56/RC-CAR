@@ -19,7 +19,10 @@ public class DashAttack : MonoBehaviour
     {
         SkillActive_DashAttack = true;
         boxCollider2D.enabled = true;
-        Invoke("SkillMotionDeactive", 1f);
+        if (SkillActive_DashAttack == true)
+        {
+            Invoke("SkillMotionDeactive", 1f);
+        }
     }
 
     void SkillMotionDeactive()
