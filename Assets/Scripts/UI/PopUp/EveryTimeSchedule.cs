@@ -15,6 +15,8 @@ public class EveryTimeSchedule : UI_Popup
     private void Start()
     {
         Init();
+        Managers.UI.ShowPopUpUI<SelectGuide>();
+
         
     }
     public override void Init()
