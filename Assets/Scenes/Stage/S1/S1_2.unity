@@ -2155,7 +2155,7 @@ MonoBehaviour:
   attackpoint: {fileID: 215637981}
   attackRange: {x: 3, y: 3}
   normalAttackRange: {x: 3, y: 3}
-  dashAttackRange: {x: 7, y: 3}
+  dashAttackRange: {x: 3, y: 3}
   jumpAttackRange: {x: 3, y: 3}
   enemyLayers:
     serializedVersion: 2
