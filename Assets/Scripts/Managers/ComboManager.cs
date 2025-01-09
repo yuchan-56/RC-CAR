@@ -11,6 +11,7 @@ public class ComboManager : MonoBehaviour
     public PlayerAttack playerAttack;
     public HashSet<string> InputButton;
     public PlayerMove player;
+    public PlayerAttackGeneral playerAttackGeneral;
     GameObject CurrentObject;
 
     List<RaycastResult> raycastResults = new List<RaycastResult>();
@@ -79,7 +80,16 @@ public class ComboManager : MonoBehaviour
                             Debug.Log("JumpDash active");
                             player.jump();
                             player.TriggerDash();
-                            
+
+                            if(playerAttackGeneral.UltimateSkill_Active)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
                         }
 
                         else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))//대쉬어택
@@ -88,6 +98,15 @@ public class ComboManager : MonoBehaviour
                             player.TriggerDash();
                             playerAttack.SkillMotionActive("DashAttack");
 
+                            if (playerAttackGeneral.UltimateSkill_Active)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
                         }
 
                         else
@@ -95,6 +114,16 @@ public class ComboManager : MonoBehaviour
                             Debug.Log("JumpAttack active");//점프어택
                             player.jump();
                             playerAttack.SkillMotionActive("JumpAttack");
+
+                            if (playerAttackGeneral.UltimateSkill_Active)
+                            {
+
+                            }
+
+                            else
+                            {
+
+                            }
                         }
 
                         break;
@@ -103,6 +132,7 @@ public class ComboManager : MonoBehaviour
                 case 3:
                     {
                         Debug.Log("Ultimate skill active");
+                        playerAttackGeneral.UltimateSkillActive();
                         break;
                     }
             }
