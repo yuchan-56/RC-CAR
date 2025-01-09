@@ -12,17 +12,15 @@ public class Enemy : MonoBehaviour
     private Vector2 stopPosition;
     private bool isFollowing = false;
 
+    private bool isDead = false;
+
+    // Animation
+    public Animator animator;
+
     // 거리 제한
     public float minDistance = 1.5f; // 멈추는 거리
     public float maxDistance = 1.6f;  // 다시 따라가기 시작하는 거리
 
-    // Attack
-    // Shooting
-    public GameObject bulletPref;
-    public bool shootOn = false;
-    float bulletSpeed = 10.0f;
-    float spawnInterval = 0.6f;
-    float nextSpawn = 0f;
 
     // Throw
     public GameObject throwableObjPrefab;
@@ -56,19 +54,17 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
+        if (isDead)
+        {
+            return; // 더 이상 Update 로직 실행하지 않음
+        }
+
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
         if (isFollowing)
         {
             if (distanceToPlayer > minDistance) 
             {
                 FollowPlayer();
-            }
-
-            // 공격 조건: shootOn이 true이고, 일정 시간이 지나면 공격
-            if (shootOn && Time.time >= nextSpawn)
-            {
-                Shooting(player);
-                nextSpawn = Time.time + spawnInterval;
             }
         }
         else
@@ -81,29 +77,6 @@ public class Enemy : MonoBehaviour
         {
             ThrowObject(player);
             nextThrowAttack = Time.time + throwCooldown;
-        }
-
-
-        // 스페이스바를 눌렀을 때 HP 감소
-        /// 임시
-        /// 버튼 이벤트 받아야함!!
-        if (distanceToPlayer <= attackedRange)
-        {
-            if (Input.GetKeyDown(KeyCode.X)) // 일반 공격 버튼
-            {
-                TakeDamage(10f);
-                Debug.Log("E.hp -10");
-            }
-            else if (Input.GetKeyDown(KeyCode.Z) && Input.GetKey(KeyCode.Space)) // 대쉬 + 공격
-            {
-                TakeDamage(20f);
-                Debug.Log("E.hp -20");
-            }
-            else if (Input.GetKeyDown(KeyCode.C) && Input.GetKey(KeyCode.Space)) // 점프 + 공격
-            {
-                TakeDamage(15f);
-                Debug.Log("E.hp -15");
-            }
         }
 
         // HP 슬라이더 위치 업데이트
@@ -150,19 +123,7 @@ public class Enemy : MonoBehaviour
 
     // ------------
 
-    // 공격1
-    void Shooting(Transform player)
-    {
-        GameObject bullet = Instantiate(bulletPref, transform.position, Quaternion.identity);
-        Rigidbody2D bulletrb = bullet.GetComponent<Rigidbody2D>();
-
-        if(bulletrb != null) {
-            Vector2 direction = (player.position - transform.position).normalized;
-            bulletrb.velocity = direction * bulletSpeed;
-        }
-    }
-
-    // 공격2
+    // Throw 공격
     void ThrowObject(Transform player)
     {
         GameObject throwable = Instantiate(throwableObjPrefab, transform.position, Quaternion.identity);
@@ -179,19 +140,14 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // 공격 3
-    // void PillowAttack() { }
-    // 애니메이션 필요
-
-
-
+    // 일반 공격
 
 
     // ------------
 
 
     // HP 감소
-    void TakeDamage(float damage)
+    public void EnemyDamage(float damage)
     {
         hp -= damage;
         if (hpSlider != null)
@@ -208,8 +164,12 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy died!");
-        Destroy(hpSlider.gameObject); // 슬라이더 삭제
-        Destroy(gameObject); // 게임 오브젝트를 삭제하여 적을 죽임
+
+        isDead = true;
+        animator.SetBool("enemy_die", true);
+
+        Destroy(hpSlider.gameObject, 1.7f); 
+        Destroy(gameObject, 1.7f); // 애니메이션 이후 적 오브젝트 삭제    
     }
 
 }

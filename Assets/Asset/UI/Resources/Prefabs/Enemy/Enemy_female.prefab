@@ -165,10 +165,9 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 1.5
   wanderDistance: 1.5
+  animator: {fileID: 5024680176826669711}
   minDistance: 1.5
   maxDistance: 3
-  bulletPref: {fileID: 8090371303415811730, guid: c1c56db8c68b84bbabc88c425f07f075, type: 3}
-  shootOn: 0
   throwableObjPrefab: {fileID: 6813551019866842665, guid: 37a6887c0462847c2b8cd93f8dcfd0a1, type: 3}
   throwOn: 0
   throwForce: 8
