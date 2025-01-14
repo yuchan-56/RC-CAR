@@ -165,13 +165,16 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 1.5
   wanderDistance: 1.5
+  followDistance: 20
+  throwDistance: 15
+  attackDistance: 1.5
   animator: {fileID: 4452342948343962670}
   minDistance: 1.5
   maxDistance: 3
   throwableObjPrefab: {fileID: 6813551019866842665, guid: 37a6887c0462847c2b8cd93f8dcfd0a1, type: 3}
   throwOn: 0
   throwForce: 8
-  throwCooldown: 2
+  throwCooldown: 1.5
   hp: 100
   hpSlider: {fileID: 0}
   hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}
