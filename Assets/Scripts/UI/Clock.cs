@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class Clock : MonoBehaviour
 {
@@ -12,6 +13,7 @@ public class Clock : MonoBehaviour
     private float changeInterval = 4f;  // 이미지 변경 간격 (4초)
     private float nextChangeTime;  // 다음 이미지 변경 시간
     public Image imageComponent;
+    public Image failimage;
     // 이미지가 표시될 스프라이트 렌더러
     // Start is called before the first frame update
     void Start()
@@ -20,7 +22,7 @@ public class Clock : MonoBehaviour
         nextChangeTime = changeInterval;
         imageComponent.sprite = images[currentImageIndex];  // 이미지 변경
         currentImageIndex++;  // 다음 이미지로 이동
-
+        failimage.gameObject.SetActive(false);
 
     }
 
@@ -34,6 +36,7 @@ public class Clock : MonoBehaviour
             {
                 ChangeImage();
                 nextChangeTime += changeInterval;  // 다음 이미지 변경 시간 설정
+
             }
 
 
@@ -41,7 +44,7 @@ public class Clock : MonoBehaviour
         else if(currentTime<=0)
         {
             // 타이머가 끝나면 게임 오버 애니메이션이나 화면 변경 등을 처리
-            // TriggerGameOver();
+            TriggerGameOver();
         }
     }
     void ChangeImage()
@@ -50,5 +53,14 @@ public class Clock : MonoBehaviour
         imageComponent.sprite = images[currentImageIndex];  // 이미지 변경
         currentImageIndex++;  // 다음 이미지로 이동
 
+    }
+    void TriggerGameOver()
+    {
+        failimage.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        Debug.Log("Game Over!");
+
+
+    
     }
 }
