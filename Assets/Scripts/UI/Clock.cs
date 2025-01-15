@@ -16,8 +16,10 @@ public class Clock : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        currentTime = 0;
+        currentTime = timerDuration;
         nextChangeTime = changeInterval;
+        imageComponent.sprite = images[currentImageIndex];  // 이미지 변경
+        currentImageIndex++;  // 다음 이미지로 이동
 
 
     }
@@ -28,7 +30,7 @@ public class Clock : MonoBehaviour
         if (currentTime > 0)
         {
             currentTime -= Time.deltaTime;
-            if (currentTime>=nextChangeTime)
+            if (currentTime<=timerDuration-nextChangeTime)
             {
                 ChangeImage();
                 nextChangeTime += changeInterval;  // 다음 이미지 변경 시간 설정
@@ -36,7 +38,7 @@ public class Clock : MonoBehaviour
 
 
         }
-        else if(currentTime==60f)
+        else if(currentTime<=0)
         {
             // 타이머가 끝나면 게임 오버 애니메이션이나 화면 변경 등을 처리
             // TriggerGameOver();
