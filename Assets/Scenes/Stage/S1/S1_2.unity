@@ -392,6 +392,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &609315591 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8100566181061669115, guid: 3a5d320ff551c6c4d82652259be1286c, type: 3}
+  m_PrefabInstance: {fileID: 1665486442}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &632032288
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -465,11 +470,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
---- !u!1 &609315591 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8100566181061669115, guid: 3a5d320ff551c6c4d82652259be1286c, type: 3}
-  m_PrefabInstance: {fileID: 1665486442}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &688404817
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,6 +2278,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dashAttack: {fileID: 0}
   jumpAttack: {fileID: 0}
+  characterEffect: {fileID: 0}
   playerAttack: {fileID: 0}
   player: {fileID: 0}
   playerAttackGeneral: {fileID: 0}
@@ -2486,7 +2487,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9173984553450709695, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
