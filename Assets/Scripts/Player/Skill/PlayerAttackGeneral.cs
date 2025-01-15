@@ -13,7 +13,6 @@ public class PlayerAttackGeneral : MonoBehaviour
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
-        characterEffect = characterEffect.GetComponent<CharacterEffect>();
         boxCollider2D.enabled = false;
         ani = GetComponent<Animator>();
         SkillAttack_Active = false;

@@ -15,7 +15,7 @@ public class Clock : MonoBehaviour
     public Image imageComponent;
     public Image failImage;
     public Image SuccessImage;
-    private List<GameObject> enemies;
+    //private List<GameObject> enemies;
     // 이미지가 표시될 스프라이트 렌더러
     // Start is called before the first frame update
     void Start()
@@ -26,7 +26,7 @@ public class Clock : MonoBehaviour
         currentImageIndex++;  // 다음 이미지로 이동
         failImage.gameObject.SetActive(false);
         SuccessImage.gameObject.SetActive(false);
-        enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
+        //enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
     }
 
     // Update is called once per frame
@@ -41,7 +41,7 @@ public class Clock : MonoBehaviour
                 nextChangeTime += changeInterval;  // 다음 이미지 변경 시간 설정
 
             }
-            if(enemies.Count==0)//몹 보스가 다 죽었을때, success가 나오도록
+            /*if(enemies.Count==0)//몹 보스가 다 죽었을때, success가 나오도록
             {
 
                 SuccessImage.gameObject.SetActive(true);
@@ -49,7 +49,7 @@ public class Clock : MonoBehaviour
                 Debug.Log("Game Clear!");
                 TriggerSuccess();
 
-            }
+            }*/
            
 
 
@@ -76,7 +76,7 @@ public class Clock : MonoBehaviour
 
     
     }
-    void TriggerSuccess()
+    /*void TriggerSuccess()
     {
         SuccessImage.gameObject.SetActive(true);
         Time.timeScale = 0;
@@ -87,5 +87,5 @@ public class Clock : MonoBehaviour
     {
         // 적 제거 시 리스트에서 삭제
         enemies.Remove(enemy);
-    }
+    }*/
 }

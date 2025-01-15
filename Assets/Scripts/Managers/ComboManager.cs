@@ -9,7 +9,6 @@ public class ComboManager : MonoBehaviour
     public DashAttack dashAttack;
     public JumpAttack jumpAttack;
     public CharacterEffect characterEffect;
-    public PlayerAttack playerAttack;
     public HashSet<string> InputButton;
     public PlayerMove player;
     public PlayerAttackGeneral playerAttackGeneral;
@@ -64,12 +63,12 @@ public class ComboManager : MonoBehaviour
                         else if (InputButton.Contains("Attack"))
                         {
                             Debug.Log("skill 3 active"); //Atack
-                            foreach(var button in InputButton)
-                            {
-                                playerAttack.SkillMotionActive("Attack");
-                                playerAttackGeneral.AttackSetActive();
-                                Debug.Log(button);
-                            }
+                            
+                            
+                                
+                            playerAttackGeneral.AttackSetActive();
+                            Debug.Log("button");
+                            
                         }
 
                         break;
@@ -90,7 +89,7 @@ public class ComboManager : MonoBehaviour
                         {
                             Debug.Log("DashAttack active");
                             player.TriggerDash();
-                            playerAttack.SkillMotionActive("DashAttack");
+                          
 
                             
                             
@@ -100,7 +99,7 @@ public class ComboManager : MonoBehaviour
                         {
                             Debug.Log("JumpAttack active");//점프어택
                             player.jump();
-                            playerAttack.SkillMotionActive("JumpAttack");
+                            
 
                             jumpAttack.SkillMotionActive();
                         }
