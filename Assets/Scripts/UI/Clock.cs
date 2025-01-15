@@ -13,7 +13,9 @@ public class Clock : MonoBehaviour
     private float changeInterval = 4f;  // 이미지 변경 간격 (4초)
     private float nextChangeTime;  // 다음 이미지 변경 시간
     public Image imageComponent;
-    public Image failimage;
+    public Image failImage;
+    public Image SuccessImage;
+    private List<GameObject> enemies;
     // 이미지가 표시될 스프라이트 렌더러
     // Start is called before the first frame update
     void Start()
@@ -22,8 +24,9 @@ public class Clock : MonoBehaviour
         nextChangeTime = changeInterval;
         imageComponent.sprite = images[currentImageIndex];  // 이미지 변경
         currentImageIndex++;  // 다음 이미지로 이동
-        failimage.gameObject.SetActive(false);
-
+        failImage.gameObject.SetActive(false);
+        SuccessImage.gameObject.SetActive(false);
+        enemies = new List<GameObject>(GameObject.FindGameObjectsWithTag("Enemy"));
     }
 
     // Update is called once per frame
@@ -38,6 +41,16 @@ public class Clock : MonoBehaviour
                 nextChangeTime += changeInterval;  // 다음 이미지 변경 시간 설정
 
             }
+            if(enemies.Count==0)//몹 보스가 다 죽었을때, success가 나오도록
+            {
+
+                SuccessImage.gameObject.SetActive(true);
+                Time.timeScale = 0;
+                Debug.Log("Game Clear!");
+                TriggerSuccess();
+
+            }
+           
 
 
         }
@@ -56,11 +69,23 @@ public class Clock : MonoBehaviour
     }
     void TriggerGameOver()
     {
-        failimage.gameObject.SetActive(true);
+        failImage.gameObject.SetActive(true);
         Time.timeScale = 0;
         Debug.Log("Game Over!");
 
 
     
+    }
+    void TriggerSuccess()
+    {
+        SuccessImage.gameObject.SetActive(true);
+        Time.timeScale = 0;
+        Debug.Log("Game Clear!");
+
+    }
+    public void EnemyDied(GameObject enemy)
+    {
+        // 적 제거 시 리스트에서 삭제
+        enemies.Remove(enemy);
     }
 }
