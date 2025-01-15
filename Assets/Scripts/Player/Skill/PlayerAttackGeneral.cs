@@ -7,12 +7,15 @@ public class PlayerAttackGeneral : MonoBehaviour
     public CharacterEffect characterEffect;
     public BoxCollider2D boxCollider2D;
     Animator ani;
+    SpriteRenderer spriteRenderer;
     bool SkillAttack_Active;
     public bool UltimateSkill_Active;
 
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
+        spriteRenderer.enabled = false;
         boxCollider2D.enabled = false;
         ani = GetComponent<Animator>();
         SkillAttack_Active = false;
@@ -22,6 +25,7 @@ public class PlayerAttackGeneral : MonoBehaviour
 
     public void AttackSetActive()
     {
+        spriteRenderer.enabled = true;
         boxCollider2D.enabled = true;
         SkillAttack_Active = true;
         if(SkillAttack_Active == true)
@@ -46,6 +50,7 @@ public class PlayerAttackGeneral : MonoBehaviour
     void AttackSetDeactive()
     {
         boxCollider2D.enabled = false;
+        spriteRenderer.enabled = false;
         SkillAttack_Active = false;
         ani.SetBool("UltAttack", false);
         ani.SetBool("Attack", false);

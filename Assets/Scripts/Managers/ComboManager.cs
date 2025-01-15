@@ -52,23 +52,18 @@ public class ComboManager : MonoBehaviour
                     {
                         if (InputButton.Contains("Jump")) // Jump
                         {
-                            Debug.Log("skill 1 active");
+                            Debug.Log("Jump");
                         }
 
                         else if (InputButton.Contains("Dash")) //Dash
                         {
-                            Debug.Log("skill 2 active");
+                            Debug.Log("Dash");
                         }
 
                         else if (InputButton.Contains("Attack"))
                         {
-                            Debug.Log("skill 3 active"); //Atack
-                            
-                            
-                                
+                            Debug.Log("Attack"); //Atack
                             playerAttackGeneral.AttackSetActive();
-                            Debug.Log("button");
-                            
                         }
 
                         break;
@@ -81,18 +76,14 @@ public class ComboManager : MonoBehaviour
                             Debug.Log("JumpDash active");
                             player.jump();
                             player.TriggerDash();
-
-                            
                         }
 
                         else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))//대쉬어택
                         {
                             Debug.Log("DashAttack active");
                             player.TriggerDash();
-                          
 
-                            
-                            
+                            dashAttack.SkillMotionActive();
                         }
 
                         else
@@ -100,7 +91,6 @@ public class ComboManager : MonoBehaviour
                             Debug.Log("JumpAttack active");//점프어택
                             player.jump();
                             
-
                             jumpAttack.SkillMotionActive();
                         }
 
