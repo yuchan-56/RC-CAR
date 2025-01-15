@@ -8,6 +8,7 @@ public class ComboManager : MonoBehaviour
 {
     public DashAttack dashAttack;
     public JumpAttack jumpAttack;
+    public CharacterEffect characterEffect;
     public PlayerAttack playerAttack;
     public HashSet<string> InputButton;
     public PlayerMove player;
@@ -15,6 +16,7 @@ public class ComboManager : MonoBehaviour
     GameObject CurrentObject;
 
     List<RaycastResult> raycastResults = new List<RaycastResult>();
+
 
     void Start()
     {
@@ -65,8 +67,8 @@ public class ComboManager : MonoBehaviour
                             foreach(var button in InputButton)
                             {
                                 playerAttack.SkillMotionActive("Attack");
+                                playerAttackGeneral.AttackSetActive();
                                 Debug.Log(button);
-
                             }
                         }
 
@@ -81,15 +83,7 @@ public class ComboManager : MonoBehaviour
                             player.jump();
                             player.TriggerDash();
 
-                            if(playerAttackGeneral.UltimateSkill_Active)
-                            {
-
-                            }
-
-                            else
-                            {
-
-                            }
+                            
                         }
 
                         else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))//대쉬어택
@@ -98,15 +92,8 @@ public class ComboManager : MonoBehaviour
                             player.TriggerDash();
                             playerAttack.SkillMotionActive("DashAttack");
 
-                            if (playerAttackGeneral.UltimateSkill_Active)
-                            {
-
-                            }
-
-                            else
-                            {
-
-                            }
+                            
+                            
                         }
 
                         else
@@ -115,15 +102,7 @@ public class ComboManager : MonoBehaviour
                             player.jump();
                             playerAttack.SkillMotionActive("JumpAttack");
 
-                            if (playerAttackGeneral.UltimateSkill_Active)
-                            {
-
-                            }
-
-                            else
-                            {
-
-                            }
+                            jumpAttack.SkillMotionActive();
                         }
 
                         break;

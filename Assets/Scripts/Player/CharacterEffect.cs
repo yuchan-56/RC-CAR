@@ -4,21 +4,21 @@ using UnityEngine;
 
 public class CharacterEffect : MonoBehaviour
 {
-    GameObject gameObject;
+    Animator ani;
 
     void Awake()
     {
-        gameObject = GetComponent<GameObject>();
-        gameObject.SetActive(false);
+        ani = GetComponent<Animator>();
+        ani.SetBool("UltimateSkill", false);
     }
 
     public void UltimmateEffectActive()
     {
-        gameObject.SetActive(true);
+        ani.SetBool("UltimateSkill", true);
     }
 
     public void UltimateEffectDeactive()
     {
-        gameObject.SetActive(false);
+        ani.SetBool("UltimateSkill", false);
     }
 }

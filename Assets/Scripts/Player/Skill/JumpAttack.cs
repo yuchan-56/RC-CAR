@@ -3,15 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class JumpAttack : MonoBehaviour
-{ 
-    BoxCollider2D boxCollider2D;
+{
+    public PlayerAttackGeneral playerAttackGeneral;
+    public BoxCollider2D boxCollider2D;
+    Animator ani;
     bool SkillActive_JumpAttack;
 
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
+        ani = GetComponent<Animator>();
         boxCollider2D.enabled = false;
         SkillActive_JumpAttack = false;
+        ani.SetBool("UltJumpAtt", false);
+        ani.SetBool("JumpAtt", true);
     }
 
 
@@ -23,11 +28,26 @@ public class JumpAttack : MonoBehaviour
         {
             Invoke("SkillMotionDeactive", 1f);
         }
+        else
+        {
+            return;
+        }
+
+        if(playerAttackGeneral.UltimateSkill_Active)
+        {
+            ani.SetBool("UltJumpAtt", true);
+        }
+        else
+        {
+            ani.SetBool("JumpAtt", true);
+        }
     }
 
     void SkillMotionDeactive()
     {
         SkillActive_JumpAttack = false;
         boxCollider2D.enabled = false;
+        ani.SetBool("UltJumpAtt", false);
+        ani.SetBool("JumpAtt", true);
     }
 }

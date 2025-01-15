@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class DashAttack : MonoBehaviour
 {
-    BoxCollider2D boxCollider2D;
+    public BoxCollider2D boxCollider2D;
     bool SkillActive_DashAttack;
 
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
-        boxCollider2D.enabled = false;
         SkillActive_DashAttack = false;
     }
 

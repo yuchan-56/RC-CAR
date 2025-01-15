@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5285431243031117072}
   - component: {fileID: 4679092246685870724}
   m_Layer: 5
-  m_Name: Button1
+  m_Name: Jump
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -133,7 +133,7 @@ GameObject:
   - component: {fileID: 5153127847322419651}
   - component: {fileID: 5334446024605978020}
   m_Layer: 5
-  m_Name: Button3
+  m_Name: Attack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -731,7 +731,7 @@ GameObject:
   - component: {fileID: 4890371287180511384}
   - component: {fileID: 6786104577049070411}
   m_Layer: 5
-  m_Name: Button2
+  m_Name: Dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -5,19 +5,23 @@ using UnityEngine;
 public class PlayerAttackGeneral : MonoBehaviour
 {
     CharacterEffect characterEffect;
-    BoxCollider2D boxCollider2D;
+    public BoxCollider2D boxCollider2D;
+    Animator ani;
     bool SkillAttack_Active;
     public bool UltimateSkill_Active;
-    float SkillDamage;
 
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
+        characterEffect = characterEffect.GetComponent<CharacterEffect>();
         boxCollider2D.enabled = false;
+        ani = GetComponent<Animator>();
         SkillAttack_Active = false;
+        ani.SetBool("UltAttack", false);
+        ani.SetBool("Attack", false);
     }
 
-    void AttackSetActive()
+    public void AttackSetActive()
     {
         boxCollider2D.enabled = true;
         SkillAttack_Active = true;
@@ -25,27 +29,29 @@ public class PlayerAttackGeneral : MonoBehaviour
         {
             Invoke("AttackSetDeactive", 1f);
         }
+        else
+        {
+            return;
+        }
+
+        if(UltimateSkill_Active)
+        {
+            ani.SetBool("UltAttack", true);
+        }
+        else
+        {
+            ani.SetBool("Attack", true);
+        }
     }
 
     void AttackSetDeactive()
     {
         boxCollider2D.enabled = false;
         SkillAttack_Active = false;
+        ani.SetBool("UltAttack", false);
+        ani.SetBool("Attack", false);
     }
 
-    void OnTriggerEnter2D(Collider2D collision)
-    {
-        if(collision.gameObject.tag == "Enemy" && UltimateSkill_Active == false)
-        {
-            AttackSetActive();
-            SkillDamage = 10;
-        }
-        else
-        {
-            AttackSetActive();
-            SkillDamage = 20;
-        }
-    }
 
     public void UltimateSkillActive()
     {
