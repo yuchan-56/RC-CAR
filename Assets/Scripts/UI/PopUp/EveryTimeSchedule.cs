@@ -30,7 +30,7 @@ public class EveryTimeSchedule : UI_Popup
         GetButton((int)Stage.S1_4).gameObject.AddUIEvent(StageGo);
     }
 
-    private void StageGo(PointerEventData eventData)
+    private void StageGo(PointerEventData eventData)    
     {
         string StageName = eventData.pointerClick.name; // 클릭한 오브젝트의 이름 
 

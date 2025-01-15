@@ -13,7 +13,7 @@ public class SceneManagerEx
     {
         Managers.Clear();
         SceneManager.LoadScene(GetSceneName(type));
-    }
+    } 
 
     public void LoadScene(string name) // 이름으로 씬 로드하기
     {

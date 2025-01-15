@@ -17,7 +17,6 @@ public class Managers : MonoBehaviour
     DataManager _data = new DataManager(); //DataManager가 겹쳐서 추가
     JsonManager _json = new JsonManager();
 
-
     public static GameManager Game { get { return Instance._game; } }
     public static UI_Manager UI { get { return Instance._ui; } }
     public static InputManager Input { get { return Instance._input; } }

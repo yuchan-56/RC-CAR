@@ -153,6 +153,7 @@ public class PlayerMove : MonoBehaviour
             float newX = this.gameObject.transform.position.x+8f;
             this.gameObject.transform.position = new Vector2(newX,fixedY);
             camera.CameraUpdate(newX);
+            Managers.UI.ShowPopUpUI<MapMoving>();
             return;
         }
         else if(collision.tag == "NextJumpUp")
@@ -164,6 +165,8 @@ public class PlayerMove : MonoBehaviour
             this.gameObject.transform.position = new Vector2(newX, fixedY);
           
             camera.CameraGoUp();//Å×½ºÆ®
+            Managers.UI.ShowPopUpUI<MapMoving>();
+
             return;
         }
 

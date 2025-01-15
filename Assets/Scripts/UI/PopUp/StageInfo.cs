@@ -4,6 +4,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using TMPro;
 using UnityEngine;
+using static LoadingScene;
 
 public class StageInfo : UI_Popup
 {
@@ -26,9 +27,8 @@ public class StageInfo : UI_Popup
         text.text = StageName;
     }
     void GoStage(PointerEventData eventData)
-    {
-        Debug.Log("..");
-        Managers.Scene.LoadScene(StageName);
+    {      
+        LoadingScene.Instance.GoLoading(StageName);
     }
     void CloseButtonClicked(PointerEventData eventData)
     {
