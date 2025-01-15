@@ -13,7 +13,7 @@ public class DashAttack : MonoBehaviour
         SkillActive_DashAttack = false;
     }
 
-    
+
     public void SkillMotionActive()
     {
         SkillActive_DashAttack = true;

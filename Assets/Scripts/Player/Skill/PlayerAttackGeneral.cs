@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PlayerAttackGeneral : MonoBehaviour
 {
-    CharacterEffect characterEffect;
+    public CharacterEffect characterEffect;
     public BoxCollider2D boxCollider2D;
     Animator ani;
     bool SkillAttack_Active;
@@ -55,7 +55,7 @@ public class PlayerAttackGeneral : MonoBehaviour
     public void UltimateSkillActive()
     {
         UltimateSkill_Active = true;
-        characterEffect.UltimmateEffectActive();
+        characterEffect.UltimateEffectActive();
         Invoke("UltimateSkillDeactive", 2f);
     }
 

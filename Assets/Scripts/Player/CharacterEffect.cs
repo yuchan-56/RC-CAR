@@ -5,15 +5,18 @@ using UnityEngine;
 public class CharacterEffect : MonoBehaviour
 {
     Animator ani;
+    SpriteRenderer spriteRenderer;
 
     void Awake()
     {
+        
         ani = GetComponent<Animator>();
         ani.SetBool("UltimateSkill", false);
     }
 
-    public void UltimmateEffectActive()
+    public void UltimateEffectActive()
     {
+        
         ani.SetBool("UltimateSkill", true);
     }
 

@@ -91,7 +91,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1283c2a2b0af040fdb5bd59c17180c7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boxCollider2D: {fileID: 0}
+  characterEffect: {fileID: 4190370655393520078}
+  boxCollider2D: {fileID: 7794202340552299335}
   UltimateSkill_Active: 0
 --- !u!95 &6877588900475193229
 Animator:
@@ -124,8 +125,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3498534315713011281}
   - component: {fileID: 2507411411084206820}
-  - component: {fileID: 7866644015358533331}
   - component: {fileID: 5534470668484005499}
+  - component: {fileID: 1655260598844374859}
   m_Layer: 0
   m_Name: JumpAttackHitBox
   m_TagString: Untagged
@@ -193,20 +194,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 2.3333333, y: 4.142857}
   m_EdgeRadius: 0
---- !u!114 &7866644015358533331
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2608317678897767836}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bb9b3bf0fc4c4950a08d78a52001d77, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerAttackGeneral: {fileID: 0}
-  boxCollider2D: {fileID: 0}
 --- !u!95 &5534470668484005499
 Animator:
   serializedVersion: 5
@@ -228,6 +215,20 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &1655260598844374859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2608317678897767836}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bb9b3bf0fc4c4950a08d78a52001d77, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerAttackGeneral: {fileID: 0}
+  boxCollider2D: {fileID: 0}
 --- !u!1 &5807001970854001129
 GameObject:
   m_ObjectHideFlags: 0
@@ -460,8 +461,8 @@ GameObject:
   m_Component:
   - component: {fileID: 129739731837699846}
   - component: {fileID: 8946637185506892649}
-  - component: {fileID: 8296665741706422521}
   - component: {fileID: 3106365994087946635}
+  - component: {fileID: 5851279761406715542}
   m_Layer: 0
   m_Name: DashAttackHitBox
   m_TagString: Untagged
@@ -529,19 +530,6 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 5.6, y: 2.9}
   m_EdgeRadius: 0
---- !u!114 &8296665741706422521
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7344105796942819253}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50d30741d03fe428ebcb67d41c63e6c8, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  boxCollider2D: {fileID: 0}
 --- !u!95 &3106365994087946635
 Animator:
   serializedVersion: 5
@@ -563,6 +551,19 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &5851279761406715542
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7344105796942819253}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50d30741d03fe428ebcb67d41c63e6c8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxCollider2D: {fileID: 0}
 --- !u!1 &9173984553450709695
 GameObject:
   m_ObjectHideFlags: 0

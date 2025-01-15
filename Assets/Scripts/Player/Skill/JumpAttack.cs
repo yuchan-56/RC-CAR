@@ -33,7 +33,7 @@ public class JumpAttack : MonoBehaviour
             return;
         }
 
-        if(playerAttackGeneral.UltimateSkill_Active)
+        if (playerAttackGeneral.UltimateSkill_Active)
         {
             ani.SetBool("UltJumpAtt", true);
         }
