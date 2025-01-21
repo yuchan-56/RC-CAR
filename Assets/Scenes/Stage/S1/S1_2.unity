@@ -645,11 +645,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!1 &477140783 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 5807001970854001129, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-  m_PrefabInstance: {fileID: 329060273386085801}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &498663354
 GameObject:
   m_ObjectHideFlags: 0
@@ -2368,7 +2363,7 @@ PrefabInstance:
     - target: {fileID: 4679092246685870724, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 329060273386085813}
     - target: {fileID: 4679092246685870724, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
       value: 2
@@ -2492,10 +2487,10 @@ PrefabInstance:
     - target: {fileID: 6786104577049070411, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 477140783}
+      objectReference: {fileID: 329060273386085813}
     - target: {fileID: 6786104577049070411, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: 
+      value: TriggerDash
       objectReference: {fileID: 0}
     - target: {fileID: 7403438865436677800, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_Name
@@ -3388,6 +3383,10 @@ PrefabInstance:
       propertyPath: m_Constraints
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 822014124495543704, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_GravityScale
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 1393808806941444715, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_Name
       value: AttackHitbox
@@ -3511,7 +3510,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4169039272619583583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
   m_PrefabInstance: {fileID: 329060273386085801}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 477140783}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 865d669b20e9db447bf7cc9c55cb1e8d, type: 3}

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c03263c8514761c43ac59bbec86cd589
+guid: cfc6d7ca963cbc7488a05fe77c744a5b
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -123,13 +123,160 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_run animation_0"
+      name: "\uC8FC\uC778\uACF5_roll motion_0"
       rect:
         serializedVersion: 2
-        x: 9
+        x: 8
+        y: 0
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8e56656ff4328e44c9f99ac08c5284b8
+      internalID: -1542495661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_roll motion_1"
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 0
+        width: 16
+        height: 28
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 758242ef06a55134a800f666d7f0acc5
+      internalID: -520787524
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_roll motion_2"
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 0
+        width: 13
+        height: 29
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cb2151f1d21b5e3478d1f8889e0a5f97
+      internalID: -1455269429
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_roll motion_3"
+      rect:
+        serializedVersion: 2
+        x: 147
+        y: 8
+        width: 26
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6f81c006cd83c6d4cabf8adf63c11c51
+      internalID: -1499977816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_roll motion_4"
+      rect:
+        serializedVersion: 2
+        x: 197
+        y: 6
+        width: 18
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9da4364a18d31304cbd215902f1b2c54
+      internalID: -1509066982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_roll motion_5"
+      rect:
+        serializedVersion: 2
+        x: 242
+        y: 10
+        width: 26
+        height: 13
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1979d5af8a43bbb4d94f93c60b13f159
+      internalID: 1381001292
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_roll motion_6"
+      rect:
+        serializedVersion: 2
+        x: 298
+        y: 3
+        width: 13
+        height: 26
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 80653d1b3cf5c3949a6749bf6f836f1c
+      internalID: 862425912
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: "\uC8FC\uC778\uACF5_roll motion_7"
+      rect:
+        serializedVersion: 2
+        x: 341
         y: 1
         width: 19
-        height: 28
+        height: 30
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,113 +284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4aeae67cea1c2b745895124f2f08ef37
-      internalID: -971358535
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_run animation_1"
-      rect:
-        serializedVersion: 2
-        x: 59
-        y: 0
-        width: 14
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: a20342e8302c80648ac6e6d9d2796eff
-      internalID: 216918892
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_run animation_2"
-      rect:
-        serializedVersion: 2
-        x: 105
-        y: 1
-        width: 17
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 43ffafb55f88a7449be189fec65f5125
-      internalID: 65344696
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_run animation_3"
-      rect:
-        serializedVersion: 2
-        x: 153
-        y: 1
-        width: 18
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5075449c8213ff94caa842835c82e96c
-      internalID: -556843808
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_run animation_4"
-      rect:
-        serializedVersion: 2
-        x: 203
-        y: 0
-        width: 14
-        height: 28
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 27b0716185a589e408630475957c9b6e
-      internalID: -1882039109
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: "\uC8FC\uC778\uACF5_run animation_5"
-      rect:
-        serializedVersion: 2
-        x: 250
-        y: 1
-        width: 15
-        height: 29
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ff6eaeb7accab60418cb7b491891f216
-      internalID: -1749841003
+      spriteID: cac0f0c7de8bbb74f86e5be94e3be9a0
+      internalID: -1005416690
       vertices: []
       indices: 
       edges: []
@@ -259,12 +301,14 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uC8FC\uC778\uACF5_run animation_0": -971358535
-      "\uC8FC\uC778\uACF5_run animation_1": 216918892
-      "\uC8FC\uC778\uACF5_run animation_2": 65344696
-      "\uC8FC\uC778\uACF5_run animation_3": -556843808
-      "\uC8FC\uC778\uACF5_run animation_4": -1882039109
-      "\uC8FC\uC778\uACF5_run animation_5": -1749841003
+      "\uC8FC\uC778\uACF5_roll motion_0": -1542495661
+      "\uC8FC\uC778\uACF5_roll motion_1": -520787524
+      "\uC8FC\uC778\uACF5_roll motion_2": -1455269429
+      "\uC8FC\uC778\uACF5_roll motion_3": -1499977816
+      "\uC8FC\uC778\uACF5_roll motion_4": -1509066982
+      "\uC8FC\uC778\uACF5_roll motion_5": 1381001292
+      "\uC8FC\uC778\uACF5_roll motion_6": 862425912
+      "\uC8FC\uC778\uACF5_roll motion_7": -1005416690
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

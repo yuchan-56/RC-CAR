@@ -44,7 +44,7 @@ public class PlayerAttackGeneral : MonoBehaviour
         }
         else
         {
-            ani.SetBool("Attack", true);
+            ani.SetBool("Attack",true);
         }
     }
 

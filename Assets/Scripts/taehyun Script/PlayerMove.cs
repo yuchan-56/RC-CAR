@@ -14,8 +14,8 @@ public class PlayerMove : MonoBehaviour
     float jumpforce = 10f;
     bool isground = false;
     float dashSpeed = 20f;
-    public float dashDuration = 0.4f;
-    float dashCoolDown = 1f;
+    public float dashDuration = 0.1f;
+    float dashCoolDown = 0.1f;
     bool isDashing = false;
     bool canDash = true;
     public Animator animator;
@@ -181,6 +181,35 @@ public class PlayerMove : MonoBehaviour
         if(collision.tag == "Final")
         {
             Managers.UI.ShowPopUpUI<StageInfo>();
+        }
+    }
+    public void SkillMotionActive(string ComboType)
+    {
+        StartCoroutine(PerformAttack(ComboType));
+    }
+    IEnumerator PerformAttack(string ComboType)
+    {
+        if (ComboType == "Attack")
+        {
+            animator.SetTrigger("Attack");
+            yield return null;
+        }
+        else if (ComboType == "DashAttack")
+        {
+            animator.SetTrigger("DashAttack");
+            yield return null;
+        }
+        else if (ComboType == "JumpAttack")
+        {
+
+            animator.SetTrigger("JumpAttack");
+            yield return null;
+
+        }
+        else if (ComboType == "JumpDash")
+        {
+            animator.SetTrigger("JumpDash");
+            yield return null;
         }
     }
 }

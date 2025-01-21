@@ -12,6 +12,7 @@ public class ComboManager : MonoBehaviour
     public HashSet<string> InputButton;
     public PlayerMove player;
     public PlayerAttackGeneral playerAttackGeneral;
+    public PlayerAttackAnimation ani;
     GameObject CurrentObject;
 
     List<RaycastResult> raycastResults = new List<RaycastResult>();
@@ -64,6 +65,9 @@ public class ComboManager : MonoBehaviour
                         {
                             Debug.Log("Attack"); //Atack
                             playerAttackGeneral.AttackSetActive();
+                            player.SkillMotionActive("Attack");
+
+
                         }
 
                         break;
@@ -76,6 +80,8 @@ public class ComboManager : MonoBehaviour
                             Debug.Log("JumpDash active");
                             player.jump();
                             player.TriggerDash();
+                            player.SkillMotionActive("JumpDash");
+
                         }
 
                         else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))//대쉬어택
@@ -83,7 +89,8 @@ public class ComboManager : MonoBehaviour
                             Debug.Log("DashAttack active");
                             player.TriggerDash();
 
-                            dashAttack.SkillMotionActive();
+                            player.SkillMotionActive("DashAttack");
+
                         }
 
                         else
@@ -92,6 +99,8 @@ public class ComboManager : MonoBehaviour
                             player.jump();
                             
                             jumpAttack.SkillMotionActive();
+                            player.SkillMotionActive("JumpAttack");
+
                         }
 
                         break;
