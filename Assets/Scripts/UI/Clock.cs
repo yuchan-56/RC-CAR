@@ -35,7 +35,7 @@ public class Clock : MonoBehaviour
         if (currentTime > 0)
         {
             currentTime -= Time.deltaTime;
-            if (currentTime<=timerDuration-nextChangeTime)
+            if (currentTime<=timerDuration-nextChangeTime && currentImageIndex<=13)
             {
                 ChangeImage();
                 nextChangeTime += changeInterval;  // 다음 이미지 변경 시간 설정

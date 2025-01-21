@@ -190,6 +190,7 @@ public class Enemy : MonoBehaviour
     // HP 감소
     public void EnemyDamage(float damage)
     {
+        Debug.Log("데미지 들어감");
         hp -= damage;
         if (hpSlider != null)
         {
@@ -200,6 +201,8 @@ public class Enemy : MonoBehaviour
         {
             Die();
         }
+        Debug.Log(damage);
+        Debug.Log(hp);
     }
 
     void Die()
