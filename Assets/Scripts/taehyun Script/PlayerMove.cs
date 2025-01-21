@@ -29,7 +29,7 @@ public class PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         camera = FindObjectOfType<CameraMove>();// CmeraUpdate�ޱ�
         animator = GetComponent<Animator>();
-        initialScale=transform.localScale;
+        initialScale = transform.localScale;
     }
 
     // Update is called once per frame
@@ -39,13 +39,13 @@ public class PlayerMove : MonoBehaviour
         {
             TriggerDash();
         }
-        
+
 
     }
     void FixedUpdate()
     {
         if (Input.GetKey(KeyCode.LeftArrow))
-        { 
+        {
             movedirection = -1;
             animator.SetBool("player_run", true);
         }
@@ -68,12 +68,12 @@ public class PlayerMove : MonoBehaviour
             }
             rigid.velocity = new Vector2(currentspeed, rigid.velocity.y);
         }
-        
+
     }
     public void jump()
     {
 
-        if (isground&&Managers.Game.currentState == GameManager.GameState.Battle) // ���� �������� ���� üũ)
+        if (isground && Managers.Game.currentState == GameManager.GameState.Battle) // ���� �������� ���� üũ)
         {
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             Debug.Log("Jump");
@@ -103,12 +103,12 @@ public class PlayerMove : MonoBehaviour
     }
     public void ButtonUp()
     {
-            movedirection = 0;
+        movedirection = 0;
         animator.SetBool("player_run", false);
     }
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,2.5f, LayerMask.GetMask("groundLayer")); // 10f�� ĳ������ ũ�� ��, 5/2 = 2.5f
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 2.5f, LayerMask.GetMask("groundLayer")); // 10f�� ĳ������ ũ�� ��, 5/2 = 2.5f
         if (hit.collider != null)
         {
             isground = true;
@@ -116,24 +116,24 @@ public class PlayerMove : MonoBehaviour
         else
         {
             isground = false;
-            
+
         }
     }
     private void FlipUsingScale(float direction)
     {
-        transform.localScale = new Vector2(direction > 0 ? Mathf.Abs(initialScale.x) : -Mathf.Abs(initialScale.x), initialScale.y); 
+        transform.localScale = new Vector2(direction > 0 ? Mathf.Abs(initialScale.x) : -Mathf.Abs(initialScale.x), initialScale.y);
     }
 
     public void TriggerDash() {
 
         if (canDash && movedirection != 0)
-        { 
+        {
             StartCoroutine(Dash());
             animator.SetTrigger("dash");
 
         }
     }
-   public IEnumerator Dash()
+    public IEnumerator Dash()
     {
         isDashing = true;
         canDash = false;
@@ -147,9 +147,9 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (tag!= "Player")
+        if (tag != "Player")
         {
-           
+
             return; // �θ� Player�� �ƴϸ� ����
         }
 
@@ -159,27 +159,27 @@ public class PlayerMove : MonoBehaviour
         {
             Debug.Log("triggerOn");
             float fixedY = this.gameObject.transform.position.y;
-            float newX = this.gameObject.transform.position.x+8f;
-            this.gameObject.transform.position = new Vector2(newX,fixedY);
+            float newX = this.gameObject.transform.position.x + 8f;
+            this.gameObject.transform.position = new Vector2(newX, fixedY);
             camera.CameraUpdate(newX);
             Managers.UI.ShowPopUpUI<MapMoving>();
             return;
         }
-        else if(collision.tag == "NextJumpUp")
+        else if (collision.tag == "NextJumpUp")
         {
             Debug.Log("triggerOn");
 
             float fixedY = this.gameObject.transform.position.y + 20f;
-            float newX = -11f;  
+            float newX = -11f;
             this.gameObject.transform.position = new Vector2(newX, fixedY);
-           
+
             camera.CameraGoUp();//�׽�Ʈ
             Managers.UI.ShowPopUpUI<MapMoving>();
 
             return;
         }
 
-        if(collision.tag == "Final")
+        if (collision.tag == "Final")
         {
             Managers.UI.ShowPopUpUI<StageInfo>();
         }
@@ -212,10 +212,6 @@ public class PlayerMove : MonoBehaviour
             animator.SetTrigger("JumpDash");
             yield return null;
         }
-
-    public void GoPlayerNextMove()
-    {
-
 
     }
 }
