@@ -6,6 +6,7 @@ public class PlayerAttackGeneral : MonoBehaviour
 {
     public CharacterEffect characterEffect;
     public BoxCollider2D boxCollider2D;
+    public Enemy enemy;
     Animator ani;
     SpriteRenderer spriteRenderer;
     bool SkillAttack_Active;
@@ -44,6 +45,14 @@ public class PlayerAttackGeneral : MonoBehaviour
         else
         {
             ani.SetBool("Attack", true);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.tag == "Enemy")
+        {
+            collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage);
         }
     }
 

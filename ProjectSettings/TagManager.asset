@@ -9,6 +9,7 @@ TagManager:
   - Final
   - NextJumpRight
   - NextJumpUp
+  - Enemy
   layers:
   - Default
   - TransparentFX

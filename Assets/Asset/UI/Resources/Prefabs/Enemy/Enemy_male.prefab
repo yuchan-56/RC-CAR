@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 4452342948343962670}
   m_Layer: 0
   m_Name: Enemy_male
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,7 +144,7 @@ CapsuleCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -172,7 +172,6 @@ MonoBehaviour:
   minDistance: 1.5
   maxDistance: 3
   throwableObjPrefab: {fileID: 6813551019866842665, guid: 37a6887c0462847c2b8cd93f8dcfd0a1, type: 3}
-  throwOn: 0
   throwForce: 8
   throwCooldown: 1.5
   hp: 100

@@ -6,6 +6,8 @@ public class JumpAttack : MonoBehaviour
 {
     public PlayerAttackGeneral playerAttackGeneral;
     public BoxCollider2D boxCollider2D;
+    public Enemy enemy;
+    public GameManager gameManager;
     SpriteRenderer spriteRenderer;
     Animator ani;
     bool SkillActive_JumpAttack;
@@ -44,6 +46,14 @@ public class JumpAttack : MonoBehaviour
         else
         {
             ani.SetBool("JumpAtt", true);
+        }
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.tag == "Enemy")
+        {
+            collision.GetComponent<Enemy>().EnemyDamage(gameManager.damage);
         }
     }
 
