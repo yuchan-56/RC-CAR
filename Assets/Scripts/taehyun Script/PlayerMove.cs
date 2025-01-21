@@ -18,7 +18,6 @@ public class PlayerMove : MonoBehaviour
     float dashCoolDown = 1f;
     bool isDashing = false;
     bool canDash = true;
-    private Vector2 initialScale;
     public Animator animator;
     private CameraMove camera;
     Rigidbody2D rigid;
@@ -28,8 +27,7 @@ public class PlayerMove : MonoBehaviour
         Managers.Game.GameStart(); // Player가 들어오면 게임시작으로 간주.
         rigid = GetComponent<Rigidbody2D>();
         camera = FindObjectOfType<CameraMove>();// CmeraUpdate받기
-        initialScale = transform.localScale;
-        animator = GetComponent<Animator>(); 
+        animator = GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -39,6 +37,7 @@ public class PlayerMove : MonoBehaviour
         {
             TriggerDash();
         }
+        
 
     }
     void FixedUpdate()

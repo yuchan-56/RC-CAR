@@ -1694,10 +1694,18 @@ PrefabInstance:
     - target: {fileID: 1015006524967310067, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 329060273386085813}
     - target: {fileID: 1015006524967310067, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 329060273386085813}
+    - target: {fileID: 1015006524967310067, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnLeftButtonDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 1015006524967310067, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonUp
       objectReference: {fileID: 0}
     - target: {fileID: 3026659843796333526, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_Name
@@ -1742,10 +1750,18 @@ PrefabInstance:
     - target: {fileID: 5638287401320582522, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 329060273386085813}
     - target: {fileID: 5638287401320582522, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
+      objectReference: {fileID: 329060273386085813}
+    - target: {fileID: 5638287401320582522, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
+      propertyPath: m_Delegates.Array.data[0].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: OnRightButtonDown
+      objectReference: {fileID: 0}
+    - target: {fileID: 5638287401320582522, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
+      propertyPath: m_Delegates.Array.data[1].callback.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonUp
       objectReference: {fileID: 0}
     - target: {fileID: 5883138879556101759, guid: 997894fccf6b0d34289cda7fde2b6f61, type: 3}
       propertyPath: m_Pivot.x
@@ -2808,6 +2824,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: JumpAttackHitBox
       objectReference: {fileID: 0}
+    - target: {fileID: 2709990556405850502, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 9dee47b5ccd94f44f977d3b9db81d55a, type: 2}
     - target: {fileID: 2974412998563629493, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_LocalScale.x
       value: 10
