@@ -146,6 +146,13 @@ public class PlayerMove : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+
+        if (collision.transform.parent == null || collision.transform.parent.tag != "Player")
+        {
+            return; // 부모가 Player가 아니면 무시
+        }
+
+
         Debug.Log(collision.tag);
         if (collision.tag == "NextJumpRight")
         {
@@ -162,7 +169,7 @@ public class PlayerMove : MonoBehaviour
             Debug.Log("triggerOn");
 
             float fixedY = this.gameObject.transform.position.y + 20f;
-            float newX = this.gameObject.transform.position.x ;
+            float newX = -11f;  
             this.gameObject.transform.position = new Vector2(newX, fixedY);
           
             camera.CameraGoUp();//테스트

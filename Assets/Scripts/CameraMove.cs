@@ -6,7 +6,7 @@ public class CameraMove : MonoBehaviour
 {
     public Transform player;
     public float smoothSpeed = 0.05f;
-    public Vector3 offset = new Vector3(0, 1f, -2); // 2.7f = ground위치에 따른 카메라 조절
+    public Vector3 offset = new Vector3(0, -1f, -2); // 2.7f = ground위치에 따른 카메라 조절
 
     public float minX = -3.8f;
     public float maxX = 1.9f;
@@ -18,7 +18,7 @@ public class CameraMove : MonoBehaviour
 
     private void Start()
     {
-        FixedY = -1.5f; //Stage1 Ground 기준
+        FixedY = -1f; //Stage1 Ground 기준
         targetPosition = transform.position; // 초기화
     }
     void LateUpdate()
