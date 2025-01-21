@@ -88,7 +88,7 @@ public class ComboManager : MonoBehaviour
                         {
                             Debug.Log("DashAttack active");
                             player.TriggerDash();
-
+                            dashAttack.SkillMotionActive();
                             player.SkillMotionActive("DashAttack");
 
                         }

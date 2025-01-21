@@ -20,7 +20,7 @@ public class JumpAttack : MonoBehaviour
         spriteRenderer.enabled = false;
         SkillActive_JumpAttack = false;
         ani.SetBool("UltJumpAtt", false);
-        ani.SetBool("JumpAtt", true);
+        ani.SetBool("JumpAtt", false);
     }
 
 
@@ -62,6 +62,6 @@ public class JumpAttack : MonoBehaviour
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
         ani.SetBool("UltJumpAtt", false);
-        ani.SetBool("JumpAtt", true);
+        ani.SetBool("JumpAtt", false);
     }
 }

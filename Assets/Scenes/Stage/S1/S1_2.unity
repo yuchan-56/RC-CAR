@@ -3472,6 +3472,10 @@ PrefabInstance:
       propertyPath: characterEffect
       value: 
       objectReference: {fileID: 107019612}
+    - target: {fileID: 4423285373945916894, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_SortingOrder
+      value: 40
+      objectReference: {fileID: 0}
     - target: {fileID: 5534078950874560189, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_SortingOrder
       value: 40
@@ -3479,6 +3483,14 @@ PrefabInstance:
     - target: {fileID: 5807001970854001129, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 6920939695342864583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_SortingOrder
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 7033864137791196703, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_SortingOrder
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 7344105796942819253, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_Name
