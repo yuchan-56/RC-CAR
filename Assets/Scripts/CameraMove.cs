@@ -8,7 +8,7 @@ public class CameraMove : MonoBehaviour
     public float smoothSpeed = 0.05f;
     public Vector3 offset = new Vector3(0, -1f, -2); // 2.7f = ground위치에 따른 카메라 조절
 
-    public float minX = -3.8f;
+    public float minX = -3f;
     public float maxX = 1.9f;
 
     private Vector3 velocity = Vector3.zero;
@@ -30,7 +30,7 @@ public class CameraMove : MonoBehaviour
             Vector3 followPosition = player.position + offset;
             followPosition.x = Mathf.Clamp(followPosition.x, minX, maxX);
             followPosition.y = FixedY;
-            transform.position = Vector3.SmoothDamp(transform.position, followPosition, ref velocity, smoothSpeed * 20f);
+            transform.position = Vector3.SmoothDamp(transform.position, followPosition, ref velocity, 1f);
 
             // 목표 위치에 도달하면 움직임 멈춤
             if (Vector3.Distance(transform.position, followPosition) < 0.01f)
@@ -66,6 +66,13 @@ public class CameraMove : MonoBehaviour
         cameraMoving = true;
         FindObjectOfType<PlayerMove>().ButtonUp();
         FixedY += 20;
+    }
+    public void CameraGoNext()
+    {
+        Vector3 followPosition = player.position + offset;
+        followPosition.x = Mathf.Clamp(followPosition.x, minX, maxX);
+        followPosition.y = FixedY;
+        transform.position = followPosition;
     }
 
 }

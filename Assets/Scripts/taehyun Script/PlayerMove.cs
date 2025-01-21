@@ -25,9 +25,9 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Managers.Game.GameStart(); // Player°¡ µé¾î¿À¸é °ÔÀÓ½ÃÀÛÀ¸·Î °£ÁÖ.
+        Managers.Game.GameStart(); // Playerï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ó½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         rigid = GetComponent<Rigidbody2D>();
-        camera = FindObjectOfType<CameraMove>();// CmeraUpdate¹Þ±â
+        camera = FindObjectOfType<CameraMove>();// CmeraUpdateï¿½Þ±ï¿½
         animator = GetComponent<Animator>();
         initialScale=transform.localScale;
     }
@@ -73,7 +73,7 @@ public class PlayerMove : MonoBehaviour
     public void jump()
     {
 
-        if (isground&&Managers.Game.currentState == GameManager.GameState.Battle) // ÇöÀç ÀüÅõ°¡´É ¿©ºÎ Ã¼Å©)
+        if (isground&&Managers.Game.currentState == GameManager.GameState.Battle) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼Å©)
         {
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             Debug.Log("Jump");
@@ -85,7 +85,7 @@ public class PlayerMove : MonoBehaviour
     }
     public void OnLeftButtonDown()
     {
-        if (Managers.Game.currentState == GameManager.GameState.Battle) // ÇöÀç ÀüÅõ°¡´É ¿©ºÎ Ã¼Å©
+        if (Managers.Game.currentState == GameManager.GameState.Battle) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
         {
             movedirection = -1;
             animator.SetBool("player_run", true);
@@ -95,7 +95,7 @@ public class PlayerMove : MonoBehaviour
 
     public void OnRightButtonDown()
     {
-        if (Managers.Game.currentState == GameManager.GameState.Battle) // ÇöÀç ÀüÅõ°¡´É ¿©ºÎ Ã¼Å©
+        if (Managers.Game.currentState == GameManager.GameState.Battle) // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã¼Å©
         {
             movedirection = 1;
             animator.SetBool("player_run", true);
@@ -108,7 +108,7 @@ public class PlayerMove : MonoBehaviour
     }
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,2.5f, LayerMask.GetMask("groundLayer")); // 10f´Â Ä³¸¯ÅÍÀÇ Å©±â Áï, 5/2 = 2.5f
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down,2.5f, LayerMask.GetMask("groundLayer")); // 10fï¿½ï¿½ Ä³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ ï¿½ï¿½, 5/2 = 2.5f
         if (hit.collider != null)
         {
             isground = true;
@@ -147,9 +147,10 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.transform.parent == null || collision.transform.parent.tag != "Player")
+        if (tag!= "Player")
         {
-            return; // ºÎ¸ð°¡ Player°¡ ¾Æ´Ï¸é ¹«½Ã
+           
+            return; // ï¿½Î¸ï¿½ Playerï¿½ï¿½ ï¿½Æ´Ï¸ï¿½ ï¿½ï¿½ï¿½ï¿½
         }
 
 
@@ -171,8 +172,8 @@ public class PlayerMove : MonoBehaviour
             float fixedY = this.gameObject.transform.position.y + 20f;
             float newX = -11f;  
             this.gameObject.transform.position = new Vector2(newX, fixedY);
-          
-            camera.CameraGoUp();//Å×½ºÆ®
+           
+            camera.CameraGoUp();//ï¿½×½ï¿½Æ®
             Managers.UI.ShowPopUpUI<MapMoving>();
 
             return;
@@ -211,5 +212,10 @@ public class PlayerMove : MonoBehaviour
             animator.SetTrigger("JumpDash");
             yield return null;
         }
+
+    public void GoPlayerNextMove()
+    {
+
+
     }
 }

@@ -190,8 +190,8 @@ public class Enemy : MonoBehaviour
     // HP 감소
     public void EnemyDamage(float damage)
     {
-        Debug.Log("데미지 들어감");
         hp -= damage;
+        Managers.Game.GetHit = true;
         if (hpSlider != null)
         {
             hpSlider.value = hp; // 슬라이더 값 업데이트
