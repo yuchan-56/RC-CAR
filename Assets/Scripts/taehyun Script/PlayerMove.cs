@@ -147,8 +147,9 @@ public class PlayerMove : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        if (collision.transform.parent == null || collision.transform.parent.tag != "Player")
+        if (tag!= "Player")
         {
+           
             return; // 부모가 Player가 아니면 무시
         }
 
@@ -171,7 +172,7 @@ public class PlayerMove : MonoBehaviour
             float fixedY = this.gameObject.transform.position.y + 20f;
             float newX = -11f;  
             this.gameObject.transform.position = new Vector2(newX, fixedY);
-          
+           
             camera.CameraGoUp();//테스트
             Managers.UI.ShowPopUpUI<MapMoving>();
 
@@ -182,5 +183,10 @@ public class PlayerMove : MonoBehaviour
         {
             Managers.UI.ShowPopUpUI<StageInfo>();
         }
+    }
+
+    public void GoPlayerNextMove()
+    {
+
     }
 }
