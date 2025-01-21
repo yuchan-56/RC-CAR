@@ -1,5 +1,5 @@
-using System.Collections;
-using System.Collections.Generic;
+//using System.Collections;
+//using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,9 +11,11 @@ public class Enemy : MonoBehaviour
 
     // 거리제한
     public float wanderDistance = 2f;
-    public float followDistance = 20f; // 따라가기 시작하는 거리
-    public float throwDistance = 15f; // 오브젝트 던지기 시작하는 거리
-    public float attackDistance = 2f; // 일반 공격 거리
+    bool isWandering = true;
+
+    public float followDistance = 10f; // 따라가기 시작하는 거리
+    public float throwDistance = 8f; // 오브젝트 던지기 시작하는 거리
+    public float attackDistance = 1.5f; // 일반 공격 거리
     private Vector2 stopPosition;
 
     // 방향전환
@@ -25,11 +27,6 @@ public class Enemy : MonoBehaviour
 
     // Animation
     public Animator animator;
-
-
-    // 거리 제한
-    public float minDistance = 1.5f; // 멈추는 거리
-    public float maxDistance = 1.6f;  // 다시 따라가기 시작하는 거리
 
 
     // Throw
@@ -84,17 +81,24 @@ public class Enemy : MonoBehaviour
         {
             // 따라가기
             FollowPlayer();
+            isWandering = false;
         }
         else
         {
             // Wander 상태
+            if (!isWandering)
+            {
+                stopPosition = transform.position; // 현재 위치를 Wander 시작점으로 설정
+                isWandering = true;
+            }  
+            
             Wander();
         }
 
         // HP 슬라이더 위치 업데이트
         if (hpSlider != null)
         {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.7f, 0));
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3.5f, 0));
             hpSlider.transform.position = screenPosition;
         }
 
@@ -112,6 +116,9 @@ public class Enemy : MonoBehaviour
     // default
     void Wander()
     {
+        animator.SetBool("enemy_attack", false);
+        animator.SetBool("enemy_throw", false);
+
         // PingPong을 사용하여 이동 방향 결정
         float xPos = Mathf.PingPong(Time.time * speed, wanderDistance) - (wanderDistance / 2);
 
@@ -159,7 +166,9 @@ public class Enemy : MonoBehaviour
     // Throw 공격
     void ThrowObject(Transform player)
     {
-        GameObject throwable = Instantiate(throwableObjPrefab, transform.position, Quaternion.identity);
+        Vector2 throwStartPosition = transform.position + new Vector3(0, 2.0f, 0); // 적의 키나 던지는 위치에 맞춰 조정
+
+        GameObject throwable = Instantiate(throwableObjPrefab, throwStartPosition, Quaternion.identity);
         Rigidbody2D throwableRb = throwable.GetComponent<Rigidbody2D>();
 
         if (throwableRb != null)
@@ -171,7 +180,7 @@ public class Enemy : MonoBehaviour
             Vector2 playerVelocity = player.GetComponent<Rigidbody2D>()?.velocity ?? Vector2.zero;
             Vector2 predictedPosition = (Vector2)player.position + playerVelocity * (Vector2.Distance(transform.position, player.position) / throwForce);
             Vector2 direction = (predictedPosition - (Vector2)transform.position).normalized;
-            Vector2 throwVelocity = new Vector2(direction.x, direction.y + 0.5f) * throwForce; // 포물선을 그리도록 Y값을 조정
+            Vector2 throwVelocity = new Vector2(direction.x, direction.y + 0.3f) * throwForce; // 포물선을 그리도록 Y값을 조정
             throwableRb.velocity = throwVelocity;
         }
     }
@@ -213,7 +222,7 @@ public class Enemy : MonoBehaviour
         animator.SetBool("enemy_die", true);
 
         Destroy(hpSlider.gameObject, 1.7f); 
-        Destroy(gameObject, 1.7f); // 애니메이션 이후 적 오브젝트 삭제    
+        Destroy(gameObject, 2.5f); // 애니메이션 이후 적 오브젝트 삭제    
     }
 
 }
