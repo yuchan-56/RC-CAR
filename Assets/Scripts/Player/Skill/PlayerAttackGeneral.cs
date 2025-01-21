@@ -68,6 +68,7 @@ public class PlayerAttackGeneral : MonoBehaviour
 
     public void UltimateSkillActive()
     {
+        Managers.UI.ShowPopUpUI<UltGoAction>();
         UltimateSkill_Active = true;
         characterEffect.UltimateEffectActive();
         Invoke("UltimateSkillDeactive", 2f);
