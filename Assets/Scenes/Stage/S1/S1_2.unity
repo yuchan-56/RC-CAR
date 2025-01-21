@@ -831,6 +831,10 @@ PrefabInstance:
       propertyPath: attackDistance
       value: 1.5
       objectReference: {fileID: 0}
+    - target: {fileID: 6473689452870300987, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
       propertyPath: m_Name
       value: Enemy_male
@@ -3044,6 +3048,7 @@ GameObject:
   - component: {fileID: 1751121498}
   - component: {fileID: 1751121500}
   - component: {fileID: 1751121499}
+  - component: {fileID: 1751121501}
   m_Layer: 0
   m_Name: TheWall
   m_TagString: Untagged
@@ -3096,7 +3101,7 @@ BoxCollider2D:
     serializedVersion: 2
     m_Bits: 4294967295
   m_IsTrigger: 0
-  m_UsedByEffector: 0
+  m_UsedByEffector: 1
   m_UsedByComposite: 0
   m_Offset: {x: -10.268377, y: -4.231818}
   m_SpriteTilingProperty:
@@ -3138,6 +3143,25 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!251 &1751121501
+PlatformEffector2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1751121497}
+  m_Enabled: 1
+  m_UseColliderMask: 1
+  m_ColliderMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_RotationalOffset: 0
+  m_UseOneWay: 0
+  m_UseOneWayGrouping: 0
+  m_SurfaceArc: 180
+  m_UseSideFriction: 0
+  m_UseSideBounce: 0
+  m_SideArc: 1
 --- !u!1 &1782504799
 GameObject:
   m_ObjectHideFlags: 0
