@@ -20,6 +20,7 @@ public class PlayerMove : MonoBehaviour
     bool canDash = true;
     public Animator animator;
     private CameraMove camera;
+    private Vector3 initialScale;
     Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
@@ -28,6 +29,7 @@ public class PlayerMove : MonoBehaviour
         rigid = GetComponent<Rigidbody2D>();
         camera = FindObjectOfType<CameraMove>();// CmeraUpdate¹Þ±â
         animator = GetComponent<Animator>();
+        initialScale=transform.localScale;
     }
 
     // Update is called once per frame
