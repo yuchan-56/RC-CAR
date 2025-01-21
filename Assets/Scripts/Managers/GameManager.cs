@@ -5,7 +5,9 @@ using UnityEngine.UI;
 
 public class GameManager
 {
-    public float damage = 1000;
+    public float damage = 50;
+    public int gage = 0;
+    public bool GetHit = false;
 
     
 
@@ -33,6 +35,11 @@ public class GameManager
     public void GoJump()
     {
         
+    }
+
+    public void UltimateDamageUp()
+    {
+        damage = 1000;
     }
 
 }

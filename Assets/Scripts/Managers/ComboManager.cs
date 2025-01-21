@@ -99,13 +99,24 @@ public class ComboManager : MonoBehaviour
 
                 case 3:
                     {
-                        Debug.Log("Ultimate skill active");
-                        playerAttackGeneral.UltimateSkillActive();
+                        if (Managers.Game.gage >= 100)
+                        {
+                            Debug.Log("Ultimate skill active");
+                            playerAttackGeneral.UltimateSkillActive();
+                        }
                         break;
                     }
             }
 
             InputButton.Clear();
         }
+
+        else if(Managers.Game.GetHit == true)
+        {
+            Managers.Game.gage++;
+            Debug.Log(Managers.Game.gage);
+            Managers.Game.GetHit = false;
+        }
+
     }
 }
