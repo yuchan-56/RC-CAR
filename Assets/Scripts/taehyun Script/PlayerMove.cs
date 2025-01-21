@@ -150,7 +150,7 @@ public class PlayerMove : MonoBehaviour
         if (tag != "Player")
         {
 
-            return; // �θ� Player�� �ƴϸ� ����
+            return; 
         }
 
 
