@@ -7,7 +7,7 @@ public class MapMoving : UI_Popup
 {
     float blackTime = 1.5f;
     public Image Black;
-    public Camera camera;
+    Camera camera;
     private float FixedY = -1;
     // Start is called before the first frame update
     void Start()
