@@ -10,6 +10,10 @@ public class Boss : MonoBehaviour
     public Slider hpSlider;
     public GameObject hpSliderPrefab; // Slider 프리팹 연결
 
+
+    // animator
+    public Animator animator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -32,5 +36,21 @@ public class Boss : MonoBehaviour
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 4f, 0));
             hpSlider.transform.position = screenPosition;
         }
+    }
+
+    void Attack() {
+        animator.SetBool("isAttack", true);
+    }
+
+    void P1() {
+
+    }
+
+    void P2() {
+
+    }
+
+    void P3() {
+
     }
 }

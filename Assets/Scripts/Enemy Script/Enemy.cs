@@ -1,5 +1,5 @@
-//using System.Collections;
-//using System.Collections.Generic;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,7 +15,7 @@ public class Enemy : MonoBehaviour
 
     public float followDistance = 10f; // 따라가기 시작하는 거리
     public float throwDistance = 8f; // 오브젝트 던지기 시작하는 거리
-    public float attackDistance = 1.5f; // 일반 공격 거리
+    public float attackDistance = 2.0f; // 일반 공격 거리
     private Vector2 stopPosition;
 
     // 방향전환
@@ -31,7 +31,6 @@ public class Enemy : MonoBehaviour
 
     // Throw
     public GameObject throwableObjPrefab;
-    //public bool throwOn = false;
     public float throwForce = 12f;
     public float throwCooldown = 1.5f;
     private float nextThrowAttack = 0f;
@@ -64,11 +63,14 @@ public class Enemy : MonoBehaviour
     {
         if (isDead) { return; }  // 더 이상 Update 로직 실행하지 않음
 
+
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        //Debug.Log($"Distance to Player: {distanceToPlayer}");
+
+
 
         if (distanceToPlayer <= attackDistance)
         {
-            // 일반 공격
             AttackPlayer();
         }
         else if (distanceToPlayer <= throwDistance && Time.time >= nextThrowAttack)
@@ -192,7 +194,6 @@ public class Enemy : MonoBehaviour
         animator.SetBool("enemy_attack", true);
     }
 
-
     // ------------
 
 
@@ -222,7 +223,7 @@ public class Enemy : MonoBehaviour
         animator.SetBool("enemy_die", true);
 
         Destroy(hpSlider.gameObject, 1.7f); 
-        Destroy(gameObject, 2.5f); // 애니메이션 이후 적 오브젝트 삭제    
+        Destroy(gameObject, 1.7f); // 애니메이션 이후 적 오브젝트 삭제    
     }
 
 }

@@ -132,7 +132,7 @@ MonoBehaviour:
   wanderDistance: 1.5
   followDistance: 10
   throwDistance: 8
-  attackDistance: 1.5
+  attackDistance: 2
   animator: {fileID: 4452342948343962670}
   throwableObjPrefab: {fileID: 6813551019866842665, guid: 37a6887c0462847c2b8cd93f8dcfd0a1, type: 3}
   throwForce: 8
