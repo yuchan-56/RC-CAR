@@ -23,21 +23,26 @@ public class PlayerAttackGeneral : MonoBehaviour
         ani.SetBool("UltAttack", false);
         ani.SetBool("Attack", false);
     }
+    IEnumerator UltDeactiveCoroutine()
+    {
+        yield return new WaitForSeconds(5);
+        UltimateSkillDeactive();
+        StopCoroutine(UltDeactiveCoroutine());
+    }
+    IEnumerator DeactiveCoroutine()
+    {
+        yield return new WaitForSeconds(1.2f);
+        AttackSetDeactive();
+        StopCoroutine(DeactiveCoroutine());
+    }
 
     public void AttackSetActive()
     {
         spriteRenderer.enabled = true;
         boxCollider2D.enabled = true;
         SkillAttack_Active = true;
-        if(SkillAttack_Active == true)
-        {
-            Invoke("AttackSetDeactive", 1f);
-        }
-        else
-        {
-            return;
-        }
-
+        StartCoroutine(DeactiveCoroutine());
+        
         if(UltimateSkill_Active)
         {
             ani.SetBool("UltAttack", true);
@@ -72,7 +77,7 @@ public class PlayerAttackGeneral : MonoBehaviour
         UltimateSkill_Active = true;
         Managers.Game.gage = 0;
         characterEffect.UltimateEffectActive();
-        Invoke("UltimateSkillDeactive", 2f);
+        StartCoroutine(UltDeactiveCoroutine());
     }
 
     void UltimateSkillDeactive()

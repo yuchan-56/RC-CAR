@@ -108,7 +108,7 @@ public class ComboManager : MonoBehaviour
 
                 case 3:
                     {
-                        if (Managers.Game.gage >= 100)
+                        if (Managers.Game.gage >= 0)
                         {
                             Debug.Log("Ultimate skill active");
                             playerAttackGeneral.UltimateSkillActive();

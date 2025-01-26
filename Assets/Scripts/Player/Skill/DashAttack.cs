@@ -24,22 +24,20 @@ public class DashAttack : MonoBehaviour
         ani.SetBool("DashAtt", false);
     }
 
+    IEnumerator DeactiveCoroutine()
+    {
+        yield return new WaitForSeconds(0.8f);
+        SkillMotionDeactive();
+        StopCoroutine(DeactiveCoroutine());
+    }
 
     public void SkillMotionActive()
     {
         SkillActive_DashAttack = true;
         boxCollider2D.enabled = true;
         spriteRenderer.enabled = true;
-        
-        if (SkillActive_DashAttack == true)
-        {
-            Invoke("SkillMotionDeactive", 1f);
-        }
 
-        else
-        {
-            return;
-        }
+        StartCoroutine(DeactiveCoroutine());
 
         if (playerAttackGeneral.UltimateSkill_Active)
         {
@@ -49,8 +47,6 @@ public class DashAttack : MonoBehaviour
         {
             ani.SetBool("DashAtt", true);
         }
-
-        Invoke("SkillMotionDeactive", 1f);
     }
     
     void OnTriggerEnter2D(Collider2D collision)

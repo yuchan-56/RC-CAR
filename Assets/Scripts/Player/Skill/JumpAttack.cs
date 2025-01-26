@@ -11,6 +11,13 @@ public class JumpAttack : MonoBehaviour
     Animator ani;
     bool SkillActive_JumpAttack;
 
+    IEnumerator DeactiveCoroutine()
+    { 
+        yield return new WaitForSeconds(1.5f);
+        SkillMotionDeactive();
+        StopCoroutine(DeactiveCoroutine());
+    }
+
     void Awake()
     {
         boxCollider2D = GetComponent<BoxCollider2D>();
@@ -29,14 +36,7 @@ public class JumpAttack : MonoBehaviour
         SkillActive_JumpAttack = true;
         boxCollider2D.enabled = true;
         spriteRenderer.enabled = true;
-        if (SkillActive_JumpAttack == true)
-        {
-            Invoke("SkillMotionDeactive", 1f);
-        }
-        else
-        {
-            return;
-        }
+        StartCoroutine(DeactiveCoroutine());
 
         if (playerAttackGeneral.UltimateSkill_Active)
         {
@@ -61,7 +61,7 @@ public class JumpAttack : MonoBehaviour
         SkillActive_JumpAttack = false;
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
-        ani.SetBool("UltJumpAtt", false);
+        ani.SetBool("UltJumpAtt", false); 
         ani.SetBool("JumpAtt", false);
     }
 }
