@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 3065971581211540913}
   - component: {fileID: 264726526199582695}
   - component: {fileID: 7545193795398622557}
-  - component: {fileID: 5701581425707909176}
   - component: {fileID: -6710223373449201841}
+  - component: {fileID: 1496253748235392594}
   m_Layer: 0
   m_Name: boss_prg
   m_TagString: Untagged
@@ -31,7 +31,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -3.06, y: 0.24, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 0}
@@ -136,7 +136,36 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!61 &5701581425707909176
+--- !u!114 &-6710223373449201841
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3697601412886098289}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 37192f5c90765497c9f0b31e381ede0a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  hpSlider: {fileID: 0}
+  hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}
+  animator: {fileID: 0}
+  printW:
+  - {fileID: 1450312884094976978, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
+  - {fileID: 8714508428741217007, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
+  - {fileID: 1273809240257934800, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
+  - {fileID: 181515791017846321, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
+  - {fileID: 1450312884094976978, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
+  - {fileID: 8714508428741217007, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
+  - {fileID: 1273809240257934800, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
+  - {fileID: 181515791017846321, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
+  - {fileID: 1450312884094976978, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
+  - {fileID: 8714508428741217007, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
+  - {fileID: 1273809240257934800, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
+  - {fileID: 181515791017846321, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
+--- !u!61 &1496253748235392594
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -168,31 +197,16 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.578125}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0}
-    oldSize: {x: 0.6875, y: 1.15625}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 1.5, y: 1.5}
     newSize: {x: 0.6875, y: 1.15625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.6875, y: 1.15625}
+  m_Size: {x: 1.5, y: 1.5}
   m_EdgeRadius: 0
---- !u!114 &-6710223373449201841
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3697601412886098289}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37192f5c90765497c9f0b31e381ede0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 100
-  hpSlider: {fileID: 0}
-  hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}

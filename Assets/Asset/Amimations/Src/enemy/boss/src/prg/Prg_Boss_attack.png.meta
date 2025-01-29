@@ -126,10 +126,10 @@ TextureImporter:
       name: Prg_Boss_attack_0
       rect:
         serializedVersion: 2
-        x: 33
+        x: 0
         y: 0
-        width: 20
-        height: 36
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,9 +147,9 @@ TextureImporter:
       name: Prg_Boss_attack_1
       rect:
         serializedVersion: 2
-        x: 97
+        x: 64
         y: 0
-        width: 25
+        width: 64
         height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
@@ -168,10 +168,10 @@ TextureImporter:
       name: Prg_Boss_attack_2
       rect:
         serializedVersion: 2
-        x: 161
+        x: 128
         y: 0
-        width: 29
-        height: 56
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -189,10 +189,10 @@ TextureImporter:
       name: Prg_Boss_attack_3
       rect:
         serializedVersion: 2
-        x: 225
+        x: 192
         y: 0
-        width: 20
-        height: 59
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -210,10 +210,10 @@ TextureImporter:
       name: Prg_Boss_attack_4
       rect:
         serializedVersion: 2
-        x: 279
+        x: 256
         y: 0
-        width: 30
-        height: 60
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -231,10 +231,10 @@ TextureImporter:
       name: Prg_Boss_attack_5
       rect:
         serializedVersion: 2
-        x: 321
+        x: 320
         y: 0
-        width: 54
-        height: 35
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -252,10 +252,10 @@ TextureImporter:
       name: Prg_Boss_attack_6
       rect:
         serializedVersion: 2
-        x: 389
+        x: 384
         y: 0
-        width: 50
-        height: 35
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -273,10 +273,10 @@ TextureImporter:
       name: Prg_Boss_attack_7
       rect:
         serializedVersion: 2
-        x: 452
+        x: 448
         y: 0
-        width: 51
-        height: 33
+        width: 64
+        height: 64
       alignment: 7
       pivot: {x: 0.5, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

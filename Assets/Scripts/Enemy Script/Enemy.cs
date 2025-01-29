@@ -100,7 +100,7 @@ public class Enemy : MonoBehaviour
         // HP 슬라이더 위치 업데이트
         if (hpSlider != null)
         {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3.5f, 0));
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.7f, 0));
             hpSlider.transform.position = screenPosition;
         }
 

@@ -126,12 +126,12 @@ TextureImporter:
       name: Prg_Boss_P2_0
       rect:
         serializedVersion: 2
-        x: 19
+        x: 0
         y: 0
-        width: 21
-        height: 33
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -147,12 +147,12 @@ TextureImporter:
       name: Prg_Boss_P2_1
       rect:
         serializedVersion: 2
-        x: 83
+        x: 64
         y: 0
-        width: 21
-        height: 33
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -168,12 +168,12 @@ TextureImporter:
       name: Prg_Boss_P2_2
       rect:
         serializedVersion: 2
-        x: 147
+        x: 128
         y: 0
-        width: 21
-        height: 33
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -189,12 +189,12 @@ TextureImporter:
       name: Prg_Boss_P2_3
       rect:
         serializedVersion: 2
-        x: 211
+        x: 192
         y: 0
-        width: 21
-        height: 33
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -210,12 +210,12 @@ TextureImporter:
       name: Prg_Boss_P2_4
       rect:
         serializedVersion: 2
-        x: 275
+        x: 256
         y: 0
-        width: 21
-        height: 33
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -231,12 +231,12 @@ TextureImporter:
       name: Prg_Boss_P2_5
       rect:
         serializedVersion: 2
-        x: 339
+        x: 320
         y: 0
-        width: 21
-        height: 33
-      alignment: 7
-      pivot: {x: 0.5, y: 0}
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
