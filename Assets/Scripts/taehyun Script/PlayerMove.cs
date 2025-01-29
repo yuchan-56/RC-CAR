@@ -39,21 +39,27 @@ public class PlayerMove : MonoBehaviour
         {
             TriggerDash();
         }
-
-
-    }
-    void FixedUpdate()
-    {
         if (Input.GetKey(KeyCode.LeftArrow))
         {
             movedirection = -1;
             animator.SetBool("player_run", true);
         }
-        if (Input.GetKey(KeyCode.RightArrow))
+        else if (Input.GetKey(KeyCode.RightArrow))
         {
             movedirection = 1;
             animator.SetBool("player_run", true);
         }
+        else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
+        {
+            movedirection = 0;
+            animator.SetBool("player_run", false);
+        }
+
+
+    }
+    void FixedUpdate()
+    {
+       
         CheckGround();
         if (!isDashing)
         {
