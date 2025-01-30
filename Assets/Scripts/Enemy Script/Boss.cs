@@ -52,7 +52,7 @@ public class Boss : MonoBehaviour
         // HP 슬라이더 위치 업데이트
         if (hpSlider != null)
         {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.5f, 1.7f, 0));
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.5f, 3.4f, 0));
             hpSlider.transform.position = screenPosition;
         }
 
@@ -194,12 +194,25 @@ public class Boss : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Boss died!");
+        StartCoroutine(DieCoroutine());   
+    }
 
+    IEnumerator DieCoroutine()
+    {
+        Debug.Log("boss died!");
         isDead = true;
         animator.SetBool("isDead", true);
 
-        Destroy(hpSlider.gameObject, 1.7f); 
-        Destroy(gameObject, 1.7f); // 애니메이션 이후 적 오브젝트 삭제    
+        // 현재 애니메이션의 길이 계산
+        float dieAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(dieAnimationLength); // 애니메이션 길이만큼 대기
+
+        
+        if (hpSlider != null)
+        {
+            Destroy(hpSlider.gameObject);
+        }
+
+        Destroy(gameObject);
     }
 }

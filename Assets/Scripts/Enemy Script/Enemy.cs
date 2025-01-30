@@ -217,13 +217,30 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        Debug.Log("Enemy died!");
+        StartCoroutine(DieCoroutine()); 
+    }
 
+    IEnumerator DieCoroutine()
+    {
+        Debug.Log("Enemy died!");
         isDead = true;
+
+        // 죽는 애니메이션 시작
         animator.SetBool("enemy_die", true);
 
-        Destroy(hpSlider.gameObject, 1.7f); 
-        Destroy(gameObject, 1.7f); // 애니메이션 이후 적 오브젝트 삭제    
+        // 현재 애니메이션의 길이 계산
+        float dieAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
+        yield return new WaitForSeconds(dieAnimationLength); // 애니메이션 길이만큼 대기
+
+        // HP 슬라이더 삭제
+        if (hpSlider != null)
+        {
+            Destroy(hpSlider.gameObject);
+        }
+
+        // 적 오브젝트 삭제
+        Destroy(gameObject);
     }
+
 
 }
