@@ -18,6 +18,10 @@ public class Boss : MonoBehaviour
     bool isDead = false;
 
 
+    //attack
+    public GameObject attackObject;
+
+
     //p1
     public GameObject p1Object;
 
@@ -85,6 +89,11 @@ public class Boss : MonoBehaviour
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", true);
+
+        if (attackObject != null)
+        {
+            attackObject.SetActive(true);
+        }
     }
 
     void P1() {

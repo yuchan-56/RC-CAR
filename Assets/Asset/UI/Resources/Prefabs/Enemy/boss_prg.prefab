@@ -152,19 +152,21 @@ MonoBehaviour:
   hpSlider: {fileID: 0}
   hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}
   animator: {fileID: 0}
+  p1Object: {fileID: 0}
   printW:
-  - {fileID: 1450312884094976978, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
-  - {fileID: 8714508428741217007, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
-  - {fileID: 1273809240257934800, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
-  - {fileID: 181515791017846321, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
-  - {fileID: 1450312884094976978, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
-  - {fileID: 8714508428741217007, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
-  - {fileID: 1273809240257934800, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
-  - {fileID: 181515791017846321, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
-  - {fileID: 1450312884094976978, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
-  - {fileID: 8714508428741217007, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
-  - {fileID: 1273809240257934800, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
-  - {fileID: 181515791017846321, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
+  - {fileID: 8115720925580164950, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
+  - {fileID: 2142442642214721233, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
+  - {fileID: 5395457056652872688, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
+  - {fileID: 2071828538885751230, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
+  - {fileID: 8115720925580164950, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
+  - {fileID: 2142442642214721233, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
+  - {fileID: 5395457056652872688, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
+  - {fileID: 2071828538885751230, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
+  - {fileID: 8115720925580164950, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
+  - {fileID: 2142442642214721233, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
+  - {fileID: 5395457056652872688, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
+  - {fileID: 2071828538885751230, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
+  p3Object: {fileID: 0}
 --- !u!61 &1496253748235392594
 BoxCollider2D:
   m_ObjectHideFlags: 0

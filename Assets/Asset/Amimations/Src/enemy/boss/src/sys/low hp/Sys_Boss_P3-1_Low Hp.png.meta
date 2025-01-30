@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 38eae94b11d0e4d8796b122c208fa01c
+guid: d0e49ab24c5f443eca3f7aa5ce4f2a93
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 32
-  spriteBorder: {x: 11, y: 11, z: 23, w: 11}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -123,13 +123,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Prg_int main (void)_0
+      name: Sys_Boss_P3-1_Low Hp_0
       rect:
         serializedVersion: 2
-        x: 11
-        y: 11
-        width: 62
-        height: 10
+        x: 0
+        y: 0
+        width: 48
+        height: 48
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -137,8 +137,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c8f8c361ed2b24406bde8fc974e84712
-      internalID: 213926971
+      spriteID: 6b3ca2e1bca004b1b9a58cfbaedaf5fa
+      internalID: -1136846456
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_P3-1_Low Hp_1
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ad5e61f8a64b44d308dad2b5041ca36c
+      internalID: 1378697976
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_P3-1_Low Hp_2
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a092a1ffca7b41018e0ef735c69ef04
+      internalID: -803615856
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_P3-1_Low Hp_3
+      rect:
+        serializedVersion: 2
+        x: 144
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 25b4fc5945c904867a0d4645030f4993
+      internalID: -1130285955
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_P3-1_Low Hp_4
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13cc62305704146929a3c06dddd96e10
+      internalID: 955887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_P3-1_Low Hp_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 637fabf7daf4f48d4802fd452d645916
+      internalID: 1865763845
       vertices: []
       indices: 
       edges: []
@@ -147,14 +252,19 @@ TextureImporter:
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    internalID: 0
     vertices: []
     indices: 
     edges: []
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Prg_int main (void)_0: 213926971
+      Sys_Boss_P3-1_Low Hp_0: -1136846456
+      Sys_Boss_P3-1_Low Hp_1: 1378697976
+      Sys_Boss_P3-1_Low Hp_2: -803615856
+      Sys_Boss_P3-1_Low Hp_3: -1130285955
+      Sys_Boss_P3-1_Low Hp_4: 955887
+      Sys_Boss_P3-1_Low Hp_5: 1865763845
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
