@@ -9,7 +9,8 @@ using static LoadingScene;
 public class StageInfo : UI_Popup
 {
     public TMP_Text text;
-    public string StageName;
+    private string StageName;
+    EveryTimeSchedule every;
     enum Buttons
     {
         GoStage,
@@ -25,6 +26,8 @@ public class StageInfo : UI_Popup
         GetButton((int)Buttons.Close).gameObject.AddUIEvent(CloseButtonClicked);
         StageName = Managers.Data.Stage;
         text.text = StageName;
+        
+        every =  GetComponent<EveryTimeSchedule>();
     }
     void GoStage(PointerEventData eventData)
     {      
@@ -33,5 +36,7 @@ public class StageInfo : UI_Popup
     void CloseButtonClicked(PointerEventData eventData)
     {
         Managers.UI.ClosePopUpUI();
+        Managers.UI.isPopuping = false;
+        
     }
 }

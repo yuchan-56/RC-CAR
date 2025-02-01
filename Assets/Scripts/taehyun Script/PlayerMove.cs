@@ -160,28 +160,11 @@ public class PlayerMove : MonoBehaviour
         }
 
 
-        Debug.Log(collision.tag);
-        if (collision.tag == "NextJumpRight")
+        if (collision.tag == "NextJumpUp")
         {
-            Debug.Log("triggerOn");
-            float fixedY = this.gameObject.transform.position.y;
-            float newX = this.gameObject.transform.position.x + 8f;
-            this.gameObject.transform.position = new Vector2(newX, fixedY);
-            camera.CameraUpdate(newX);
+            
+            camera.CameraGoUp();
             Managers.UI.ShowPopUpUI<MapMoving>();
-            return;
-        }
-        else if (collision.tag == "NextJumpUp")
-        {
-            Debug.Log("triggerOn");
-
-            float fixedY = this.gameObject.transform.position.y + 20f;
-            float newX = -11f;
-            this.gameObject.transform.position = new Vector2(newX, fixedY);
-
-            camera.CameraGoUp();//�׽�Ʈ
-            Managers.UI.ShowPopUpUI<MapMoving>();
-
             return;
         }
 
@@ -189,6 +172,12 @@ public class PlayerMove : MonoBehaviour
         {
             Managers.UI.ShowPopUpUI<StageInfo>();
         }
+    }
+
+    public void setPlayerMove()
+    {
+        float fixedY = this.gameObject.transform.position.y + 20f;
+        this.gameObject.transform.position = new Vector2(-11f, fixedY);
     }
     public void SkillMotionActive(string ComboType)
     {

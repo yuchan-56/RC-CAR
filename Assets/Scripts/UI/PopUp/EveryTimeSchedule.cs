@@ -36,11 +36,17 @@ public class EveryTimeSchedule : UI_Popup
 
         if(!string.IsNullOrEmpty(StageName))
         {
+            if(Managers.UI.isPopuping==true) // Popuping되는게 있다
+            {
+                Managers.UI.ClosePopUpUI();
+               
+            }
             Managers.Data.Stage = StageName;
 
             Managers.UI.ShowPopUpUI<StageInfo>();
-       
+            Managers.UI.isPopuping = true;
         }
+
 
     }
     public void OnBeginDrag(PointerEventData eventData)

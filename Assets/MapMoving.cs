@@ -7,32 +7,32 @@ public class MapMoving : UI_Popup
 {
     float blackTime = 1.5f;
     public Image Black;
-    Camera camera;
+    Camera camera_m;
     private float FixedY = -1;
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(goBlack());
-        camera = FindObjectOfType<Camera>();
+        camera_m = FindObjectOfType<Camera>();
         
     }
     IEnumerator goBlack()
     {
         Time.timeScale = 0;
-        Debug.Log("작동");
-        Black.DOFade(1f, blackTime).SetUpdate(true).OnComplete(() =>
-        {
-            FixedY += 20f;
-            camera.transform.position = new Vector2(-3, FixedY);
-            Black.DOKill();
-            Black.DOFade(0f, blackTime).SetUpdate(true).OnComplete(() =>
-            {
+        Black.DOFade(1f, blackTime).SetUpdate(true);
+        yield return new WaitForSecondsRealtime(blackTime*1.1f);
 
-                Black.DOKill();
-                Time.timeScale = 1;
-                Managers.UI.ClosePopUpUI();
-            });
-        });
+        FixedY += 20f;
+        camera_m.transform.position = new Vector2(-3, FixedY); // 카메라 포지션 지정하기
+        FindObjectOfType<PlayerMove>().setPlayerMove(); // 플레이어 움직이기
+       camera_m.GetComponent<CameraMove>().FixedY += 20; // 카메라 움직이기
+
+        Time.timeScale = 1;
+        Black.DOFade(0f, blackTime); // DOFadeOut이 올바르게 진행되려면 Time.timeScale이 1이어야함. 왜인지는..? 모름 Complete가 제대로 작동 안하는듯
+        yield return new WaitForSecondsRealtime(blackTime); 
+
+        Managers.UI.ClosePopUpUI();
+
 
         yield return null;
     }

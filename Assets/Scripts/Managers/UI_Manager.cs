@@ -5,6 +5,7 @@ using UnityEngine.Diagnostics;
 
 public class UI_Manager
 {
+    public bool isPopuping = false;
     int _order = 10;
 
     Stack<UI_Popup> _popUpStack = new Stack<UI_Popup>();

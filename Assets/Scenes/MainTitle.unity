@@ -611,14 +611,14 @@ RectTransform:
   m_GameObject: {fileID: 1450433763}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 333204440}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -40}
+  m_AnchoredPosition: {x: 0, y: -42}
   m_SizeDelta: {x: 80, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1450433765
@@ -710,6 +710,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ebf2677764759649aa159eee4f4770e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  sprites:
+  - {fileID: -1855528832, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
+  - {fileID: -681807316, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
+  - {fileID: -78785377, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
+  - {fileID: 1394216995, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
+  - {fileID: 1394156578, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
+  - {fileID: 1815537764, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
+  uiImage: {fileID: 1450433765}
 --- !u!114 &1461068391
 MonoBehaviour:
   m_ObjectHideFlags: 0
