@@ -93,6 +93,7 @@ public class Boss : MonoBehaviour
         if (attackObject != null)
         {
             attackObject.SetActive(true);
+            StartCoroutine(DeactivateAfterDelay(attackObject, 3f));
         }
     }
 
@@ -172,6 +173,8 @@ public class Boss : MonoBehaviour
         obj.SetActive(false);
         animator.SetBool("isP3", false);
         animator.SetBool("isP1", false);
+        animator.SetBool("isAttack", false);
+
     }
 
 
@@ -203,9 +206,7 @@ public class Boss : MonoBehaviour
         isDead = true;
         animator.SetBool("isDead", true);
 
-        // 현재 애니메이션의 길이 계산
-        float dieAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(dieAnimationLength); // 애니메이션 길이만큼 대기
+        yield return new WaitForSeconds(1.4f); // 애니메이션 길이만큼 대기
 
         
         if (hpSlider != null)
