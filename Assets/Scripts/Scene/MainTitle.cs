@@ -9,6 +9,7 @@ public class MainTitle : BaseScene
 {
     public Sprite[] sprites;
     public Image uiImage;
+  
 
     void Start()
     {

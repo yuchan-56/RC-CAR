@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class MainGame : BaseScene   // MainGame 클래스는 BaseScene 클래스의 기능을 기반으로 게임 시작 시 필요한 초기화 작업을 수행하는 클래스
 { 
+   
+    
     public override void Clear()
     {
         throw new System.NotImplementedException();
@@ -20,10 +22,12 @@ public class MainGame : BaseScene   // MainGame 클래스는 BaseScene 클래스의 기능
 
     private void Start()
     {
-        //Managers.UI.ShowPopUpUI<UI_Buttons>();
+        Managers.Game.currentGround = GameManager.GameGround.Rx;
+        Managers.UI.ShowPopUpUI<StageGuide>();
         Init();
     }
-    public void Option()
+
+        public void Option()
     {
         Managers.UI.ShowPopUpUI<Option>();
     }

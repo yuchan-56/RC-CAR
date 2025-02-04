@@ -20,6 +20,11 @@ public class GameManager
         Bless,
 
     }
+    public enum GameGround
+    {
+        A2,B1,C3,Cx,E2,E3,F2,G4,K1,Q3,R3,Rx
+    }
+    public GameGround currentGround;
     public GameState currentState;
     //플레이어 죽을 때 실행시킬 함수
     public void PlayerDied()
