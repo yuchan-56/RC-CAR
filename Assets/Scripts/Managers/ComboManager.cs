@@ -29,7 +29,6 @@ public class ComboManager : MonoBehaviour
     {
         if (Input.GetMouseButton(0))
         {
-
             if (EventSystem.current.IsPointerOverGameObject())
             {
                 PointerEventData pointerData = new PointerEventData(EventSystem.current);
