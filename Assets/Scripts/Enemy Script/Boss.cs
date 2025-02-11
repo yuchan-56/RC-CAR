@@ -52,7 +52,7 @@ public class Boss : MonoBehaviour
         // HP 슬라이더 위치 업데이트
         if (hpSlider != null)
         {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0.5f, 3.4f, 0));
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3.4f, 0));
             hpSlider.transform.position = screenPosition;
         }
 
