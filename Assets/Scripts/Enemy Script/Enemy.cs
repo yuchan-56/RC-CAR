@@ -240,6 +240,7 @@ public class Enemy : MonoBehaviour
 
         // 적 오브젝트 삭제
         Destroy(gameObject);
+        Managers.Game.EnemyDied();
     }
 
 

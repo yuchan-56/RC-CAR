@@ -29,7 +29,10 @@ public class MapMoving : UI_Popup
 
         Time.timeScale = 1;
         Black.DOFade(0f, blackTime); // DOFadeOut이 올바르게 진행되려면 Time.timeScale이 1이어야함. 왜인지는..? 모름 Complete가 제대로 작동 안하는듯
-        yield return new WaitForSecondsRealtime(blackTime); 
+        yield return new WaitForSecondsRealtime(blackTime);
+
+
+        Managers.UI.ShowPopUpUI<StageGuide>(); // 맵이동이 끝날때 StageGuide 출력
 
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<UI_Popup>(this.gameObject));
 

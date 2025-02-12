@@ -29,5 +29,6 @@ public class StageGuide : UI_Popup
             
         }
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<StageGuide>(this.gameObject));
+
     }
 }
