@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 0
+  isReadable: 1
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -53,7 +53,7 @@ TextureImporter:
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
-  spriteTessellationDetail: -1
+  spriteTessellationDetail: 0
   textureType: 8
   textureShape: 1
   singleChannelComponent: 0
@@ -122,11 +122,22 @@ TextureImporter:
   spriteSheet:
     serializedVersion: 2
     sprites: []
-    outline: []
+    outline:
+    - - {x: 4.336193, y: -20}
+      - {x: -4.1725426, y: -20}
+      - {x: -14, y: -15}
+      - {x: -20, y: -4.6394176}
+      - {x: -20, y: 4.444561}
+      - {x: -16, y: 14}
+      - {x: 0, y: 27}
+      - {x: 16, y: 14}
+      - {x: 19.999996, y: 4.1725693}
+      - {x: 19.999996, y: -4.3361626}
+      - {x: 15, y: -14}
     physicsShape: []
     bones: []
     spriteID: 5e97eb03825dee720800000000000000
-    internalID: 0
+    internalID: 1537655665
     vertices: []
     indices: 
     edges: []

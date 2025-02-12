@@ -35,6 +35,11 @@ public class Enemy : MonoBehaviour
     public float throwCooldown = 1.5f;
     private float nextThrowAttack = 0f;
 
+
+    //attack
+    public GameObject attackObject;
+
+
     // HP
     public float hp = 100f;
     public Slider hpSlider;
@@ -75,18 +80,24 @@ public class Enemy : MonoBehaviour
         }
         else if (distanceToPlayer <= throwDistance && Time.time >= nextThrowAttack)
         {
+            attackObject.SetActive(false);
+
             // Throw 공격
             ThrowObject(player);
             nextThrowAttack = Time.time + throwCooldown;
         }
         else if (distanceToPlayer <= followDistance)
         {
+            attackObject.SetActive(false);
+
             // 따라가기
             FollowPlayer();
             isWandering = false;
         }
         else
         {
+            attackObject.SetActive(false);
+
             // Wander 상태
             if (!isWandering)
             {
@@ -192,6 +203,10 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("enemy_throw", false);
         animator.SetBool("enemy_attack", true);
+
+        if (attackObject != null) {
+            attackObject.SetActive(true);
+        }
     }
 
     // ------------
@@ -228,9 +243,7 @@ public class Enemy : MonoBehaviour
         // 죽는 애니메이션 시작
         animator.SetBool("enemy_die", true);
 
-        // 현재 애니메이션의 길이 계산
-        float dieAnimationLength = animator.GetCurrentAnimatorStateInfo(0).length;
-        yield return new WaitForSeconds(dieAnimationLength); // 애니메이션 길이만큼 대기
+        yield return new WaitForSeconds(1.4f);
 
         // HP 슬라이더 삭제
         if (hpSlider != null)
