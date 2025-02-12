@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PrgBoss_P1 : MonoBehaviour
 {
-    public float knockbackForce = 20f; // 튕겨나가는 힘 크기
+    public float knockbackForce = 100f; // 튕겨나가는 힘 크기
     public float knockbackDuration = 0.5f; // 밀려나는 지속 시간
     public float dragAmount = 5f; // 감속을 위한 드래그 값
     public float gravityScaleDuringKnockback = 0.5f; // 튕겨나는 동안 중력 값

@@ -1,23 +1,88 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.EventSystems;
 using static LoadingScene;
 using UnityEngine.UI;
 using System.Collections;
+using DG.Tweening;
 public class MainTitle : BaseScene
-//MainTitle Å¬·¡½º´Â ¸ÞÀÎ ¸Þ´º È­¸éÀ» ´ã´çÇÏ´Â Å¬·¡½º¶ó°í ÇÒ ¼ö ÀÖ½À´Ï´Ù. ¸¶¿ì½º Å¬¸¯ÀÌ³ª ÅÍÄ¡¸¦ °¨ÁöÇÏ¿© ÄÆ¾À UI¸¦ º¸¿©ÁÖ°Å³ª ÁÖ¼® Ã³¸®µÈ ºÎºÐÃ³·³ ´Ù¸¥ ¾ÀÀ¸·Î ÀüÈ¯ÇÏ´Â ¿ªÇÒÀ» ¼öÇàÇÒ ¼ö ÀÖ½À´Ï´Ù. 
+//MainTitle í´ëž˜ìŠ¤ëŠ” ë©”ì¸ ë©”ë‰´ í™”ë©´ì„ ë‹´ë‹¹í•˜ëŠ” í´ëž˜ìŠ¤ë¼ê³  í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤. ë§ˆìš°ìŠ¤ í´ë¦­ì´ë‚˜ í„°ì¹˜ë¥¼ ê°ì§€í•˜ì—¬ ì»·ì”¬ UIë¥¼ ë³´ì—¬ì£¼ê±°ë‚˜ ì£¼ì„ ì²˜ë¦¬ëœ ë¶€ë¶„ì²˜ëŸ¼ ë‹¤ë¥¸ ì”¬ìœ¼ë¡œ ì „í™˜í•˜ëŠ” ì—­í• ì„ ìˆ˜í–‰í•  ìˆ˜ ìžˆìŠµë‹ˆë‹¤. 
 
 {
     public Sprite[] sprites;
     public Image uiImage;
-  
+    public Transform[] GroundRec;
+    public float GroundSpeed = 19;
+
+    public Transform[] TreeRec;
+    public float TreeSpeed = 10;
+
+    public Transform[] BuildingRec;
+    public float BuildSpeed = 5;
+
+
+
+    public float resetPositionX = -35.84f; // ì™¼ìª½ìœ¼ë¡œ ì´ë™í–ˆì„ ë•Œ ìž¬ë°°ì¹˜ ìœ„ì¹˜
+    public float startPositionOffset = 23.62f; // ìƒˆë¡œìš´ ìœ„ì¹˜ ì„¤ì • ì‹œ ê¸°ì¤€ ì˜¤í”„ì…‹
+
 
     void Start()
     {
         StartCoroutine(PlaySpriteAnimation());
-        Init();
+         Init();
+
+        foreach (Transform ground in GroundRec)
+        {
+            MoveGround(ground);
+        }
+
+        foreach (Transform ground in TreeRec)
+        {
+            MoveGround(ground);
+        }
+
+        foreach (Transform ground in BuildingRec)
+        {
+            MoveGround(ground);
+        }
     }
 
-    IEnumerator PlaySpriteAnimation()
+    void MoveGround(Transform ground)
+    {
+        ground.DOMoveX(resetPositionX, GroundSpeed, false)
+            .SetSpeedBased() // ì†ë„ ê¸°ë°˜ ì´ë™ (ì‹œê°„ì´ ì•„ë‹ˆë¼ ì†ë„ë¡œ ì„¤ì •)
+            .SetEase(Ease.Linear) // ì¼ì •í•œ ì†ë„ë¡œ ì´ë™
+            .OnComplete(() =>
+            {
+                // ê°€ìž¥ ì˜¤ë¥¸ìª½ì— ìžˆëŠ” ì˜¤ë¸Œì íŠ¸ ì°¾ê¸°
+                Transform lastGround = GetFarthestRightGround();
+                // ðŸ”¹ ë¶€ë™ì†Œìˆ˜ì  ì˜¤ì°¨ ë°©ì§€: ìœ„ì¹˜ë¥¼ ë°˜ì˜¬ë¦¼í•˜ì—¬ ì •í™•ížˆ ë§žì¶”ê¸°
+
+                float newX = Mathf.Round(lastGround.position.x + startPositionOffset * 1000f) / 1000f;
+                ground.position = new Vector2(newX, ground.position.y);
+
+
+                // ë‹¤ì‹œ ì´ë™ ì‹œìž‘
+                MoveGround(ground);
+            });
+    }
+
+    Transform GetFarthestRightGround()
+    {
+        Transform farthest = GroundRec[0];
+
+        foreach (Transform ground in GroundRec)
+        {
+            if (ground.position.x > farthest.position.x)
+                farthest = ground;
+        }
+
+        return farthest;
+    }
+
+
+
+
+IEnumerator PlaySpriteAnimation()
     {
 
         for (int i = 0; i < sprites.Length; i++)

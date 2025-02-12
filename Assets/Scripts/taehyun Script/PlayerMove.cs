@@ -162,10 +162,14 @@ public class PlayerMove : MonoBehaviour
 
         if (collision.tag == "NextJumpUp")
         {
-            
-            camera.CameraGoUp();
-            Managers.UI.ShowPopUpUI<MapMoving>();
-            return;
+            if (Managers.Game.CheckNextRound()) // 적이 모두 처치되었다면.
+            {
+                camera.CameraGoUp();
+                Managers.UI.ShowPopUpUI<MapMoving>();
+                Managers.Game.GoJump();
+                return;
+              
+            }
         }
 
         if (collision.tag == "Final")

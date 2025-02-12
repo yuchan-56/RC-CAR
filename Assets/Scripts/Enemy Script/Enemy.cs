@@ -35,6 +35,11 @@ public class Enemy : MonoBehaviour
     public float throwCooldown = 1.5f;
     private float nextThrowAttack = 0f;
 
+
+    //attack
+    public GameObject attackObject;
+
+
     // HP
     public float hp = 100f;
     public Slider hpSlider;
@@ -75,18 +80,24 @@ public class Enemy : MonoBehaviour
         }
         else if (distanceToPlayer <= throwDistance && Time.time >= nextThrowAttack)
         {
+            attackObject.SetActive(false);
+
             // Throw 공격
             ThrowObject(player);
             nextThrowAttack = Time.time + throwCooldown;
         }
         else if (distanceToPlayer <= followDistance)
         {
+            attackObject.SetActive(false);
+
             // 따라가기
             FollowPlayer();
             isWandering = false;
         }
         else
         {
+            attackObject.SetActive(false);
+
             // Wander 상태
             if (!isWandering)
             {
@@ -192,6 +203,10 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("enemy_throw", false);
         animator.SetBool("enemy_attack", true);
+
+        if (attackObject != null) {
+            attackObject.SetActive(true);
+        }
     }
 
     // ------------
@@ -238,6 +253,7 @@ public class Enemy : MonoBehaviour
 
         // 적 오브젝트 삭제
         Destroy(gameObject);
+        Managers.Game.EnemyDied();
     }
 
 

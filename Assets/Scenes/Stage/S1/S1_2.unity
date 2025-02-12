@@ -6443,7 +6443,7 @@ MonoBehaviour:
   player: {fileID: 329060273386085810}
   smoothSpeed: 0.05
   offset: {x: 0, y: -5, z: -2}
-  minX: -3.8
+  minX: -3
   maxX: 1.9
   FixedY: 0
 --- !u!1 &1422489018
