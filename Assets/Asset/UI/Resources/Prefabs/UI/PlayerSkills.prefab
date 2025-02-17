@@ -17,7 +17,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &30199282407188829
 RectTransform:
   m_ObjectHideFlags: 0
@@ -59,7 +59,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -92,7 +92,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &6303023322331670211
 RectTransform:
   m_ObjectHideFlags: 0
@@ -134,7 +134,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -163,6 +163,7 @@ GameObject:
   - component: {fileID: 5285431243031117072}
   - component: {fileID: 4679092246685870724}
   - component: {fileID: 5930206561841237659}
+  - component: {fileID: 9100387153009258192}
   m_Layer: 5
   m_Name: Jump
   m_TagString: Untagged
@@ -283,6 +284,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c580b7865210848b79cd91dcf58c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &9100387153009258192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3026659843796333526}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 83ee9f09ee4e2414d98da755238e9b79, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSprites:
+  - {fileID: 21300000, guid: 6d3e9720809be2e4b8775f4a17eac0b7, type: 3}
+  - {fileID: 1823977331, guid: c5fcb5a75193ea5499f015db2a6f09aa, type: 3}
+  - {fileID: -1062971373, guid: c5fcb5a75193ea5499f015db2a6f09aa, type: 3}
+  - {fileID: -1853040736, guid: c5fcb5a75193ea5499f015db2a6f09aa, type: 3}
+  - {fileID: -1721351740, guid: c5fcb5a75193ea5499f015db2a6f09aa, type: 3}
+  frameRate: 0.1
+  isAnimating: 0
 --- !u!1 &3826793138562731541
 GameObject:
   m_ObjectHideFlags: 0
@@ -300,7 +321,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1811906769463849677
 RectTransform:
   m_ObjectHideFlags: 0
@@ -342,7 +363,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -375,7 +396,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8977325611923432449
 RectTransform:
   m_ObjectHideFlags: 0
@@ -417,7 +438,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -446,6 +467,7 @@ GameObject:
   - component: {fileID: 5153127847322419651}
   - component: {fileID: 5334446024605978020}
   - component: {fileID: 6574589579285845791}
+  - component: {fileID: 1302248360880814814}
   m_Layer: 5
   m_Name: Attack
   m_TagString: Untagged
@@ -578,6 +600,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c580b7865210848b79cd91dcf58c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1302248360880814814
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5005965730326375784}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6256222bac44c814faab1dadac677f74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSprites:
+  - {fileID: 382452036, guid: a953feefacf5aed4093da759e1a76860, type: 3}
+  - {fileID: -1721519660, guid: a953feefacf5aed4093da759e1a76860, type: 3}
+  - {fileID: -728387137, guid: a953feefacf5aed4093da759e1a76860, type: 3}
+  - {fileID: 614243659, guid: a953feefacf5aed4093da759e1a76860, type: 3}
+  - {fileID: -2020245955, guid: a953feefacf5aed4093da759e1a76860, type: 3}
+  frameRate: 0.1
+  isAnimating: 0
 --- !u!1 &5586671419804079879
 GameObject:
   m_ObjectHideFlags: 0
@@ -727,7 +769,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &7037888282250785088
 RectTransform:
   m_ObjectHideFlags: 0
@@ -769,7 +811,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
@@ -1075,6 +1117,7 @@ GameObject:
   - component: {fileID: 4890371287180511384}
   - component: {fileID: 6786104577049070411}
   - component: {fileID: 6072553096456165400}
+  - component: {fileID: 890301184903850485}
   m_Layer: 5
   m_Name: Dash
   m_TagString: Untagged
@@ -1207,6 +1250,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e3c580b7865210848b79cd91dcf58c6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &890301184903850485
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8535658156882596939}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38d047e4989ffad4aa147c49d4519063, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  animationSprites:
+  - {fileID: 1156665566, guid: 33999eb5633563d47bf7abdb75665d7c, type: 3}
+  - {fileID: -1434954281, guid: 33999eb5633563d47bf7abdb75665d7c, type: 3}
+  - {fileID: 180436615, guid: 33999eb5633563d47bf7abdb75665d7c, type: 3}
+  - {fileID: -1851469200, guid: 33999eb5633563d47bf7abdb75665d7c, type: 3}
+  - {fileID: -1526582265, guid: 33999eb5633563d47bf7abdb75665d7c, type: 3}
+  frameRate: 0.1
+  isAnimating: 0
 --- !u!1 &8559534017709058929
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1466,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3976402575979301927
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1445,7 +1508,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
+  m_RaycastTarget: 0
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
