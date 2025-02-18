@@ -14,28 +14,37 @@ public class Boss : MonoBehaviour
 
     // animator
     public Animator animator;
+    public bool isDead = false;
 
-    bool isDead = false;
+    // 좌우이동 + following player
+    public Transform player;
+    public float speed = 1.4f;
+
+    // 거리제한
+    public float wanderDistance = 2f;
+    public bool isWandering = true;
+
+    //public float followDistance = 10f; // 따라가기 시작하는 거리
+    //public float throwDistance = 8f; // 오브젝트 던지기 시작하는 거리
+    //public float attackDistance = 2.0f; // 일반 공격 거리
+    private Vector2 stopPosition;
+
+    // 방향전환
+    private bool facingRight = false; // 적의 현재 바라보는 방향
+    private float lastXPosition = 0f;
 
 
-    //attack
-    public GameObject attackObject;
+
+    public virtual void Attack() { Debug.Log("Boss 기본 Attack() 실행"); }
+    public virtual void P1() { Debug.Log("Boss 기본 P1() 실행"); }
+    public virtual void P2() { Debug.Log("Boss 기본 P2() 실행"); }
+    public virtual void P3() { Debug.Log("Boss 기본 P3() 실행"); }
 
 
-    //p1
-    public GameObject p1Object;
-
-
-    //P2
-    public GameObject[] printW = new GameObject[12];
-
-
-    //p3
-    public GameObject p3Object;
-
-
-    void Start()
+    protected virtual void Start()
     {
+        stopPosition = transform.position;
+
         if (hpSliderPrefab != null)
         {
             GameObject sliderInstance = Instantiate(hpSliderPrefab, GameObject.Find("EnemyHPCanvas").transform);
@@ -47,7 +56,7 @@ public class Boss : MonoBehaviour
     }
 
 
-    void Update()
+    protected virtual void Update()
     {
         // HP 슬라이더 위치 업데이트
         if (hpSlider != null)
@@ -56,129 +65,58 @@ public class Boss : MonoBehaviour
             hpSlider.transform.position = screenPosition;
         }
 
-        // 공격 test
-        if(Input.GetKeyDown(KeyCode.U)) {
-            Attack();
-            Debug.Log("Attack");
+        if(isWandering) {
+            Wander();
         }
 
-        if(Input.GetKeyDown(KeyCode.I)) {
-            P1();
-            Debug.Log("P1");
-        }
-
-        if(Input.GetKeyDown(KeyCode.O)) {
-            P2();
-            Debug.Log("P2");
-        }
-
-        if(Input.GetKeyDown(KeyCode.P)) {
-            P3();
-            Debug.Log("P3");
-        }
-
-
-        // 확인용
         if(Input.GetKeyDown(KeyCode.Space)) {
             BossDamage(10);
         }
     }
 
-    void Attack() {
-        animator.SetBool("isP1", false);
-        animator.SetBool("isP2", false);
-        animator.SetBool("isP3", false);
-        animator.SetBool("isAttack", true);
-
-        if (attackObject != null)
-        {
-            attackObject.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(attackObject, 3f));
-        }
-    }
-
-    void P1() {
-        animator.SetBool("isP2", false);
-        animator.SetBool("isP3", false);
-        animator.SetBool("isAttack", false);
-        animator.SetBool("isP1", true);
-
-        if (p1Object != null)
-        {
-            p1Object.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(p1Object, 3f));
-        }
-    }
-
-
-    //------
-
-    void P2() {
-        animator.SetBool("isAttack", false);
-        animator.SetBool("isP3", false);
-        animator.SetBool("isP1", false);
-        animator.SetBool("isP2", true);
-
-        foreach (GameObject obj in printW)
-        {
-            if (obj != null)
-            {
-                StartCoroutine(FallObject(obj));
-            }
-        }
-    }
-
     
 
-   IEnumerator FallObject(GameObject obj)
+    protected virtual void Wander()
     {
-        // 랜덤 X 좌표 설정 (보스 기준으로 좌우 범위 지정)
-        float randomX = UnityEngine.Random.Range(transform.position.x - 8f, transform.position.x + 8f);
-
-        // 초기 위치 설정 (보스 머리 위에서 떨어지도록)
-        Vector3 startPosition = new Vector3(randomX, transform.position.y + 7f, 0);
-        GameObject fallingObj = Instantiate(obj, startPosition, Quaternion.identity);
-
-        float fallSpeed = UnityEngine.Random.Range(2f, 5f);
-
-        while (fallingObj.transform.position.y > transform.position.y - 5f)
-        {
-            fallingObj.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-            yield return null;
-        }
-
-        Destroy(fallingObj);
-        animator.SetBool("isP2", false);
-    }
-
-
-    // ------
-
-    void P3() {
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
-        animator.SetBool("isAttack", false);
-        animator.SetBool("isP3", true);
-    
-        if (p3Object != null)
-        {
-            p3Object.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(p3Object, 4f));
-        }
-    }
-
-    IEnumerator DeactivateAfterDelay(GameObject obj, float delay)
-    {
-        yield return new WaitForSeconds(delay);
-        obj.SetActive(false);
         animator.SetBool("isP3", false);
-        animator.SetBool("isP1", false);
         animator.SetBool("isAttack", false);
 
+
+        
+        float xPos = Mathf.PingPong(Time.time * speed, wanderDistance) - (wanderDistance / 2);
+
+        float horizontalDirection = xPos - lastXPosition;
+        FlipDirection(horizontalDirection);
+
+        transform.position = new Vector2(stopPosition.x + xPos, transform.position.y);
+
+        lastXPosition = xPos;
+    }
+
+    protected void FlipDirection(float horizontalDirection)
+    {
+        if (horizontalDirection > 0 && !facingRight)
+        {
+            Flip();
+        }
+        else if (horizontalDirection < 0 && facingRight)
+        {
+            Flip();
+        }
+    }
+
+    protected void Flip()
+    {
+        facingRight = !facingRight;
+        Vector3 scale = transform.localScale;
+        scale.x *= -1;
+        transform.localScale = scale;
     }
 
 
-    public void BossDamage(float damage)
+    public virtual void BossDamage(float damage)
     {
         hp -= damage;
         Managers.Game.GetHit = true;
@@ -195,18 +133,19 @@ public class Boss : MonoBehaviour
         Debug.Log(hp);
     }
 
-    void Die()
+    public virtual void Die()
     {
+        isWandering = false;
         StartCoroutine(DieCoroutine());   
     }
 
-    IEnumerator DieCoroutine()
+    private IEnumerator DieCoroutine()
     {
         Debug.Log("boss died!");
         isDead = true;
         animator.SetBool("isDead", true);
 
-        yield return new WaitForSeconds(1.4f); // 애니메이션 길이만큼 대기
+        yield return new WaitForSeconds(4.5f);
 
         
         if (hpSlider != null)

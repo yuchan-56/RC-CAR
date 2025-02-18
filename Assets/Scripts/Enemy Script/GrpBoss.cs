@@ -3,18 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GrpBoss : MonoBehaviour
+public class GrpBoss : Boss
 {
-    // HP
-    public float hp = 100f;
-    public Slider hpSlider;
-    public GameObject hpSliderPrefab; // Slider 프리팹 연결
-
-
-    // animator
-    public Animator animator;
-    bool isDead = false;
-
     //p1
     public GameObject[] p1Object = new GameObject[3];
     public float rotationSpeed = 500f; // 회전 속도
@@ -38,81 +28,36 @@ public class GrpBoss : MonoBehaviour
 
     //p3
     public GameObject p3Object;
+    public Vector3 beamPos = new Vector3(-8f, 2f, 0);
+
+    protected override void Start()
+    {
+        base.Start();
+        Debug.Log("보스 등장!");
+    }
    
 
+    public override void Attack() {
+        isWandering = false;
 
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        if (hpSliderPrefab != null)
-        {
-            GameObject sliderInstance = Instantiate(hpSliderPrefab, GameObject.Find("EnemyHPCanvas").transform);
-            hpSlider = sliderInstance.GetComponent<Slider>();
-
-            hpSlider.maxValue = hp;
-            hpSlider.value = hp;
-        }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        // HP 슬라이더 위치 업데이트
-        if (hpSlider != null)
-        {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3.4f, 0));
-            hpSlider.transform.position = screenPosition;
-        }
-
-
-        // 공격 test
-        if(Input.GetKeyDown(KeyCode.U)) {
-            Attack();
-            Debug.Log("Attack");
-        }
-
-        if(Input.GetKeyDown(KeyCode.I)) {
-            P1();
-            Debug.Log("P1");
-        }
-
-        if(Input.GetKeyDown(KeyCode.O)) {
-            P2();
-            Debug.Log("P2");
-        }
-
-        if(Input.GetKeyDown(KeyCode.P)) {
-            P3();
-            Debug.Log("P3");
-        }
-
-
-
-
-        // 확인용
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            BossDamage(10);
-        }
-    }
-
-    void Attack() {
         animator.SetBool("isAttack", true);
+        
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isDead", false);
         animator.SetBool("isP1", false);
     }
 
-    void P1() {
-        // 돌다가
-        // 하늘에서 떨어짐
+    public override void P1() {
+        isWandering = false;
+
         StartCoroutine(SpawnRotateAndFallObjects());
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isDead", false);
+
         animator.SetBool("isP1", true);
     }
 
@@ -170,14 +115,15 @@ public class GrpBoss : MonoBehaviour
         }
 
         Destroy(obj); // 바닥에 닿으면 삭제
+
+        animator.SetBool("isP1", false);
+        isWandering = true;
     }
 
 
+    public override void P2() {
+        isWandering = false;
 
-
-
-
-    void P2() {
         // 피회복
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);
@@ -186,21 +132,41 @@ public class GrpBoss : MonoBehaviour
 
         animator.SetBool("isP2", true);
 
-        hp += 30;
+        StartCoroutine(GetHP());
+    }
 
-        if(hp > 100) {
-            hp = 100;
-        }
-        else if (hpSlider != null) {
-            hpSlider.value = hp;
+    IEnumerator GetHP() {
+        float healAmount = 5f; // 초당 회복량
+        float healDuration = 5f; // 회복 지속 시간
+        float elapsedTime = 0f;
+
+        while (elapsedTime < healDuration) {
+            // 부모 클래스(Boss)의 hp 증가
+            hp += healAmount * Time.deltaTime;
+
+            if(hp > 100) {
+                hp = 100;
+            }
+            
+            // hpSlider UI 업데이트
+            if (hpSlider != null) {
+                hpSlider.value = hp;
+            }
+
+            elapsedTime += Time.deltaTime;
+            yield return null;
         }
 
-        // 초당회복?
+        // 회복 종료 후 애니메이션 리셋
+        animator.SetBool("isP2", false);
+        isWandering = true;
     }
 
 
 
-    void P3() {
+    public override void P3() {
+        isWandering = false;
+
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", true);
@@ -211,50 +177,14 @@ public class GrpBoss : MonoBehaviour
     }
 
     IEnumerator ShootBeam() {
+        Vector3 spawnPosition = transform.position + beamPos;
+        GameObject newObj = Instantiate(p3Object, spawnPosition, Quaternion.identity);
 
-        yield return null;
-    }
+        yield return new WaitForSeconds(4f);
 
+        Destroy(newObj);
 
-
-
-    // dying
-    public void BossDamage(float damage)
-    {
-        hp -= damage;
-        Managers.Game.GetHit = true;
-        if (hpSlider != null)
-        {
-            hpSlider.value = hp; // 슬라이더 값 업데이트
-        }
-
-        if (hp <= 0)
-        {
-            Die();
-        }
-        Debug.Log(damage);
-        Debug.Log(hp);
-    }
-
-    void Die()
-    {
-        StartCoroutine(DieCoroutine());   
-    }
-
-    IEnumerator DieCoroutine()
-    {
-        Debug.Log("boss died!");
-        isDead = true;
-        animator.SetBool("isDead", true);
-
-        yield return new WaitForSeconds(3.5f); // 애니메이션 길이만큼 대기
-
-        
-        if (hpSlider != null)
-        {
-            Destroy(hpSlider.gameObject);
-        }
-
-        Destroy(gameObject);
+        animator.SetBool("isP3", false);
+        isWandering = true;
     }
 }

@@ -12,8 +12,9 @@ GameObject:
   - component: {fileID: 6041797371957690092}
   - component: {fileID: 8127466129754458671}
   - component: {fileID: 5904282104844515270}
-  - component: {fileID: 7847170667710473828}
   - component: {fileID: 4347443485248300379}
+  - component: {fileID: 5927446090006884465}
+  - component: {fileID: 2345328794076940348}
   m_Layer: 0
   m_Name: prg_Boss
   m_TagString: Boss
@@ -139,38 +140,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &7847170667710473828
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 316324923393244241}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 37192f5c90765497c9f0b31e381ede0a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  hp: 100
-  hpSlider: {fileID: 0}
-  hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}
-  animator: {fileID: 8127466129754458671}
-  attackObject: {fileID: 8836719018161425465}
-  p1Object: {fileID: 3599141358719822819}
-  printW:
-  - {fileID: 8115720925580164950, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
-  - {fileID: 2142442642214721233, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
-  - {fileID: 5395457056652872688, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
-  - {fileID: 2071828538885751230, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
-  - {fileID: 8115720925580164950, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
-  - {fileID: 2142442642214721233, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
-  - {fileID: 5395457056652872688, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
-  - {fileID: 2071828538885751230, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
-  - {fileID: 8115720925580164950, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
-  - {fileID: 2142442642214721233, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
-  - {fileID: 5395457056652872688, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
-  - {fileID: 2071828538885751230, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
-  p3Object: {fileID: 2726446679550590679}
 --- !u!61 &4347443485248300379
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -216,6 +185,51 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.7014524, y: 1.1672717}
   m_EdgeRadius: 0
+--- !u!114 &5927446090006884465
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316324923393244241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e85278c787da849768ef0a58e0044dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hp: 100
+  hpSlider: {fileID: 0}
+  hpSliderPrefab: {fileID: 0}
+  animator: {fileID: 0}
+  isDead: 0
+  player: {fileID: 0}
+  speed: 1.4
+  wanderDistance: 2
+  isWandering: 1
+  attackObject: {fileID: 8836719018161425465}
+  p1Object: {fileID: 3599141358719822819}
+  printW:
+  - {fileID: 8115720925580164950, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
+  - {fileID: 2142442642214721233, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
+  - {fileID: 5395457056652872688, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
+  - {fileID: 2071828538885751230, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
+  - {fileID: 8115720925580164950, guid: 47ad45dd19a3f4d9eb55a4c6ebde6bd4, type: 3}
+  - {fileID: 2142442642214721233, guid: 22ead737c1a644ea0be5afa2ff411e92, type: 3}
+  - {fileID: 5395457056652872688, guid: 5575210a10e1c421990b22b653b29f35, type: 3}
+  - {fileID: 2071828538885751230, guid: 9a4d9667fb0bc457b930b7ea83b24ee0, type: 3}
+  p3Object: {fileID: 2726446679550590679}
+--- !u!114 &2345328794076940348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 316324923393244241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8dab13f34bcd14509928cccd75ed899b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2726446679550590679
 GameObject:
   m_ObjectHideFlags: 0
