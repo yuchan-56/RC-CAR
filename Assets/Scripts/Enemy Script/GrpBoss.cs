@@ -29,16 +29,18 @@ public class GrpBoss : Boss
     //p3
     public GameObject p3Object;
     public Vector3 beamPos = new Vector3(-8f, 2f, 0);
+    private GameObject newObj;
 
     protected override void Start()
     {
         base.Start();
-        Debug.Log("보스 등장!");
+        Debug.Log("그래픽 보스");
     }
    
 
     public override void Attack() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isAttack", true);
         
@@ -50,8 +52,7 @@ public class GrpBoss : Boss
 
     public override void P1() {
         isWandering = false;
-
-        StartCoroutine(SpawnRotateAndFallObjects());
+        isFollowing = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
@@ -59,6 +60,9 @@ public class GrpBoss : Boss
         animator.SetBool("isDead", false);
 
         animator.SetBool("isP1", true);
+
+        
+        StartCoroutine(SpawnRotateAndFallObjects());
     }
 
     IEnumerator SpawnRotateAndFallObjects()
@@ -79,7 +83,7 @@ public class GrpBoss : Boss
         // 일정 시간 대기 후 낙하 시작
         yield return new WaitForSeconds(fallDelay);
 
-        for(int i = 0; i < 3; i++)
+        for(int i = 0; i < spawnedObjects.Count; i++)
         {
             if (spawnedObjects[i] != null)
             {
@@ -108,7 +112,7 @@ public class GrpBoss : Boss
         obj.transform.position = transform.position + fallStartPos;
         obj.transform.localScale *= scaleMultiplier;
 
-        while (obj.transform.position.y > transform.position.y - 5f) // 땅까지 떨어질 때까지
+        while (obj.transform.position.y > transform.position.y - 4f) // 땅까지 떨어질 때까지
         {
             obj.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
             yield return null;
@@ -116,13 +120,16 @@ public class GrpBoss : Boss
 
         Destroy(obj); // 바닥에 닿으면 삭제
 
+        spawnedObjects.Clear();
         animator.SetBool("isP1", false);
         isWandering = true;
+        isFollowing = true;
     }
 
 
     public override void P2() {
         isWandering = false;
+        isFollowing = false;
 
         // 피회복
         animator.SetBool("isAttack", false);
@@ -160,12 +167,14 @@ public class GrpBoss : Boss
         // 회복 종료 후 애니메이션 리셋
         animator.SetBool("isP2", false);
         isWandering = true;
+        isFollowing = true;
     }
 
 
 
     public override void P3() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
@@ -173,18 +182,29 @@ public class GrpBoss : Boss
         animator.SetBool("isDead", false);
         animator.SetBool("isP1", false);
 
+        StartCoroutine(Delaying(0.95f));
         StartCoroutine(ShootBeam());
     }
 
-    IEnumerator ShootBeam() {
+    IEnumerator Delaying(float sec) {
+        yield return new WaitForSeconds(sec);
+
         Vector3 spawnPosition = transform.position + beamPos;
-        GameObject newObj = Instantiate(p3Object, spawnPosition, Quaternion.identity);
+        newObj = Instantiate(p3Object, spawnPosition, Quaternion.identity);
+    }
 
-        yield return new WaitForSeconds(4f);
-
-        Destroy(newObj);
+    IEnumerator ShootBeam() {
+        Invoke("DestroyBeam", 2f);
+        
+        yield return new WaitForSeconds(2.4f);
 
         animator.SetBool("isP3", false);
         isWandering = true;
+        isFollowing = true;
+    }
+
+    void DestroyBeam()
+    {
+        Destroy(newObj);
     }
 }

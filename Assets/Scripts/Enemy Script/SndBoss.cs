@@ -20,6 +20,7 @@ public class SndBoss : Boss
 
     public override void Attack() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isAttack", true);
         animator.SetBool("isP1", false);
@@ -35,6 +36,7 @@ public class SndBoss : Boss
 
     public override void P1() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isP1", true);
         animator.SetBool("isAttack", false);
@@ -43,14 +45,21 @@ public class SndBoss : Boss
 
         if (P1Object != null)
         {
-            P1Object.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(P1Object, 3f));
+            StartCoroutine(Delaying(1.2f));
+            StartCoroutine(DeactivateAfterDelay(P1Object, 2.6f));
         }
+    }
+
+    IEnumerator Delaying(float sec) {
+        yield return new WaitForSeconds(sec);
+
+        P1Object.SetActive(true);
     }
 
 
     public override void P2() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isP2", true);
         animator.SetBool("isAttack", false);
@@ -61,6 +70,7 @@ public class SndBoss : Boss
 
     public override void P3() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isP3", true);
         animator.SetBool("isAttack", false);
@@ -85,5 +95,6 @@ public class SndBoss : Boss
         animator.SetBool("isAttack", false);
 
         isWandering = true;
+        isFollowing = true;
     }
 }

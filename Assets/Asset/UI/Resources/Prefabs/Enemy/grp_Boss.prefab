@@ -129,8 +129,10 @@ MonoBehaviour:
   isDead: 0
   player: {fileID: 0}
   speed: 1.5
-  wanderDistance: 2
+  wanderDistance: 3
   isWandering: 1
+  isFollowing: 1
+  followDistance: 10
   p1Object:
   - {fileID: 7788707650902868896, guid: dd6d566829a994c59b19f2350b58d618, type: 3}
   - {fileID: 3223701447684176875, guid: adbfd5b9090ac47e9b3b2ddf265fdfed, type: 3}
@@ -201,7 +203,7 @@ Rigidbody2D:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8590839111561154068}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -218,7 +220,7 @@ Rigidbody2D:
     m_Bits: 0
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!114 &8684675417993848437
 MonoBehaviour:

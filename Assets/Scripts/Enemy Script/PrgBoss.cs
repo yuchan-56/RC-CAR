@@ -6,13 +6,10 @@ public class PrgBoss : Boss
 {
     //attack
     public GameObject attackObject;
-
     //p1
     public GameObject p1Object;
-
     //P2
     public GameObject[] printW = new GameObject[8];
-
     //p3
     public GameObject p3Object;
 
@@ -21,12 +18,13 @@ public class PrgBoss : Boss
     protected override void Start()
     {
         base.Start();
-        Debug.Log("프로그래밍 보스 등장!");
+        Debug.Log("프로그래밍 보스");
     }
 
 
     public override void Attack() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
@@ -37,12 +35,13 @@ public class PrgBoss : Boss
         if (attackObject != null)
         {
             attackObject.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(attackObject, 3f));
+            StartCoroutine(DeactivateAfterDelay(attackObject, 4f));
         }
     }
 
     public override void P1() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
@@ -62,6 +61,7 @@ public class PrgBoss : Boss
 
     public override void P2() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP3", false);
@@ -82,10 +82,10 @@ public class PrgBoss : Boss
 
    IEnumerator FallObject(GameObject obj)
     {
-        // 랜덤 X 좌표 설정 (보스 기준으로 좌우 범위 지정)
+        // 랜덤 X 좌표 설정
         float randomX = UnityEngine.Random.Range(transform.position.x - 15f, transform.position.x - 1f);
 
-        // 초기 위치 설정 (보스 머리 위에서 떨어지도록)
+        // 초기 위치 설정
         Vector3 startPosition = new Vector3(randomX, transform.position.y + 7f, 0);
         GameObject fallingObj = Instantiate(obj, startPosition, Quaternion.identity);
 
@@ -99,7 +99,9 @@ public class PrgBoss : Boss
 
         Destroy(fallingObj);
         animator.SetBool("isP2", false);
+
         isWandering = true;
+        isFollowing = true;
     }
 
 
@@ -107,6 +109,7 @@ public class PrgBoss : Boss
 
     public override void P3() {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
@@ -116,7 +119,7 @@ public class PrgBoss : Boss
         if (p3Object != null)
         {
             p3Object.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(p3Object, 4f));
+            StartCoroutine(DeactivateAfterDelay(p3Object, 5f));
         }
     }
 
@@ -130,5 +133,6 @@ public class PrgBoss : Boss
         animator.SetBool("isAttack", false);
 
         isWandering = true;
+        isFollowing = true;
     }
 }

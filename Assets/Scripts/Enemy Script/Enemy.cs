@@ -52,8 +52,6 @@ public class Enemy : MonoBehaviour
     {
         stopPosition = transform.position;
 
-        // HP Slider 프리팹 생성
-        /// 캔버스 따로 필요함
         if (hpSliderPrefab != null)
         {
             GameObject sliderInstance = Instantiate(hpSliderPrefab, GameObject.Find("EnemyHPCanvas").transform);
@@ -68,9 +66,7 @@ public class Enemy : MonoBehaviour
     {
         if (isDead) { return; }  // 더 이상 Update 로직 실행하지 않음
 
-
         float distanceToPlayer = Vector2.Distance(transform.position, player.position);
-        //Debug.Log($"Distance to Player: {distanceToPlayer}");
 
 
 
@@ -126,7 +122,6 @@ public class Enemy : MonoBehaviour
 
     // -------- enemy move --------
 
-    // default
     void Wander()
     {
         animator.SetBool("enemy_attack", false);
@@ -174,7 +169,7 @@ public class Enemy : MonoBehaviour
     }
 
 
-    // ------------
+
 
     // Throw 공격
     void ThrowObject(Transform player)
@@ -209,7 +204,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    // ------------
+    
 
 
     // HP 감소

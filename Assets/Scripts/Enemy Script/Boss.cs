@@ -23,8 +23,9 @@ public class Boss : MonoBehaviour
     // 거리제한
     public float wanderDistance = 2f;
     public bool isWandering = true;
+    public bool isFollowing = true;
 
-    //public float followDistance = 10f; // 따라가기 시작하는 거리
+    public float followDistance = 10f; // 따라가기 시작하는 거리
     //public float throwDistance = 8f; // 오브젝트 던지기 시작하는 거리
     //public float attackDistance = 2.0f; // 일반 공격 거리
     private Vector2 stopPosition;
@@ -35,10 +36,10 @@ public class Boss : MonoBehaviour
 
 
 
-    public virtual void Attack() { Debug.Log("Boss 기본 Attack() 실행"); }
-    public virtual void P1() { Debug.Log("Boss 기본 P1() 실행"); }
-    public virtual void P2() { Debug.Log("Boss 기본 P2() 실행"); }
-    public virtual void P3() { Debug.Log("Boss 기본 P3() 실행"); }
+    public virtual void Attack() { }
+    public virtual void P1() { }
+    public virtual void P2() { }
+    public virtual void P3() { }
 
 
     protected virtual void Start()
@@ -65,7 +66,19 @@ public class Boss : MonoBehaviour
             hpSlider.transform.position = screenPosition;
         }
 
-        if(isWandering) {
+        float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
+
+        if(distanceToPlayer <= followDistance) {
+            if(isFollowing) {
+                FollowPlayer();
+                isWandering = false;
+            }
+            
+        } else {
+            if (!isWandering) {
+                stopPosition = transform.position; // 현재 위치를 Wander 시작점으로 설정
+                isWandering = true;
+            }
             Wander();
         }
 
@@ -83,8 +96,6 @@ public class Boss : MonoBehaviour
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
 
-
-        
         float xPos = Mathf.PingPong(Time.time * speed, wanderDistance) - (wanderDistance / 2);
 
         float horizontalDirection = xPos - lastXPosition;
@@ -93,6 +104,20 @@ public class Boss : MonoBehaviour
         transform.position = new Vector2(stopPosition.x + xPos, transform.position.y);
 
         lastXPosition = xPos;
+    }
+
+    protected virtual void FollowPlayer()
+    {
+        animator.SetBool("isP1", false);
+        animator.SetBool("isP2", false);
+        animator.SetBool("isP3", false);
+        animator.SetBool("isAttack", false);
+
+        Vector2 directionToPlayer = player.position - transform.position;
+        FlipDirection(directionToPlayer.x);
+        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+
+        stopPosition = transform.position; 
     }
 
     protected void FlipDirection(float horizontalDirection)
@@ -136,6 +161,7 @@ public class Boss : MonoBehaviour
     public virtual void Die()
     {
         isWandering = false;
+        isFollowing = false;
         StartCoroutine(DieCoroutine());   
     }
 
@@ -145,7 +171,10 @@ public class Boss : MonoBehaviour
         isDead = true;
         animator.SetBool("isDead", true);
 
-        yield return new WaitForSeconds(4.5f);
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        float animationLength = stateInfo.length; // 애니메이션 길이 가져오기
+
+        yield return new WaitForSeconds(animationLength * 2.02f);
 
         
         if (hpSlider != null)
