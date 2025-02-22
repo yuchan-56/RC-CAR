@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c5fcb5a75193ea5499f015db2a6f09aa
+guid: 7cc65ece1bc9c714a9c4d7fef667fe47
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -110,106 +110,22 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump effect_0
+      name: atk blink effect_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 37
+        x: 8
+        y: 0
         width: 64
         height: 64
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96e2625daa3d8144a9d8020d7d794a49
-      internalID: 2137136898
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump effect_1
-      rect:
-        serializedVersion: 2
-        x: 141
-        y: 37
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1eff3f952d94c924981a0bc518024027
-      internalID: 1823977331
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump effect_2
-      rect:
-        serializedVersion: 2
-        x: 269
-        y: 37
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 48f27dc93a2923e42bc629696deec40d
-      internalID: -1062971373
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump effect_3
-      rect:
-        serializedVersion: 2
-        x: 397
-        y: 37
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5665eb221bb700046a86d37fe58c6bfd
-      internalID: -1853040736
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump effect_4
-      rect:
-        serializedVersion: 2
-        x: 526
-        y: 37
-        width: 63
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 33fb2261fb43a694dae34c245a4cd30d
-      internalID: -1721351740
+      spriteID: 5515a184e82803e4f905501d3668cb8d
+      internalID: -251251905
       vertices: []
       indices: 
       edges: []
@@ -225,11 +141,7 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      jump effect_0: 2137136898
-      jump effect_1: 1823977331
-      jump effect_2: -1062971373
-      jump effect_3: -1853040736
-      jump effect_4: -1721351740
+      atk blink effect_0: -251251905
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

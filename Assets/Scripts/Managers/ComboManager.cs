@@ -18,6 +18,12 @@ public class ComboManager : MonoBehaviour
     public AtkAni atkAni;
     public DashAni dashAni;
     public JumpAni jumpAni;
+    public rightGO rgo;
+    public rightdownGO rdgo;
+    public rightupGO rugo;
+    public leftGO lgo;
+    public leftdownGO ldgo;
+    public leftupGO lugo;
     private Coroutine dashAniCoroutine;
     private Coroutine jumpAniCoroutine;
     private Coroutine atkAniCoroutine;
@@ -60,6 +66,8 @@ public class ComboManager : MonoBehaviour
                 {
                     if (dashAni != null)
                     {
+                        rgo.ImageAbled();
+                        rugo.ImageAbled();
                         StopExistingCoroutine(ref dashAniCoroutine);
                         dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
                     }
@@ -68,6 +76,8 @@ public class ComboManager : MonoBehaviour
                 {
                     if (jumpAni != null)
                     {
+                        ldgo.ImageAbled();
+                        rdgo.ImageAbled();
                         StopExistingCoroutine(ref jumpAniCoroutine);
                         jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
                     }
@@ -76,6 +86,8 @@ public class ComboManager : MonoBehaviour
                 {
                     if (atkAni != null)
                     {
+                        lgo.ImageAbled();
+                        lugo.ImageAbled();
                         StopExistingCoroutine(ref atkAniCoroutine);
                         atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
                     }
@@ -88,17 +100,20 @@ public class ComboManager : MonoBehaviour
             }
         }
 
-        // 마우스를 뗐을 때 실행
         else if (Input.GetMouseButtonUp(0) && AniSetup == true)
         {
             Debug.Log("HashSet Contents: " + string.Join(", ", InputButton));
 
-            // 실행 중인 코루틴 즉시 종료
             StopExistingCoroutine(ref atkAniCoroutine);
             StopExistingCoroutine(ref dashAniCoroutine);
             StopExistingCoroutine(ref jumpAniCoroutine);
+            lgo.ImageDisabled();
+            rgo.ImageDisabled();
+            lugo.ImageDisabled();
+            ldgo.ImageDisabled();
+            rugo.ImageDisabled();
+            rdgo.ImageDisabled();
 
-            // 즉시 초기화
             atkAni.ResetImage();
             dashAni.ResetImage();
             jumpAni.ResetImage();
