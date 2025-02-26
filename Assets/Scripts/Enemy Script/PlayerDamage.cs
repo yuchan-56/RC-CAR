@@ -20,6 +20,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if(other.CompareTag("Player")) {
             Debug.Log("player damage");
+
         }
     }
 }

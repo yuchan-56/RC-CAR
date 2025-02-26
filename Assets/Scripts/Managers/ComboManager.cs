@@ -24,6 +24,9 @@ public class ComboManager : MonoBehaviour
     public leftGO lgo;
     public leftdownGO ldgo;
     public leftupGO lugo;
+    public Jumpblink jumpblink;
+    public Dashblink dashblink;
+    public Atkblink atkblink;
     private Coroutine dashAniCoroutine;
     private Coroutine jumpAniCoroutine;
     private Coroutine atkAniCoroutine;
@@ -68,6 +71,8 @@ public class ComboManager : MonoBehaviour
                     {
                         rgo.ImageAbled();
                         rugo.ImageAbled();
+                        jumpblink.ImageAbled();
+                        atkblink.ImageAbled();
                         StopExistingCoroutine(ref dashAniCoroutine);
                         dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
                     }
@@ -78,6 +83,8 @@ public class ComboManager : MonoBehaviour
                     {
                         ldgo.ImageAbled();
                         rdgo.ImageAbled();
+                        atkblink.ImageAbled();
+                        dashblink.ImageAbled();
                         StopExistingCoroutine(ref jumpAniCoroutine);
                         jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
                     }
@@ -88,6 +95,8 @@ public class ComboManager : MonoBehaviour
                     {
                         lgo.ImageAbled();
                         lugo.ImageAbled();
+                        dashblink.ImageAbled();
+                        jumpblink.ImageAbled();
                         StopExistingCoroutine(ref atkAniCoroutine);
                         atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
                     }
@@ -113,6 +122,9 @@ public class ComboManager : MonoBehaviour
             ldgo.ImageDisabled();
             rugo.ImageDisabled();
             rdgo.ImageDisabled();
+            atkblink.ImageDisabled();
+            jumpblink.ImageDisabled();
+            dashblink.ImageDisabled();
 
             atkAni.ResetImage();
             dashAni.ResetImage();
