@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerDamage : MonoBehaviour
 {
+    public PlayerHP playerHP;
     // Start is called before the first frame update
     void Start()
     {
@@ -20,7 +21,7 @@ public class PlayerDamage : MonoBehaviour
     {
         if(other.CompareTag("Player")) {
             Debug.Log("player damage");
-
+            playerHP.GetDamaged(1);
         }
     }
 }
