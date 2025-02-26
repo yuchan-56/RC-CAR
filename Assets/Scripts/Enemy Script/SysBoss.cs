@@ -6,6 +6,10 @@ public class SysBoss : Boss
 {
     //p2
     public GameObject p2Object;
+    //p3
+    public GameObject p3Object;
+
+
     protected override void Start()
     {
         base.Start();
@@ -15,7 +19,7 @@ public class SysBoss : Boss
     protected override void Update()
     {
         base.Update();
-        if(hp > 30) {
+        if(hp > 50) {
                 animator.SetBool("isLowHP", false);
         }
         else {
@@ -26,6 +30,7 @@ public class SysBoss : Boss
     public override void Attack()
     {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isAttack", true);
         animator.SetBool("isP1", false);
@@ -40,11 +45,14 @@ public class SysBoss : Boss
     public override void P1()
     {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", true);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
+
+        // 소환
     }
 
     
@@ -54,6 +62,7 @@ public class SysBoss : Boss
     public override void P2()
     {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);
@@ -76,6 +85,7 @@ public class SysBoss : Boss
         animator.SetBool("isAttack", false);
 
         isWandering = true;
+        isFollowing = true;
     }
 
     
@@ -85,10 +95,25 @@ public class SysBoss : Boss
     public override void P3()
     {
         isWandering = false;
+        isFollowing = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", true);
+
+
+        if(p2Object != null) {
+            p3Object.SetActive(true);
+            StartCoroutine(MovePos());
+        }
+    }
+
+    IEnumerator MovePos() {
+        yield return new WaitForSeconds(1.05f);
+        animator.SetBool("isP3_2", true);
+
+        transform.position = new Vector3(player.transform.position.x - 1.5f, player.transform.position.y, player.transform.position.z);
+        
     }
 }

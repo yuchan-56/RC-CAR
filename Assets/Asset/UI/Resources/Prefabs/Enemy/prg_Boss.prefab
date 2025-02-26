@@ -125,7 +125,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -206,6 +206,8 @@ MonoBehaviour:
   speed: 1.4
   wanderDistance: 2
   isWandering: 1
+  isFollowing: 1
+  followDistance: 10
   attackObject: {fileID: 8836719018161425465}
   p1Object: {fileID: 3599141358719822819}
   printW:

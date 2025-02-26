@@ -14,7 +14,7 @@ public class SndBoss : Boss
     protected override void Start()
     {
         base.Start();
-        Debug.Log("보스 등장!");
+        Debug.Log("sound boss 등장!");
     }
 
 
@@ -66,6 +66,14 @@ public class SndBoss : Boss
         animator.SetBool("isP1", false);
         animator.SetBool("isP3", false);
 
+        StartCoroutine(P2Count(15.0f));
+    }
+
+
+    // 고쳐!!!!!!!!!!!!!!!!!!!!!!!
+    IEnumerator P2Count(float sec) {
+        yield return new WaitForSeconds(sec);
+        animator.SetBool("isP2", false);
     }
 
     public override void P3() {

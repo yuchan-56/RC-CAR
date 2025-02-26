@@ -5,6 +5,13 @@ using UnityEngine.UI;
 
 public class GrpBoss : Boss
 {
+    //attack
+    public GameObject bulletPrefab; // 총알 프리팹
+    public float bulletSpeed = 13f; // 총알 속도
+    public float fireRate = 1.0f;
+
+    Vector3 firePoint = new Vector3(0, 2.0f, 0);
+
     //p1
     public GameObject[] p1Object = new GameObject[3];
     public float rotationSpeed = 500f; // 회전 속도
@@ -28,7 +35,7 @@ public class GrpBoss : Boss
 
     //p3
     public GameObject p3Object;
-    public Vector3 beamPos = new Vector3(-8f, 2f, 0);
+    public Vector3 beamPos = new Vector3(-8f, 0, 0);
     private GameObject newObj;
 
     protected override void Start()
@@ -48,7 +55,42 @@ public class GrpBoss : Boss
         animator.SetBool("isP3", false);
         animator.SetBool("isDead", false);
         animator.SetBool("isP1", false);
+
+        StartCoroutine(ShootBullets(3));
     }
+
+
+    IEnumerator ShootBullets(int shotCount)
+    {
+        for (int i = 0; i < shotCount; i++)
+        {
+            Shoot();
+            yield return new WaitForSeconds(fireRate); // ✅ 발사 간격 유지
+        }
+
+        // ✅ 3발 발사 후 다시 Wandering 또는 Following 상태로 복귀
+        animator.SetBool("isAttack", false);
+        isWandering = true;
+        isFollowing = true;
+    }
+
+    void Shoot()
+    {
+        if (bulletPrefab == null || player == null) return; // 플레이어가 없으면 실행 X
+
+        // ✅ 총알 생성 (firePoint에서 발사)
+        GameObject bullet = Instantiate(bulletPrefab, transform.position + firePoint, Quaternion.identity);
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+
+        if (bulletRb != null)
+        {
+            // ✅ 플레이어 방향으로 총알 발사
+            Vector2 direction = (player.position - transform.position).normalized; // 방향 벡터 계산
+            bulletRb.velocity = direction * bulletSpeed; // 방향 적용
+        }
+    }
+
+
 
     public override void P1() {
         isWandering = false;
@@ -190,7 +232,9 @@ public class GrpBoss : Boss
         yield return new WaitForSeconds(sec);
 
         Vector3 spawnPosition = transform.position + beamPos;
-        newObj = Instantiate(p3Object, spawnPosition, Quaternion.identity);
+        Quaternion rotation = Quaternion.Euler(0, 0, 7);
+
+        newObj = Instantiate(p3Object, spawnPosition, rotation);
     }
 
     IEnumerator ShootBeam() {

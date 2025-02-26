@@ -25,9 +25,10 @@ public class Boss : MonoBehaviour
     public bool isWandering = true;
     public bool isFollowing = true;
 
-    public float followDistance = 10f; // 따라가기 시작하는 거리
-    //public float throwDistance = 8f; // 오브젝트 던지기 시작하는 거리
-    //public float attackDistance = 2.0f; // 일반 공격 거리
+    public float followDistance = 6.0f; // 따라가기 시작하는 거리
+    public float minFollowDistance = 2.5f;
+    public float maxFollowDistance = 3.1f;
+    
     private Vector2 stopPosition;
 
     // 방향전환
@@ -68,19 +69,28 @@ public class Boss : MonoBehaviour
 
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
-        if(distanceToPlayer <= followDistance) {
+
+        // 고쳐!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        if(distanceToPlayer <= followDistance && distanceToPlayer > minFollowDistance) {
             if(isFollowing) {
                 FollowPlayer();
                 isWandering = false;
             }
             
-        } else {
+        }
+        else if(distanceToPlayer <= minFollowDistance) {
+            isWandering = false;
+            isFollowing = false;
+        }
+        /*
+        else {
+            isFollowing = false;
             if (!isWandering) {
                 stopPosition = transform.position; // 현재 위치를 Wander 시작점으로 설정
                 isWandering = true;
             }
             Wander();
-        }
+        }*/
 
         if(Input.GetKeyDown(KeyCode.Space)) {
             BossDamage(10);
