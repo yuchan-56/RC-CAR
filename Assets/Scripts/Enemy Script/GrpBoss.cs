@@ -35,8 +35,8 @@ public class GrpBoss : Boss
 
     //p3
     public GameObject p3Object;
-    public Vector3 beamPos = new Vector3(-8f, 0, 0);
-    private GameObject newObj;
+    public Vector3 beamPos = new Vector3(-8.5f, 1.5f, 0);
+    private GameObject newObj1, newObj2, newObj3;
 
     protected override void Start()
     {
@@ -241,9 +241,16 @@ public class GrpBoss : Boss
         yield return new WaitForSeconds(sec);
 
         Vector3 spawnPosition = transform.position + beamPos;
-        Quaternion rotation = Quaternion.Euler(0, 0, 7);
+        Quaternion[] rotation = {
+            Quaternion.Euler(0, 0, 7),
+            Quaternion.Euler(0, 0, 3),
+            Quaternion.Euler(0, 0, -1)
+        };
 
-        newObj = Instantiate(p3Object, spawnPosition, rotation);
+        newObj1 = Instantiate(p3Object, spawnPosition, rotation[0]);
+        newObj2 = Instantiate(p3Object, spawnPosition, rotation[1]);
+        newObj3 = Instantiate(p3Object, spawnPosition, rotation[2]);
+        
     }
 
     IEnumerator ShootBeam() {
@@ -259,6 +266,8 @@ public class GrpBoss : Boss
 
     void DestroyBeam()
     {
-        Destroy(newObj);
+        Destroy(newObj1);
+        Destroy(newObj2);
+        Destroy(newObj3);
     }
 }

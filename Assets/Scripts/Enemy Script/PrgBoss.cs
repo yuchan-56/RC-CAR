@@ -31,7 +31,6 @@ public class PrgBoss : Boss
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", true);
-        animator.SetBool("isStop", false);
         
 
         if (attackObject != null)
@@ -50,7 +49,6 @@ public class PrgBoss : Boss
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", true);
-        animator.SetBool("isStop", false);
         
 
         if (p1Object != null)
@@ -72,7 +70,6 @@ public class PrgBoss : Boss
         animator.SetBool("isP3", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", true);
-        animator.SetBool("isStop", false);
     
 
         foreach (GameObject obj in printW)
@@ -123,7 +120,6 @@ public class PrgBoss : Boss
         animator.SetBool("isP2", false);
         animator.SetBool("isAttack", false);
         animator.SetBool("isP3", true);
-        animator.SetBool("isStop", false);
         
         if (p3Object != null)
         {

@@ -103,6 +103,7 @@ public class Enemy : MonoBehaviour
             
             Wander();
         }
+        
 
         // HP 슬라이더 위치 업데이트
         if (hpSlider != null)
@@ -119,6 +120,12 @@ public class Enemy : MonoBehaviour
             EnemyDamage(10);
         }
     }
+
+
+
+
+
+
 
     // -------- enemy move --------
 
@@ -171,6 +178,10 @@ public class Enemy : MonoBehaviour
 
 
 
+
+
+
+
     // Throw 공격
     void ThrowObject(Transform player)
     {
@@ -193,6 +204,9 @@ public class Enemy : MonoBehaviour
         }
     }
 
+
+
+
     // 일반 공격
     void AttackPlayer()
     {
@@ -205,6 +219,11 @@ public class Enemy : MonoBehaviour
     }
 
     
+
+
+
+
+
 
 
     // HP 감소

@@ -28,7 +28,7 @@ public class Boss : MonoBehaviour
 
     public float followDistance = 6.0f; // 따라가기 시작하는 거리
     public float minFollowDistance = 2.5f;
-    public float maxFollowDistance = 3.1f;
+
     
     private Vector2 stopPosition;
 
@@ -140,7 +140,7 @@ public class Boss : MonoBehaviour
     protected virtual void Wander()
     {
         animator.SetBool("isP1", false);
-        animator.SetBool("isP2", false);
+        //animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
 
@@ -157,7 +157,7 @@ public class Boss : MonoBehaviour
     protected virtual void FollowPlayer()
     {
         animator.SetBool("isP1", false);
-        animator.SetBool("isP2", false);
+        //animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
 

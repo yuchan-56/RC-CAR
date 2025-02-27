@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class SysBoss : Boss
 {
+    //attack
+    public GameObject attackObject;
+
     //p2
     public GameObject p2Object;
     //p3
@@ -37,7 +40,12 @@ public class SysBoss : Boss
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
-        animator.SetBool("isStop", false);
+        
+
+        if(attackObject != null) {
+            attackObject.SetActive(true);
+            StartCoroutine(DeactivateAfterDelay(attackObject, 3.0f));
+        }
     }
 
     
@@ -54,7 +62,7 @@ public class SysBoss : Boss
         animator.SetBool("isP1", true);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
-        animator.SetBool("isStop", false);
+        
 
         // 소환
     }
@@ -73,11 +81,11 @@ public class SysBoss : Boss
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", true);
         animator.SetBool("isP3", false);
-        animator.SetBool("isStop", false);
+
 
         if(p2Object != null) {
             p2Object.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(p2Object, 2.0f));
+            StartCoroutine(DeactivateAfterDelay(p2Object, 2.2f));
         }
     }
 
@@ -109,21 +117,22 @@ public class SysBoss : Boss
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", true);
-        animator.SetBool("isStop", false);
 
-
-        if(p2Object != null) {
-            p3Object.SetActive(true);
-            StartCoroutine(MovePos());
-        }
+        StartCoroutine(MovePos());
+        
     }
 
     IEnumerator MovePos() {
-        yield return new WaitForSeconds(1.05f);
+        yield return new WaitForSeconds(1.1f);
+
         animator.SetBool("isP3_2", true);
 
 
-        transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y, player.transform.position.z);
+        transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y - 1.3f, player.transform.position.z);
         
+        if(p3Object != null) {
+            p3Object.SetActive(true);
+            StartCoroutine(DeactivateAfterDelay(p3Object, 2.2f));
+        }
     }
 }

@@ -157,7 +157,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 40
   m_Sprite: {fileID: -1154582450, guid: 3a823d4605fac4d4283caa5b08de4792, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -247,7 +247,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 50
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -296,7 +296,9 @@ MonoBehaviour:
   wanderDistance: 2
   isWandering: 1
   isFollowing: 1
+  isStop: 1
   followDistance: 10
+  minFollowDistance: 2.5
   attackObject: {fileID: 6022876373454425636}
   P1Object: {fileID: 4341261693283614275}
   P3Object: {fileID: 7972150759265757408}

@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 4689850794184457742}
   - component: {fileID: 2381754514401615302}
   - component: {fileID: 8177941253902966994}
-  - component: {fileID: 2643588255197526461}
   m_Layer: 0
   m_Name: attack
   m_TagString: Untagged
@@ -63,7 +62,7 @@ BoxCollider2D:
   m_CallbackLayers:
     serializedVersion: 2
     m_Bits: 4294967295
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: -0.106813565, y: -0.046998113}
@@ -91,22 +90,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2643588255197526461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 843541818344207909}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3be45e3997dad4ebdb202d1968629328, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockbackForce: 20
-  knockbackDuration: 0.5
-  dragAmount: 5
-  gravityScaleDuringKnockback: 0.5
 --- !u!1 &6480154966291780104
 GameObject:
   m_ObjectHideFlags: 0
@@ -245,7 +228,7 @@ MonoBehaviour:
   throwableObjPrefab: {fileID: 6813551019866842665, guid: 37a6887c0462847c2b8cd93f8dcfd0a1, type: 3}
   throwForce: 8
   throwCooldown: 1.5
-  attackObject: {fileID: 0}
+  attackObject: {fileID: 843541818344207909}
   hp: 100
   hpSlider: {fileID: 0}
   hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}

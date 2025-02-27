@@ -199,15 +199,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   hp: 100
   hpSlider: {fileID: 0}
-  hpSliderPrefab: {fileID: 0}
-  animator: {fileID: 0}
+  hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}
+  animator: {fileID: 8127466129754458671}
   isDead: 0
   player: {fileID: 0}
   speed: 1.4
   wanderDistance: 2
   isWandering: 1
   isFollowing: 1
+  isStop: 1
   followDistance: 10
+  minFollowDistance: 2.5
   attackObject: {fileID: 8836719018161425465}
   p1Object: {fileID: 3599141358719822819}
   printW:

@@ -23,9 +23,10 @@ public class SndBoss : Boss
         isFollowing = false;
         isStop = false;
 
+
         animator.SetBool("isAttack", true);
         animator.SetBool("isP1", false);
-        animator.SetBool("isP2", false);
+        //animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isStop", false);
 
@@ -72,13 +73,26 @@ public class SndBoss : Boss
         animator.SetBool("isP3", false);
         animator.SetBool("isStop", false);
 
-        StartCoroutine(P2Count(15.0f));
+        StartCoroutine(Delay(2.0f));
     }
 
-
-    // 고쳐!!!!!!!!!!!!!!!!!!!!!!!
-    IEnumerator P2Count(float sec) {
+    IEnumerator Delay(float sec) {
         yield return new WaitForSeconds(sec);
+
+        isWandering = true;
+        isFollowing = true;
+        isStop = true;
+
+        StartCoroutine(P2Count(20.0f));        
+    }
+
+    IEnumerator P2Count(float sec) {
+        float originalSpeed = speed;  // 기존 속도 저장
+        speed *= 1.5f;
+
+        yield return new WaitForSeconds(sec);
+
+        speed = originalSpeed;
         animator.SetBool("isP2", false);
     }
 
@@ -105,10 +119,18 @@ public class SndBoss : Boss
     {
         yield return new WaitForSeconds(delay);
         obj.SetActive(false);
-        animator.SetBool("isP3", false);
-        animator.SetBool("isP2", false);
-        animator.SetBool("isP1", false);
-        animator.SetBool("isAttack", false);
+
+        if(animator.GetBool("isP2")) {
+            animator.SetBool("isP3", false);
+            animator.SetBool("isP1", false);
+            animator.SetBool("isAttack", false);
+        } else {
+            animator.SetBool("isP3", false);
+            animator.SetBool("isP2", false);
+            animator.SetBool("isP1", false);
+            animator.SetBool("isAttack", false);
+        }
+        
         
 
         isWandering = true;
