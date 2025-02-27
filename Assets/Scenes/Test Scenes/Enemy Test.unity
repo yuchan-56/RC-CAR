@@ -989,6 +989,7 @@ MonoBehaviour:
   wanderDistance: 2
   isWandering: 1
   isFollowing: 1
+  isStop: 1
   followDistance: 10
   minFollowDistance: 2.5
   maxFollowDistance: 3.1
@@ -1544,7 +1545,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6128298700615448055, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

@@ -24,6 +24,7 @@ public class Boss : MonoBehaviour
     public float wanderDistance = 2f;
     public bool isWandering = true;
     public bool isFollowing = true;
+    public bool isStop = true;
 
     public float followDistance = 6.0f; // 따라가기 시작하는 거리
     public float minFollowDistance = 2.5f;
@@ -35,12 +36,21 @@ public class Boss : MonoBehaviour
     private bool facingRight = false; // 적의 현재 바라보는 방향
     private float lastXPosition = 0f;
 
+    protected enum BossState {
+        Idle,
+        Following,
+        Stopping
+    }
+
+    protected BossState currentState = BossState.Idle;
+
 
 
     public virtual void Attack() { }
     public virtual void P1() { }
     public virtual void P2() { }
     public virtual void P3() { }
+
 
 
     protected virtual void Start()
@@ -70,33 +80,61 @@ public class Boss : MonoBehaviour
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
 
-        // 고쳐!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        if(distanceToPlayer <= followDistance && distanceToPlayer > minFollowDistance) {
-            if(isFollowing) {
-                FollowPlayer();
-                isWandering = false;
-            }
-            
+        if (distanceToPlayer <= followDistance && distanceToPlayer > minFollowDistance) 
+        {
+            currentState = BossState.Following;
+        } 
+        else if (distanceToPlayer <= minFollowDistance) 
+        {
+            currentState = BossState.Stopping;
+        } 
+        else 
+        {
+            currentState = BossState.Idle;
         }
-        else if(distanceToPlayer <= minFollowDistance) {
-            isWandering = false;
-            isFollowing = false;
+
+        switch (currentState) 
+        {
+            case BossState.Following:
+                if(isFollowing) {
+                    if (AnimatorHasParameter("isStop")) animator.SetBool("isStop", false);
+                    FollowPlayer();
+                }
+                break;
+            case BossState.Stopping:
+                if(isStop) { StopMoving(); }
+                break;
+            case BossState.Idle:
+                if(isWandering)  {
+                    if (AnimatorHasParameter("isStop")) animator.SetBool("isStop", false);
+                    Wander();
+                }
+                break;
         }
-        /*
-        else {
-            isFollowing = false;
-            if (!isWandering) {
-                stopPosition = transform.position; // 현재 위치를 Wander 시작점으로 설정
-                isWandering = true;
-            }
-            Wander();
-        }*/
 
         if(Input.GetKeyDown(KeyCode.Space)) {
             BossDamage(10);
         }
     }
 
+    protected virtual void StopMoving()
+    {
+        if (AnimatorHasParameter("isStop")) 
+        {
+            animator.SetBool("isStop", true);
+        }
+    }
+    private bool AnimatorHasParameter(string paramName)
+    {
+        foreach (AnimatorControllerParameter param in animator.parameters)
+        {
+            if (param.name == paramName)
+            {
+                return true;
+            }
+        }
+        return false;
+    }
     
 
     protected virtual void Wander()

@@ -31,11 +31,13 @@ public class SysBoss : Boss
     {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isAttack", true);
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
+        animator.SetBool("isStop", false);
     }
 
     
@@ -46,11 +48,13 @@ public class SysBoss : Boss
     {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", true);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
+        animator.SetBool("isStop", false);
 
         // 소환
     }
@@ -63,11 +67,13 @@ public class SysBoss : Boss
     {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", true);
         animator.SetBool("isP3", false);
+        animator.SetBool("isStop", false);
 
         if(p2Object != null) {
             p2Object.SetActive(true);
@@ -86,6 +92,7 @@ public class SysBoss : Boss
 
         isWandering = true;
         isFollowing = true;
+        isStop = true;
     }
 
     
@@ -96,11 +103,13 @@ public class SysBoss : Boss
     {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", true);
+        animator.SetBool("isStop", false);
 
 
         if(p2Object != null) {
@@ -113,7 +122,8 @@ public class SysBoss : Boss
         yield return new WaitForSeconds(1.05f);
         animator.SetBool("isP3_2", true);
 
-        transform.position = new Vector3(player.transform.position.x - 1.5f, player.transform.position.y, player.transform.position.z);
+
+        transform.position = new Vector3(player.transform.position.x + 1.5f, player.transform.position.y, player.transform.position.z);
         
     }
 }

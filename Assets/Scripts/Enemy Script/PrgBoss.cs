@@ -25,11 +25,13 @@ public class PrgBoss : Boss
     public override void Attack() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", true);
+        animator.SetBool("isStop", false);
         
 
         if (attackObject != null)
@@ -42,11 +44,13 @@ public class PrgBoss : Boss
     public override void P1() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", true);
+        animator.SetBool("isStop", false);
         
 
         if (p1Object != null)
@@ -62,11 +66,13 @@ public class PrgBoss : Boss
     public override void P2() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", true);
+        animator.SetBool("isStop", false);
     
 
         foreach (GameObject obj in printW)
@@ -102,6 +108,7 @@ public class PrgBoss : Boss
 
         isWandering = true;
         isFollowing = true;
+        isStop = true;
     }
 
 
@@ -110,11 +117,13 @@ public class PrgBoss : Boss
     public override void P3() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isAttack", false);
         animator.SetBool("isP3", true);
+        animator.SetBool("isStop", false);
         
         if (p3Object != null)
         {
@@ -134,5 +143,6 @@ public class PrgBoss : Boss
 
         isWandering = true;
         isFollowing = true;
+        isStop = true;
     }
 }

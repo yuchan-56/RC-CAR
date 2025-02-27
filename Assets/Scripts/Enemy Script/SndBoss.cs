@@ -21,11 +21,13 @@ public class SndBoss : Boss
     public override void Attack() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isAttack", true);
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
+        animator.SetBool("isStop", false);
 
         if (attackObject != null)
         {
@@ -37,11 +39,13 @@ public class SndBoss : Boss
     public override void P1() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isP1", true);
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
+        animator.SetBool("isStop", false);
 
         if (P1Object != null)
         {
@@ -60,11 +64,13 @@ public class SndBoss : Boss
     public override void P2() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isP2", true);
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isP3", false);
+        animator.SetBool("isStop", false);
 
         StartCoroutine(P2Count(15.0f));
     }
@@ -79,11 +85,13 @@ public class SndBoss : Boss
     public override void P3() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isP3", true);
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
+        animator.SetBool("isStop", false);
 
         if (P3Object != null)
         {
@@ -101,8 +109,10 @@ public class SndBoss : Boss
         animator.SetBool("isP2", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isAttack", false);
+        
 
         isWandering = true;
         isFollowing = true;
+        isStop = true;
     }
 }

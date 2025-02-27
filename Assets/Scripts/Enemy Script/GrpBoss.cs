@@ -48,9 +48,10 @@ public class GrpBoss : Boss
     public override void Attack() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isAttack", true);
-        
+        animator.SetBool("isStop", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isDead", false);
@@ -72,6 +73,7 @@ public class GrpBoss : Boss
         animator.SetBool("isAttack", false);
         isWandering = true;
         isFollowing = true;
+        isStop = true;
     }
 
     void Shoot()
@@ -95,12 +97,13 @@ public class GrpBoss : Boss
     public override void P1() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isDead", false);
-
+        animator.SetBool("isStop", false);
         animator.SetBool("isP1", true);
 
         
@@ -164,21 +167,24 @@ public class GrpBoss : Boss
 
         spawnedObjects.Clear();
         animator.SetBool("isP1", false);
+        
         isWandering = true;
         isFollowing = true;
+        isStop = true;
     }
 
 
     public override void P2() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         // 피회복
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isDead", false);
-
+        animator.SetBool("isStop", false);
         animator.SetBool("isP2", true);
 
         StartCoroutine(GetHP());
@@ -210,6 +216,7 @@ public class GrpBoss : Boss
         animator.SetBool("isP2", false);
         isWandering = true;
         isFollowing = true;
+        isStop = true;
     }
 
 
@@ -217,12 +224,14 @@ public class GrpBoss : Boss
     public override void P3() {
         isWandering = false;
         isFollowing = false;
+        isStop = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", true);
         animator.SetBool("isDead", false);
         animator.SetBool("isP1", false);
+        animator.SetBool("isStop", false);
 
         StartCoroutine(Delaying(0.95f));
         StartCoroutine(ShootBeam());
@@ -245,6 +254,7 @@ public class GrpBoss : Boss
         animator.SetBool("isP3", false);
         isWandering = true;
         isFollowing = true;
+        isStop = true;
     }
 
     void DestroyBeam()
