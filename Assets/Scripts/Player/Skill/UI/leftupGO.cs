@@ -6,8 +6,6 @@ using UnityEngine.UI;
 public class leftupGO : MonoBehaviour
 {
     public Image image;
-    public float blinkInterval = 0.3f;
-    private bool isBlinking = false;
 
     void Awake()
     {
@@ -17,27 +15,11 @@ public class leftupGO : MonoBehaviour
 
     public void ImageAbled()
     {
-        image.enabled = true;
-        if (!isBlinking)
-        {
-            StartCoroutine(BlinkImage());
-        }
+        BlinkController.Instance.RegisterBlinkingImage(image);
     }
 
     public void ImageDisabled()
     {
-        image.enabled = false;
-        isBlinking = false;
-        StopCoroutine(BlinkImage());
-    }
-
-    private IEnumerator BlinkImage()
-    {
-        isBlinking = true;
-        while (isBlinking)
-        {
-            image.enabled = !image.enabled;
-            yield return new WaitForSeconds(blinkInterval);
-        }
+        BlinkController.Instance.UnregisterBlinkingImage(image);
     }
 }
