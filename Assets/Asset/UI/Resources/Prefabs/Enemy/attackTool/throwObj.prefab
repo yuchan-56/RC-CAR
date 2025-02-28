@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 74769225442256146}
   - component: {fileID: 3369310617100989813}
   - component: {fileID: 7644204620036535996}
+  - component: {fileID: 7293407861892883890}
   m_Layer: 0
   m_Name: throwObj
   m_TagString: Untagged
@@ -174,3 +175,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20759c5da08694f50a3bfa4cfe27760f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7293407861892883890
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6813551019866842665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}

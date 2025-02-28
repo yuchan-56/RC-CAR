@@ -9,13 +9,7 @@ public class PlayerDamage : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        playerHP = FindObjectOfType<PlayerHP>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
@@ -23,6 +17,15 @@ public class PlayerDamage : MonoBehaviour
         if(other.CompareTag("Player")) {
             Debug.Log("player damage");
             playerHP.GetDamaged(1);
+
+            PlayerEffect player = other.GetComponent<PlayerEffect>();
+            if (player != null)
+            {
+                //플레이어가 반대쪽으로 넉백되기
+                Vector2 knockbackDriection = (player.transform.position - transform.position).normalized;
+                player.TakeHit(knockbackDriection);
+            }
+            else Debug.Log("Player찾지 못함");
         }
     }
 }

@@ -596,7 +596,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 4190370655393520078, guid: ab602f9ea11924945bd85addd2480900, type: 3}
   m_PrefabInstance: {fileID: 329060273386085801}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215641928}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3d168b3702ae64393bd203e6aefebc37, type: 3}
@@ -992,63 +992,6 @@ SpriteRenderer:
   m_FlipY: 0
   m_DrawMode: 0
   m_Size: {x: 1, y: 1}
-  m_AdaptiveModeThreshold: 0.5
-  m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
-  m_MaskInteraction: 0
-  m_SpriteSortPoint: 0
---- !u!1 &215641928 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 9173984553450709695, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-  m_PrefabInstance: {fileID: 329060273386085801}
-  m_PrefabAsset: {fileID: 0}
---- !u!212 &215641931
-SpriteRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 215641928}
-  m_Enabled: 0
-  m_CastShadows: 0
-  m_ReceiveShadows: 0
-  m_DynamicOccludee: 1
-  m_StaticShadowCaster: 0
-  m_MotionVectors: 1
-  m_LightProbeUsage: 1
-  m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 0
-  m_RayTraceProcedural: 0
-  m_RenderingLayerMask: 1
-  m_RendererPriority: 0
-  m_Materials:
-  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
-  m_StaticBatchInfo:
-    firstSubMesh: 0
-    subMeshCount: 0
-  m_StaticBatchRoot: {fileID: 0}
-  m_ProbeAnchor: {fileID: 0}
-  m_LightProbeVolumeOverride: {fileID: 0}
-  m_ScaleInLightmap: 1
-  m_ReceiveGI: 1
-  m_PreserveUVs: 0
-  m_IgnoreNormalsForChartDetection: 0
-  m_ImportantGI: 0
-  m_StitchLightmapSeams: 1
-  m_SelectedEditorRenderState: 0
-  m_MinimumChartSize: 4
-  m_AutoUVMaxDistance: 0.5
-  m_AutoUVMaxAngle: 89
-  m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
-  m_SortingOrder: 30
-  m_Sprite: {fileID: -366427530, guid: 8cde25ef701124b3ba74c4e0748bc8da, type: 3}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_FlipX: 0
-  m_FlipY: 0
-  m_DrawMode: 0
-  m_Size: {x: 0.23, y: 0.37}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -7434,18 +7377,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 822014124495543704, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_Constraints
-      value: 4
-      objectReference: {fileID: 0}
-    - target: {fileID: 822014124495543704, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_GravityScale
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 1393808806941444715, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_Name
-      value: AttackHitbox
-      objectReference: {fileID: 0}
     - target: {fileID: 2222412872880897373, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_LocalPosition.x
       value: -11
@@ -7486,98 +7417,30 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2507411411084206820, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
+    - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: shakeDuration
+      value: 0.8
       objectReference: {fileID: 0}
-    - target: {fileID: 2608317678897767836, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_Name
-      value: JumpAttackHitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 2709990556405850502, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_Controller
-      value: 
-      objectReference: {fileID: 9100000, guid: 9dee47b5ccd94f44f977d3b9db81d55a, type: 2}
-    - target: {fileID: 2974412998563629493, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_LocalScale.x
+    - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: shakeStrength
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2974412998563629493, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_LocalScale.y
+    - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: knockbackPower
       value: 10
       objectReference: {fileID: 0}
-    - target: {fileID: 2974412998563629493, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2974412998563629493, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2974412998563629493, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0.4
-      objectReference: {fileID: 0}
-    - target: {fileID: 3650686185560753695, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: characterEffect
-      value: 
-      objectReference: {fileID: 107019612}
-    - target: {fileID: 4423285373945916894, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4423285373945916894, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_SortingOrder
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 5534078950874560189, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_SortingOrder
-      value: 40
+    - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: knockbackDuration
+      value: 0.8
       objectReference: {fileID: 0}
     - target: {fileID: 5807001970854001129, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
-    - target: {fileID: 5807001970854001129, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_TagString
-      value: Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920939695342864583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6920939695342864583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_SortingOrder
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7033864137791196703, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_SortingOrder
-      value: 40
-      objectReference: {fileID: 0}
-    - target: {fileID: 7344105796942819253, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_Name
-      value: DashAttackHitBox
-      objectReference: {fileID: 0}
-    - target: {fileID: 7794202340552299335, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8946637185506892649, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_IsTrigger
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 9173984553450709695, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 7270776633800709696, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+    m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 9173984553450709695, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 215641931}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ab602f9ea11924945bd85addd2480900, type: 3}
 --- !u!4 &329060273386085810 stripped
 Transform:
