@@ -11,7 +11,8 @@ public class EveryTimeSchedule : UI_Popup
         S1_1,
         S1_2,
         S1_3,
-        S1_4
+        S1_4,
+        S1_5
 
     };
     enum Line
@@ -42,7 +43,7 @@ public class EveryTimeSchedule : UI_Popup
         GetButton((int)Stage.S1_2).gameObject.AddUIEvent(StageGo);
         GetButton((int)Stage.S1_3).gameObject.AddUIEvent(StageGo);
         GetButton((int)Stage.S1_4).gameObject.AddUIEvent(StageGo);
-
+        GetButton((int)Stage.S1_5).gameObject.AddUIEvent(StageGo);
 
         obj[0] = GetImage((int)Line.S1_1_Line).gameObject;
         obj[1] = GetImage((int)Line.S1_2_Line).gameObject;
