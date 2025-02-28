@@ -116,6 +116,7 @@ public class UI_Manager
         }
         ClosePopUpUI();
     }
+
     public void CloseAllPopUPUI()
     {
         while (_popUpStack.Count > 0)

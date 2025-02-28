@@ -16,7 +16,7 @@ public class Managers : MonoBehaviour
     SceneManagerEx _scene = new SceneManagerEx();
     DataManager _data = new DataManager(); //DataManager가 겹쳐서 추가
     JsonManager _json = new JsonManager();
-
+    SpeechManager _speech = new SpeechManager();
     public static GameManager Game { get { return Instance._game; } }
     public static UI_Manager UI { get { return Instance._ui; } }
     public static InputManager Input { get { return Instance._input; } }
@@ -24,6 +24,7 @@ public class Managers : MonoBehaviour
     public static PoolManager Pool { get { return Instance._pool; } }
     public static DataManager Data { get { return Instance._data; } } 
     public static JsonManager Json {  get { return Instance._json; } }
+    public static SpeechManager Speech {  get { return Instance._speech; } }
 
 
     public static SceneManagerEx Scene { get { return Instance._scene; } }

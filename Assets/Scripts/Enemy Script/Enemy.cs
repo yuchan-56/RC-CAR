@@ -46,8 +46,10 @@ public class Enemy : MonoBehaviour
     public GameObject hpSliderPrefab; // Slider 프리팹 연결
 
     public float attackedRange = 1.5f;
-    
 
+    // Speech
+    private bool speeched = false;
+     
     void Start()
     {
         stopPosition = transform.position;
@@ -87,6 +89,7 @@ public class Enemy : MonoBehaviour
             attackObject.SetActive(false);
 
             // 따라가기
+            SpeechPopUp();
             FollowPlayer();
             isWandering = false;
         }
@@ -220,7 +223,15 @@ public class Enemy : MonoBehaviour
 
     
 
-
+    void SpeechPopUp()
+    {
+        if (!speeched) // 만난적이 있는가?
+        {
+            Managers.Speech.speechTmp = this.gameObject;
+            Managers.UI.ShowPopUpUI<SpeechBalloon>(); ; // 발견시 SpeechBallon 출력 
+            speeched = true;
+        }
+    }
 
 
 
