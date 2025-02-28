@@ -6,11 +6,28 @@ public class SysBoss : Boss
 {
     //attack
     public GameObject attackObject;
+    
+
+    //p1
+    /*
+    public GameObject enemy1;
+    public GameObject enemy2;
+    bool eDead = false;
+    public Vector3[] ePos = new Vector3[2]
+    {
+        new Vector3(-3.0f, 0, 0),
+        new Vector3(-6.0f, 0, 0),
+    };
+    */
+
 
     //p2
     public GameObject p2Object;
     //p3
     public GameObject p3Object;
+
+
+    public BossManager bmScript;
 
 
     protected override void Start()
@@ -35,6 +52,7 @@ public class SysBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
         animator.SetBool("isAttack", true);
         animator.SetBool("isP1", false);
@@ -57,6 +75,7 @@ public class SysBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", true);
@@ -64,8 +83,29 @@ public class SysBoss : Boss
         animator.SetBool("isP3", false);
         
 
-        // 소환
+        //StartCoroutine(Enemy());
     }
+
+    /*
+    IEnumerator Enemy() {
+        GameObject e1 = Instantiate(enemy1, ePos[0], Quaternion.identity);
+        GameObject e2 = Instantiate(enemy2, ePos[1], Quaternion.identity);
+
+        while(!eDead) {
+            if(e1 == null && e2 == null) {
+                eDead = true;
+
+                isWandering = true;
+                isFollowing = true;
+                isStop = true;
+
+                animator.SetBool("isP1", false);
+            }
+        }
+
+        yield return null;
+    }
+    */
 
     
 
@@ -76,6 +116,7 @@ public class SysBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);
@@ -101,6 +142,7 @@ public class SysBoss : Boss
         isWandering = true;
         isFollowing = true;
         isStop = true;
+        bmScript.attackPos = true;
     }
 
     
@@ -112,6 +154,7 @@ public class SysBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", false);

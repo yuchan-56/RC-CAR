@@ -5,8 +5,10 @@ using System.Collections;
 public class BossManager : MonoBehaviour
 {
     private List<Boss> allBosses = new List<Boss>(); // 모든 보스 리스트
-    //private float attackInterval = 5f;
-    //private float timer = 0f;
+    private float attackInterval = 5f;
+    private float timer = 0f;
+
+    public bool attackPos = true;
 
 
 
@@ -19,26 +21,28 @@ public class BossManager : MonoBehaviour
             Debug.Log("감지된 보스: " + boss.GetType().Name);
         }
 
-        /*
+        
         StartCoroutine(RandomBossAttackRoutine());
-        */
+        
     }
 
-    /*
+    
     IEnumerator RandomBossAttackRoutine()
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(attackInterval);
-
-            if (allBosses.Count > 0)
+        if(attackPos) {
+            while (true)
             {
-                List<Boss> aliveBosses = allBosses.FindAll(b => b != null && !b.isDead);
-
-                if (aliveBosses.Count > 0)
+                yield return new WaitForSeconds(attackInterval);
+                
+                if (allBosses.Count > 0)
                 {
-                    Boss randomBoss = aliveBosses[Random.Range(0, aliveBosses.Count)];
-                    ExecuteRandomAttack(randomBoss);
+                    List<Boss> aliveBosses = allBosses.FindAll(b => b != null && !b.isDead);
+
+                    if (aliveBosses.Count > 0)
+                    {
+                        Boss randomBoss = aliveBosses[Random.Range(0, aliveBosses.Count)];
+                        ExecuteRandomAttack(randomBoss);
+                    }
                 }
             }
         }
@@ -59,8 +63,12 @@ public class BossManager : MonoBehaviour
                 Debug.Log(boss.GetType().Name + "이(가) P1 공격!");
                 break;
             case 2:
-                boss.P2();
-                Debug.Log(boss.GetType().Name + "이(가) P2 공격!");
+
+                if(boss.GetType().Name != "GrpBoss") {
+                    boss.P2();
+                    Debug.Log(boss.GetType().Name + "이(가) P2 공격!");
+                }
+
                 break;
             case 3:
                 boss.P3();
@@ -68,19 +76,18 @@ public class BossManager : MonoBehaviour
                 break;
         }
     }
-    */
+
 
 
     void Update()
     {
+        
         if (Input.GetKeyDown(KeyCode.U)) ExecuteBossAction(boss => boss.Attack());
         if (Input.GetKeyDown(KeyCode.I)) ExecuteBossAction(boss => boss.P1());
         if (Input.GetKeyDown(KeyCode.O)) ExecuteBossAction(boss => boss.P2());
         if (Input.GetKeyDown(KeyCode.P)) ExecuteBossAction(boss => boss.P3());
-
-
+        
     }
-
 
     void ExecuteBossAction(System.Action<Boss> action)
     {

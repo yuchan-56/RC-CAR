@@ -5,6 +5,10 @@ using UnityEngine;
 public class PlayerDamage : MonoBehaviour
 {
     public PlayerHP playerHP;
+<<<<<<< Updated upstream
+=======
+
+>>>>>>> Stashed changes
     // Start is called before the first frame update
     void Start()
     {

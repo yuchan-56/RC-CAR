@@ -7,7 +7,7 @@ public class Enemy : MonoBehaviour
 {
     // 좌우이동 + following player
     public Transform player;
-    public float speed = 2f;
+    public float speed = 2.5f;
 
     // 거리제한
     public float wanderDistance = 2f;

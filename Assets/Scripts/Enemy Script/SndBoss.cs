@@ -10,6 +10,8 @@ public class SndBoss : Boss
     public GameObject P1Object;
     public GameObject P3Object;
 
+    public BossManager bmScript;
+
 
     protected override void Start()
     {
@@ -22,6 +24,7 @@ public class SndBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
 
         animator.SetBool("isAttack", true);
@@ -41,6 +44,7 @@ public class SndBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
         animator.SetBool("isP1", true);
         animator.SetBool("isAttack", false);
@@ -66,6 +70,7 @@ public class SndBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
         animator.SetBool("isP2", true);
         animator.SetBool("isAttack", false);
@@ -82,6 +87,7 @@ public class SndBoss : Boss
         isWandering = true;
         isFollowing = true;
         isStop = true;
+        bmScript.attackPos = true;
 
         StartCoroutine(P2Count(20.0f));        
     }
@@ -100,6 +106,7 @@ public class SndBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
         animator.SetBool("isP3", true);
         animator.SetBool("isAttack", false);
@@ -136,5 +143,6 @@ public class SndBoss : Boss
         isWandering = true;
         isFollowing = true;
         isStop = true;
+        bmScript.attackPos = true;
     }
 }
