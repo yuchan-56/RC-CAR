@@ -6,7 +6,7 @@ public class BossManager : MonoBehaviour
 {
     private List<Boss> allBosses = new List<Boss>(); // 모든 보스 리스트
     private float attackInterval = 5f;
-    private float timer = 0f;
+    //private float timer = 0f;
 
     public bool attackPos = true;
 
@@ -63,7 +63,6 @@ public class BossManager : MonoBehaviour
                 Debug.Log(boss.GetType().Name + "이(가) P1 공격!");
                 break;
             case 2:
-
                 if(boss.GetType().Name != "GrpBoss") {
                     boss.P2();
                     Debug.Log(boss.GetType().Name + "이(가) P2 공격!");

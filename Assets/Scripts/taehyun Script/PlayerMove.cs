@@ -267,7 +267,7 @@ public class PlayerMove : MonoBehaviour
             IsComboDashing = true;
            
 
-            if (IsJumping && !hasDoubleJumped && IsComboAttacking && !hasJumpAttacked)
+            if (IsJumping && !hasDoubleJumped && IsComboDashing && !hasJumpAttacked)
             {
                 IsComboDashing = true;
                 hasDoubleJumped = true;
