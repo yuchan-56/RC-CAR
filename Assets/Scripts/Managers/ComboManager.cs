@@ -157,9 +157,9 @@ public class ComboManager : MonoBehaviour
                     {
                        
                         Debug.Log("JumpDash active");
-                        player.TriggerJump();
                         player.TriggerDash();
-                        player.animator.SetTrigger("JumpDash");
+                        player.TriggerJump();
+                        player.SkillMotionActive("JumpDash");
 
                     }
                     else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))

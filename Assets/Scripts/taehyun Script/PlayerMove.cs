@@ -12,6 +12,10 @@ public class PlayerMove : MonoBehaviour
     bool IsJumping = false;
     bool IsAttacking = false;
     bool IsComboAttacking = false;
+    bool hasDoubleJumped = false;
+    bool hasJumpAttacked = false;
+    bool hasJumpDashed = false;
+    bool IsComboDashing = false;
     float acceleration = 8f;
     float deceleration = 8f;
     float jumpforce = 10f;
@@ -28,7 +32,7 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Managers.Game.GameStart(); 
+        Managers.Game.GameStart();
         rigid = GetComponent<Rigidbody2D>();
         camera = FindObjectOfType<CameraMove>();
         animator = GetComponent<Animator>();
@@ -57,7 +61,7 @@ public class PlayerMove : MonoBehaviour
             movedirection = 0;
             animator.SetBool("player_run", false);
         }
-       
+
 
     }
     void FixedUpdate()
@@ -81,7 +85,7 @@ public class PlayerMove : MonoBehaviour
     }
     public IEnumerator Jump()
     {
-        if (!IsJumping && isground && Managers.Game.currentState == GameManager.GameState.Battle)
+        if (Managers.Game.currentState == GameManager.GameState.Battle)
         {
             IsJumping = true; // 점프 시작
             isground = false; // 착지 상태 초기화 (Raycast가 정확히 감지되도록)
@@ -104,10 +108,12 @@ public class PlayerMove : MonoBehaviour
 
     public void TriggerJump()
     {
-        if (!IsJumping)
+        if (!IsJumping && isground)
         {
             StartCoroutine(Jump());
         }
+        else if (IsComboAttacking)
+            StartCoroutine(Jump());
         else
         {
             Debug.Log("Cant Jump");
@@ -142,6 +148,9 @@ public class PlayerMove : MonoBehaviour
         if (hit.collider != null)
         {
             isground = true;
+            hasDoubleJumped = false;
+            hasJumpAttacked = false;
+            hasJumpDashed = false;
         }
         else
         {
@@ -156,7 +165,7 @@ public class PlayerMove : MonoBehaviour
 
     public void TriggerDash() {
 
-        if (canDash && movedirection != 0)
+        if (canDash )
         {
             StartCoroutine(Dash());
             animator.SetTrigger("dash");
@@ -167,7 +176,9 @@ public class PlayerMove : MonoBehaviour
     {
         isDashing = true;
         canDash = false;
-        rigid.velocity = new Vector2(movedirection * dashSpeed, rigid.velocity.y);
+        float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
+        rigid.velocity = new Vector2(dashDirection * dashSpeed, rigid.velocity.y);
+
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         yield return new WaitForSeconds(dashCoolDown);
@@ -180,7 +191,7 @@ public class PlayerMove : MonoBehaviour
         if (tag != "Player")
         {
 
-            return; 
+            return;
         }
 
 
@@ -192,7 +203,7 @@ public class PlayerMove : MonoBehaviour
                 Managers.UI.ShowPopUpUI<MapMoving>();
                 Managers.Game.GoJump();
                 return;
-              
+
             }
         }
 
@@ -209,11 +220,15 @@ public class PlayerMove : MonoBehaviour
     }
     public void SkillMotionActive(string ComboType)
     {
-        if(!IsAttacking || !IsComboAttacking)
-        StartCoroutine(PerformAttack(ComboType));
+        if (!IsAttacking || !IsComboAttacking)
+            StartCoroutine(PerformAttack(ComboType));
     }
     IEnumerator PerformAttack(string ComboType)
     {
+        // 공격 중이면 새로운 공격 실행하지 않음
+        if (IsAttacking || IsComboAttacking ||IsComboDashing)
+            yield break;
+
         if (ComboType == "Attack")
         {
             IsAttacking = true;
@@ -223,21 +238,52 @@ public class PlayerMove : MonoBehaviour
         }
         else if (ComboType == "DashAttack")
         {
-            
             IsComboAttacking = true;
             animator.SetTrigger("DashAttack");
             yield return new WaitForSeconds(1f);
-            IsComboAttacking= false;
+            IsComboAttacking = false;
         }
         else if (ComboType == "JumpAttack")
         {
-            
             IsComboAttacking = true;
+            
+
+            // 점프 중이고, 아직 2단 점프를 하지 않았고, 점프 어택도 안 했으면 실행
+            if (IsJumping && !hasDoubleJumped && !hasJumpAttacked && IsComboAttacking)
+            {
+                hasDoubleJumped = true;
+                hasJumpAttacked = true;
+                IsJumping = false;
+                yield return new WaitForSeconds(0.1f);
+                StartCoroutine(Jump());
+                animator.SetTrigger("JumpAttack");
+            }
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(1f);
-            IsComboAttacking = false;
-
+            IsComboAttacking = false;  // 공격 종료 후 상태 초기화
         }
+        else if (ComboType == "JumpDash")
+        {
+            IsComboDashing = true;
+           
 
+            if (IsJumping && !hasDoubleJumped && IsComboAttacking && !hasJumpAttacked)
+            {
+                IsComboDashing = true;
+                hasDoubleJumped = true;
+                hasJumpDashed = true;
+                IsJumping = false;
+                yield return new WaitForSeconds(0.1f);
+                StartCoroutine(Jump());
+                StartCoroutine(Dash());
+                animator.SetTrigger("JumpDash");
+            }
+            animator.SetTrigger("JumpDash");
+            yield return new WaitForSeconds(1f);
+            IsComboDashing = false;  // 공격 종료 후 상태 초기화
+        }
     }
+
+
+
 }
