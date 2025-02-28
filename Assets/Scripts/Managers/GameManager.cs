@@ -62,7 +62,7 @@ public class GameManager
 
     public bool CheckNextRound()
     {
-        if(roundEnemyCount[(int)currentGround]-2 ==0) // 적의 수가 0 이면 true
+        if(roundEnemyCount[(int)currentGround]-1 ==0) // 적의 수가 0 이면 true
         {
             return true; 
         }
