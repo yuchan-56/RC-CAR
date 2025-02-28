@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: c5fcb5a75193ea5499f015db2a6f09aa
+guid: af2d8252d9637d448b84d52d97d6cce6
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -110,106 +110,85 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump effect_0
+      name: hp-Sheet_0
       rect:
         serializedVersion: 2
-        x: 13
-        y: 37
-        width: 64
-        height: 64
+        x: 10
+        y: 31
+        width: 31
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 96e2625daa3d8144a9d8020d7d794a49
-      internalID: 2137136898
+      spriteID: 7686497a086c34147a49b82c9ae237dc
+      internalID: 2055050321
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump effect_1
+      name: hp-Sheet_1
       rect:
         serializedVersion: 2
-        x: 141
-        y: 37
-        width: 64
-        height: 64
+        x: 74
+        y: 31
+        width: 31
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1eff3f952d94c924981a0bc518024027
-      internalID: 1823977331
+      spriteID: b23073f0fb4a5514f826fc898e53afa9
+      internalID: -1588285509
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump effect_2
+      name: hp-Sheet_2
       rect:
         serializedVersion: 2
-        x: 269
-        y: 37
-        width: 64
-        height: 64
+        x: 138
+        y: 31
+        width: 31
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 48f27dc93a2923e42bc629696deec40d
-      internalID: -1062971373
+      spriteID: 99ef54048aa48ce4598f6980a0edec0d
+      internalID: -1701586586
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump effect_3
+      name: hp-Sheet_3
       rect:
         serializedVersion: 2
-        x: 397
-        y: 37
-        width: 64
-        height: 64
+        x: 202
+        y: 31
+        width: 31
+        height: 24
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5665eb221bb700046a86d37fe58c6bfd
-      internalID: -1853040736
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump effect_4
-      rect:
-        serializedVersion: 2
-        x: 525
-        y: 37
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 33fb2261fb43a694dae34c245a4cd30d
-      internalID: -1721351740
+      spriteID: a1e764f8e5bbece478e0b603af9849bc
+      internalID: -1824974043
       vertices: []
       indices: 
       edges: []
@@ -225,11 +204,10 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      jump effect_0: 2137136898
-      jump effect_1: 1823977331
-      jump effect_2: -1062971373
-      jump effect_3: -1853040736
-      jump effect_4: -1721351740
+      hp-Sheet_0: 2055050321
+      hp-Sheet_1: -1588285509
+      hp-Sheet_2: -1701586586
+      hp-Sheet_3: -1824974043
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

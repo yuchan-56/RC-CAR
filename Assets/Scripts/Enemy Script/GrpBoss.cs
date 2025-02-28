@@ -38,6 +38,9 @@ public class GrpBoss : Boss
     public Vector3 beamPos = new Vector3(-8.5f, 1.5f, 0);
     private GameObject newObj1, newObj2, newObj3;
 
+    public BossManager bmScript;
+
+
     protected override void Start()
     {
         base.Start();
@@ -49,6 +52,9 @@ public class GrpBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
+
+        //FacePlayer();
 
         animator.SetBool("isAttack", true);
         animator.SetBool("isStop", false);
@@ -60,33 +66,32 @@ public class GrpBoss : Boss
         StartCoroutine(ShootBullets(3));
     }
 
+    
 
     IEnumerator ShootBullets(int shotCount)
     {
         for (int i = 0; i < shotCount; i++)
         {
             Shoot();
-            yield return new WaitForSeconds(fireRate); // ✅ 발사 간격 유지
+            yield return new WaitForSeconds(fireRate);
         }
 
-        // ✅ 3발 발사 후 다시 Wandering 또는 Following 상태로 복귀
         animator.SetBool("isAttack", false);
         isWandering = true;
         isFollowing = true;
         isStop = true;
+        bmScript.attackPos = true;
     }
 
     void Shoot()
     {
         if (bulletPrefab == null || player == null) return; // 플레이어가 없으면 실행 X
 
-        // ✅ 총알 생성 (firePoint에서 발사)
         GameObject bullet = Instantiate(bulletPrefab, transform.position + firePoint, Quaternion.identity);
         Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
 
         if (bulletRb != null)
         {
-            // ✅ 플레이어 방향으로 총알 발사
             Vector2 direction = (player.position - transform.position).normalized; // 방향 벡터 계산
             bulletRb.velocity = direction * bulletSpeed; // 방향 적용
         }
@@ -98,6 +103,7 @@ public class GrpBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
@@ -171,6 +177,7 @@ public class GrpBoss : Boss
         isWandering = true;
         isFollowing = true;
         isStop = true;
+        bmScript.attackPos = true;
     }
 
 
@@ -178,6 +185,7 @@ public class GrpBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
 
         // 피회복
         animator.SetBool("isAttack", false);
@@ -217,6 +225,7 @@ public class GrpBoss : Boss
         isWandering = true;
         isFollowing = true;
         isStop = true;
+        bmScript.attackPos = true;
     }
 
 
@@ -225,6 +234,9 @@ public class GrpBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
+
+        //FacePlayer();
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
@@ -269,5 +281,22 @@ public class GrpBoss : Boss
         Destroy(newObj1);
         Destroy(newObj2);
         Destroy(newObj3);
+    }
+
+
+    void FacePlayer()
+    {
+       if (player == null) return;
+
+        Vector3 direction = player.position - transform.position;
+
+        if (direction.x > 0)
+        {
+            transform.eulerAngles = new Vector3(0, 0, 0); // 플레이어가 오른쪽에 있으면 정방향
+        }
+        else
+        {
+            transform.eulerAngles = new Vector3(0, 180, 0); // 플레이어가 왼쪽에 있으면 180도 회전
+        }
     }
 }

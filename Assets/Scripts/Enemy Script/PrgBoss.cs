@@ -14,6 +14,9 @@ public class PrgBoss : Boss
     public GameObject p3Object;
 
 
+    public BossManager bmScript;
+
+
 
     protected override void Start()
     {
@@ -26,6 +29,8 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
+        
 
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
@@ -44,7 +49,8 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
-
+        bmScript.attackPos = false;
+        
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
@@ -65,6 +71,8 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
+        
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP3", false);
@@ -106,6 +114,8 @@ public class PrgBoss : Boss
         isWandering = true;
         isFollowing = true;
         isStop = true;
+        bmScript.attackPos = true;
+        
     }
 
 
@@ -115,6 +125,8 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        bmScript.attackPos = false;
+        
 
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
@@ -140,5 +152,7 @@ public class PrgBoss : Boss
         isWandering = true;
         isFollowing = true;
         isStop = true;
+        bmScript.attackPos = true;
+        
     }
 }

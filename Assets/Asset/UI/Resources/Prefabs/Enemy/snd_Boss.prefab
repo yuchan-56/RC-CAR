@@ -247,7 +247,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 50
+  m_Mass: 9999
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 1
@@ -274,6 +274,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8dab13f34bcd14509928cccd75ed899b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackPos: 1
 --- !u!114 &4603602336885974227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -292,7 +293,7 @@ MonoBehaviour:
   animator: {fileID: 9180770424745071920}
   isDead: 0
   player: {fileID: 0}
-  speed: 1.5
+  speed: 2
   wanderDistance: 2
   isWandering: 1
   isFollowing: 1
@@ -302,6 +303,7 @@ MonoBehaviour:
   attackObject: {fileID: 6022876373454425636}
   P1Object: {fileID: 4341261693283614275}
   P3Object: {fileID: 7972150759265757408}
+  bmScript: {fileID: 1254339041719798857}
 --- !u!1 &7972150759265757408
 GameObject:
   m_ObjectHideFlags: 0
