@@ -7419,19 +7419,19 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: shakeDuration
-      value: 0.8
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: shakeStrength
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: knockbackPower
-      value: 10
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: knockbackDuration
-      value: 0.8
+      value: 0.15
       objectReference: {fileID: 0}
     - target: {fileID: 5807001970854001129, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_Name
