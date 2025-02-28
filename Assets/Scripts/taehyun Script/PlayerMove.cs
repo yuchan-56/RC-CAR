@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     float currentspeed;
     float movedirection;
     bool IsJumping = false;
+    bool IsAttacking = false;
     float acceleration = 8f;
     float deceleration = 8f;
     float jumpforce = 10f;
@@ -207,25 +208,31 @@ public class PlayerMove : MonoBehaviour
     }
     public void SkillMotionActive(string ComboType)
     {
+        if(!IsAttacking)
         StartCoroutine(PerformAttack(ComboType));
     }
     IEnumerator PerformAttack(string ComboType)
     {
-        if (ComboType == "Attack")
+        if (ComboType == "Attack" && !IsAttacking)
         {
+            IsAttacking = true;
             animator.SetTrigger("Attack");
-            yield return null;
+            yield return new WaitForSeconds(1f);
+            IsAttacking = false;
         }
         else if (ComboType == "DashAttack")
         {
+            IsAttacking = true;
             animator.SetTrigger("DashAttack");
-            yield return null;
+            yield return new WaitForSeconds(1f);
+            IsAttacking = false;
         }
         else if (ComboType == "JumpAttack")
         {
-
+            IsAttacking = true;
             animator.SetTrigger("JumpAttack");
-            yield return null;
+            yield return new WaitForSeconds(1f);
+            IsAttacking = false;
 
         }
         else if (ComboType == "JumpDash")
