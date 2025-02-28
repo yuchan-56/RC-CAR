@@ -1,102 +1,52 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class PlayerHP : MonoBehaviour
 {
-    public Image[] HPimage;
-    int playerHP = 3;
+    public Image image;
+    public Sprite[] sprites;
+    public int currentHP = 3;
 
-    void Awake()
+    void Start()
     {
-        HPimage = GetComponentsInChildren<Image>();
-        for (int i = 0; i < HPimage.Length; i++)
+        if (image == null)
+            image = GetComponent<Image>();
+
+        UpdateHPUI();
+    }
+
+    public void GetDamaged(int damageAmount)
+    {
+        currentHP -= damageAmount;
+
+        if (currentHP < 0)
+            currentHP = 0;
+
+        UpdateHPUI();
+
+        if (currentHP == 0)
         {
-            HPimage[i].enabled = true;
+            Debug.Log("GameOver");
         }
     }
 
-    public void GetDamaged(int damagedamount)//damagedamount에 얼마만큼의 데미지를 받았는지 정수값 대입
+    public void HpRecovery()
     {
-        switch(damagedamount)
+        if (currentHP >= 3)
         {
-            case 0:
-                {
-                    break;
-                }
-            case 1:
-                {
-                    if (playerHP > 0)
-                        {
-                        playerHP--;
-                        HPimage[playerHP].enabled = false;
-                    }
-                    break;
-                }
-            case 2:
-                {
-                    if (playerHP > 1)
-                    {
-                        playerHP = playerHP - 2;
-                        if(HPimage[2].enabled)
-                        {
-                            HPimage[2].enabled = false;
-                            HPimage[1].enabled = false;
-                        }
-                        else
-                        {
-                            HPimage[1].enabled = false;
-                            HPimage[0].enabled = false;
-                        }
-                    }
-
-                    else
-                    {
-                        playerHP = 0;
-                        HPimage[0].enabled = false;
-                    }
-
-                    break;
-                }
-            case 3:
-                {
-                    for (int i = 2; i >= 0; i--)
-                    {
-                        HPimage[i].enabled = false;
-                    }
-                    break;
-                }
+            Debug.Log("HP already Full");
+            return;
         }
 
-        if (playerHP == 0)
-        {
-            Debug.Log("Game Over");
-        }
+        currentHP++;
+        UpdateHPUI();
     }
 
-    public void StaminaRecovery()
+    private void UpdateHPUI()
     {
-        if (playerHP == 1)
+        if (currentHP >= 0 && currentHP < sprites.Length)
         {
-            playerHP++;
-            HPimage[1].enabled = true;
-        }
-
-        else if(playerHP == 2)
-        {
-            playerHP++;
-            HPimage[2].enabled = true;
-        }
-
-        else if(playerHP == 3)
-        {
-            Debug.Log("Aleady fully Recovered");
-        }
-
-        else
-        {
-            //empty
+            image.sprite = sprites[currentHP];
         }
     }
 }
