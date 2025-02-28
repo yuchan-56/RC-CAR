@@ -26,6 +26,6 @@ public class PlayerSkills : MonoBehaviour
 
     void JumpButtonClicked()
     {
-        player.jump();
+        player.TriggerJump();
     }
 }

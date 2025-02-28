@@ -9,6 +9,7 @@ public class PlayerMove : MonoBehaviour
     float maxspeed = 7f;
     float currentspeed;
     float movedirection;
+    bool IsJumping = false;
     float acceleration = 8f;
     float deceleration = 8f;
     float jumpforce = 10f;
@@ -25,9 +26,9 @@ public class PlayerMove : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        Managers.Game.GameStart(); // Player�� ������ ���ӽ������� ����.
+        Managers.Game.GameStart(); 
         rigid = GetComponent<Rigidbody2D>();
-        camera = FindObjectOfType<CameraMove>();// CmeraUpdate�ޱ�
+        camera = FindObjectOfType<CameraMove>();
         animator = GetComponent<Animator>();
         initialScale = transform.localScale;
     }
@@ -54,12 +55,12 @@ public class PlayerMove : MonoBehaviour
             movedirection = 0;
             animator.SetBool("player_run", false);
         }
-
+       
 
     }
     void FixedUpdate()
     {
-       
+
         CheckGround();
         if (!isDashing)
         {
@@ -76,18 +77,39 @@ public class PlayerMove : MonoBehaviour
         }
 
     }
-    public void jump()
+    public IEnumerator Jump()
     {
-
-        if (isground && Managers.Game.currentState == GameManager.GameState.Battle) // ���� �������� ���� üũ)
+        if (!IsJumping && isground && Managers.Game.currentState == GameManager.GameState.Battle)
         {
-            rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
-            Debug.Log("Jump");
+            IsJumping = true; // 점프 시작
+            isground = false; // 착지 상태 초기화 (Raycast가 정확히 감지되도록)
+            rigid.velocity = new Vector2(rigid.velocity.x, jumpforce); // 기존 속도 반영
             animator.SetTrigger("jump");
+            Debug.Log("Jump");
 
+            // 착지 전까지 점프 불가능
+            yield return new WaitForSeconds(0.1f);
+
+            // 착지를 감지할 때까지 대기 (Raycast로 다시 갱신)
+            while (!isground)
+            {
+                yield return null;
+            }
+
+            IsJumping = false; // 착지 완료 후 점프 가능
         }
-        else Debug.Log("Cant Jump");
+    }
 
+    public void TriggerJump()
+    {
+        if (!IsJumping)
+        {
+            StartCoroutine(Jump());
+        }
+        else
+        {
+            Debug.Log("Cant Jump");
+        }
     }
     public void OnLeftButtonDown()
     {
@@ -114,7 +136,7 @@ public class PlayerMove : MonoBehaviour
     }
     void CheckGround()
     {
-        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 2.5f, LayerMask.GetMask("groundLayer")); // 10f�� ĳ������ ũ�� ��, 5/2 = 2.5f
+        RaycastHit2D hit = Physics2D.Raycast(transform.position, Vector2.down, 2.0f, LayerMask.GetMask("groundLayer")); // 10f�� ĳ������ ũ�� ��, 5/2 = 2.5f
         if (hit.collider != null)
         {
             isground = true;

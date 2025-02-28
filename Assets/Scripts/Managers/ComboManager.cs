@@ -156,7 +156,7 @@ public class ComboManager : MonoBehaviour
                     if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))
                     {
                         Debug.Log("JumpDash active");
-                        player.jump();
+                        player.TriggerJump();
                         player.TriggerDash();
                         player.SkillMotionActive("JumpDash");
                     }
@@ -170,7 +170,7 @@ public class ComboManager : MonoBehaviour
                     else if (InputButton.Contains("Jump") && InputButton.Contains("Attack"))
                     {
                         Debug.Log("JumpAttack active");
-                        player.jump();
+                        player.TriggerJump();
                         jumpAttack.SkillMotionActive();
                         player.SkillMotionActive("JumpAttack");
                     }
