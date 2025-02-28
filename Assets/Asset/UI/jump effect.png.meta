@@ -197,9 +197,9 @@ TextureImporter:
       name: jump effect_4
       rect:
         serializedVersion: 2
-        x: 526
+        x: 525
         y: 37
-        width: 63
+        width: 64
         height: 64
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
