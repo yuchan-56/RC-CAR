@@ -112,7 +112,7 @@ public class PlayerMove : MonoBehaviour
         {
             StartCoroutine(Jump());
         }
-        else if (IsComboAttacking)
+        else if (IsComboAttacking || IsComboDashing)
             StartCoroutine(Jump());
         else
         {
@@ -226,10 +226,10 @@ public class PlayerMove : MonoBehaviour
     IEnumerator PerformAttack(string ComboType)
     {
         // 공격 중이면 새로운 공격 실행하지 않음
-        if (IsAttacking || IsComboAttacking ||IsComboDashing)
+        if (IsAttacking)
             yield break;
 
-        if (ComboType == "Attack")
+        if (ComboType == "Attack") 
         {
             IsAttacking = true;
             animator.SetTrigger("Attack");
@@ -249,7 +249,7 @@ public class PlayerMove : MonoBehaviour
             
 
             // 점프 중이고, 아직 2단 점프를 하지 않았고, 점프 어택도 안 했으면 실행
-            if (IsJumping && !hasDoubleJumped && !hasJumpAttacked && IsComboAttacking)
+            if (IsJumping && !hasDoubleJumped && !hasJumpAttacked )
             {
                 hasDoubleJumped = true;
                 hasJumpAttacked = true;
@@ -257,7 +257,9 @@ public class PlayerMove : MonoBehaviour
                 yield return new WaitForSeconds(0.1f);
                 StartCoroutine(Jump());
                 animator.SetTrigger("JumpAttack");
+                IsJumping = true;
             }
+            StartCoroutine(Jump());
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(1f);
             IsComboAttacking = false;  // 공격 종료 후 상태 초기화
@@ -267,7 +269,7 @@ public class PlayerMove : MonoBehaviour
             IsComboDashing = true;
            
 
-            if (IsJumping && !hasDoubleJumped && IsComboDashing && !hasJumpAttacked)
+            if (IsJumping && !hasDoubleJumped && IsComboDashing )
             {
                 IsComboDashing = true;
                 hasDoubleJumped = true;
@@ -278,6 +280,8 @@ public class PlayerMove : MonoBehaviour
                 StartCoroutine(Dash());
                 animator.SetTrigger("JumpDash");
             }
+            StartCoroutine(Jump());
+            StartCoroutine(Dash());
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(1f);
             IsComboDashing = false;  // 공격 종료 후 상태 초기화
