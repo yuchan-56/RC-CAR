@@ -260,7 +260,7 @@ public class PlayerMove : MonoBehaviour
             TriggerDash();
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(1f);
-            IsComboDashing = false;  // 공격 종료 후 상태 초기화
+            IsComboAttacking = false;  // 공격 종료 후 상태 초기화
         }
     }
 
