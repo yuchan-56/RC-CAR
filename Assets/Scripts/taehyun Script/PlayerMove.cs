@@ -112,8 +112,11 @@ public class PlayerMove : MonoBehaviour
         {
             StartCoroutine(Jump());
         }
-        else if (IsComboAttacking || IsComboDashing)
+        else if (!isground && IsComboAttacking && !hasDoubleJumped)
+        {
             StartCoroutine(Jump());
+            hasDoubleJumped = true;
+        }
         else
         {
             Debug.Log("Cant Jump");
@@ -149,8 +152,6 @@ public class PlayerMove : MonoBehaviour
         {
             isground = true;
             hasDoubleJumped = false;
-            hasJumpAttacked = false;
-            hasJumpDashed = false;
         }
         else
         {
@@ -165,7 +166,7 @@ public class PlayerMove : MonoBehaviour
 
     public void TriggerDash() {
 
-        if (canDash )
+        if (canDash)
         {
             StartCoroutine(Dash());
             animator.SetTrigger("dash");
@@ -239,6 +240,7 @@ public class PlayerMove : MonoBehaviour
         else if (ComboType == "DashAttack")
         {
             IsComboAttacking = true;
+            TriggerDash();
             animator.SetTrigger("DashAttack");
             yield return new WaitForSeconds(1f);
             IsComboAttacking = false;
@@ -246,42 +248,16 @@ public class PlayerMove : MonoBehaviour
         else if (ComboType == "JumpAttack")
         {
             IsComboAttacking = true;
-            
-
-            // 점프 중이고, 아직 2단 점프를 하지 않았고, 점프 어택도 안 했으면 실행
-            if (IsJumping && !hasDoubleJumped && !hasJumpAttacked )
-            {
-                hasDoubleJumped = true;
-                hasJumpAttacked = true;
-                IsJumping = false;
-                yield return new WaitForSeconds(0.1f);
-                StartCoroutine(Jump());
-                animator.SetTrigger("JumpAttack");
-                IsJumping = true;
-            }
-            StartCoroutine(Jump());
+            TriggerJump();
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(1f);
             IsComboAttacking = false;  // 공격 종료 후 상태 초기화
         }
         else if (ComboType == "JumpDash")
         {
-            IsComboDashing = true;
-           
-
-            if (IsJumping && !hasDoubleJumped && IsComboDashing )
-            {
-                IsComboDashing = true;
-                hasDoubleJumped = true;
-                hasJumpDashed = true;
-                IsJumping = false;
-                yield return new WaitForSeconds(0.1f);
-                StartCoroutine(Jump());
-                StartCoroutine(Dash());
-                animator.SetTrigger("JumpDash");
-            }
-            StartCoroutine(Jump());
-            StartCoroutine(Dash());
+            IsComboAttacking = true;
+            TriggerJump();
+            TriggerDash();
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(1f);
             IsComboDashing = false;  // 공격 종료 후 상태 초기화

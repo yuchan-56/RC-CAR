@@ -228,22 +228,21 @@ public class ComboManager : MonoBehaviour
                     {
 
                         Debug.Log("JumpDash active");
-                        player.TriggerDash();
-                        player.TriggerJump();
+                       
                         player.SkillMotionActive("JumpDash");
 
                     }
                     else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))
                     {
                         Debug.Log("DashAttack active");
-                        player.TriggerDash();
+                        
                         dashAttack.SkillMotionActive();
                         player.SkillMotionActive("DashAttack");
                     }
                     else if (InputButton.Contains("Jump") && InputButton.Contains("Attack"))
                     {
                         Debug.Log("JumpAttack active");
-                        player.TriggerJump();
+                    
                         jumpAttack.SkillMotionActive();
                         player.SkillMotionActive("JumpAttack");
                     }
