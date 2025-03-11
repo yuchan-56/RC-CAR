@@ -88,8 +88,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2435ed0b1ffaf384f821143f2ab612fe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  blinkInterval: 0.3
+  image: {fileID: 5388435455670639689}
 --- !u!1 &676550162923914395
 GameObject:
   m_ObjectHideFlags: 0
@@ -178,8 +177,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db71fbe191852734ca9bce2251fe2597, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  blinkInterval: 0.3
+  image: {fileID: 4040820859832022896}
 --- !u!1 &1760821240984535267
 GameObject:
   m_ObjectHideFlags: 0
@@ -268,8 +266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 811777e10d84ae64898b129ea27de3cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  blinkInterval: 0.3
+  image: {fileID: 6049241825105969528}
 --- !u!1 &3026659843796333526
 GameObject:
   m_ObjectHideFlags: 0
@@ -512,8 +509,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 75c736f532acbf644bbedd466dd89dae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  blinkInterval: 0.3
+  image: {fileID: 4900363722209471381}
 --- !u!1 &4596469670874685462
 GameObject:
   m_ObjectHideFlags: 0
@@ -602,8 +598,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc8eeda5412019949b317c3ad6c5aa91, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  blinkInterval: 0.3
+  image: {fileID: 69299106570983765}
 --- !u!1 &5005965730326375784
 GameObject:
   m_ObjectHideFlags: 0
@@ -770,6 +765,55 @@ MonoBehaviour:
   - {fileID: -2020245955, guid: a953feefacf5aed4093da759e1a76860, type: 3}
   frameRate: 0.1
   isAnimating: 0
+--- !u!1 &5080410039705023249
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3805745785009392178}
+  - component: {fileID: 8815239342373864393}
+  m_Layer: 0
+  m_Name: BlinkController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &3805745785009392178
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5080410039705023249}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5883138879556101759}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 100, y: 100}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &8815239342373864393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5080410039705023249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edbb73ceb89026a4a88e942cdcecec5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  blinkInterval: 0.3
 --- !u!1 &5586671419804079879
 GameObject:
   m_ObjectHideFlags: 0
@@ -990,8 +1034,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: da1040193b814704bbb885167d2e41e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  blinkInterval: 0.3
+  image: {fileID: 4097878526258016620}
 --- !u!1 &5783536347022065643
 GameObject:
   m_ObjectHideFlags: 0
@@ -1354,8 +1397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c4a783786cc6c49ab57a03dfd605be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  blinkInterval: 0.3
+  image: {fileID: 146664933545184473}
 --- !u!1 &7403438865436677800
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,6 +1445,7 @@ RectTransform:
   - {fileID: 5567277740835283262}
   - {fileID: 6202860335107564305}
   - {fileID: 3357303078030722126}
+  - {fileID: 3805745785009392178}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -1891,8 +1934,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 767d68a7f88ce7c41a25f5fc525c4717, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  blinkInterval: 0.3
+  image: {fileID: 2751027916182520992}
 --- !u!1 &9180780180960130018
 GameObject:
   m_ObjectHideFlags: 0
@@ -1981,5 +2023,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2670a98bee187324d88bcb1b58def7e1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  image: {fileID: 0}
-  blinkInterval: 0.3
+  image: {fileID: 4629618625542722869}

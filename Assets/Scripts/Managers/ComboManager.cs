@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using UnityEditor;
+using System.Runtime.Serialization.Formatters;
 
 public class ComboManager : MonoBehaviour
 {
@@ -31,6 +32,7 @@ public class ComboManager : MonoBehaviour
     private Coroutine jumpAniCoroutine;
     private Coroutine atkAniCoroutine;
     bool AniSetup;
+    bool AniSetup2;
     GameObject CurrentObject;
 
     List<RaycastResult> raycastResults = new List<RaycastResult>();
@@ -40,6 +42,7 @@ public class ComboManager : MonoBehaviour
     {
         InputButton = new HashSet<string>();
         AniSetup = false;
+        AniSetup2 = false;
     }
 
     void Update()
@@ -107,6 +110,74 @@ public class ComboManager : MonoBehaviour
                     InputButton.Clear();
                 }
             }
+
+            else if (InputButton.Count == 2 && AniSetup && AniSetup2 == false)
+            {
+                AniSetup2 = true;
+                lgo.ImageDisabled();
+                rgo.ImageDisabled();
+                lugo.ImageDisabled();
+                ldgo.ImageDisabled();
+                rugo.ImageDisabled();
+                rdgo.ImageDisabled();
+                if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))
+                {
+                    if (dashAniCoroutine != null)
+                    {
+                        jumpblink.ImageDisabled();
+                        jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
+                        rdgo.ImageAbled();
+                    }
+
+                    else if (jumpAniCoroutine != null)
+                    {
+                        dashblink.ImageDisabled();
+                        dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
+                        rgo.ImageAbled();
+                    }
+                }
+
+                else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))
+                {
+                    if (dashAniCoroutine != null)
+                    {
+                        atkblink.ImageDisabled();
+                        atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
+                        lugo.ImageAbled();
+                    }
+
+                    else if (atkAniCoroutine != null)
+                    {
+                        dashblink.ImageDisabled();
+                        dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
+                        rugo.ImageAbled();
+                    }
+                }
+
+                else if (InputButton.Contains("Jump") && InputButton.Contains("Attack"))
+                {
+                    if (jumpAniCoroutine != null)
+                    {
+                        atkblink.ImageDisabled();
+                        atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
+                        lgo.ImageAbled();
+                    }
+
+                    else if (atkAniCoroutine != null)
+                    {
+                        jumpblink.ImageDisabled();
+                        jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
+                        ldgo.ImageAbled();
+                    }
+                }
+
+                else
+                {
+                    AniSetup = false;
+                    AniSetup2 = false;
+                    InputButton.Clear();
+                }
+            }
         }
 
         else if (Input.GetMouseButtonUp(0) && AniSetup == true)
@@ -155,21 +226,23 @@ public class ComboManager : MonoBehaviour
                 case 2:
                     if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))
                     {
-                       
+
                         Debug.Log("JumpDash active");
+                       
                         player.SkillMotionActive("JumpDash");
 
                     }
                     else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))
                     {
                         Debug.Log("DashAttack active");
-                        player.TriggerDash();
+                        
                         dashAttack.SkillMotionActive();
                         player.SkillMotionActive("DashAttack");
                     }
                     else if (InputButton.Contains("Jump") && InputButton.Contains("Attack"))
                     {
                         Debug.Log("JumpAttack active");
+                    
                         jumpAttack.SkillMotionActive();
                         player.SkillMotionActive("JumpAttack");
                     }
@@ -185,6 +258,7 @@ public class ComboManager : MonoBehaviour
             }
 
             AniSetup = false;
+            AniSetup2 = false;
             InputButton.Clear();
         }
 
