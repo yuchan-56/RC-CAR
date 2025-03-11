@@ -25,8 +25,31 @@ public class StageInfo : UI_Popup
         GetButton((int)Buttons.GoStage).gameObject.AddUIEvent(GoStage);
         GetButton((int)Buttons.Close).gameObject.AddUIEvent(CloseButtonClicked);
         StageName = Managers.Data.Stage;
-        text.text = StageName;
+
         
+        if(StageName =="S1_1")
+        {
+            text.text = $"월요일 11:50 " +
+                $"난이도 하" +
+                $"10분 내에 도착";
+        }
+        else if(StageName =="S1_2")
+        {
+            text.text = StageName;
+        }
+        else if(StageName =="S1_3")
+        {
+            text.text = StageName;
+        }
+        else if (StageName == "S1_4")
+        {
+            text.text = StageName;
+        }
+        else if (StageName == "S1_5")
+        {
+            text.text = StageName;
+        }
+
         every =  GetComponent<EveryTimeSchedule>();
     }
     void GoStage(PointerEventData eventData)
