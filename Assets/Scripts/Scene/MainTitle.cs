@@ -32,49 +32,88 @@ public class MainTitle : BaseScene
 
         foreach (Transform ground in GroundRec)
         {
-            MoveGround(ground);
+            MoveGround(ground,"ground");
         }
 
-        foreach (Transform ground in TreeRec)
+        foreach (Transform tree in TreeRec)
         {
-            MoveGround(ground);
+            MoveGround(tree,"tree");
         }
 
-        foreach (Transform ground in BuildingRec)
+        foreach (Transform building in BuildingRec)
         {
-            MoveGround(ground);
+            MoveGround(building,"building");
         }
     }
 
-    void MoveGround(Transform ground)
+    void MoveGround(Transform obj,string St)
     {
-        ground.DOMoveX(resetPositionX, GroundSpeed, false)
+        obj.DOMoveX(resetPositionX, GroundSpeed, false)
             .SetSpeedBased() // 속도 기반 이동 (시간이 아니라 속도로 설정)
             .SetEase(Ease.Linear) // 일정한 속도로 이동
             .OnComplete(() =>
             {
                 // 가장 오른쪽에 있는 오브젝트 찾기
-                Transform lastGround = GetFarthestRightGround();
+                Transform lastGround = GetFarthestRightObj(St);
                 // 🔹 부동소수점 오차 방지: 위치를 반올림하여 정확히 맞추기
 
-                float newX = Mathf.Round(lastGround.position.x + startPositionOffset * 1000f) / 1000f;
-                ground.position = new Vector2(newX, ground.position.y);
+                float newX;
+                if (St == "ground")
+                {
+                    newX = Mathf.Round(lastGround.position.x + startPositionOffset * 100f) / 100f;
+                }
+                else if (St == "tree")
+                {
+                    newX = Mathf.Round(lastGround.position.x + 30 * 100f) / 100f;
+                }
+                else if (St == "building")
+                {
+                    newX = Mathf.Round(lastGround.position.x + 40 * 100f) / 100f;
+                }
+                else { newX = 0; }
+                obj.position = new Vector2(newX, obj.position.y);
 
 
                 // 다시 이동 시작
-                MoveGround(ground);
+                MoveGround(obj,St);
             });
     }
 
-    Transform GetFarthestRightGround()
+    Transform GetFarthestRightObj(string St)
     {
-        Transform farthest = GroundRec[0];
+        Transform farthest;
 
-        foreach (Transform ground in GroundRec)
+        if (St == "ground")
         {
-            if (ground.position.x > farthest.position.x)
-                farthest = ground;
+            farthest = GroundRec[0];
+
+            foreach (Transform ground in GroundRec)
+            {
+                if (ground.position.x > farthest.position.x)
+                    farthest = ground;
+            }
         }
+        else if (St == "tree")
+        {
+            farthest = TreeRec[0];
+
+            foreach (Transform tree in TreeRec)
+            {
+                if (tree.position.x > farthest.position.x)
+                    farthest = tree;
+            }
+        }
+        else if (St == "building")
+        {
+            farthest = BuildingRec[0];
+
+            foreach (Transform building in BuildingRec)
+            {
+                if (building.position.x > farthest.position.x)
+                    farthest = building;
+            }
+        }
+        else farthest = null;
 
         return farthest;
     }
