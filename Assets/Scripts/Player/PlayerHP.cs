@@ -27,6 +27,8 @@ public class PlayerHP : MonoBehaviour
         if (currentHP == 0)
         {
             Debug.Log("GameOver");
+            Time.timeScale = 0;
+            Managers.UI.ShowPopUpUI<GameOver>();
         }
     }
 
