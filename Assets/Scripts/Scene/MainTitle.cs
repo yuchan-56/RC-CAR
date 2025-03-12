@@ -74,15 +74,15 @@ public class MainTitle : BaseScene
                 float newX;
                 if (St == "ground")
                 {
-                    newX = Mathf.Round(lastGround.position.x + startPositionOffset * 100f) / 100f;
+                    newX = Mathf.Round(lastGround.position.x + startPositionOffset * 10f) / 10f;
                 }
                 else if (St == "tree")
                 {
-                    newX = Mathf.Round(lastGround.position.x + 30 * 100f) / 100f;
+                    newX = Mathf.Round(lastGround.position.x + 30 * 10f) / 10f;
                 }
                 else if (St == "building")
                 {
-                    newX = Mathf.Round(lastGround.position.x + 40 * 100f) / 100f;
+                    newX = Mathf.Round(lastGround.position.x + 40 * 10f) / 10f;
                 }
                 else { newX = 0; }
                 obj.position = new Vector2(newX, obj.position.y);
