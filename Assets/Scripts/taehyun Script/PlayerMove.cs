@@ -238,7 +238,7 @@ public class PlayerMove : MonoBehaviour
         {
             IsAttacking = true;
             animator.SetTrigger("Attack");
-            yield return new WaitForSeconds(0.583f);
+            yield return new WaitForSeconds(0.3f);
             IsAttacking = false;
         }
         else if (ComboType == "DashAttack")
@@ -247,7 +247,7 @@ public class PlayerMove : MonoBehaviour
             isDashattacking = true;
             TriggerDash();
             animator.SetTrigger("DashAttack");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             IsComboAttacking = false;
             isDashattacking = true;
         }
@@ -257,7 +257,7 @@ public class PlayerMove : MonoBehaviour
             isJumpattacking = true;
             TriggerJump();
             animator.SetTrigger("JumpAttack");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             IsComboAttacking = false;  // 공격 종료 후 상태 초기화
             isJumpattacking = false;
         }
@@ -268,7 +268,7 @@ public class PlayerMove : MonoBehaviour
             TriggerJump();
             TriggerDash();
             animator.SetTrigger("JumpDash");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.3f);
             IsComboAttacking = false;  // 공격 종료 후 상태 초기화
             isJumpdashing = false;
         }
