@@ -8,7 +8,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: DashAtt
-  m_Speed: 1
+  m_Speed: 1.223
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 4243420010038052731}
@@ -197,7 +197,7 @@ AnimatorState:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: UltDashAtt
-  m_Speed: 1
+  m_Speed: 1.223
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: -4355859865031556562}
