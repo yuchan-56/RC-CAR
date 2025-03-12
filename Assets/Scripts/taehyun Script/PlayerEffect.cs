@@ -27,7 +27,6 @@ public class PlayerEffect : MonoBehaviour
 
         Debug.Log("피격 TakeHit 발동");
         isHit = true;
-        StartCoroutine(ResetHit());
 
         // 1️⃣ DOTween으로 움찔하는 효과 (Shake)
         transform.DOShakePosition(shakeDuration, shakeStrength);
@@ -37,17 +36,19 @@ public class PlayerEffect : MonoBehaviour
         rb.velocity = hitDirection * knockbackPower; // 넉백
 
         // 3️⃣ 깜빡거리는 효과 실행
+        StartCoroutine(InvincibilityTimer());
         StartCoroutine(BlinkEffect());
     }
 
-    private IEnumerator ResetHit()
+    private IEnumerator InvincibilityTimer()
     {
-        yield return new WaitForSeconds(knockbackDuration);
-        isHit = false;
+        yield return new WaitForSeconds(shakeDuration); // 무적 시간 유지
+        isHit = false; // 무적 해제
     }
 
     private IEnumerator BlinkEffect()
     {
+        
         for (int i = 0; i < blinkCount; i++)
         {
             // 반투명하게 만들기
