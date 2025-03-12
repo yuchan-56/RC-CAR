@@ -32,7 +32,7 @@ public class PlayerAttackGeneral : MonoBehaviour
     }
     IEnumerator DeactiveCoroutine()
     {
-        yield return new WaitForSeconds(1.2f);
+        yield return new WaitForSeconds(1f);
         AttackSetDeactive();
         StopCoroutine(DeactiveCoroutine());
     }
@@ -43,20 +43,20 @@ public class PlayerAttackGeneral : MonoBehaviour
         boxCollider2D.enabled = true;
         SkillAttack_Active = true;
         StartCoroutine(DeactiveCoroutine());
-        
-        if(UltimateSkill_Active)
+
+        if (UltimateSkill_Active)
         {
             ani.SetBool("UltAttack", true);
         }
         else
         {
-            ani.SetBool("Attack",true);
+            ani.SetBool("Attack", true);
         }
     }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Enemy")
+        if (collision.tag == "Enemy")
         {
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage);
         }

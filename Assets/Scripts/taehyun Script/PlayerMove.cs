@@ -16,6 +16,9 @@ public class PlayerMove : MonoBehaviour
     bool hasJumpAttacked = false;
     bool hasJumpDashed = false;
     bool IsComboDashing = false;
+    bool isJumpattacking = false;
+    bool isJumpdashing=false;
+    bool isDashattacking = false;
     float acceleration = 8f;
     float deceleration = 8f;
     float jumpforce = 10f;
@@ -229,38 +232,45 @@ public class PlayerMove : MonoBehaviour
         if (IsAttacking)
             yield break;
         else if (IsComboAttacking)
-            yield break;
+        yield break;
+        
         if (ComboType == "Attack") 
         {
             IsAttacking = true;
             animator.SetTrigger("Attack");
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.583f);
             IsAttacking = false;
         }
         else if (ComboType == "DashAttack")
         {
             IsComboAttacking = true;
+            isDashattacking = true;
             TriggerDash();
             animator.SetTrigger("DashAttack");
             yield return new WaitForSeconds(0.5f);
             IsComboAttacking = false;
+            isDashattacking = true;
         }
         else if (ComboType == "JumpAttack")
         {
             IsComboAttacking = true;
+            isJumpattacking = true;
             TriggerJump();
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(0.5f);
             IsComboAttacking = false;  // 공격 종료 후 상태 초기화
+            isJumpattacking = false;
         }
         else if (ComboType == "JumpDash")
         {
             IsComboAttacking = true;
+            isJumpdashing = true;
             TriggerJump();
             TriggerDash();
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(0.5f);
             IsComboAttacking = false;  // 공격 종료 후 상태 초기화
+            isJumpdashing = false;
         }
     }
 
