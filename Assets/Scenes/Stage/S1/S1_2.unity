@@ -7417,6 +7417,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2974412998563629493, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2974412998563629493, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: shakeDuration
       value: 0.15
@@ -7436,6 +7444,14 @@ PrefabInstance:
     - target: {fileID: 5807001970854001129, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_Name
       value: Player
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456979506031081008, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8456979506031081008, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
