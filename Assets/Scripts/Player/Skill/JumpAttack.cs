@@ -13,7 +13,7 @@ public class JumpAttack : MonoBehaviour
 
     IEnumerator DeactiveCoroutine()
     { 
-        yield return new WaitForSeconds(1.5f);
+        yield return new WaitForSeconds(1f);
         SkillMotionDeactive();
         StopCoroutine(DeactiveCoroutine());
     }
