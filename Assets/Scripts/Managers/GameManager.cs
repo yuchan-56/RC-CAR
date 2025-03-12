@@ -36,6 +36,8 @@ public class GameManager
     {
         currentState = GameState.Battle;
         currentGround = GameGround.R4;
+        gage = 0;
+        GetHit = false;
     }
 
     public void GoJump()

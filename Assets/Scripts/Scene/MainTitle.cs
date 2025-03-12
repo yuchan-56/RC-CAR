@@ -48,15 +48,29 @@ public class MainTitle : BaseScene
 
     void MoveGround(Transform obj,string St)
     {
-        obj.DOMoveX(resetPositionX, GroundSpeed, false)
+        float speed;
+        if (St == "ground")
+        {
+            speed = GroundSpeed;
+        }
+        else if (St == "tree")
+        {
+            speed = TreeSpeed;
+        }
+        else if (St == "building")
+        {
+            speed = BuildSpeed;
+        }
+        else { speed = 0; }
+        obj.DOMoveX(resetPositionX, speed, false)
             .SetSpeedBased() // 속도 기반 이동 (시간이 아니라 속도로 설정)
             .SetEase(Ease.Linear) // 일정한 속도로 이동
             .OnComplete(() =>
             {
                 // 가장 오른쪽에 있는 오브젝트 찾기
                 Transform lastGround = GetFarthestRightObj(St);
-                // 🔹 부동소수점 오차 방지: 위치를 반올림하여 정확히 맞추기
 
+                // 🔹 부동소수점 오차 방지: 위치를 반올림하여 정확히 맞추기
                 float newX;
                 if (St == "ground")
                 {
