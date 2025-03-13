@@ -81,6 +81,7 @@ public class GrpBoss : Boss
         isFollowing = true;
         isStop = true;
         bmScript.attackPos = true;
+        Debug.Log("attackPos = true");
     }
 
     void Shoot()

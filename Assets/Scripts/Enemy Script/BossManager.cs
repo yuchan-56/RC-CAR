@@ -5,7 +5,7 @@ using System.Collections;
 public class BossManager : MonoBehaviour
 {
     private List<Boss> allBosses = new List<Boss>(); // 모든 보스 리스트
-    private float attackInterval = 5f;
+    private float attackInterval = 1.5f;
     //private float timer = 0f;
 
     public bool attackPos = true;
@@ -29,20 +29,20 @@ public class BossManager : MonoBehaviour
     
     IEnumerator RandomBossAttackRoutine()
     {
-        if(attackPos) {
-            while (true)
+        while (true)
+        {
+            // 공격이 끝날 때까지 대기
+            yield return new WaitUntil(() => attackPos == true);
+            yield return new WaitForSeconds(attackInterval);
+            
+            if (allBosses.Count > 0)
             {
-                yield return new WaitForSeconds(attackInterval);
-                
-                if (allBosses.Count > 0)
-                {
-                    List<Boss> aliveBosses = allBosses.FindAll(b => b != null && !b.isDead);
+                List<Boss> aliveBosses = allBosses.FindAll(b => b != null && !b.isDead);
 
-                    if (aliveBosses.Count > 0)
-                    {
-                        Boss randomBoss = aliveBosses[Random.Range(0, aliveBosses.Count)];
-                        ExecuteRandomAttack(randomBoss);
-                    }
+                if (aliveBosses.Count > 0)
+                {
+                    Boss randomBoss = aliveBosses[Random.Range(0, aliveBosses.Count)];
+                    ExecuteRandomAttack(randomBoss);
                 }
             }
         }

@@ -6,19 +6,8 @@ public class SysBoss : Boss
 {
     //attack
     public GameObject attackObject;
-    
 
     //p1
-    /*
-    public GameObject enemy1;
-    public GameObject enemy2;
-    bool eDead = false;
-    public Vector3[] ePos = new Vector3[2]
-    {
-        new Vector3(-3.0f, 0, 0),
-        new Vector3(-6.0f, 0, 0),
-    };
-    */
 
 
     //p2
@@ -85,14 +74,14 @@ public class SysBoss : Boss
 
         //StartCoroutine(Enemy());
     }
-
+    
     /*
     IEnumerator Enemy() {
-        GameObject e1 = Instantiate(enemy1, ePos[0], Quaternion.identity);
-        GameObject e2 = Instantiate(enemy2, ePos[1], Quaternion.identity);
+        p1Object.SetActive(true);
+        p11Object.SetActive(true);
 
         while(!eDead) {
-            if(e1 == null && e2 == null) {
+            if(p1Object == null && p11Object == null) {
                 eDead = true;
 
                 isWandering = true;
@@ -108,9 +97,6 @@ public class SysBoss : Boss
     */
 
     
-
-
-
     public override void P2()
     {
         isWandering = false;
