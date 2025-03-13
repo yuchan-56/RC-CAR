@@ -6,7 +6,7 @@ using UnityEngine.UI;
 public class Enemy : MonoBehaviour
 {
     // 좌우이동 + following player
-    public Transform player;
+    public GameObject player;
     public float speed = 2.5f;
 
     // 거리제한
@@ -53,6 +53,7 @@ public class Enemy : MonoBehaviour
     void Start()
     {
         stopPosition = transform.position;
+        player = GameObject.FindWithTag("Player");
 
         if (hpSliderPrefab != null)
         {
@@ -62,13 +63,15 @@ public class Enemy : MonoBehaviour
             hpSlider.maxValue = hp;
             hpSlider.value = hp;
         }
+
+
     }
 
     void Update()
     {
         if (isDead) { return; }  // 더 이상 Update 로직 실행하지 않음
 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.position);
+        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
 
 
 
@@ -81,7 +84,7 @@ public class Enemy : MonoBehaviour
             attackObject.SetActive(false);
 
             // Throw 공격
-            ThrowObject(player);
+            ThrowObject(player.transform);
             nextThrowAttack = Time.time + throwCooldown;
         }
         else if (distanceToPlayer <= followDistance)
@@ -153,9 +156,9 @@ public class Enemy : MonoBehaviour
 
     void FollowPlayer()
     {
-        Vector2 directionToPlayer = player.position - transform.position;
+        Vector2 directionToPlayer = player.transform.position - transform.position;
         FlipDirection(directionToPlayer.x);
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
     }
 
     void FlipDirection(float horizontalDirection)
