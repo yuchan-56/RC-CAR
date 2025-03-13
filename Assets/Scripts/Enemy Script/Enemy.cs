@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,12 +10,19 @@ public class Enemy : MonoBehaviour
     public GameObject player;
     public float speed = 2.5f;
 
+
+    public enum EnemyState { Idle, Following, Attacking, Throwing }
+
+    private EnemyState currentState;
+
+
     // 거리제한
     public float wanderDistance = 2f;
     bool isWandering = true;
+    bool isFollowing = true;
 
     public float followDistance = 10f; // 따라가기 시작하는 거리
-    public float throwDistance = 8f; // 오브젝트 던지기 시작하는 거리
+    public float throwDistance = 5f; // 오브젝트 던지기 시작하는 거리
     public float attackDistance = 2.0f; // 일반 공격 거리
     private Vector2 stopPosition;
 
@@ -49,6 +57,8 @@ public class Enemy : MonoBehaviour
 
     // Speech
     private bool speeched = false;
+
+
      
     void Start()
     {
@@ -71,43 +81,58 @@ public class Enemy : MonoBehaviour
     {
         if (isDead) { return; }  // 더 이상 Update 로직 실행하지 않음
 
-        float distanceToPlayer = Vector2.Distance(transform.position, player.transform.position);
-
+        float distanceToPlayer = Mathf.Abs(transform.position.x - player.transform.position.x);
 
 
         if (distanceToPlayer <= attackDistance)
         {
-            AttackPlayer();
+            currentState = EnemyState.Attacking;
         }
-        else if (distanceToPlayer <= throwDistance && Time.time >= nextThrowAttack)
+        else if (distanceToPlayer <= throwDistance)
         {
-            attackObject.SetActive(false);
-
-            // Throw 공격
-            ThrowObject(player.transform);
-            nextThrowAttack = Time.time + throwCooldown;
+            currentState = EnemyState.Throwing;
         }
         else if (distanceToPlayer <= followDistance)
         {
-            attackObject.SetActive(false);
-
-            // 따라가기
-            SpeechPopUp();
-            FollowPlayer();
-            isWandering = false;
+            currentState = EnemyState.Following;
         }
         else
         {
-            attackObject.SetActive(false);
+            currentState = EnemyState.Idle;
+        }
 
-            // Wander 상태
-            if (!isWandering)
-            {
-                stopPosition = transform.position; // 현재 위치를 Wander 시작점으로 설정
-                isWandering = true;
-            }  
+        switch (currentState)
+        {
+            case EnemyState.Attacking:
+                AttackPlayer();
+                break;
             
-            Wander();
+            case EnemyState.Throwing:
+                if (Time.time >= nextThrowAttack)
+                {
+                    attackObject.SetActive(false);
+                    isFollowing = false;
+                    ThrowObject(player.transform);
+                    nextThrowAttack = Time.time + throwCooldown;
+                }
+                break;
+            
+            case EnemyState.Following:
+                attackObject.SetActive(false);
+                SpeechPopUp();
+                FollowPlayer();
+                isWandering = false;
+                break;
+            
+            case EnemyState.Idle:
+                attackObject.SetActive(false);
+                if (!isWandering)
+                {
+                    stopPosition = transform.position;
+                    isWandering = true;
+                }
+                Wander();
+                break;
         }
         
 
@@ -126,10 +151,6 @@ public class Enemy : MonoBehaviour
             EnemyDamage(10);
         }
     }
-
-
-
-
 
 
 
@@ -156,6 +177,9 @@ public class Enemy : MonoBehaviour
 
     void FollowPlayer()
     {
+        animator.SetBool("enemy_attack", false);
+        animator.SetBool("enemy_throw", false);
+
         Vector2 directionToPlayer = player.transform.position - transform.position;
         FlipDirection(directionToPlayer.x);
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
