@@ -12,7 +12,11 @@ public class JumpAttack : MonoBehaviour
     bool SkillActive_JumpAttack;
 
     IEnumerator DeactiveCoroutine()
-    { 
+    {
+        if (Managers.Game.SkillAniReset == true)
+        {
+            StopCoroutine(DeactiveCoroutine());
+        }
         yield return new WaitForSeconds(1f);
         SkillMotionDeactive();
         StopCoroutine(DeactiveCoroutine());
@@ -56,12 +60,16 @@ public class JumpAttack : MonoBehaviour
         }
     }
 
-    void SkillMotionDeactive()
+    public void SkillMotionDeactive()
     {
         SkillActive_JumpAttack = false;
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
         ani.SetBool("UltJumpAtt", false); 
         ani.SetBool("JumpAtt", false);
+        if (Managers.Game.SkillAniReset == true)
+        {
+            StopCoroutine(DeactiveCoroutine());
+        }
     }
 }

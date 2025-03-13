@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening.Core.Easing;
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class DashAttack : MonoBehaviour
@@ -26,6 +27,10 @@ public class DashAttack : MonoBehaviour
 
     IEnumerator DeactiveCoroutine()
     {
+        if(Managers.Game.SkillAniReset == true)
+        {
+            StopCoroutine(DeactiveCoroutine());
+        }
         yield return new WaitForSeconds(0.8f);
         SkillMotionDeactive();
         StopCoroutine(DeactiveCoroutine());
@@ -58,7 +63,7 @@ public class DashAttack : MonoBehaviour
         }
     }
 
-    void SkillMotionDeactive()
+    public void SkillMotionDeactive()
     {
         spriteRenderer.enabled = false;
         SkillActive_DashAttack = false;
@@ -66,5 +71,9 @@ public class DashAttack : MonoBehaviour
         spriteRenderer.enabled = false;
         ani.SetBool("UltDashAtt", false);
         ani.SetBool("DashAtt", false);
+        if (Managers.Game.SkillAniReset == true)
+        {
+            StopCoroutine(DeactiveCoroutine());
+        }
     }
 }

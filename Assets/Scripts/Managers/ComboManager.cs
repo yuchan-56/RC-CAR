@@ -47,6 +47,41 @@ public class ComboManager : MonoBehaviour
 
     void Update()
     {
+        if(Managers.Game.SkillAniReset == true)
+        {
+            StopExistingCoroutine(ref atkAniCoroutine);
+            StopExistingCoroutine(ref dashAniCoroutine);
+            StopExistingCoroutine(ref jumpAniCoroutine);
+            lgo.ImageDisabled();
+            rgo.ImageDisabled();
+            lugo.ImageDisabled();
+            ldgo.ImageDisabled();
+            rugo.ImageDisabled();
+            rdgo.ImageDisabled();
+            atkblink.ImageDisabled();
+            jumpblink.ImageDisabled();
+            dashblink.ImageDisabled();
+
+            atkAni.ResetImage();
+            dashAni.ResetImage();
+            jumpAni.ResetImage();
+            atkAni.isAnimating = false;
+            dashAni.isAnimating = false;
+            jumpAni.isAnimating = false;
+
+            playerAttackGeneral.AttackSetDeactive();
+            jumpAttack.SkillMotionDeactive();
+            dashAttack.SkillMotionDeactive();
+
+            player.ForcedAniReset();
+            Managers.Game.SkillAniReset = false;
+        }
+
+        else
+        {
+            //empty
+        }
+
         if (Input.GetMouseButton(0))
         {
             if (EventSystem.current.IsPointerOverGameObject())

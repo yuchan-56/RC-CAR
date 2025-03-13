@@ -26,6 +26,8 @@ public class MapMoving : UI_Popup
         camera_m.transform.position = new Vector2(-3, FixedY); // 카메라 포지션 지정하기
         FindObjectOfType<PlayerMove>().setPlayerMove(); // 플레이어 움직이기
        camera_m.GetComponent<CameraMove>().FixedY += 20; // 카메라 움직이기
+        //여기에 작성
+        Managers.Game.SkillAniReset = true;
 
         Time.timeScale = 1;
         Black.DOFade(0f, blackTime); // DOFadeOut이 올바르게 진행되려면 Time.timeScale이 1이어야함. 왜인지는..? 모름 Complete가 제대로 작동 안하는듯

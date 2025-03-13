@@ -26,12 +26,20 @@ public class PlayerAttackGeneral : MonoBehaviour
     }
     IEnumerator UltDeactiveCoroutine()
     {
+        if (Managers.Game.SkillAniReset == true)
+        {
+            StopCoroutine(UltDeactiveCoroutine());
+        }
         yield return new WaitForSeconds(5);
         UltimateSkillDeactive();
         StopCoroutine(UltDeactiveCoroutine());
     }
     IEnumerator DeactiveCoroutine()
     {
+        if (Managers.Game.SkillAniReset == true)
+        {
+            StopCoroutine(DeactiveCoroutine());
+        }
         yield return new WaitForSeconds(1f);
         AttackSetDeactive();
         StopCoroutine(DeactiveCoroutine());
@@ -62,13 +70,18 @@ public class PlayerAttackGeneral : MonoBehaviour
         }
     }
 
-    void AttackSetDeactive()
+    public void AttackSetDeactive()
     {
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
         SkillAttack_Active = false;
         ani.SetBool("UltAttack", false);
         ani.SetBool("Attack", false);
+        if(Managers.Game.SkillAniReset == true)
+        {
+            StopCoroutine(DeactiveCoroutine());
+            StopCoroutine(UltDeactiveCoroutine());
+        }
     }
 
 

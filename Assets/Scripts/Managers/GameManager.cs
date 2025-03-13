@@ -8,6 +8,7 @@ public class GameManager
     public int gage = 0;
     public bool GetHit = false;
     public int roundEnemy; // 적을 처치할때마다 줄어들게.
+    public bool SkillAniReset = false;//모든 스킬관련 ani 강제 종료
 
     public int[] roundEnemyCount = new int[14];// GameGround마다의 적 숫자 설정
 

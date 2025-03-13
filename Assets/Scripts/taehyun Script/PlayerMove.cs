@@ -40,6 +40,7 @@ public class PlayerMove : MonoBehaviour
         camera = FindObjectOfType<CameraMove>();
         animator = GetComponent<Animator>();
         initialScale = transform.localScale;
+        animator.updateMode = AnimatorUpdateMode.UnscaledTime;
     }
 
     // Update is called once per frame
@@ -274,6 +275,26 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
+    public IEnumerator ForcedAniReset()
+    {
+        if (Managers.Game.SkillAniReset == true)
+        {
+            IsJumping = false;
+            IsAttacking = false;
+            IsComboAttacking = false;
+            IsComboDashing = false;
+            isJumpattacking = false;
+            isJumpdashing = false;
+            isDashattacking = false;
 
+            animator.ResetTrigger("Attack");
+            animator.ResetTrigger("JumpAttack");
+            animator.ResetTrigger("DashAttack");
+            animator.ResetTrigger("JumpDash");
+        }
+        yield return null;
+        StopCoroutine(PerformAttack(""));
+        StopCoroutine(ForcedAniReset());
+    }
 
 }
