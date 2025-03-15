@@ -26,8 +26,9 @@ public class StageInfo : UI_Popup
         GetButton((int)Buttons.Close).gameObject.AddUIEvent(CloseButtonClicked);
         StageName = Managers.Data.Stage;
 
-        
-        if(StageName =="S1_1")
+        Managers.UI.SetCanvasNumber(this.gameObject, 4); // SortOrder 4로
+
+        if (StageName =="S1_1")
         {
             text.text = $"월요일 11:50 " +
                 $"난이도 하" +

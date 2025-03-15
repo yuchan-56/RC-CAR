@@ -29,7 +29,7 @@ public class EveryTimeSchedule : UI_Popup
     {
         Init();
         Managers.UI.ShowPopUpUI<SelectGuide>();
-
+        Managers.UI.SetCanvasNumber(this.gameObject, 1); // SortOrder1·Î
         
     }
     public override void Init()

@@ -55,6 +55,18 @@ public class UI_Manager
         canvas.sortingOrder = 199;
     }
 
+    public void SetCanvasNumber(GameObject go,int sortNumber) // 캔버스 SortOrder을 sortNumber로 설정
+    {
+        Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
+        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.worldCamera = Camera.main;
+        canvas.overrideSorting = true;
+
+
+        canvas.sortingOrder = sortNumber;
+    }
+
+
     public T ShowAnyUI<T>(string name = null) where T : UI_Base
     {
         if (string.IsNullOrEmpty(name))

@@ -15,6 +15,8 @@ public class StageGuide : UI_Popup
         StartCoroutine(PlaySpriteAnimation());
         Init();
         StageText.sprite = Resources.Load<Sprite>($"UI/classroom/{Managers.Game.currentGround}");
+
+        
     }
     IEnumerator PlaySpriteAnimation()
     {

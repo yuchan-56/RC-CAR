@@ -18,6 +18,7 @@ public class TitleButtons : UI_Popup
         GetButton((int)Buttons.GoBack).gameObject.AddUIEvent(GoBackClicked);
         GetButton((int)Buttons.Option).gameObject.AddUIEvent(OptionClicked);
 
+        Managers.UI.SetCanvasNumber(this.gameObject, 3); // SortOrder 3·Î
     }
     void GoBackClicked(PointerEventData eventData)
     {

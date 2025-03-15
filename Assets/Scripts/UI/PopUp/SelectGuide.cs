@@ -8,6 +8,7 @@ public class SelectGuide : UI_Popup
     void Start()
     {
         base.Init();
+        Managers.UI.SetCanvasNumber(this.gameObject, 2); // SortOrder 2·Î
     }
 
 
