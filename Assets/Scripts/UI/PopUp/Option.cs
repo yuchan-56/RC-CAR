@@ -25,7 +25,8 @@ public class Option : UI_Popup
     void Start()
     {
         Init();
-        Managers.UI.SetCanvasMost(this.gameObject);
+        Managers.UI.SetCanvasNumber(this.gameObject,1000);
+
 
     }
 
