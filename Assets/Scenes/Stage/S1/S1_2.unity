@@ -311,7 +311,7 @@ GameObject:
   - component: {fileID: 76223398}
   m_Layer: 3
   m_Name: FirstGround (11)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -656,6 +656,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male (2)
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -677,6 +681,10 @@ PrefabInstance:
     - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_Name
       value: Enemy_female
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
@@ -773,6 +781,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 475491858}
+  - {fileID: 1771033502}
   m_Father: {fileID: 314598534}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &125235851
@@ -841,7 +850,7 @@ GameObject:
   - component: {fileID: 127827582}
   m_Layer: 3
   m_Name: FirstGround (13)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1169,6 +1178,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 97c4a783786cc6c49ab57a03dfd605be, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!4 &251718193 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+  m_PrefabInstance: {fileID: 357460478}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &279723612
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1229,6 +1243,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1245,6 +1263,10 @@ PrefabInstance:
     - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_Name
       value: Enemy_female (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
@@ -1581,6 +1603,67 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
   m_PrefabInstance: {fileID: 611486308}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &357460478
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 1422489019}
+    m_Modifications:
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.22
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4308080683952541086, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_Name
+      value: Enemy_male
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
 --- !u!1 &357689547
 GameObject:
   m_ObjectHideFlags: 0
@@ -1595,7 +1678,7 @@ GameObject:
   - component: {fileID: 357689549}
   m_Layer: 3
   m_Name: FirstGround (7)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1799,6 +1882,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1920,7 +2007,7 @@ GameObject:
   - component: {fileID: 466146931}
   m_Layer: 3
   m_Name: FirstGround (1)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2070,19 +2157,31 @@ PrefabInstance:
   serializedVersion: 2
   m_Modification:
     serializedVersion: 3
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 125235850}
     m_Modifications:
     - target: {fileID: 316324923393244241, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_Name
       value: prg_Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 316324923393244241, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.5
+      objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.45
+      value: 0.182
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 94.28
+      value: -1.064
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2094,15 +2193,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2285,7 +2384,7 @@ GameObject:
   - component: {fileID: 504509401}
   m_Layer: 3
   m_Name: FirstGround (12)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2497,6 +2596,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: snd_Boss
       objectReference: {fileID: 0}
+    - target: {fileID: 6128298700615448055, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2521,7 +2624,7 @@ GameObject:
   - component: {fileID: 603754282}
   m_Layer: 3
   m_Name: FirstGround (3)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2729,6 +2832,10 @@ PrefabInstance:
     - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
       propertyPath: m_Name
       value: Enemy_male
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3001,7 +3108,7 @@ GameObject:
   - component: {fileID: 737282083}
   m_Layer: 0
   m_Name: Ground
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3252,6 +3359,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_female
       objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.62
@@ -3365,6 +3476,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3384,7 +3499,7 @@ GameObject:
   - component: {fileID: 773404447}
   m_Layer: 3
   m_Name: FirstGround (6)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3542,7 +3657,7 @@ GameObject:
   - component: {fileID: 786316903}
   m_Layer: 3
   m_Name: FirstGround (5)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3838,6 +3953,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3857,7 +3976,7 @@ GameObject:
   - component: {fileID: 847326788}
   m_Layer: 3
   m_Name: FirstGround (10)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4145,7 +4264,7 @@ GameObject:
   - component: {fileID: 902538040}
   m_Layer: 3
   m_Name: FirstGround
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4360,6 +4479,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -4468,7 +4591,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5488980232297232397, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_Size.x
@@ -4554,7 +4677,7 @@ GameObject:
   - component: {fileID: 972107631}
   m_Layer: 3
   m_Name: FirstGround (4)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5107,6 +5230,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_female (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.62
@@ -5171,6 +5298,10 @@ PrefabInstance:
     - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_Name
       value: Enemy_female
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
@@ -5239,7 +5370,7 @@ GameObject:
   - component: {fileID: 1153103255}
   m_Layer: 3
   m_Name: FirstGround (2)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5435,6 +5566,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -5454,7 +5589,7 @@ GameObject:
   - component: {fileID: 1176030194}
   m_Layer: 3
   m_Name: FirstGround (9)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5706,6 +5841,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_female
       objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 3.480132
@@ -5893,6 +6032,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_female
       objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.31
@@ -6052,7 +6195,7 @@ GameObject:
   - component: {fileID: 1234945137}
   m_Layer: 3
   m_Name: FirstGround (8)
-  m_TagString: Untagged
+  m_TagString: Ground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6433,6 +6576,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6631,6 +6778,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -6683,6 +6834,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 729377732}
+  - {fileID: 251718193}
   m_Father: {fileID: 314598534}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &1422489020
@@ -7146,6 +7298,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_female
       objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.62
@@ -7259,6 +7415,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7323,6 +7483,10 @@ PrefabInstance:
     - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
       propertyPath: m_Name
       value: Enemy_male
+      objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -7432,6 +7596,10 @@ PrefabInstance:
     - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_Name
       value: Enemy_female (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
@@ -7770,6 +7938,11 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!4 &1771033502 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
+  m_PrefabInstance: {fileID: 474865120}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776086712
 GameObject:
   m_ObjectHideFlags: 0
@@ -7982,6 +8155,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_male (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -7998,6 +8175,10 @@ PrefabInstance:
     - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_Name
       value: Enemy_female (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
@@ -8366,6 +8547,10 @@ PrefabInstance:
     - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_Name
       value: Enemy_female (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
@@ -9034,6 +9219,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Enemy_female
       objectReference: {fileID: 0}
+    - target: {fileID: 2678239630088586765, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.62
@@ -9215,4 +9404,3 @@ SceneRoots:
   - {fileID: 329060273386085801}
   - {fileID: 314598534}
   - {fileID: 989808980}
-  - {fileID: 474865120}
