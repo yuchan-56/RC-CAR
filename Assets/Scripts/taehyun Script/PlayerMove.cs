@@ -106,12 +106,16 @@ public class PlayerMove : MonoBehaviour
 
     public void TriggerJump()
     {
+        if (IsComboAttacking >2)
+            return;
         if (!IsJumping && isground)
         {
+            IsComboAttacking++;
             StartCoroutine(Jump());
         }
         else if (IsComboAttacking <= 2)
         {
+            IsComboAttacking++;
             StartCoroutine(Jump());
         }
         else
@@ -162,9 +166,11 @@ public class PlayerMove : MonoBehaviour
     }
 
     public void TriggerDash() {
-
+        if (IsComboAttacking >2)
+            return;
         if (canDash)
         {
+            IsComboAttacking++;
             StartCoroutine(Dash());
             animator.SetTrigger("dash");
 
@@ -223,11 +229,10 @@ public class PlayerMove : MonoBehaviour
     IEnumerator PerformAttack(string ComboType)
     {
         // 공격 중이면 새로운 공격 실행하지 않음
-        if (IsAttacking)
+        if (IsAttacking || IsComboAttacking>2)
             yield break;
-        else if (IsComboAttacking>=2)
-            yield break;
-        
+
+        IsComboAttacking++;
         if (ComboType == "Attack") 
         {
             IsAttacking = true;
@@ -237,14 +242,13 @@ public class PlayerMove : MonoBehaviour
         }
         else if (ComboType == "DashAttack")
         {
-            IsComboAttacking++;
             TriggerDash();
             animator.SetTrigger("DashAttack");
             yield return 0;
         }
         else if (ComboType == "JumpAttack")
         {
-            IsComboAttacking++;
+         
             TriggerJump();
             animator.SetTrigger("JumpAttack");
             yield return 0;
@@ -252,7 +256,7 @@ public class PlayerMove : MonoBehaviour
         }
         else if (ComboType == "JumpDash")
         {
-            IsComboAttacking++;
+           
             TriggerJump();
             TriggerDash();
             animator.SetTrigger("JumpDash");
