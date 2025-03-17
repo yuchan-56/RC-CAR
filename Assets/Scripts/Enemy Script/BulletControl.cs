@@ -6,11 +6,15 @@ public class BulletControl : MonoBehaviour
 {
     void Update()
     {
-        Destroy(gameObject, 4f);
+        //Destroy(gameObject, 3f);
     }
-    void OnTriggerEnter2D(Collider2D other)
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if(other.gameObject.name == "Player") {
+        if(collision.gameObject.CompareTag("Player")) {
+            Destroy(gameObject);
+        }
+
+        if(collision.gameObject.CompareTag("Ground")) {
             Destroy(gameObject);
         }
     }

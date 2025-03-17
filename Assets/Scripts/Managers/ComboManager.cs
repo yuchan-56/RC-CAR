@@ -73,7 +73,7 @@ public class ComboManager : MonoBehaviour
             jumpAttack.SkillMotionDeactive();
             dashAttack.SkillMotionDeactive();
 
-            player.ForcedAniReset();
+           // player.ForcedAniReset();
             Managers.Game.SkillAniReset = false;
         }
 
