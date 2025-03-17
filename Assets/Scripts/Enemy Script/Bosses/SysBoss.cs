@@ -8,7 +8,8 @@ public class SysBoss : Boss
     public GameObject attackObject;
 
     //p1
-
+    public GameObject p1Object;
+    bool eDead = false;
 
     //p2
     public GameObject p2Object;
@@ -72,29 +73,25 @@ public class SysBoss : Boss
         animator.SetBool("isP3", false);
         
 
-        //StartCoroutine(Enemy());
+        StartCoroutine(Enemy());
     }
     
-    /*
     IEnumerator Enemy() {
         p1Object.SetActive(true);
-        p11Object.SetActive(true);
 
-        while(!eDead) {
-            if(p1Object == null && p11Object == null) {
-                eDead = true;
+        /// 잡몹 죽을때까지 기다려야함
+        ///
 
-                isWandering = true;
-                isFollowing = true;
-                isStop = true;
+        eDead = true;
+        isWandering = true;
+        isFollowing = true;
+        isStop = true;
+        bmScript.attackPos = true;
 
-                animator.SetBool("isP1", false);
-            }
-        }
+        animator.SetBool("isP1", false);
 
         yield return null;
     }
-    */
 
     
     public override void P2()

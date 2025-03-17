@@ -21,11 +21,10 @@ public class PlayerDamage : MonoBehaviour
             PlayerEffect player = other.GetComponent<PlayerEffect>();
             if (player != null)
             {
-                //ÇÃ·¹ÀÌ¾î°¡ ¹Ý´ëÂÊÀ¸·Î ³Ë¹éµÇ±â
                 Vector2 knockbackDriection = (player.transform.position - transform.position).normalized;
                 player.TakeHit(knockbackDriection);
             }
-            else Debug.Log("PlayerÃ£Áö ¸øÇÔ");
+            else Debug.Log("PlayerÃ£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½");
         }
     }
 }
