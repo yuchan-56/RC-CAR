@@ -7,14 +7,14 @@ public class GameClear : UI_Popup
 {
     enum Buttons
     {
-        GameClear
+        ClearButton
     }
 
     private void Start()
     {
         Init();
         Bind<Button>(typeof(Buttons));
-        GetButton((int)Buttons.GameClear).gameObject.AddUIEvent(GameClearClicked);
+        GetButton((int)Buttons.ClearButton).gameObject.AddUIEvent(GameClearClicked);
     }
     void GameClearClicked(PointerEventData eventData)
     {
