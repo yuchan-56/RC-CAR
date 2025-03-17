@@ -50,7 +50,7 @@ public class LoadingScene : MonoBehaviour
         Managers.Scene.LoadScene(scene);
 
         yield return new WaitForSeconds(0.3f);
-
-        LoadingPanel.DOFade(0f, 0.5f);
+        Debug.Log("이곳에 진입했습니다");
+        LoadingPanel.DOFade(0f, 0.3f);
     }
 }

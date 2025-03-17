@@ -15,7 +15,7 @@ public class GameOver : UI_Popup
         Init();
         Bind<Button>(typeof(Buttons));
         GetButton((int)Buttons.ReTry).gameObject.AddUIEvent(ReTryClicked);
-        Managers.UI.SetCanvasNumber(this.gameObject, 1000); // SortOrder 위로 설정 
+        Managers.UI.SetCanvasNumber(this.gameObject, 1000);
     }
     void ReTryClicked(PointerEventData eventData)
     {

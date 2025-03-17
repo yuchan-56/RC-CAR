@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static LoadingScene;
 
 public class TitleButtons : UI_Popup
 {
@@ -22,10 +23,12 @@ public class TitleButtons : UI_Popup
     }
     void GoBackClicked(PointerEventData eventData)
     {
-        Managers.Scene.LoadScene(Define.Scene.MainTitle);
+        LoadingScene.Instance.GoLoading("MainTitle");
+
     }
     void OptionClicked(PointerEventData eventData)
     {
         Managers.UI.ShowPopUpUI<Option>();
     }
+
 }

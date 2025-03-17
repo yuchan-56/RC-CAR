@@ -42,7 +42,6 @@ public class SpeechBalloon : UI_Popup
     private void Start()
     {
         target = Managers.Speech.speechTmp;
-        playerPopup();
         setText();
         StartCoroutine(PopUping_timeSet(3));
 
@@ -55,8 +54,12 @@ public class SpeechBalloon : UI_Popup
     }
     void playerPopup()
     {
-        this.transform.position = target.transform.position;
-
+        if (target != null)
+        {
+            this.transform.position = target.transform.position;
+        }
+        else { Destroy(this.gameObject); }
+        
     }
 
     IEnumerator PopUping_timeSet(int time)

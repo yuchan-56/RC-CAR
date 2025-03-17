@@ -24,11 +24,17 @@ public class UI_Manager
         }
     }
 
-    public void SetCanvas(GameObject go, bool sort = true)
+    public void SetCanvas(GameObject go, bool sort = true, bool renderScreen = true)
     {
         Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
-        //canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        ///// rendermode 를 결정해서 설정하자 
+        if(renderScreen==true)
+        {
+            canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+        }
+        else { canvas.renderMode = RenderMode.ScreenSpaceCamera; } 
+
+        ///
         canvas.worldCamera = Camera.main;
         canvas.overrideSorting = true;
 
@@ -46,8 +52,8 @@ public class UI_Manager
     public void SetCanvasMost(GameObject go) // 캔버스 SortOrder을 가장 위로 올려주는 함수
     {
         Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
-        //canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
+      
         canvas.worldCamera = Camera.main;
         canvas.overrideSorting = true;
 
@@ -58,7 +64,7 @@ public class UI_Manager
     public void SetCanvasNumber(GameObject go,int sortNumber) // 캔버스 SortOrder을 sortNumber로 설정
     {
         Canvas canvas = Util.GetOrAddComponent<Canvas>(go);
-        canvas.renderMode = RenderMode.ScreenSpaceCamera;
+        canvas.renderMode = RenderMode.ScreenSpaceOverlay;
         canvas.worldCamera = Camera.main;
         canvas.overrideSorting = true;
 
