@@ -106,14 +106,9 @@ public class PlayerMove : MonoBehaviour
 
     public void TriggerJump()
     {
-        if (IsComboAttacking >2)
+        if (IsComboAttacking >=2)
             return;
-        if (!IsJumping && isground)
-        {
-            IsComboAttacking++;
-            StartCoroutine(Jump());
-        }
-        else if (IsComboAttacking <= 2)
+        else if (IsComboAttacking < 2)
         {
             IsComboAttacking++;
             StartCoroutine(Jump());
@@ -166,7 +161,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     public void TriggerDash() {
-        if (IsComboAttacking >2)
+        if (IsComboAttacking >=2)
             return;
         if (canDash)
         {
@@ -229,7 +224,7 @@ public class PlayerMove : MonoBehaviour
     IEnumerator PerformAttack(string ComboType)
     {
         // 공격 중이면 새로운 공격 실행하지 않음
-        if (IsAttacking || IsComboAttacking>2)
+        if (IsAttacking || IsComboAttacking>=2)
             yield break;
 
         IsComboAttacking++;
