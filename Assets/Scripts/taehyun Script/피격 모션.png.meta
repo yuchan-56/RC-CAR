@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 95c496477c22dfc46a4609ba0ef61e7d
+guid: 4767b6ae86dff7d49accc468a1490afe
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 10
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,106 +110,106 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump effect-1_0
+      name: "\uD53C\uACA9 \uBAA8\uC158_0"
       rect:
         serializedVersion: 2
-        x: 26
-        y: 39
-        width: 64
-        height: 64
+        x: 8
+        y: 0
+        width: 15
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c337bd04d05295b4eae6e8f156bc5139
-      internalID: 873131298
+      spriteID: 6b823742cbc768346a320707b3469bb9
+      internalID: 1699511607
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump effect-1_1
+      name: "\uD53C\uACA9 \uBAA8\uC158_1"
       rect:
         serializedVersion: 2
-        x: 154
-        y: 42
-        width: 64
-        height: 64
+        x: 40
+        y: 0
+        width: 15
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5dbd147c2bef5f4e9ba0af234f466f3
-      internalID: -495751995
+      spriteID: 345e7c7c6fcab844aa6f33175e98f7fc
+      internalID: 1476017902
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump effect-1_2
+      name: "\uD53C\uACA9 \uBAA8\uC158_2"
       rect:
         serializedVersion: 2
-        x: 282
-        y: 42
-        width: 64
-        height: 64
+        x: 74
+        y: 0
+        width: 15
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c6df220fa5917241801dd87a9884047
-      internalID: 1810645128
+      spriteID: eb437c5ca699771448c127358c1ef12e
+      internalID: 1556222000
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump effect-1_3
+      name: "\uD53C\uACA9 \uBAA8\uC158_3"
       rect:
         serializedVersion: 2
-        x: 410
-        y: 42
-        width: 64
-        height: 64
+        x: 106
+        y: 0
+        width: 15
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5d9b683e96da51a4c926ce611e20f696
-      internalID: -568733291
+      spriteID: 6363ff63dbb3f3440a8d3cd83362d956
+      internalID: -1740187928
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump effect-1_4
+      name: "\uD53C\uACA9 \uBAA8\uC158_4"
       rect:
         serializedVersion: 2
-        x: 538
-        y: 42
-        width: 64
-        height: 64
+        x: 138
+        y: 0
+        width: 15
+        height: 29
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 2ff6ae0ab4b18cd42ae2f684b309125d
-      internalID: -1469286184
+      spriteID: 847ba2dd145cd91438628029a29d6767
+      internalID: 2127897844
       vertices: []
       indices: 
       edges: []
@@ -225,11 +225,11 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      jump effect-1_0: 873131298
-      jump effect-1_1: -495751995
-      jump effect-1_2: 1810645128
-      jump effect-1_3: -568733291
-      jump effect-1_4: -1469286184
+      "\uD53C\uACA9 \uBAA8\uC158_0": 1699511607
+      "\uD53C\uACA9 \uBAA8\uC158_1": 1476017902
+      "\uD53C\uACA9 \uBAA8\uC158_2": 1556222000
+      "\uD53C\uACA9 \uBAA8\uC158_3": -1740187928
+      "\uD53C\uACA9 \uBAA8\uC158_4": 2127897844
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,11 +1,14 @@
 using UnityEngine;
 using UnityEngine.UI;
+using System.Collections;
 
 public class PlayerHP : MonoBehaviour
 {
+    public PlayerMove playerMove;
     public Image image;
     public Sprite[] sprites;
     public int currentHP = 3;
+    public float animationDuration = 1.0f;
 
     void Start()
     {
@@ -15,8 +18,24 @@ public class PlayerHP : MonoBehaviour
         UpdateHPUI();
     }
 
+    public void TriggerDamage()
+    {
+        if (playerMove.animator != null)
+        {
+            playerMove.animator.SetBool("GetDamaged", true);
+            StartCoroutine(ResetDamageState());
+        }
+    }
+
+    private IEnumerator ResetDamageState()
+    {
+        yield return new WaitForSeconds(animationDuration);
+        playerMove.animator.SetBool("GetDamaged", false);
+    }
+
     public void GetDamaged(int damageAmount)
     {
+        TriggerDamage();
         currentHP -= damageAmount;
 
         if (currentHP < 0)

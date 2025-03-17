@@ -35,6 +35,7 @@ public class PlayerMove : MonoBehaviour
         initialScale = transform.localScale;
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         IsComboAttacking = 0;
+        animator.SetBool("GetDamaged", false);
     }
 
     // Update is called once per frame

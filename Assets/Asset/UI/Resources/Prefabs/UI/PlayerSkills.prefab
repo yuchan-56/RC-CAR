@@ -388,7 +388,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 5285431243031117072}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &5930206561841237659
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -414,11 +426,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSprites:
-  - {fileID: 21300000, guid: 6d3e9720809be2e4b8775f4a17eac0b7, type: 3}
-  - {fileID: 1823977331, guid: c5fcb5a75193ea5499f015db2a6f09aa, type: 3}
-  - {fileID: -1062971373, guid: c5fcb5a75193ea5499f015db2a6f09aa, type: 3}
-  - {fileID: -1853040736, guid: c5fcb5a75193ea5499f015db2a6f09aa, type: 3}
-  - {fileID: -1721351740, guid: c5fcb5a75193ea5499f015db2a6f09aa, type: 3}
+  - {fileID: 873131298, guid: 95c496477c22dfc46a4609ba0ef61e7d, type: 3}
+  - {fileID: -495751995, guid: 95c496477c22dfc46a4609ba0ef61e7d, type: 3}
+  - {fileID: 1810645128, guid: 95c496477c22dfc46a4609ba0ef61e7d, type: 3}
+  - {fileID: -568733291, guid: 95c496477c22dfc46a4609ba0ef61e7d, type: 3}
+  - {fileID: -1469286184, guid: 95c496477c22dfc46a4609ba0ef61e7d, type: 3}
   frameRate: 0.1
   isAnimating: 0
 --- !u!1 &3826793138562731541
@@ -1123,6 +1135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0b6e47c5d209a9f40b3fc0f0865ad553, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerMove: {fileID: 0}
   image: {fileID: 0}
   sprites:
   - {fileID: -1824974043, guid: af2d8252d9637d448b84d52d97d6cce6, type: 3}
@@ -1130,6 +1143,7 @@ MonoBehaviour:
   - {fileID: -1588285509, guid: af2d8252d9637d448b84d52d97d6cce6, type: 3}
   - {fileID: 2055050321, guid: af2d8252d9637d448b84d52d97d6cce6, type: 3}
   currentHP: 3
+  animationDuration: 1
 --- !u!1 &6320079001734114559
 GameObject:
   m_ObjectHideFlags: 0
