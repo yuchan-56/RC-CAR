@@ -267,6 +267,8 @@ public class Enemy : MonoBehaviour
     // HP 감소
     public void EnemyDamage(float damage)
     {
+        StartCoroutine(IsAttacked());
+
         hp -= damage;
         Managers.Game.GetHit = true;
         if (hpSlider != null)
@@ -274,12 +276,21 @@ public class Enemy : MonoBehaviour
             hpSlider.value = hp; // 슬라이더 값 업데이트
         }
 
+        
+
         if (hp <= 0)
         {
             Die();
         }
         Debug.Log(damage);
         Debug.Log(hp);
+    }
+
+    IEnumerator IsAttacked() {
+        animator.SetBool("enemy_attacked", true);
+
+        yield return new WaitForSeconds(0.3f);
+        animator.SetBool("enemy_attacked", false);
     }
 
     void Die()
