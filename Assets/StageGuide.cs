@@ -22,6 +22,9 @@ public class StageGuide : UI_Popup
     {
         if(Managers.Game.currentGround == GameManager.GameGround.G4 || Managers.Game.currentGround ==GameManager.GameGround.A2) // 보스 조우시 조금만 더 기다렸다가 출력 3f
         {
+            Managers.UI.ShowPopUpUI<BossJoin>();
+            BossJoin boss = FindObjectOfType<BossJoin>();
+            boss.setBossImage("Programming");
 
             new WaitForSecondsRealtime(3f); //3초대기
         }
