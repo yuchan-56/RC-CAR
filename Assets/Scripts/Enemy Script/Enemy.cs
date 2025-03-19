@@ -22,6 +22,7 @@ public class Enemy : MonoBehaviour
     bool isFollowing = true;
 
     public float followDistance = 10f; // 따라가기 시작하는 거리
+    public float followDistanceY = 3f; // 따라가기 시작하는 Y축거리
     public float throwDistance = 5f; // 오브젝트 던지기 시작하는 거리
     public float attackDistance = 2.0f; // 일반 공격 거리
     private Vector2 stopPosition;
@@ -82,17 +83,17 @@ public class Enemy : MonoBehaviour
         if (isDead) { return; }  // 더 이상 Update 로직 실행하지 않음
 
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.transform.position.x);
+        float distanceToPlayerY = Mathf.Abs(transform.position.y - player.transform.position.y);
 
-
-        if (distanceToPlayer <= attackDistance)
+        if (distanceToPlayer <= attackDistance && distanceToPlayerY <= followDistanceY)
         {
             currentState = EnemyState.Attacking;
         }
-        else if (distanceToPlayer <= throwDistance)
+        else if (distanceToPlayer <= throwDistance && distanceToPlayerY <= followDistanceY)
         {
             currentState = EnemyState.Throwing;
         }
-        else if (distanceToPlayer <= followDistance)
+        else if (distanceToPlayer <= followDistance&&distanceToPlayerY <= followDistanceY)
         {
             currentState = EnemyState.Following;
         }
