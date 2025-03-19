@@ -17,7 +17,7 @@ public class GameOver : UI_Popup
         Bind<Button>(typeof(Buttons));
         GetButton((int)Buttons.ReTryButton).gameObject.AddUIEvent(ReTryClicked);
         Managers.UI.SetCanvasNumber(this.gameObject, 1000);
-    }
+}
     void ReTryClicked(PointerEventData eventData)
     {
         LoadingScene.Instance.GoLoading("MainTitle");

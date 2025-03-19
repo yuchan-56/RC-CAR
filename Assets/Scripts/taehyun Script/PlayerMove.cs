@@ -12,12 +12,15 @@ public class PlayerMove : MonoBehaviour
     bool IsJumping = false;
     bool IsAttacking = false;
     int IsComboAttacking;
+    bool isDashAttacking = false;
+    bool isJumpAttacking = false;
+    bool isJumpDashing = false;
     float acceleration = 8f;
     float deceleration = 8f;
     float jumpforce = 10f;
     bool isground = false;
     float dashSpeed = 15f;
-    public float dashDuration =0.5f;
+    public float dashDuration =0.1f;
     float dashCoolDown = 0.1f;
     bool isDashing = false;
     bool canDash = true;
@@ -35,7 +38,6 @@ public class PlayerMove : MonoBehaviour
         initialScale = transform.localScale;
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         IsComboAttacking = 0;
-        animator.SetBool("GetDamaged", false);
     }
 
     // Update is called once per frame
@@ -107,11 +109,9 @@ public class PlayerMove : MonoBehaviour
 
     public void TriggerJump()
     {
-        if (IsComboAttacking >=2)
-            return;
-        else if (IsComboAttacking < 2)
+        if (isground )
         {
-            IsComboAttacking++;
+           
             StartCoroutine(Jump());
         }
         else
@@ -162,11 +162,9 @@ public class PlayerMove : MonoBehaviour
     }
 
     public void TriggerDash() {
-        if (IsComboAttacking >=2)
-            return;
         if (canDash)
         {
-            IsComboAttacking++;
+            
             StartCoroutine(Dash());
             animator.SetTrigger("dash");
 
@@ -181,7 +179,7 @@ public class PlayerMove : MonoBehaviour
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         canDash = true;
-        IsComboAttacking = 0;
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
@@ -226,38 +224,43 @@ public class PlayerMove : MonoBehaviour
     IEnumerator PerformAttack(string ComboType)
     {
         // 공격 중이면 새로운 공격 실행하지 않음
-        if (IsAttacking || IsComboAttacking>=2)
-            yield break;
 
-        IsComboAttacking++;
-        if (ComboType == "Attack") 
+        
+        if (ComboType == "Attack" && !IsAttacking) 
         {
             IsAttacking = true;
             animator.SetTrigger("Attack");
             yield return new WaitForSeconds(0.3f);
             IsAttacking = false;
         }
-        else if (ComboType == "DashAttack")
+        else if (ComboType == "DashAttack" && !isDashAttacking && IsComboAttacking < 2)
         {
+            isDashAttacking = true;
+            IsComboAttacking++;
             TriggerDash();
             animator.SetTrigger("DashAttack");
-            yield return 0;
+            yield return new WaitForSeconds(0.917f);
+            isDashAttacking=false;
         }
-        else if (ComboType == "JumpAttack")
+        else if (ComboType == "JumpAttack" && !isJumpAttacking && IsComboAttacking < 2)
         {
-         
+            isJumpAttacking = true;
+            IsComboAttacking++;
             TriggerJump();
             animator.SetTrigger("JumpAttack");
-            yield return 0;
+            yield return new WaitForSeconds(0.75f);
+            isJumpAttacking=false;
 
         }
-        else if (ComboType == "JumpDash")
+        else if (ComboType == "JumpDash" && !isJumpDashing && IsComboAttacking < 2)
         {
-           
+            isJumpDashing= true;
+            IsComboAttacking++;
             TriggerJump();
             TriggerDash();
             animator.SetTrigger("JumpDash");
-            yield return 0;
+            yield return new WaitForSeconds(0.667f);
+            isJumpDashing=false;
         }
     }
 

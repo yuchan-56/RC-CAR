@@ -8,7 +8,7 @@ public class PlayerHP : MonoBehaviour
     public Image image;
     public Sprite[] sprites;
     public int currentHP = 3;
-    public float animationDuration = 1.0f;
+    public float animationDuration = 0.2f;
 
     void Start()
     {
@@ -23,15 +23,16 @@ public class PlayerHP : MonoBehaviour
     {
         if (playerMove.animator != null)    
         {
-            playerMove.animator.SetBool("GetDamaged", true);
+            playerMove.animator.SetTrigger("GetDamaged");
             StartCoroutine(ResetDamageState());
         }
     }
 
     private IEnumerator ResetDamageState()
     {
+        Debug.Log("강제 중지");
         yield return new WaitForSeconds(animationDuration);
-        playerMove.animator.SetBool("GetDamaged", false);
+        playerMove.animator.SetTrigger("GetDamagedDisable");
     }
 
     public void GetDamaged(int damageAmount)
@@ -47,6 +48,7 @@ public class PlayerHP : MonoBehaviour
         if (currentHP == 0)
         {
             Debug.Log("GameOver");
+            playerMove.animator.SetTrigger("Dead");
             Time.timeScale = 0;
             Managers.UI.ShowPopUpUI<GameOver>();
         }
