@@ -48,13 +48,12 @@ public class Enemy : MonoBehaviour
     //attack
     public GameObject attackObject;
 
-
-    // HP
-    public float hp = 100f;
-    public Slider hpSlider;
-    public GameObject hpSliderPrefab; // Slider 프리팹 연결
-
-    public float attackedRange = 1.5f;
+    public GameObject hpBarPrefab;
+    private Image hpBarImage;
+    public Sprite[] hpSprites;
+    public int maxHP = 3;
+    private int currentHP;
+    private Transform canvasTransform;
 
     // Speech
     private bool speeched = false;
@@ -66,16 +65,14 @@ public class Enemy : MonoBehaviour
         stopPosition = transform.position;
         player = GameObject.FindWithTag("Player");
 
-        if (hpSliderPrefab != null)
-        {
-            GameObject sliderInstance = Instantiate(hpSliderPrefab, GameObject.Find("EnemyHPCanvas").transform);
-            hpSlider = sliderInstance.GetComponent<Slider>();
+        currentHP = maxHP;
 
-            hpSlider.maxValue = hp;
-            hpSlider.value = hp;
-        }
+        canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
 
+        GameObject newHpBar = Instantiate(hpBarPrefab, canvasTransform);
+        hpBarImage = newHpBar.GetComponent<Image>();
 
+        hpBarImage.sprite = hpSprites[(int)currentHP];
     }
 
     void Update()
@@ -138,10 +135,10 @@ public class Enemy : MonoBehaviour
         
 
         // HP 슬라이더 위치 업데이트
-        if (hpSlider != null)
+        if (hpBarImage != null)
         {
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.7f, 0));
-            hpSlider.transform.position = screenPosition;
+            hpBarImage.transform.position = screenPosition;
         }
 
 
@@ -150,6 +147,14 @@ public class Enemy : MonoBehaviour
         // 확인용
         if(Input.GetKeyDown(KeyCode.Space)) {
             EnemyDamage(10);
+        }
+    }
+
+    void UpdateHPBar()
+    {
+        if (currentHP >= 0 && currentHP < hpSprites.Length)
+        {
+            hpBarImage.sprite = hpSprites[(int)currentHP];  // HP 이미지 변경
         }
     }
 
@@ -270,24 +275,21 @@ public class Enemy : MonoBehaviour
     {
         StartCoroutine(IsAttacked());
 
-        hp -= damage;
-        Managers.Game.GetHit = true;
-        if (hpSlider != null)
-        {
-            hpSlider.value = hp; // 슬라이더 값 업데이트
-        }
-
-
         // 피격 애니메이션 적용
         IsHit();
-        
 
-        if (hp <= 0)
-        {
+        if(currentHP > 0) {
+            currentHP --;
+            UpdateHPBar();
+        }
+        
+        
+        if(currentHP <= 0) {
             Die();
         }
-        Debug.Log(damage);
-        Debug.Log(hp);
+        Debug.Log(currentHP);
+        
+        Managers.Game.GetHit = true;        
     }
 
     IEnumerator IsHit()
@@ -322,9 +324,9 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1.4f);
 
         // HP 슬라이더 삭제
-        if (hpSlider != null)
+        if (hpBarImage != null)
         {
-            Destroy(hpSlider.gameObject);
+            Destroy(hpBarImage.gameObject);
         }
 
         // 적 오브젝트 삭제

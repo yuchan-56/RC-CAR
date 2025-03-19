@@ -223,6 +223,7 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   followDistance: 10
+  followDistanceY: 3
   throwDistance: 5
   attackDistance: 2
   animator: {fileID: 4452342948343962670}
@@ -230,10 +231,13 @@ MonoBehaviour:
   throwForce: 8
   throwCooldown: 1.5
   attackObject: {fileID: 843541818344207909}
-  hp: 100
-  hpSlider: {fileID: 0}
-  hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}
-  attackedRange: 1.5
+  hpBarPrefab: {fileID: 1362356448488977189, guid: 0f16a2e045a294e86afb45044e9a5405, type: 3}
+  hpSprites:
+  - {fileID: -1239266905, guid: c5a4eabbe570d45398e46543e97a041c, type: 3}
+  - {fileID: 491587811, guid: c5a4eabbe570d45398e46543e97a041c, type: 3}
+  - {fileID: 167256863, guid: c5a4eabbe570d45398e46543e97a041c, type: 3}
+  - {fileID: 1441090756, guid: c5a4eabbe570d45398e46543e97a041c, type: 3}
+  maxHP: 3
 --- !u!95 &4452342948343962670
 Animator:
   serializedVersion: 5
