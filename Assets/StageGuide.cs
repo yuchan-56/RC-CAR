@@ -20,6 +20,11 @@ public class StageGuide : UI_Popup
     }
     IEnumerator PlaySpriteAnimation()
     {
+        if(Managers.Game.currentGround == GameManager.GameGround.G4 || Managers.Game.currentGround ==GameManager.GameGround.A2) // 보스 조우시 조금만 더 기다렸다가 출력 3f
+        {
+
+            new WaitForSecondsRealtime(3f); //3초대기
+        }
 
         for (int i = 0; i < sprites.Length; i++)
         {
