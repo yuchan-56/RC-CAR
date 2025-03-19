@@ -36,7 +36,7 @@ public class GameManager
     public void GameStart()
     {
         currentState = GameState.Battle;
-        currentGround = GameGround.R3;
+        currentGround = GameGround.Rx;
         gage = 0;
         GetHit = false;
     }

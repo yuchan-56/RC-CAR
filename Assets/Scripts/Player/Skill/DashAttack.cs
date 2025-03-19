@@ -56,7 +56,7 @@ public class DashAttack : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Debug.Log(collision.tag);
+        
         if (collision.tag == "Enemy")
         {
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage);

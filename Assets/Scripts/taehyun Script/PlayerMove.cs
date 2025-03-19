@@ -198,6 +198,7 @@ public class PlayerMove : MonoBehaviour
         {
             if (Managers.Game.CheckNextRound()) // 적이 모두 처치되었다면.
             {
+                Debug.Log("NextJumpUp 코드가 실행되었습니다");
                 camera.CameraGoUp();
                 Managers.UI.ShowPopUpUI<MapMoving>();
                 Managers.Game.GoJump();

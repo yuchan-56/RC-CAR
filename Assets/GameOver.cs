@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static LoadingScene;
 
 public class GameOver : UI_Popup
 {
@@ -19,6 +20,6 @@ public class GameOver : UI_Popup
     }
     void ReTryClicked(PointerEventData eventData)
     {
-        Managers.Scene.LoadScene(Define.Scene.MainTitle);
+        LoadingScene.Instance.GoLoading("MainTitle");
     }
 }
