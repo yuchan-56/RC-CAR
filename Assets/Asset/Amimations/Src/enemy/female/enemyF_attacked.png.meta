@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 95c496477c22dfc46a4609ba0ef61e7d
+guid: b1c4ffb720d0640c284be8249cae424c
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -21,7 +21,7 @@ TextureImporter:
     heightScale: 0.25
     normalMapFilter: 0
     flipGreenChannel: 0
-  isReadable: 1
+  isReadable: 0
   streamingMipmaps: 0
   streamingMipmapsPriority: 0
   vTOnly: 0
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 100
+  spritePixelsToUnits: 32
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -82,6 +82,19 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   - serializedVersion: 3
     buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Android
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
@@ -110,106 +123,64 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: jump effect-1_0
+      name: enemyF_attacked_0
       rect:
         serializedVersion: 2
-        x: 26
-        y: 39
-        width: 64
-        height: 64
+        x: 0
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c337bd04d05295b4eae6e8f156bc5139
-      internalID: 873131298
+      spriteID: c9c8a12ec01a548f5b3429e3f1bb3c79
+      internalID: -384223922
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump effect-1_1
+      name: enemyF_attacked_1
       rect:
         serializedVersion: 2
-        x: 154
-        y: 42
-        width: 64
-        height: 64
+        x: 32
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c5dbd147c2bef5f4e9ba0af234f466f3
-      internalID: -495751995
+      spriteID: 4087dd58a07b34d90ad33fde75ce1043
+      internalID: -1884251239
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: jump effect-1_2
+      name: enemyF_attacked_2
       rect:
         serializedVersion: 2
-        x: 282
-        y: 42
-        width: 64
-        height: 64
+        x: 64
+        y: 0
+        width: 32
+        height: 32
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 8c6df220fa5917241801dd87a9884047
-      internalID: 1810645128
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump effect-1_3
-      rect:
-        serializedVersion: 2
-        x: 410
-        y: 42
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5d9b683e96da51a4c926ce611e20f696
-      internalID: -568733291
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: jump effect-1_4
-      rect:
-        serializedVersion: 2
-        x: 538
-        y: 42
-        width: 64
-        height: 64
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2ff6ae0ab4b18cd42ae2f684b309125d
-      internalID: -1469286184
+      spriteID: 41da1a13cd9844a3da45ef3562abbce1
+      internalID: -2144723721
       vertices: []
       indices: 
       edges: []
@@ -225,11 +196,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      jump effect-1_0: 873131298
-      jump effect-1_1: -495751995
-      jump effect-1_2: 1810645128
-      jump effect-1_3: -568733291
-      jump effect-1_4: -1469286184
+      enemyF_attacked_0: -384223922
+      enemyF_attacked_1: -1884251239
+      enemyF_attacked_2: -2144723721
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

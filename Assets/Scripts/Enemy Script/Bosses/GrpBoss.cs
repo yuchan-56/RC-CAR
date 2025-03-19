@@ -35,8 +35,6 @@ public class GrpBoss : Boss
 
     //p3
     public GameObject p3Object;
-    public Vector3 beamPos = new Vector3(-8.5f, 1.5f, 0);
-    private GameObject newObj1, newObj2, newObj3;
 
     public BossManager bmScript;
 
@@ -246,44 +244,29 @@ public class GrpBoss : Boss
         animator.SetBool("isP1", false);
         animator.SetBool("isStop", false);
 
-        StartCoroutine(Delaying(0.95f));
+        StartCoroutine(Delay(0.4f));
         StartCoroutine(ShootBeam());
     }
 
-    IEnumerator Delaying(float sec) {
+    IEnumerator Delay(float sec) {
         yield return new WaitForSeconds(sec);
-
-        Vector3 spawnPosition = transform.position + beamPos;
-        Quaternion[] rotation = {
-            Quaternion.Euler(0, 0, 7),
-            Quaternion.Euler(0, 0, 3),
-            Quaternion.Euler(0, 0, -1)
-        };
-
-        newObj1 = Instantiate(p3Object, spawnPosition, rotation[0]);
-        newObj2 = Instantiate(p3Object, spawnPosition, rotation[1]);
-        newObj3 = Instantiate(p3Object, spawnPosition, rotation[2]);
-        
+        p3Object.SetActive(true);
     }
 
+
     IEnumerator ShootBeam() {
-        Invoke("DestroyBeam", 2f);
-        
         yield return new WaitForSeconds(2.4f);
 
         animator.SetBool("isP3", false);
+        p3Object.SetActive(false);
+
+        bmScript.attackPos = true;
         isWandering = true;
         isFollowing = true;
         isStop = true;
     }
 
-    void DestroyBeam()
-    {
-        Destroy(newObj1);
-        Destroy(newObj2);
-        Destroy(newObj3);
-    }
-
+    
 
     void FacePlayer()
     {

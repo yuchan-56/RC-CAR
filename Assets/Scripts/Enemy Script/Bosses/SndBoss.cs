@@ -54,15 +54,9 @@ public class SndBoss : Boss
 
         if (P1Object != null)
         {
-            StartCoroutine(Delaying(1.2f));
+            P1Object.SetActive(true);
             StartCoroutine(DeactivateAfterDelay(P1Object, 2.6f));
         }
-    }
-
-    IEnumerator Delaying(float sec) {
-        yield return new WaitForSeconds(sec);
-
-        P1Object.SetActive(true);
     }
 
 
