@@ -276,6 +276,9 @@ public class Enemy : MonoBehaviour
             hpSlider.value = hp; // 슬라이더 값 업데이트
         }
 
+
+        // 피격 애니메이션 적용
+        IsHit();
         
 
         if (hp <= 0)
@@ -284,6 +287,15 @@ public class Enemy : MonoBehaviour
         }
         Debug.Log(damage);
         Debug.Log(hp);
+    }
+
+    IEnumerator IsHit()
+    {
+        animator.SetBool("enemy_hit", true);
+
+        yield return new WaitForSeconds(0.22f);
+
+        animator.SetBool("enemy_hit", false);
     }
 
     IEnumerator IsAttacked() {
