@@ -5,8 +5,8 @@ using UnityEngine.UI;
 
 public class JumpAni : MonoBehaviour
 {
-    public Sprite[] animationSprites; // 애니메이션에 사용할 스프라이트 배열
-    public float frameRate = 0.1f; // 프레임 간격 (초 단위)
+    public Sprite[] animationSprites;
+    public float frameRate = 0.1f;
     private Image buttonImage;
     public bool isAnimating = false;
 

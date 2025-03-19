@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4767b6ae86dff7d49accc468a1490afe
+guid: 3b87440efcb1c92459610efcbe28b219
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,106 +110,190 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_0"
+      name: Prg_Boss_dying_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
-        width: 15
-        height: 29
+        width: 64
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b823742cbc768346a320707b3469bb9
-      internalID: 1699511607
+      spriteID: 0d2e6bde86c92dd4f975f0f0daf14c2b
+      internalID: 1834584694
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_1"
+      name: Prg_Boss_dying_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 64
         y: 0
-        width: 15
-        height: 29
+        width: 64
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 345e7c7c6fcab844aa6f33175e98f7fc
-      internalID: 1476017902
+      spriteID: af879a22e6e5d3f498e0fd0a98956f1a
+      internalID: 848670312
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_2"
+      name: Prg_Boss_dying_2
       rect:
         serializedVersion: 2
-        x: 74
+        x: 128
         y: 0
-        width: 15
-        height: 29
+        width: 64
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb437c5ca699771448c127358c1ef12e
-      internalID: 1556222000
+      spriteID: c6d6735f66ad9614bb55bb58f6505cf8
+      internalID: 1259092282
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_3"
+      name: Prg_Boss_dying_3
       rect:
         serializedVersion: 2
-        x: 106
+        x: 192
         y: 0
-        width: 15
-        height: 29
+        width: 64
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6363ff63dbb3f3440a8d3cd83362d956
-      internalID: -1740187928
+      spriteID: 263a40065860b7445b19bed31badc6ce
+      internalID: 943746879
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_4"
+      name: Prg_Boss_dying_4
       rect:
         serializedVersion: 2
-        x: 138
+        x: 256
         y: 0
-        width: 15
-        height: 29
+        width: 64
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 847ba2dd145cd91438628029a29d6767
-      internalID: 2127897844
+      spriteID: f7d9e3987bb9b974e937b2b7182df08a
+      internalID: 1534028899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prg_Boss_dying_5
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed918ad331ccc4f45b5a5d8d457debbd
+      internalID: -935883968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prg_Boss_dying_6
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e4c7ef4c070fc1649926b4c261257f38
+      internalID: 351646205
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prg_Boss_dying_7
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4c6e5535f897623489294c34fbbcec25
+      internalID: -971278396
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Prg_Boss_dying_8
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 0
+        width: 64
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 34c589115c4c2874981c94f5db73dc9c
+      internalID: 1428169386
       vertices: []
       indices: 
       edges: []
@@ -225,11 +309,15 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uD53C\uACA9 \uBAA8\uC158_0": 1699511607
-      "\uD53C\uACA9 \uBAA8\uC158_1": 1476017902
-      "\uD53C\uACA9 \uBAA8\uC158_2": 1556222000
-      "\uD53C\uACA9 \uBAA8\uC158_3": -1740187928
-      "\uD53C\uACA9 \uBAA8\uC158_4": 2127897844
+      Prg_Boss_dying_0: 1834584694
+      Prg_Boss_dying_1: 848670312
+      Prg_Boss_dying_2: 1259092282
+      Prg_Boss_dying_3: 943746879
+      Prg_Boss_dying_4: 1534028899
+      Prg_Boss_dying_5: -935883968
+      Prg_Boss_dying_6: 351646205
+      Prg_Boss_dying_7: -971278396
+      Prg_Boss_dying_8: 1428169386
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

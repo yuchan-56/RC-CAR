@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4767b6ae86dff7d49accc468a1490afe
+guid: 25c516c792cb1b74c8f4bf76777d9057
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,106 +110,211 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_0"
+      name: Sys_Boss_dying_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b823742cbc768346a320707b3469bb9
-      internalID: 1699511607
+      spriteID: 18b2e0718c4ad7449a3660c8d909c92c
+      internalID: 1851776405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_1"
+      name: Sys_Boss_dying_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 48
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 345e7c7c6fcab844aa6f33175e98f7fc
-      internalID: 1476017902
+      spriteID: e6d2c2e51c77f2442be557b6352e7ad9
+      internalID: -1376519082
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_2"
+      name: Sys_Boss_dying_2
       rect:
         serializedVersion: 2
-        x: 74
+        x: 96
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb437c5ca699771448c127358c1ef12e
-      internalID: 1556222000
+      spriteID: cf3dc5a0b76067e4c998d2f245f26408
+      internalID: -361606465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_3"
+      name: Sys_Boss_dying_3
       rect:
         serializedVersion: 2
-        x: 106
+        x: 144
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6363ff63dbb3f3440a8d3cd83362d956
-      internalID: -1740187928
+      spriteID: 30429898c512a0f4fb57df4a336f40c8
+      internalID: -67997773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_4"
+      name: Sys_Boss_dying_4
       rect:
         serializedVersion: 2
-        x: 138
+        x: 192
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 847ba2dd145cd91438628029a29d6767
-      internalID: 2127897844
+      spriteID: b36a553f8e5b5d2478ce9f4eadf87649
+      internalID: -711748762
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_dying_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 312b44e306787df46bf52ec7724321bb
+      internalID: 1582476510
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_dying_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f94342dbce07dbd428375070119fed11
+      internalID: 333969708
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_dying_7
+      rect:
+        serializedVersion: 2
+        x: 336
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d28e6e2b6508f464495c258c9a9ed02b
+      internalID: 647525746
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_dying_8
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8dd52f76943f0d446b0618c4edce3a44
+      internalID: 182465553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Sys_Boss_dying_9
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6271a7dab4892b34da347911ea34ee38
+      internalID: 549230450
       vertices: []
       indices: 
       edges: []
@@ -225,11 +330,16 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uD53C\uACA9 \uBAA8\uC158_0": 1699511607
-      "\uD53C\uACA9 \uBAA8\uC158_1": 1476017902
-      "\uD53C\uACA9 \uBAA8\uC158_2": 1556222000
-      "\uD53C\uACA9 \uBAA8\uC158_3": -1740187928
-      "\uD53C\uACA9 \uBAA8\uC158_4": 2127897844
+      Sys_Boss_dying_0: 1851776405
+      Sys_Boss_dying_1: -1376519082
+      Sys_Boss_dying_2: -361606465
+      Sys_Boss_dying_3: -67997773
+      Sys_Boss_dying_4: -711748762
+      Sys_Boss_dying_5: 1582476510
+      Sys_Boss_dying_6: 333969708
+      Sys_Boss_dying_7: 647525746
+      Sys_Boss_dying_8: 182465553
+      Sys_Boss_dying_9: 549230450
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

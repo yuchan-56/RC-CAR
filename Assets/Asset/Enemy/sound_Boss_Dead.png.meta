@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 4767b6ae86dff7d49accc468a1490afe
+guid: 42c66823eba2739429f2148391919fc0
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -48,7 +48,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 10
+  spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -110,106 +110,148 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_0"
+      name: sound_Boss_Dead_0
       rect:
         serializedVersion: 2
-        x: 8
+        x: 0
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6b823742cbc768346a320707b3469bb9
-      internalID: 1699511607
+      spriteID: bac8f567beda42747abdba4f2f1439fb
+      internalID: 2007342405
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_1"
+      name: sound_Boss_Dead_1
       rect:
         serializedVersion: 2
-        x: 40
+        x: 48
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 345e7c7c6fcab844aa6f33175e98f7fc
-      internalID: 1476017902
+      spriteID: fb6f0a015039f6549b369c658525eb52
+      internalID: 231348099
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_2"
+      name: sound_Boss_Dead_2
       rect:
         serializedVersion: 2
-        x: 74
+        x: 96
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eb437c5ca699771448c127358c1ef12e
-      internalID: 1556222000
+      spriteID: fbfa8da06ef9d194c95dfc0e342e6e98
+      internalID: -558793046
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_3"
+      name: sound_Boss_Dead_3
       rect:
         serializedVersion: 2
-        x: 106
+        x: 144
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6363ff63dbb3f3440a8d3cd83362d956
-      internalID: -1740187928
+      spriteID: 5fa92cca4c41228488d51072bf73b211
+      internalID: 468490014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: "\uD53C\uACA9 \uBAA8\uC158_4"
+      name: sound_Boss_Dead_4
       rect:
         serializedVersion: 2
-        x: 138
+        x: 192
         y: 0
-        width: 15
-        height: 29
+        width: 48
+        height: 48
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 847ba2dd145cd91438628029a29d6767
-      internalID: 2127897844
+      spriteID: bae8844227fc8aa4d888a0154b9005d0
+      internalID: 485209744
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sound_Boss_Dead_5
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0acf4fb216b0190468955c87161f5054
+      internalID: -677680338
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: sound_Boss_Dead_6
+      rect:
+        serializedVersion: 2
+        x: 288
+        y: 0
+        width: 48
+        height: 48
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 048710df98d63ef4b8d2dfdf2a024db9
+      internalID: -764913532
       vertices: []
       indices: 
       edges: []
@@ -225,11 +267,13 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      "\uD53C\uACA9 \uBAA8\uC158_0": 1699511607
-      "\uD53C\uACA9 \uBAA8\uC158_1": 1476017902
-      "\uD53C\uACA9 \uBAA8\uC158_2": 1556222000
-      "\uD53C\uACA9 \uBAA8\uC158_3": -1740187928
-      "\uD53C\uACA9 \uBAA8\uC158_4": 2127897844
+      sound_Boss_Dead_0: 2007342405
+      sound_Boss_Dead_1: 231348099
+      sound_Boss_Dead_2: -558793046
+      sound_Boss_Dead_3: 468490014
+      sound_Boss_Dead_4: 485209744
+      sound_Boss_Dead_5: -677680338
+      sound_Boss_Dead_6: -764913532
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
