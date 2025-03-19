@@ -414,7 +414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animationSprites:
-  - {fileID: -753381869, guid: 95dcdfaf0ddc621458f9f8d516848b10, type: 3}
+  - {fileID: 21300000, guid: 6d3e9720809be2e4b8775f4a17eac0b7, type: 3}
   - {fileID: -11308611, guid: 95dcdfaf0ddc621458f9f8d516848b10, type: 3}
   - {fileID: -1807192268, guid: 95dcdfaf0ddc621458f9f8d516848b10, type: 3}
   - {fileID: 499417016, guid: 95dcdfaf0ddc621458f9f8d516848b10, type: 3}
