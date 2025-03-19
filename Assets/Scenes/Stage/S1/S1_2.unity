@@ -2377,7 +2377,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 316324923393244241, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalScale.x
@@ -2431,6 +2431,10 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329060273386085810}
+    - target: {fileID: 5927446090006884465, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
+      propertyPath: hpBarPrefab
+      value: 
+      objectReference: {fileID: 7002623525333000537, guid: 617563a7b7e934fb1b5e170d9b372c77, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2764,6 +2768,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 809006770}
     m_Modifications:
+    - target: {fileID: 4603602336885974227, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}
+      propertyPath: hpBarPrefab
+      value: 
+      objectReference: {fileID: 7002623525333000537, guid: 617563a7b7e934fb1b5e170d9b372c77, type: 3}
     - target: {fileID: 5389227735615270805, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}
       propertyPath: m_LocalPosition.x
       value: 4.2

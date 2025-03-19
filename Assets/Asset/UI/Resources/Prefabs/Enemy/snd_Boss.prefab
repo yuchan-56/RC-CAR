@@ -288,9 +288,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81850b3ac8162461098ca217a04a1d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  hpSlider: {fileID: 0}
-  hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}
+  hpBarPrefab: {fileID: 7002623525333000537, guid: 617563a7b7e934fb1b5e170d9b372c77, type: 3}
+  hpBarTransform: {fileID: 0}
+  maxHP: 100
   animator: {fileID: 9180770424745071920}
   isDead: 0
   player: {fileID: 0}

@@ -224,17 +224,13 @@ PrefabInstance:
       propertyPath: hpBarImage
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 5118836788060181660, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
-      propertyPath: hpBarPrefab
-      value: 
-      objectReference: {fileID: 1362356448488977189, guid: 0f16a2e045a294e86afb45044e9a5405, type: 3}
     - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
       propertyPath: m_Name
       value: Enemy_male
       objectReference: {fileID: 0}
     - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -526,10 +522,6 @@ PrefabInstance:
       propertyPath: hpBarImage
       value: 
       objectReference: {fileID: 0}
-    - target: {fileID: 8209819447361578190, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
-      propertyPath: hpBarPrefab
-      value: 
-      objectReference: {fileID: 1362356448488977189, guid: 0f16a2e045a294e86afb45044e9a5405, type: 3}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalPosition.x
       value: 1.78
@@ -1596,6 +1588,10 @@ PrefabInstance:
       propertyPath: p1Object
       value: 
       objectReference: {fileID: 3402527279822243566}
+    - target: {fileID: 6207128947237039076, guid: 54ec08e78562947deb40f7c986694a1d, type: 3}
+      propertyPath: hpBarPrefab
+      value: 
+      objectReference: {fileID: 7002623525333000537, guid: 617563a7b7e934fb1b5e170d9b372c77, type: 3}
     - target: {fileID: 7013894532289976712, guid: 54ec08e78562947deb40f7c986694a1d, type: 3}
       propertyPath: playerHP
       value: 

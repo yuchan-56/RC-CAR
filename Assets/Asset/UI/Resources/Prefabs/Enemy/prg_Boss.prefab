@@ -197,9 +197,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e85278c787da849768ef0a58e0044dd4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  hpSlider: {fileID: 0}
-  hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}
+  hpBarPrefab: {fileID: 7002623525333000537, guid: 617563a7b7e934fb1b5e170d9b372c77, type: 3}
+  hpBarTransform: {fileID: 0}
+  maxHP: 100
   animator: {fileID: 8127466129754458671}
   isDead: 0
   player: {fileID: 0}
@@ -326,6 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &3599141358719822819
 GameObject:
   m_ObjectHideFlags: 0
@@ -461,6 +462,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &8836719018161425465
 GameObject:
   m_ObjectHideFlags: 0
@@ -551,3 +553,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}

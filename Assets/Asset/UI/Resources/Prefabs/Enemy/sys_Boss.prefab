@@ -90,6 +90,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &2299593706601667949
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +181,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &4921571774760923138
 GameObject:
   m_ObjectHideFlags: 0
@@ -390,9 +392,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 757e8d4d9a0144b6f8585190e2ee8ab7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 100
-  hpSlider: {fileID: 0}
-  hpSliderPrefab: {fileID: 6049728040959182684, guid: 62957f745614c4714808db30b4d5909e, type: 3}
+  hpBarPrefab: {fileID: 7002623525333000537, guid: 617563a7b7e934fb1b5e170d9b372c77, type: 3}
+  hpBarTransform: {fileID: 0}
+  maxHP: 100
   animator: {fileID: 8947144704617956347}
   isDead: 0
   player: {fileID: 0}
@@ -404,6 +406,7 @@ MonoBehaviour:
   followDistance: 10
   minFollowDistance: 2.5
   attackObject: {fileID: 6936120450200044261}
+  p1Object: {fileID: 0}
   p2Object: {fileID: 613110078317315131}
   p3Object: {fileID: 2299593706601667949}
   bmScript: {fileID: 5717330517515284964}
@@ -497,3 +500,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}

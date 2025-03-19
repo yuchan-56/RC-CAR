@@ -202,6 +202,7 @@ public class GrpBoss : Boss
         float healDuration = 5f; // 회복 지속 시간
         float elapsedTime = 0f;
 
+        /*
         while (elapsedTime < healDuration) {
             // 부모 클래스(Boss)의 hp 증가
             hp += healAmount * Time.deltaTime;
@@ -218,6 +219,9 @@ public class GrpBoss : Boss
             elapsedTime += Time.deltaTime;
             yield return null;
         }
+        */
+
+        yield return null;
 
         // 회복 종료 후 애니메이션 리셋
         animator.SetBool("isP2", false);

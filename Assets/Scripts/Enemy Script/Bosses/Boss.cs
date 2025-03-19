@@ -7,9 +7,13 @@ using UnityEngine.UI;
 public class Boss : MonoBehaviour
 {
     // HP
-    public float hp = 100f;
-    public Slider hpSlider;
-    public GameObject hpSliderPrefab; // Slider 프리팹 연결
+    public GameObject hpBarPrefab; // HP Bar 프리팹 (UI Image)
+    public RectTransform hpBarTransform; // 개별 HP 바의 RectTransform
+    protected Transform canvasTransform; // UI Canvas
+
+    public float maxHP = 100f;
+    protected float currentHP;
+    protected float initialWidth;
 
 
     // animator
@@ -57,26 +61,25 @@ public class Boss : MonoBehaviour
     {
         stopPosition = transform.position;
 
-        if (hpSliderPrefab != null)
-        {
-            GameObject sliderInstance = Instantiate(hpSliderPrefab, GameObject.Find("EnemyHPCanvas").transform);
-            hpSlider = sliderInstance.GetComponent<Slider>();
+        currentHP = maxHP;
 
-            hpSlider.maxValue = hp;
-            hpSlider.value = hp;
-        }
+        canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
+
+        // 개별 HP 바 생성 및 Canvas의 자식으로 설정
+        GameObject newHpBar = Instantiate(hpBarPrefab, canvasTransform);
+        hpBarTransform = newHpBar.GetComponent<RectTransform>();
+        hpBarTransform.anchoredPosition = new Vector2(-170.0f, canvasTransform.GetComponent<RectTransform>().sizeDelta.y / 2 - 50);
+
+        initialWidth = hpBarTransform.sizeDelta.x; // 원래 체력바 길이 저장
+
+        hpBarTransform.pivot = new Vector2(0f, 0.5f);
+
+        hpBarTransform.sizeDelta = new Vector2(initialWidth, hpBarTransform.sizeDelta.y);
     }
 
 
     protected virtual void Update()
     {
-        // HP 슬라이더 위치 업데이트
-        if (hpSlider != null)
-        {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 3.4f, 0));
-            hpSlider.transform.position = screenPosition;
-        }
-
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
 
@@ -115,6 +118,12 @@ public class Boss : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)) {
             BossDamage(10);
         }
+    }
+
+    void UpdateHPBar()
+    {
+        float hpRatio = currentHP / maxHP;
+        hpBarTransform.sizeDelta = new Vector2(initialWidth * hpRatio, hpBarTransform.sizeDelta.y); // 체력 비율만큼 너비 조정
     }
 
     protected virtual void StopMoving()
@@ -191,19 +200,18 @@ public class Boss : MonoBehaviour
 
     public virtual void BossDamage(float damage)
     {
-        hp -= damage;
-        Managers.Game.GetHit = true;
-        if (hpSlider != null)
-        {
-            hpSlider.value = hp; // 슬라이더 값 업데이트
+        if(currentHP > 0) {
+            currentHP -= damage;
+            UpdateHPBar();
         }
+        else if (currentHP < 0) { currentHP = 0; }
 
-        if (hp <= 0)
+        Managers.Game.GetHit = true;
+
+        if (currentHP <= 0)
         {
             Die();
         }
-        Debug.Log(damage);
-        Debug.Log(hp);
     }
 
     public virtual void Die()
@@ -225,9 +233,9 @@ public class Boss : MonoBehaviour
         yield return new WaitForSeconds(animationLength * 2.02f);
 
         
-        if (hpSlider != null)
+        if (hpBarPrefab != null)
         {
-            Destroy(hpSlider.gameObject);
+            Destroy(hpBarPrefab.gameObject);
         }
 
         Destroy(gameObject);

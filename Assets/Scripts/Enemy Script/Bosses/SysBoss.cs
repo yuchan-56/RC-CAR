@@ -29,7 +29,7 @@ public class SysBoss : Boss
     protected override void Update()
     {
         base.Update();
-        if(hp > 50) {
+        if(currentHP > 50) {
                 animator.SetBool("isLowHP", false);
         }
         else {

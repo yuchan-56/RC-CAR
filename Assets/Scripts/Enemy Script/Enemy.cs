@@ -324,9 +324,9 @@ public class Enemy : MonoBehaviour
         yield return new WaitForSeconds(1.4f);
 
         // HP 슬라이더 삭제
-        if (hpBarImage != null)
+        if (hpBarPrefab != null)
         {
-            Destroy(hpBarImage.gameObject);
+            Destroy(hpBarPrefab.gameObject);
         }
 
         // 적 오브젝트 삭제
