@@ -15,12 +15,13 @@ public class PlayerHP : MonoBehaviour
         if (image == null)
             image = GetComponent<Image>();
 
+        playerMove = FindObjectOfType<PlayerMove>();
         UpdateHPUI();
     }
 
     public void TriggerDamage()
     {
-        if (playerMove.animator != null)
+        if (playerMove.animator != null)    
         {
             playerMove.animator.SetBool("GetDamaged", true);
             StartCoroutine(ResetDamageState());
