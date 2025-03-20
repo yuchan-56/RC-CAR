@@ -14,6 +14,7 @@ public class Boss : MonoBehaviour
     public float maxHP = 100f;
     protected float currentHP;
     protected float initialWidth;
+    protected bool showHP = false;
 
 
     // animator
@@ -63,23 +64,19 @@ public class Boss : MonoBehaviour
 
         currentHP = maxHP;
 
-        canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
-
-        // 개별 HP 바 생성 및 Canvas의 자식으로 설정
-        GameObject newHpBar = Instantiate(hpBarPrefab, canvasTransform);
-        hpBarTransform = newHpBar.GetComponent<RectTransform>();
-        hpBarTransform.anchoredPosition = new Vector2(-170.0f, canvasTransform.GetComponent<RectTransform>().sizeDelta.y / 2 - 50);
-
-        initialWidth = hpBarTransform.sizeDelta.x; // 원래 체력바 길이 저장
-
-        hpBarTransform.pivot = new Vector2(0f, 0.5f);
-
-        hpBarTransform.sizeDelta = new Vector2(initialWidth, hpBarTransform.sizeDelta.y);
+        canvasTransform = GameObject.Find("EnemyHPCanvas").transform; 
     }
 
 
     protected virtual void Update()
     {
+        float heightWPlayer = Mathf.Abs(transform.position.y - player.position.y);
+        if(heightWPlayer <= 10.0f && !showHP) {
+            StartCoroutine(ShowHPBar());
+            showHP = true;
+        }
+
+
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
 
@@ -118,6 +115,21 @@ public class Boss : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Space)) {
             BossDamage(10);
         }
+    }
+
+    IEnumerator ShowHPBar() {
+        // 개별 HP 바 생성 및 Canvas의 자식으로 설정
+        GameObject newHpBar = Instantiate(hpBarPrefab, canvasTransform);
+        hpBarTransform = newHpBar.GetComponent<RectTransform>();
+        hpBarTransform.anchoredPosition = new Vector2(-170.0f, canvasTransform.GetComponent<RectTransform>().sizeDelta.y / 2 - 50);
+
+        initialWidth = hpBarTransform.sizeDelta.x; // 원래 체력바 길이 저장
+
+        hpBarTransform.pivot = new Vector2(0f, 0.5f);
+
+        hpBarTransform.sizeDelta = new Vector2(initialWidth, hpBarTransform.sizeDelta.y);
+
+        yield return null;
     }
 
     void UpdateHPBar()

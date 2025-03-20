@@ -48,6 +48,7 @@ public class Enemy : MonoBehaviour
     //attack
     public GameObject attackObject;
 
+    // HP
     public GameObject hpBarPrefab;
     private Image hpBarImage;
     public Sprite[] hpSprites;
@@ -321,12 +322,12 @@ public class Enemy : MonoBehaviour
         // 죽는 애니메이션 시작
         animator.SetBool("enemy_die", true);
 
-        yield return new WaitForSeconds(1.4f);
+        yield return new WaitForSeconds(2.5f);
 
         // HP 슬라이더 삭제
-        if (hpBarPrefab != null)
+        if (hpBarImage != null)
         {
-            Destroy(hpBarPrefab.gameObject);
+            Destroy(hpBarImage.gameObject);
         }
 
         // 적 오브젝트 삭제

@@ -5,8 +5,11 @@ using UnityEngine.UI;
 
 public class SndBoss : Boss
 {
+    public GameObject hpFramePref;
+    public Image hpFrameImg;
 
-    public GameObject attackObject;
+
+    public GameObject[] attackObject = new GameObject[3];
     public GameObject P1Object;
     public GameObject P3Object;
 
@@ -17,6 +20,8 @@ public class SndBoss : Boss
     {
         base.Start();
         Debug.Log("sound boss 등장!");
+
+
     }
 
 
@@ -35,10 +40,20 @@ public class SndBoss : Boss
 
         if (attackObject != null)
         {
-            attackObject.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(attackObject, 3f));
+            //StartCoroutine(SndAttack());
         }
+
+        animator.SetBool("isAttack", false);
     }
+
+    /*
+    IEnumerator SndAttack() {
+        for(int i = 0; i < attackObject.Length; i++) {
+            GameObject aa = Instantiate(attackObject[i]);
+
+            yield return new WaitForSeconds(0.3f);
+        }
+    }*/
 
     public override void P1() {
         isWandering = false;
