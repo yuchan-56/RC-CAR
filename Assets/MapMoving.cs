@@ -36,7 +36,7 @@ public class MapMoving : UI_Popup
 
         Managers.UI.ShowPopUpUI<StageGuide>(); // 맵이동이 끝날때 StageGuide 출력
 
-        Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<UI_Popup>(this.gameObject));
+        Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<MapMoving>(this.gameObject));
 
 
         yield return null;

@@ -68,11 +68,20 @@ public class Boss : MonoBehaviour
     }
 
 
+    private  void ShowAnimation()
+    {
+        Managers.UI.ShowPopUpUI<BossJoin>();
+        BossJoin join = FindObjectOfType<BossJoin>();
+        join.setBossImage(this.gameObject.name);
+        Debug.Log(this.gameObject.name);
+    }
+    
     protected virtual void Update()
     {
         float heightWPlayer = Mathf.Abs(transform.position.y - player.position.y);
         if(heightWPlayer <= 10.0f && !showHP) {
             StartCoroutine(ShowHPBar());
+            ShowAnimation(); // 보스가 Player 조우시 애니메이션 출력
             showHP = true;
         }
 

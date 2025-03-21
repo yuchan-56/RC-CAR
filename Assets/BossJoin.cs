@@ -3,17 +3,25 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class BossJoin : UI_Popup
-{
-    public Image image;
-    private void Start()
+    public class BossJoin : UI_Popup
     {
-        
-    }
+        public Image image;
+        private void Start()
+        {
+            StartCoroutine(showImage());
+        }
 
-    public void setBossImage(string boss) // Graphic,Programming,Sound,System
-    {
-        image.sprite = Resources.Load<Sprite>($"UI/EnemyBoss/{boss}");
+        IEnumerator showImage()
+        {
+            Time.timeScale = 0;
+            yield return new WaitForSecondsRealtime(0.4f);
+            Time.timeScale = 1;
+            Debug.Log("이부분 실행되는지?");
+            Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<BossJoin>(this.gameObject));
+        }
+        public void setBossImage(string boss) // Graphic,Programming,Sound,System
+        {
+            image.sprite = Resources.Load<Sprite>($"EnemyBoss/{boss}");
 
+        }
     }
-}
