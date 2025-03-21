@@ -32,6 +32,12 @@ public class GameManager
     {
        
     }
+
+    public void ReSet()
+    {
+
+    }
+
     //인게임 데이터 초기화 
     public void GameStart()
     {

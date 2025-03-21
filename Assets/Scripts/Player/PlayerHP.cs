@@ -10,6 +10,7 @@ public class PlayerHP : MonoBehaviour
     public int currentHP = 3;
     public float animationDuration = 0.2f;
 
+    private bool gameOver = false;
     void Start()
     {
         if (image == null)
@@ -45,8 +46,9 @@ public class PlayerHP : MonoBehaviour
 
         UpdateHPUI();
 
-        if (currentHP == 0)
+        if (currentHP == 0&&!gameOver)
         {
+            gameOver = true;
             Debug.Log("GameOver");
             playerMove.animator.SetTrigger("Dead");
             Time.timeScale = 0;

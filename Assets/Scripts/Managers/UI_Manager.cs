@@ -11,6 +11,11 @@ public class UI_Manager
     Stack<UI_Popup> _popUpStack = new Stack<UI_Popup>();
 
     UI_Scene _sceneUI = null;
+
+    public void ReSet()
+    {
+        isPopuping = false;
+    }
     public GameObject Root
     {
         get
