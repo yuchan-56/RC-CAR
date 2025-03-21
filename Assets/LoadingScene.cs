@@ -44,13 +44,15 @@ public class LoadingScene : MonoBehaviour
     }
     IEnumerator Loading(string scene)
     {
-        LoadingPanel.DOFade(1f, 0.5f);
+        LoadingPanel.DOFade(1f, 0.5f).SetUpdate(true);
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSecondsRealtime(0.5f);
         Managers.Scene.LoadScene(scene);
 
-        yield return new WaitForSeconds(0.3f);
+        yield return new WaitForSecondsRealtime(0.3f);
         Debug.Log("이곳에 진입했습니다");
-        LoadingPanel.DOFade(0f, 0.3f);
+        LoadingPanel.DOFade(0f, 0.3f).SetUpdate(true);
+
+        Time.timeScale = 1;
     }
 }
