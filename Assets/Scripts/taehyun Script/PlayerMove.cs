@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class PlayerMove : MonoBehaviour
 {
-    float maxspeed = 7f;
+    float maxspeed = 10f;
     float currentspeed;
     float movedirection;
     bool IsJumping = false;
@@ -15,9 +15,9 @@ public class PlayerMove : MonoBehaviour
     bool isDashAttacking = false;
     bool isJumpAttacking = false;
     bool isJumpDashing = false;
-    float acceleration = 8f;
-    float deceleration = 8f;
-    float jumpforce = 10f;
+    float acceleration = 10f;
+    float deceleration = 10f;
+    float jumpforce = 15f;
     bool isground = false;
     float dashSpeed = 15f;
     public float dashDuration =0.1f;
