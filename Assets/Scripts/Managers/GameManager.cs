@@ -12,6 +12,8 @@ public class GameManager
 
     public int[] roundEnemyCount = new int[14];// GameGround마다의 적 숫자 설정
 
+    public bool isHit = false;
+
     //게임 상태를 나눠서 상태에 따라 스크립트들이 돌아가게 함
     public enum GameState
     {

@@ -4,11 +4,14 @@ using System.Collections;
 
 public class PlayerHP : MonoBehaviour
 {
+    public PlayerEffect playerEffect;
     public PlayerMove playerMove;
     public Image image;
     public Sprite[] sprites;
     public int currentHP = 3;
     public float animationDuration = 0.2f;
+    private bool isHit = false;
+
 
     private bool gameOver = false;
     void Start()
@@ -17,6 +20,7 @@ public class PlayerHP : MonoBehaviour
             image = GetComponent<Image>();
 
         playerMove = FindObjectOfType<PlayerMove>();
+        playerEffect = FindObjectOfType<PlayerEffect>(); // isHit값 받기 위한 상호작용
         UpdateHPUI();
     }
 
@@ -38,21 +42,25 @@ public class PlayerHP : MonoBehaviour
 
     public void GetDamaged(int damageAmount)
     {
+        if (Managers.Game.isHit) return;
+
+
         TriggerDamage();
         currentHP -= damageAmount;
 
         if (currentHP < 0)
-            currentHP = 0;
+                currentHP = 0;
 
         UpdateHPUI();
 
-        if (currentHP == 0&&!gameOver)
+        if (currentHP == 0 && !gameOver)
         {
             gameOver = true;
             Debug.Log("GameOver");
             playerMove.animator.SetTrigger("Dead");
             Time.timeScale = 0;
             Managers.UI.ShowPopUpUI<GameOver>();
+
         }
     }
 

@@ -134,7 +134,7 @@ public class UI_Manager
         }
         if (_popUpStack.Peek() != popUp)
         {
-            Debug.Log("Close PopUp Failed");
+            Debug.Log($"{popUp} : Close PopUp Failed");
             return;
         }
         ClosePopUpUI();

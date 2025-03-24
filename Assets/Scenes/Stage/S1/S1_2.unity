@@ -9581,8 +9581,16 @@ PrefabInstance:
       value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
-      propertyPath: shakeDuration
+      propertyPath: blinkCount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: blinkDuration
       value: 0.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: shakeDuration
+      value: 0.45
       objectReference: {fileID: 0}
     - target: {fileID: 3790930066339102261, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: shakeStrength
