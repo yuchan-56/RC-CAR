@@ -16,7 +16,6 @@ using UnityEngine.UI;
             Time.timeScale = 0;
             yield return new WaitForSecondsRealtime(0.4f);
             Time.timeScale = 1;
-            Debug.Log("이부분 실행되는지?");
             Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<BossJoin>(this.gameObject));
         }
         public void setBossImage(string boss) // Graphic,Programming,Sound,System

@@ -19,5 +19,6 @@ public class GameClear : UI_Popup
     void GameClearClicked(PointerEventData eventData)
     {
         Managers.Scene.LoadScene(Define.Scene.MainTitle);
+        Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<GameClear>(this.gameObject));
     }
 }

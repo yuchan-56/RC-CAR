@@ -23,6 +23,6 @@ public class GameOver : UI_Popup
     {
         Debug.Log("ReTryClicked");
         LoadingScene.Instance.GoLoading("MainTitle");
-        Managers.UI.ClosePopUpUI();
+        Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<GameOver>(this.gameObject));
     }
 }

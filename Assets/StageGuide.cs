@@ -9,6 +9,7 @@ public class StageGuide : UI_Popup
     public Sprite[] sprites;
     public Image uiImage;
     public Image StageText;
+    public Image dong;
 
     private void Start()
     {
@@ -32,9 +33,9 @@ public class StageGuide : UI_Popup
         for (int i = 0; i < sprites.Length; i++)
         {
             uiImage.sprite = sprites[i];
-            if (i == 9) { StageText.gameObject.SetActive(true); }
+            if (i == 9) { StageText.gameObject.SetActive(true); dong.gameObject.SetActive(true); }
             if (i == 10) { yield return new WaitForSecondsRealtime(1f); } // 글씨 출력후 좀더 기다리기
-            if(i==15){ StageText.gameObject.SetActive(false);}
+            if(i==15){ StageText.gameObject.SetActive(false); dong.gameObject.SetActive(false); }
         yield return new WaitForSecondsRealtime(0.1f);
             
         }

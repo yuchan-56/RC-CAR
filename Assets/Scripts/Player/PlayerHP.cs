@@ -8,7 +8,7 @@ public class PlayerHP : MonoBehaviour
     public PlayerMove playerMove;
     public Image image;
     public Sprite[] sprites;
-    public int currentHP = 3;
+    public int currentHP = 10;
     public float animationDuration = 0.2f;
     private bool isHit = false;
 
