@@ -20,8 +20,6 @@ public class SndBoss : Boss
     {
         base.Start();
         Debug.Log("sound boss 등장!");
-
-
     }
 
 

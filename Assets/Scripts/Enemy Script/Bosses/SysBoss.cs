@@ -79,8 +79,7 @@ public class SysBoss : Boss
     IEnumerator Enemy() {
         p1Object.SetActive(true);
 
-        /// 잡몹 죽을때까지 기다려야함
-        ///
+        yield return new WaitUntil(() => p1Object == null);
 
         eDead = true;
         isWandering = true;
