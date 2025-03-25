@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Boss : MonoBehaviour
 {
+    Collider2D playerCollider;
+    Collider2D bossCollider;
     // HP
     public GameObject hpBarPrefab; // HP Bar 프리팹 (UI Image)
     public RectTransform hpBarTransform; // 개별 HP 바의 RectTransform
@@ -68,6 +70,10 @@ public class Boss : MonoBehaviour
         currentHP = maxHP;
 
         canvasTransform = GameObject.Find("EnemyHPCanvas").transform; 
+
+        playerCollider = player.GetComponent<Collider2D>();
+        bossCollider = GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(playerCollider, bossCollider);
     }
 
 

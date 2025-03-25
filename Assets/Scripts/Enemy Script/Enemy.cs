@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Enemy : MonoBehaviour
 {
+    Collider2D playerCollider;
+    Collider2D enemyCollider;
     // 좌우이동 + following player
     public GameObject player;
     public float speed = 2.5f;
@@ -65,6 +67,10 @@ public class Enemy : MonoBehaviour
     {
         stopPosition = transform.position;
         player = GameObject.FindWithTag("Player");
+
+        playerCollider = player.GetComponent<Collider2D>();
+        enemyCollider = GetComponent<Collider2D>();
+        Physics2D.IgnoreCollision(playerCollider, enemyCollider);
 
         currentHP = maxHP;
 

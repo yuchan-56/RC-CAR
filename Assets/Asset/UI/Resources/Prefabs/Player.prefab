@@ -611,6 +611,7 @@ MonoBehaviour:
   shakeStrength: 0.1
   blinkDuration: 0.2
   blinkCount: 5
+  isHit: 0
 --- !u!1 &7344105796942819253
 GameObject:
   m_ObjectHideFlags: 0
