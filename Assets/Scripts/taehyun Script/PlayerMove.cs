@@ -12,6 +12,7 @@ public class PlayerMove : MonoBehaviour
     bool IsJumping = false;
     bool IsAttacking = false;
     int IsComboAttacking;
+    bool HasDoubleJumped = false;
     bool isDashAttacking = false;
     bool isJumpAttacking = false;
     bool isJumpDashing = false;
@@ -103,14 +104,24 @@ public class PlayerMove : MonoBehaviour
             }
 
             IsJumping = false; // 착지 완료 후 점프 가능
+        HasDoubleJumped= false;
         }
     }
 
     public void TriggerJump()
     {
-        if (isground )
+        if (isground)
         {
-           
+
+            StartCoroutine(Jump());
+        }
+        else if (!isground && IsComboAttacking == 1 && !HasDoubleJumped)//점프어택 or 점프대쉬 and 점프
+        {
+            HasDoubleJumped = true;
+            StartCoroutine(Jump());
+        }
+        else if (IsComboAttacking == 2)// 점프어택 and 점프대쉬
+        {
             StartCoroutine(Jump());
         }
         else
