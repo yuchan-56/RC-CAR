@@ -16,6 +16,8 @@ public class Boss : MonoBehaviour
     protected float initialWidth;
     protected bool showHP = false;
 
+    protected bool sysP1 = false;
+
 
     // animator
     public Animator animator;
@@ -221,17 +223,19 @@ public class Boss : MonoBehaviour
 
     public virtual void BossDamage(float damage)
     {
-        if(currentHP > 0) {
-            currentHP -= damage;
-            UpdateHPBar();
-        }
-        else if (currentHP < 0) { currentHP = 0; }
+        if(!sysP1) {
+            if(currentHP > 0) {
+                currentHP -= damage;
+                UpdateHPBar();
+            }
+            else if (currentHP < 0) { currentHP = 0; }
 
-        Managers.Game.GetHit = true;
+            Managers.Game.GetHit = true;
 
-        if (currentHP <= 0)
-        {
-            Die();
+            if (currentHP <= 0)
+            {
+                Die();
+            }
         }
     }
 

@@ -78,7 +78,8 @@ public class SysBoss : Boss
     
     IEnumerator Enemy() {
         p1Object.SetActive(true);
-
+        sysP1 = true;
+        
         yield return new WaitUntil(() => p1Object == null);
 
         eDead = true;
@@ -86,6 +87,7 @@ public class SysBoss : Boss
         isFollowing = true;
         isStop = true;
         bmScript.attackPos = true;
+        sysP1 = false;
 
         animator.SetBool("isP1", false);
 
