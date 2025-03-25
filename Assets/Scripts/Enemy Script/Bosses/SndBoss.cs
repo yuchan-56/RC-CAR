@@ -41,6 +41,10 @@ public class SndBoss : Boss
         if(showHP && !showFrame) {
             ShowFrame();
         }
+
+        if(isDead) {
+            DeleteFrame();
+        }
     }
 
     private void ShowFrame()
@@ -218,5 +222,9 @@ public class SndBoss : Boss
         isFollowing = true;
         isStop = true;
         bmScript.attackPos = true;
+    }
+
+    void DeleteFrame() {
+        Destroy(framePrefab);
     }
 }

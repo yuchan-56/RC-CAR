@@ -6,7 +6,6 @@ using UnityEngine.UI;
 public class GrpBoss : Boss
 {
     [SerializeField] private GameObject framePrefab; // Inspector에 연결
-
     private GameObject frameInstance;
     bool showFrame = false;
 
@@ -32,15 +31,18 @@ public class GrpBoss : Boss
 
     public Vector3[] fallStartPositions = new Vector3[3]
     {
-        new Vector3(-7f, 10f, 0),  // 왼쪽에서 낙하
-        new Vector3(-5f, 10f, 0),   // 중앙에서 낙하
-        new Vector3(-3f, 10f, 0)    // 오른쪽에서 낙하
+        new Vector3(-5f, 10f, 0),  
+        new Vector3(0, 10f, 0),   
+        new Vector3(5f, 10f, 0)
     };
     private List<GameObject> spawnedObjects = new List<GameObject>();
+
+    bool p2Pos = true;
 
 
     //p3
     public GameObject p3Object;
+    public GameObject p3Collider;
 
     public BossManager bmScript;
 
@@ -57,6 +59,10 @@ public class GrpBoss : Boss
         base.Update();
         if(showHP && !showFrame) {
             ShowFrame();
+        }
+
+        if(isDead) {
+            DeleteFrame();
         }
     }
 
@@ -150,7 +156,7 @@ public class GrpBoss : Boss
         {
             if (p1Object[i] != null)
             {
-                // 보스를 기준으로 지정된 위치에 오브젝트 생성
+                
                 Vector3 spawnPosition = transform.position + spawnPositions[i];
                 GameObject newObj = Instantiate(p1Object[i], spawnPosition, Quaternion.identity);
 
@@ -188,7 +194,7 @@ public class GrpBoss : Boss
         float fallSpeed = 10f;
         float scaleMultiplier = 1.5f;
 
-        obj.transform.position = transform.position + fallStartPos;
+        obj.transform.position = player.transform.position + fallStartPos;
         obj.transform.localScale *= scaleMultiplier;
 
         while (obj.transform.position.y > transform.position.y - 4f) // 땅까지 떨어질 때까지
@@ -210,47 +216,36 @@ public class GrpBoss : Boss
 
 
     public override void P2() {
-        isWandering = false;
-        isFollowing = false;
-        isStop = false;
-        bmScript.attackPos = false;
+        if((currentHP <= maxHP * 0.5f) && p2Pos) {
+            isWandering = false;
+            isFollowing = false;
+            isStop = false;
+            bmScript.attackPos = false;
+            p2Pos = false;
 
-        // 피회복
-        animator.SetBool("isAttack", false);
-        animator.SetBool("isP1", false);
-        animator.SetBool("isP3", false);
-        animator.SetBool("isDead", false);
-        animator.SetBool("isStop", false);
-        animator.SetBool("isP2", true);
+            // 피회복
+            animator.SetBool("isAttack", false);
+            animator.SetBool("isP1", false);
+            animator.SetBool("isP3", false);
+            animator.SetBool("isDead", false);
+            animator.SetBool("isStop", false);
+            animator.SetBool("isP2", true);
 
-        StartCoroutine(GetHP());
+            StartCoroutine(GetHP());
+        }
     }
 
     IEnumerator GetHP() {
-        float healAmount = 5f; // 초당 회복량
-        float healDuration = 5f; // 회복 지속 시간
-        float elapsedTime = 0f;
+        float targetHP = maxHP * 0.75f; // 회복 목표는 70%
+        float healSpeed = maxHP * 0.01f;
 
-        /*
-        while (elapsedTime < healDuration) {
-            // 부모 클래스(Boss)의 hp 증가
-            hp += healAmount * Time.deltaTime;
-
-            if(hp > 100) {
-                hp = 100;
-            }
-            
-            // hpSlider UI 업데이트
-            if (hpSlider != null) {
-                hpSlider.value = hp;
-            }
-
-            elapsedTime += Time.deltaTime;
-            yield return null;
+        while (currentHP < targetHP)
+        {
+            currentHP += healSpeed;
+            currentHP = Mathf.Min(currentHP, targetHP); // 넘치지 않게
+            UpdateHPBar(); // HP 바 실시간 갱신
+            yield return new WaitForSeconds(0.1f); // 회복 간격
         }
-        */
-
-        yield return null;
 
         // 회복 종료 후 애니메이션 리셋
         animator.SetBool("isP2", false);
@@ -268,8 +263,6 @@ public class GrpBoss : Boss
         isStop = false;
         bmScript.attackPos = false;
 
-        //FacePlayer();
-
         animator.SetBool("isAttack", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", true);
@@ -283,7 +276,16 @@ public class GrpBoss : Boss
 
     IEnumerator Delay(float sec) {
         yield return new WaitForSeconds(sec);
+        
         p3Object.SetActive(true);
+
+        StartCoroutine(DelayForCollider(1.2f));
+    }
+
+    IEnumerator DelayForCollider(float sec) {
+        yield return new WaitForSeconds(sec);
+
+        p3Collider.SetActive(true);
     }
 
 
@@ -292,6 +294,7 @@ public class GrpBoss : Boss
 
         animator.SetBool("isP3", false);
         p3Object.SetActive(false);
+        p3Collider.SetActive(false);
 
         bmScript.attackPos = true;
         isWandering = true;
@@ -299,21 +302,7 @@ public class GrpBoss : Boss
         isStop = true;
     }
 
-    
-
-    void FacePlayer()
-    {
-       if (player == null) return;
-
-        Vector3 direction = player.position - transform.position;
-
-        if (direction.x > 0)
-        {
-            transform.eulerAngles = new Vector3(0, 0, 0); // 플레이어가 오른쪽에 있으면 정방향
-        }
-        else
-        {
-            transform.eulerAngles = new Vector3(0, 180, 0); // 플레이어가 왼쪽에 있으면 180도 회전
-        }
+    void DeleteFrame() {
+        Destroy(framePrefab.gameObject);
     }
 }

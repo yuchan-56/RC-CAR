@@ -61,6 +61,10 @@ public class SysBoss : Boss
         else {
                 animator.SetBool("isLowHP", true);
         }
+
+        if(isDead) {
+            DeleteFrame();
+        }
     }
 
     public override void Attack()
@@ -187,5 +191,9 @@ public class SysBoss : Boss
             p3Object.SetActive(true);
             StartCoroutine(DeactivateAfterDelay(p3Object, 2.2f));
         }
+    }
+
+    void DeleteFrame() {
+        Destroy(framePrefab);
     }
 }

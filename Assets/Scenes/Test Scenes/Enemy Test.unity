@@ -1563,7 +1563,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4921571774760923138, guid: 54ec08e78562947deb40f7c986694a1d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5306718476694102520, guid: 54ec08e78562947deb40f7c986694a1d, type: 3}
       propertyPath: playerHP
@@ -1632,7 +1632,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2521304787980258994, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 3.22
+      value: 15.57
       objectReference: {fileID: 0}
     - target: {fileID: 2521304787980258994, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1690,17 +1690,13 @@ PrefabInstance:
       propertyPath: beamPos.x
       value: -1
       objectReference: {fileID: 0}
-    - target: {fileID: 5892703297839365521, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: -1164842019, guid: e43ddd6fbad354114bbfb6a1f15b9a02, type: 3}
     - target: {fileID: 8590839111561154068, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
       propertyPath: m_Name
       value: grp_Boss
       objectReference: {fileID: 0}
     - target: {fileID: 8590839111561154068, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8933629631502924030, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
       propertyPath: m_IsActive

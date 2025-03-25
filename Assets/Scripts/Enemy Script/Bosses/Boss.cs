@@ -36,6 +36,7 @@ public class Boss : MonoBehaviour
     public float followDistance = 20.0f; // 따라가기 시작하는 거리
     public float minFollowDistance = 2.5f;
 
+
     
     private Vector2 stopPosition;
 
@@ -144,7 +145,7 @@ public class Boss : MonoBehaviour
         yield return null;
     }
 
-    void UpdateHPBar()
+    public void UpdateHPBar()
     {
         float hpRatio = currentHP / maxHP;
         hpBarTransform.sizeDelta = new Vector2(initialWidth * hpRatio, hpBarTransform.sizeDelta.y); // 체력 비율만큼 너비 조정
@@ -258,12 +259,7 @@ public class Boss : MonoBehaviour
 
         yield return new WaitForSeconds(animationLength * 2.02f);
 
-        
-        if (hpBarPrefab != null)
-        {
-            Destroy(hpBarPrefab.gameObject);
-        }
-
+        Destroy(hpBarPrefab.gameObject);
         Destroy(gameObject);
     }
 }

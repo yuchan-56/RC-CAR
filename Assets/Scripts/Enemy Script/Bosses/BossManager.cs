@@ -63,10 +63,8 @@ public class BossManager : MonoBehaviour
                 Debug.Log(boss.GetType().Name + "이(가) P1 공격!");
                 break;
             case 2:
-                if(boss.GetType().Name != "GrpBoss") {
-                    boss.P2();
-                    Debug.Log(boss.GetType().Name + "이(가) P2 공격!");
-                }
+                boss.P2();
+                Debug.Log(boss.GetType().Name + "이(가) P2 공격!");
 
                 break;
             case 3:
@@ -80,7 +78,6 @@ public class BossManager : MonoBehaviour
 
     void Update()
     {
-        
         if (Input.GetKeyDown(KeyCode.U)) ExecuteBossAction(boss => boss.Attack());
         if (Input.GetKeyDown(KeyCode.I)) ExecuteBossAction(boss => boss.P1());
         if (Input.GetKeyDown(KeyCode.O)) ExecuteBossAction(boss => boss.P2());

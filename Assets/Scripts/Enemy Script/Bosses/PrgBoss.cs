@@ -37,6 +37,10 @@ public class PrgBoss : Boss
         if(showHP && !showFrame) {
             ShowFrame();
         }
+
+        if(isDead) {
+            DeleteFrame();
+        }
     }
 
     private void ShowFrame()
@@ -185,5 +189,9 @@ public class PrgBoss : Boss
         isStop = true;
         bmScript.attackPos = true;
         
+    }
+
+    void DeleteFrame() {
+        Destroy(framePrefab);
     }
 }
