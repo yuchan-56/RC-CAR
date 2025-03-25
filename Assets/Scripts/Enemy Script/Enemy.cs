@@ -328,13 +328,18 @@ public class Enemy : MonoBehaviour
         // 죽는 애니메이션 시작
         animator.SetBool("enemy_die", true);
 
-        yield return new WaitForSeconds(2.5f);
-
         // HP 슬라이더 삭제
         if (hpBarImage != null)
         {
             Destroy(hpBarImage.gameObject);
         }
+
+        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
+        float animationLength = stateInfo.length; // 애니메이션 길이 가져오기
+
+        yield return new WaitForSeconds(animationLength * 1.02f);
+
+        
 
         // 적 오브젝트 삭제
         Destroy(gameObject);
