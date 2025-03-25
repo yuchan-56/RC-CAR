@@ -57,7 +57,7 @@ public class PlayerHP : MonoBehaviour
         {
             gameOver = true;
             Debug.Log("GameOver");
-            playerMove.animator.SetTrigger("Dead");
+            playerMove.animator.SetTrigger("IsDead");
             Time.timeScale = 0;
             Managers.UI.ShowPopUpUI<GameOver>();
 
