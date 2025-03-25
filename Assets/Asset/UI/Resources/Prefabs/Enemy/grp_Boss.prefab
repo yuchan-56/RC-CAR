@@ -134,8 +134,9 @@ MonoBehaviour:
   isWandering: 1
   isFollowing: 1
   isStop: 1
-  followDistance: 10
+  followDistance: 20
   minFollowDistance: 2.5
+  framePrefab: {fileID: 1603253122592858171, guid: 0b6444fb36b834c4780a55a53ebdda3a, type: 3}
   bulletPrefab: {fileID: 9116340468406217664, guid: 4d015fad217e74f739f26a7d650f6696, type: 3}
   bulletSpeed: 10
   fireRate: 1

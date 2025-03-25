@@ -404,8 +404,9 @@ MonoBehaviour:
   isWandering: 1
   isFollowing: 1
   isStop: 1
-  followDistance: 10
+  followDistance: 20
   minFollowDistance: 2.5
+  framePrefab: {fileID: 9176352269657185254, guid: 1c72d7aac48de4ccab9ab06855cdee01, type: 3}
   attackObject: {fileID: 6936120450200044261}
   p1Object: {fileID: 6694674358117143405}
   p2Object: {fileID: 613110078317315131}

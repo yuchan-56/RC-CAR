@@ -33,7 +33,7 @@ public class Boss : MonoBehaviour
     public bool isFollowing = true;
     public bool isStop = true;
 
-    public float followDistance = 6.0f; // 따라가기 시작하는 거리
+    public float followDistance = 20.0f; // 따라가기 시작하는 거리
     public float minFollowDistance = 2.5f;
 
     
@@ -121,6 +121,7 @@ public class Boss : MonoBehaviour
                     Wander();
                 }
                 break;
+                
         }
 
         if(Input.GetKeyDown(KeyCode.Space)) {

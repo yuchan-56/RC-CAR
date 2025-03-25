@@ -251,8 +251,14 @@ public class Enemy : MonoBehaviour
         animator.SetBool("enemy_attack", true);
 
         if (attackObject != null) {
-            attackObject.SetActive(true);
+            StartCoroutine(EnemyAttack(0.8f));
         }
+    }
+
+    IEnumerator EnemyAttack(float delay) {
+        yield return new WaitForSeconds(delay);
+
+        attackObject.SetActive(true);
     }
 
     

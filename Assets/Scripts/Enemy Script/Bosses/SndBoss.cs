@@ -1,16 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Data.Common;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class SndBoss : Boss
 {
-    public GameObject hpFramePref;
-    public Image hpFrameImg;
+    [SerializeField] private GameObject framePrefab; // Inspector에 연결
+
+    private GameObject frameInstance;
+    bool showFrame = false;
 
 
-    public GameObject[] attackObject = new GameObject[3];
+    public GameObject attackPrefab; // 총알 프리팹
+    public float bulletSpeed = 9f; // 총알 속도
+    public float fireRate = 1.0f;
+
+    Vector3 firePoint = new Vector3(0, 2.0f, 0);
+
+
     public GameObject P1Object;
+
+    bool isP2 = false;
+    public GameObject P2Prefab;
+
     public GameObject P3Object;
 
     public BossManager bmScript;
@@ -20,6 +33,30 @@ public class SndBoss : Boss
     {
         base.Start();
         Debug.Log("sound boss 등장!");
+    }
+
+    protected override void Update()
+    {
+        base.Update();
+        if(showHP && !showFrame) {
+            ShowFrame();
+        }
+    }
+
+    private void ShowFrame()
+    {
+        if (hpBarTransform == null) return;
+
+        // 프레임 생성 및 HP 바에 붙이기
+        frameInstance = Instantiate(framePrefab, hpBarTransform.parent);
+        RectTransform frameRect = frameInstance.GetComponent<RectTransform>();
+
+        // 프레임 위치 설정 (HP 바 기준 상대 위치 조정)
+        frameRect.pivot = new Vector2(0f, 0.8f);
+        frameRect.anchoredPosition = hpBarTransform.anchoredPosition;
+        frameRect.sizeDelta = hpBarTransform.sizeDelta + new Vector2(0, 10);
+
+        showFrame = true;
     }
 
 
@@ -36,22 +73,47 @@ public class SndBoss : Boss
         animator.SetBool("isP3", false);
         animator.SetBool("isStop", false);
 
-        if (attackObject != null)
+        StartCoroutine(ShootBullets(5));
+        
+    }
+
+    IEnumerator ShootBullets(int shotCount)
+    {
+        for (int i = 0; i < shotCount; i++)
         {
-            //StartCoroutine(SndAttack());
+            Shoot();
+            yield return new WaitForSeconds(fireRate);
         }
 
         animator.SetBool("isAttack", false);
+        isWandering = true;
+        isFollowing = true;
+        isStop = true;
+        bmScript.attackPos = true;
+        Debug.Log("attackPos = true");
     }
 
-    /*
-    IEnumerator SndAttack() {
-        for(int i = 0; i < attackObject.Length; i++) {
-            GameObject aa = Instantiate(attackObject[i]);
+    void Shoot()
+    {
+        if (attackPrefab == null || player == null) return; // 플레이어가 없으면 실행 X
+        
+        GameObject bullet = null;
 
-            yield return new WaitForSeconds(0.3f);
+        if(!isP2) {
+            bullet = Instantiate(attackPrefab, transform.position + firePoint, Quaternion.identity);
+        } else {
+            bullet = Instantiate(P2Prefab, transform.position + firePoint, Quaternion.identity);
         }
-    }*/
+
+        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
+
+        if (bulletRb != null)
+        {
+            Vector2 direction = (player.position - transform.position).normalized; // 방향 벡터 계산
+            bulletRb.velocity = direction * bulletSpeed; // 방향 적용
+        }
+    }
+
 
     public override void P1() {
         isWandering = false;
@@ -78,6 +140,7 @@ public class SndBoss : Boss
         isFollowing = false;
         isStop = false;
         bmScript.attackPos = false;
+        isP2 = true;
 
         animator.SetBool("isP2", true);
         animator.SetBool("isAttack", false);

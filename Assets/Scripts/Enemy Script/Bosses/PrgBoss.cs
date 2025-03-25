@@ -4,6 +4,12 @@ using UnityEngine;
 
 public class PrgBoss : Boss
 {
+    [SerializeField] private GameObject framePrefab; // Inspector에 연결
+
+    private GameObject frameInstance;
+    bool showFrame = false;
+
+
     //attack
     public GameObject attackObject;
     //p1
@@ -22,6 +28,31 @@ public class PrgBoss : Boss
     {
         base.Start();
         Debug.Log("프로그래밍 보스");
+    }
+
+
+    protected override void Update()
+    {
+        base.Update();
+        if(showHP && !showFrame) {
+            ShowFrame();
+        }
+    }
+
+    private void ShowFrame()
+    {
+        if (hpBarTransform == null) return;
+
+        // 프레임 생성 및 HP 바에 붙이기
+        frameInstance = Instantiate(framePrefab, hpBarTransform.parent);
+        RectTransform frameRect = frameInstance.GetComponent<RectTransform>();
+
+        // 프레임 위치 설정 (HP 바 기준 상대 위치 조정)
+        frameRect.pivot = new Vector2(0f, 0.8f);
+        frameRect.anchoredPosition = hpBarTransform.anchoredPosition;
+        frameRect.sizeDelta = hpBarTransform.sizeDelta + new Vector2(0, 10);
+
+        showFrame = true;
     }
 
 

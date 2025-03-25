@@ -299,10 +299,15 @@ MonoBehaviour:
   isWandering: 1
   isFollowing: 1
   isStop: 1
-  followDistance: 10
+  followDistance: 20
   minFollowDistance: 2.5
-  attackObject: {fileID: 6022876373454425636}
+  hpFramePref: {fileID: 0}
+  hpFrameImg: {fileID: 0}
+  attackPrefab: {fileID: 1754301823302252970, guid: 1fca036728f644b8d8a0e46cd8c787bb, type: 3}
+  bulletSpeed: 10
+  fireRate: 1
   P1Object: {fileID: 5108786503844715315}
+  P2Prefab: {fileID: 5561968542585834043, guid: c977c26cbc0eb4730ae3f8c6d1c008b9, type: 3}
   P3Object: {fileID: 7972150759265757408}
   bmScript: {fileID: 1254339041719798857}
 --- !u!1 &7972150759265757408

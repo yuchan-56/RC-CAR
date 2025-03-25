@@ -160,6 +160,22 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 2381754514401615302, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_Size.x
+      value: 0.33863986
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381754514401615302, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_Size.y
+      value: 0.3899107
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381754514401615302, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_Offset.x
+      value: -0.40395802
+      objectReference: {fileID: 0}
+    - target: {fileID: 2381754514401615302, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
+      propertyPath: m_Offset.y
+      value: 0.07029572
+      objectReference: {fileID: 0}
     - target: {fileID: 2643588255197526461, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
       propertyPath: knockbackForce
       value: 100
@@ -496,7 +512,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3086914553429650807, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5488980232297232397, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_Size.x
@@ -521,6 +537,10 @@ PrefabInstance:
     - target: {fileID: 8209819447361578190, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: hpBarImage
       value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 8866317631368105938, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8960931624473009957, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -563,7 +583,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 3086914553429650807, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 1b5da9edbb52546d8aee4c6131bf6e6c, type: 3}
@@ -1361,6 +1382,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 681378138}
     - target: {fileID: 4603602336885974227, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}
+      propertyPath: framePrefab
+      value: 
+      objectReference: {fileID: 8201633702256916678, guid: cff731c266b764fbdbace2f97d78c58d, type: 3}
+    - target: {fileID: 4603602336885974227, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}
+      propertyPath: hpBarTransform
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4603602336885974227, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}
       propertyPath: attackObject.Array.size
       value: 3
       objectReference: {fileID: 0}
@@ -1427,6 +1456,7 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 4341261693283614275, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}
+    - {fileID: 6022876373454425636, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 707ec1e1a991e4fc6b0d98b2333d7914, type: 3}

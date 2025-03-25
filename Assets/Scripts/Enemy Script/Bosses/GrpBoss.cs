@@ -5,6 +5,12 @@ using UnityEngine.UI;
 
 public class GrpBoss : Boss
 {
+    [SerializeField] private GameObject framePrefab; // Inspector에 연결
+
+    private GameObject frameInstance;
+    bool showFrame = false;
+
+
     //attack
     public GameObject bulletPrefab; // 총알 프리팹
     public float bulletSpeed = 13f; // 총알 속도
@@ -44,6 +50,31 @@ public class GrpBoss : Boss
         base.Start();
         Debug.Log("그래픽 보스");
     }
+
+
+    protected override void Update()
+    {
+        base.Update();
+        if(showHP && !showFrame) {
+            ShowFrame();
+        }
+    }
+
+    private void ShowFrame()
+    {
+        if (hpBarTransform == null) return;
+
+        // 프레임 생성 및 HP 바에 붙이기
+        frameInstance = Instantiate(framePrefab, hpBarTransform.parent);
+        RectTransform frameRect = frameInstance.GetComponent<RectTransform>();
+
+        // 프레임 위치 설정 (HP 바 기준 상대 위치 조정)
+        frameRect.pivot = new Vector2(0f, 0.8f);
+        frameRect.anchoredPosition = hpBarTransform.anchoredPosition;
+        frameRect.sizeDelta = hpBarTransform.sizeDelta + new Vector2(0, 10);
+
+        showFrame = true;
+    }
    
 
     public override void Attack() {
@@ -51,8 +82,6 @@ public class GrpBoss : Boss
         isFollowing = false;
         isStop = false;
         bmScript.attackPos = false;
-
-        //FacePlayer();
 
         animator.SetBool("isAttack", true);
         animator.SetBool("isStop", false);
