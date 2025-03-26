@@ -9,7 +9,7 @@ public class PlayerHP : MonoBehaviour
     public Image image;
     public Sprite[] sprites;
     public int currentHP = 10;
-    public float animationDuration = 0.2f;
+    public float animationDuration = 0.01f;
     private bool isHit = false;
 
 
@@ -40,6 +40,12 @@ public class PlayerHP : MonoBehaviour
         playerMove.animator.SetTrigger("GetDamagedDisable");
     }
 
+    IEnumerator StartGameOverUI()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        Managers.UI.ShowPopUpUI<GameOver>();
+    }
+
     public void GetDamaged(int damageAmount)
     {
         if (Managers.Game.isHit) return;
@@ -59,8 +65,7 @@ public class PlayerHP : MonoBehaviour
             Debug.Log("GameOver");
             playerMove.animator.SetTrigger("IsDead");
             Time.timeScale = 0;
-            Managers.UI.ShowPopUpUI<GameOver>();
-
+            StartCoroutine(StartGameOverUI());
         }
     }
 
