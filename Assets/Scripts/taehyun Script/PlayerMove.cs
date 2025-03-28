@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     float deceleration = 10f;
     float jumpforce = 15f;
     bool isground = false;
-    float dashSpeed = 20f;
+    float dashSpeed = 35f;
     public float dashDuration = 0.1f;
     bool isDashing = false;
     bool canDash = true;
@@ -185,7 +185,8 @@ public class PlayerMove : MonoBehaviour
         isDashing = true;
         canDash = false;
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
-        rigid.velocity = new Vector2(dashDirection * dashSpeed, rigid.velocity.y);
+        rigid.velocity = Vector2.zero;
+        rigid.AddForce(new Vector2(dashDirection * dashSpeed,rigid.velocity.y), ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         canDash = true;
