@@ -238,11 +238,8 @@ public class Enemy : MonoBehaviour
             animator.SetBool("enemy_throw", true);
             animator.SetBool("enemy_attack", false);
 
-            // 플레이어 위치 예측을 추가하여 더 정확한 타격 시도
-            Vector2 playerVelocity = player.GetComponent<Rigidbody2D>()?.velocity ?? Vector2.zero;
-            Vector2 predictedPosition = (Vector2)player.position + playerVelocity * (Vector2.Distance(transform.position, player.position) / throwForce);
-            Vector2 direction = (predictedPosition - (Vector2)transform.position).normalized;
-            Vector2 throwVelocity = new Vector2(direction.x, direction.y + 0.3f) * throwForce; // 포물선을 그리도록 Y값을 조정
+            Vector2 direction = ((Vector2)player.position - (Vector2)transform.position).normalized;
+            Vector2 throwVelocity = new Vector2(direction.x, direction.y + 0.3f) * throwForce;
             throwableRb.velocity = throwVelocity;
         }
     }
