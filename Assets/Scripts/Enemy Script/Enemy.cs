@@ -50,6 +50,8 @@ public class Enemy : MonoBehaviour
     //attack
     public GameObject attackObject;
 
+    public bool isMale = false;
+
     // HP
     public GameObject hpBarPrefab;
     private Image hpBarImage;
@@ -91,11 +93,21 @@ public class Enemy : MonoBehaviour
 
         if (distanceToPlayer <= attackDistance && distanceToPlayerY <= followDistanceY)
         {
-            currentState = EnemyState.Attacking;
+            if(isMale) {
+                currentState = EnemyState.Attacking;
+            } else {
+                currentState = EnemyState.Throwing;
+            }
+            
         }
         else if (distanceToPlayer <= throwDistance && distanceToPlayerY <= followDistanceY)
         {
-            currentState = EnemyState.Throwing;
+            if(!isMale) {
+                currentState = EnemyState.Throwing;
+            } else {
+                currentState = EnemyState.Following;
+            }
+            
         }
         else if (distanceToPlayer <= followDistance&&distanceToPlayerY <= followDistanceY)
         {

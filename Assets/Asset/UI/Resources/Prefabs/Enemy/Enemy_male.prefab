@@ -231,6 +231,7 @@ MonoBehaviour:
   throwForce: 6
   throwCooldown: 1.5
   attackObject: {fileID: 843541818344207909}
+  isMale: 1
   hpBarPrefab: {fileID: 1362356448488977189, guid: 0f16a2e045a294e86afb45044e9a5405, type: 3}
   hpSprites:
   - {fileID: -1239266905, guid: c5a4eabbe570d45398e46543e97a041c, type: 3}
