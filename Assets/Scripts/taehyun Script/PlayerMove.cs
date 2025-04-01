@@ -90,7 +90,7 @@ public class PlayerMove : MonoBehaviour
         {
             IsJumping = true; // 점프 시작
             isground = false; // 착지 상태 초기화 (Raycast가 정확히 감지되도록)
-            rigid.velocity = new Vector2(rigid.velocity.x, jumpforce); // 기존 속도 반영
+            rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);// 기존 속도 반영
             animator.SetTrigger("jump");
             Debug.Log("Jump");
 
@@ -241,7 +241,7 @@ public class PlayerMove : MonoBehaviour
         {
             IsAttacking = true;
             animator.SetTrigger("Attack");
-            yield return new WaitForSeconds(0.3f);
+            yield return new WaitForSeconds(0.583f);
             IsAttacking = false;
         }
         else if (ComboType == "DashAttack" && !isDashAttacking && IsComboAttacking < 2)
