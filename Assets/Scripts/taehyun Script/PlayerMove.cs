@@ -18,7 +18,7 @@ public class PlayerMove : MonoBehaviour
     bool isJumpDashing = false;
     float acceleration = 10f;
     float deceleration = 10f;
-    float jumpforce = 15f;
+    float jumpforce = 22f;
     bool isground = false;
     float dashSpeed = 35f;
     public float dashDuration = 0.1f;
@@ -90,7 +90,7 @@ public class PlayerMove : MonoBehaviour
         {
             IsJumping = true; // 점프 시작
             isground = false; // 착지 상태 초기화 (Raycast가 정확히 감지되도록)
-            rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);// 기존 속도 반영
+            rigid.velocity = new Vector2(rigid.velocity.x, jumpforce);
             animator.SetTrigger("jump");
             Debug.Log("Jump");
 
@@ -185,8 +185,7 @@ public class PlayerMove : MonoBehaviour
         isDashing = true;
         canDash = false;
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
-        rigid.velocity = Vector2.zero;
-        rigid.AddForce(new Vector2(dashDirection * dashSpeed,rigid.velocity.y), ForceMode2D.Impulse);
+        rigid.velocity = new Vector2(dashDirection * dashSpeed, rigid.velocity.y);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         canDash = true;
