@@ -43,6 +43,7 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             TriggerDash();
@@ -86,6 +87,7 @@ public class PlayerMove : MonoBehaviour
     }
     public IEnumerator Jump()
     {
+
         if (Managers.Game.currentState == GameManager.GameState.Battle)
         {
             IsJumping = true; // 점프 시작
@@ -110,6 +112,7 @@ public class PlayerMove : MonoBehaviour
 
     public void TriggerJump()
     {
+        if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
         if (isground)
         {
 
@@ -131,6 +134,7 @@ public class PlayerMove : MonoBehaviour
     }
     public void OnLeftButtonDown()
     {
+        if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
         if (Managers.Game.currentState == GameManager.GameState.Battle) // ���� �������� ���� üũ
         {
             movedirection = -1;
@@ -141,6 +145,7 @@ public class PlayerMove : MonoBehaviour
 
     public void OnRightButtonDown()
     {
+        if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
         if (Managers.Game.currentState == GameManager.GameState.Battle) // ���� �������� ���� üũ
         {
             movedirection = 1;
@@ -172,6 +177,7 @@ public class PlayerMove : MonoBehaviour
     }
 
     public void TriggerDash() {
+        if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
         if (canDash)
         {
             
@@ -182,6 +188,7 @@ public class PlayerMove : MonoBehaviour
     }
     public IEnumerator Dash()
     {
+
         isDashing = true;
         canDash = false;
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;

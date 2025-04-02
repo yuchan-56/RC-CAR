@@ -1,12 +1,13 @@
 ﻿using System.Collections;
 using UnityEngine;
 using DG.Tweening;
+using System;
 
 public class PlayerEffect : MonoBehaviour
 {
     public float knockbackPower = 100f; // 넉백 힘
     public float knockbackDuration = 0.8f; // 넉백 지속 시간
-    public float shakeDuration = 0.4f; // 움찔 지속 시간, 무적시간 0.8f 기본
+    public float shakeDuration = 0.2f; // 움찔 지속 시간, 무적시간 0.8f 기본
     public float shakeStrength = 0.3f; // 움찔 강도
     public float blinkDuration = 0.2f; // 한 번 깜빡이는 시간
     public int blinkCount = 5; // 깜빡이는 횟수
@@ -14,7 +15,6 @@ public class PlayerEffect : MonoBehaviour
     private Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
     public bool isHit = false; // 연속 피격 방지
-
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();

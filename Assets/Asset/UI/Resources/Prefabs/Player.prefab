@@ -605,10 +605,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9dc2b05b60f8db4a9c5fd3b39b33dab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  knockbackPower: 2
-  knockbackDuration: 0.2
-  shakeDuration: 0.1
-  shakeStrength: 0.1
+  knockbackPower: 0.3
+  knockbackDuration: 0.15
+  shakeDuration: 0.2
+  shakeStrength: 0.3
   blinkDuration: 0.2
   blinkCount: 5
   isHit: 0
