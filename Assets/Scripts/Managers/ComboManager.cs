@@ -217,6 +217,10 @@ public class ComboManager : MonoBehaviour
 
         else if (Input.GetMouseButtonUp(0) && AniSetup == true)
         {
+            if (Managers.Game.isHit)
+            {
+                return;
+            }
             Debug.Log("HashSet Contents: " + string.Join(", ", InputButton));
 
             StopExistingCoroutine(ref atkAniCoroutine);
