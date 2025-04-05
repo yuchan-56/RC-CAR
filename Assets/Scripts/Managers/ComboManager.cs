@@ -242,11 +242,6 @@ public class ComboManager : MonoBehaviour
         {
             Debug.Log("마우스 업 감지됨");
 
-            /*if (player.IsAttacking)
-            {
-                return;
-            
-            }*/
             if (Managers.Game.isHit)
             {
                 return;
@@ -272,6 +267,12 @@ public class ComboManager : MonoBehaviour
             atkAni.isAnimating = false;
             dashAni.isAnimating = false;
             jumpAni.isAnimating = false;
+
+            if (player.IsAttacking)
+            {
+                return;
+
+            }
 
             switch (InputButton.Count)
             {
