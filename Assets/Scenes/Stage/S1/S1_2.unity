@@ -2439,10 +2439,6 @@ PrefabInstance:
       propertyPath: player
       value: 
       objectReference: {fileID: 329060273386085810}
-    - target: {fileID: 5927446090006884465, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
-      propertyPath: hpBarPrefab
-      value: 
-      objectReference: {fileID: 7002623525333000537, guid: 617563a7b7e934fb1b5e170d9b372c77, type: 3}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

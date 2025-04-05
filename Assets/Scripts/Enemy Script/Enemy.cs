@@ -15,6 +15,7 @@ public class Enemy : MonoBehaviour
 
     public enum EnemyState { Idle, Following, Attacking, Throwing }
     bool canMove = true;
+    bool attacking = false;
 
     private EnemyState currentState;
 
@@ -167,7 +168,7 @@ public class Enemy : MonoBehaviour
 
         // 확인용
         if(Input.GetKeyDown(KeyCode.Space)) {
-            //EnemyDamage(10);
+            EnemyDamage(10, 1);
         }
     }
 
@@ -240,14 +241,11 @@ public class Enemy : MonoBehaviour
 
 
 
-
-
-
     // Throw 공격
     void ThrowObject(Transform player)
     {
         if (!canMove) return;
-
+ 
         Vector2 throwStartPosition = transform.position + new Vector3(0, 2.0f, 0); // 적의 키나 던지는 위치에 맞춰 조정
 
         GameObject throwable = Instantiate(throwableObjPrefab, throwStartPosition, Quaternion.identity);
@@ -349,7 +347,6 @@ public class Enemy : MonoBehaviour
         Vector2 knockbackDir = (transform.position - player.transform.position).normalized;
 
         // 밀림 (살짝 뒤로 이동)
-        //float knockbackDistance = 2.0f;
         transform.Translate(knockbackDir * knockback);
 
 
@@ -365,8 +362,8 @@ public class Enemy : MonoBehaviour
         Vector2 startPos = transform.position;
 
         // 위로 튀는 위치 계산
-        Vector2 peakPos = startPos + new Vector2(0, 1.2f); // 얼마나 위로 올라갈지
-        Vector2 endPos = startPos; // 다시 원래 위치로 돌아오게
+        Vector2 peakPos = startPos + new Vector2(0, 1.2f);
+        Vector2 endPos = startPos;
 
         float duration = 0.3f; // 전체 시간
         float elapsed = 0f;
