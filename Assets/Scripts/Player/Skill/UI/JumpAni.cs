@@ -24,7 +24,7 @@ public class JumpAni : MonoBehaviour
         for (int i = 0; i < animationSprites.Length; i++)
         {
             buttonImage.sprite = animationSprites[i];
-            yield return new WaitForSeconds(frameRate);
+            yield return new WaitForSecondsRealtime(frameRate);
         }
 
         isAnimating = false;
