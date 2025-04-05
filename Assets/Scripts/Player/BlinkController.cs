@@ -57,7 +57,7 @@ public class BlinkController : MonoBehaviour
             {
                 img.enabled = isCurrentlyVisible;
             }
-            yield return new WaitForSeconds(blinkInterval);
+            yield return new WaitForSecondsRealtime(blinkInterval);
         }
     }
 }

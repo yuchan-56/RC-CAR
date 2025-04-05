@@ -215,8 +215,38 @@ public class ComboManager : MonoBehaviour
             }
         }
 
+        else if(Time.timeScale == 0f)
+        {
+            StopExistingCoroutine(ref atkAniCoroutine);
+            StopExistingCoroutine(ref dashAniCoroutine);
+            StopExistingCoroutine(ref jumpAniCoroutine);
+            lgo.ImageDisabled();
+            rgo.ImageDisabled();
+            lugo.ImageDisabled();
+            ldgo.ImageDisabled();
+            rugo.ImageDisabled();
+            rdgo.ImageDisabled();
+            atkblink.ImageDisabled();
+            jumpblink.ImageDisabled();
+            dashblink.ImageDisabled();
+
+            atkAni.ResetImage();
+            dashAni.ResetImage();
+            jumpAni.ResetImage();
+            atkAni.isAnimating = false;
+            dashAni.isAnimating = false;
+            jumpAni.isAnimating = false;
+        }
+
         else if (Input.GetMouseButtonUp(0) && AniSetup == true)
         {
+            Debug.Log("마우스 업 감지됨");
+
+            if (AniSetup)
+            {
+                Debug.Log("AniSetup도 true");
+            
+            }
             if (Managers.Game.isHit)
             {
                 return;
