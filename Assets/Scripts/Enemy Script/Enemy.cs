@@ -15,7 +15,6 @@ public class Enemy : MonoBehaviour
 
     public enum EnemyState { Idle, Following, Attacking, Throwing }
     bool canMove = true;
-    bool attacking = false;
 
     private EnemyState currentState;
 
@@ -130,13 +129,11 @@ public class Enemy : MonoBehaviour
                 break;
             
             case EnemyState.Throwing:
-                if (Time.time >= nextThrowAttack)
-                {
-                    attackObject.SetActive(false);
-                    isFollowing = false;
-                    ThrowObject(player.transform);
-                    nextThrowAttack = Time.time + throwCooldown;
-                }
+                animator.SetBool("enemy_throw", true);
+                animator.SetBool("enemy_attack", false);
+
+                attackObject.SetActive(false);
+                isFollowing = false;
                 break;
             
             case EnemyState.Following:
@@ -244,10 +241,8 @@ public class Enemy : MonoBehaviour
 
 
     // Throw 공격
-    void ThrowObject(Transform player)
+    public void EnemyThrowing()
     {
-        if (!canMove) return;
- 
         Vector2 throwStartPosition = transform.position + new Vector3(0, 2.0f, 0); // 적의 키나 던지는 위치에 맞춰 조정
 
         GameObject throwable = Instantiate(throwableObjPrefab, throwStartPosition, Quaternion.identity);
@@ -258,7 +253,7 @@ public class Enemy : MonoBehaviour
             animator.SetBool("enemy_throw", true);
             animator.SetBool("enemy_attack", false);
 
-            Vector2 direction = ((Vector2)player.position - (Vector2)transform.position).normalized;
+            Vector2 direction = ((Vector2)player.transform.position - (Vector2)transform.position).normalized;
             Vector2 throwVelocity = new Vector2(direction.x, direction.y + 0.3f) * throwForce;
             throwableRb.velocity = throwVelocity;
         }
@@ -301,6 +296,9 @@ public class Enemy : MonoBehaviour
     // HP 감소
     public void EnemyDamage(float damage, int attackMethod)
     {
+        animator.SetBool("enemy_attacked", true);
+        canMove = false;
+
         if(attackMethod == 1) {
             //attack
             StartCoroutine(IsAttacked(1.8f));
@@ -342,15 +340,6 @@ public class Enemy : MonoBehaviour
     }
 
     IEnumerator IsAttacked(float knockback) {
-        animator.SetBool("enemy_attacked", true);
-        canMove = false;
-        /*
-        Vector2 knockbackDir = (transform.position - player.transform.position).normalized;
-
-        // 밀림 (살짝 뒤로 이동)
-        transform.Translate(knockbackDir * knockback);
-        */
-
         Vector2 knockbackDir = (transform.position - player.transform.position).normalized;
         float knockbackDistance = 1.0f;
 
@@ -376,9 +365,6 @@ public class Enemy : MonoBehaviour
     }
 
     IEnumerator JumpAttacked() {
-        animator.SetBool("enemy_attacked", true);
-        canMove = false;
-
         Vector2 startPos = transform.position;
 
         // 위로 튀는 위치 계산
