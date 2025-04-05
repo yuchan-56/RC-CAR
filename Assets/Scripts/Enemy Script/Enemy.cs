@@ -265,7 +265,7 @@ public class Enemy : MonoBehaviour
 
     // throwing 마지막 프레임 
     public void CanMove() {
-        Invoke("RealCanMove", 0.5f);
+        Invoke("RealCanMove", 0.3f);
     }
 
     void RealCanMove() {
