@@ -113,10 +113,12 @@ public class Enemy : MonoBehaviour
         }
         else if (distanceToPlayer <= followDistance&&distanceToPlayerY <= followDistanceY)
         {
+            
             currentState = EnemyState.Following;
         }
         else
         {
+            
             currentState = EnemyState.Idle;
         }
         
@@ -272,19 +274,18 @@ public class Enemy : MonoBehaviour
 
         animator.SetBool("enemy_throw", false);
         animator.SetBool("enemy_attack", true);
-
-        if (attackObject != null) {
-            StartCoroutine(EnemyAttack(0.8f));
-        }
     }
 
-    IEnumerator EnemyAttack(float delay) {
-        yield return new WaitForSeconds(delay);
-
+    public void OnAttackStart()
+    {
         attackObject.SetActive(true);
     }
 
-    
+    public void OnAttackEnd()
+    {
+        attackObject.SetActive(false);
+    }
+
 
     void SpeechPopUp()
     {
@@ -343,11 +344,30 @@ public class Enemy : MonoBehaviour
     IEnumerator IsAttacked(float knockback) {
         animator.SetBool("enemy_attacked", true);
         canMove = false;
-
+        /*
         Vector2 knockbackDir = (transform.position - player.transform.position).normalized;
 
         // 밀림 (살짝 뒤로 이동)
         transform.Translate(knockbackDir * knockback);
+        */
+
+        Vector2 knockbackDir = (transform.position - player.transform.position).normalized;
+        float knockbackDistance = 1.0f;
+
+        Vector2 startPos = transform.position;
+        Vector2 targetPos = startPos + knockbackDir * knockbackDistance;
+
+        float duration = 0.2f; // 밀리는 데 걸리는 시간
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            transform.position = Vector2.Lerp(startPos, targetPos, elapsed / duration);
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = targetPos; // 마지막 위치 보정
 
 
         yield return new WaitForSeconds(1.0f);
