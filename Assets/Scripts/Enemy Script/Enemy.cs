@@ -298,19 +298,22 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("enemy_attacked", true);
         canMove = false;
-
-        if(attackMethod == 1) {
+        
+        if(!isDead) {
+            if(attackMethod == 1) {
             //attack
             StartCoroutine(IsAttacked(1.8f));
+            }
+            else if(attackMethod == 2) {
+                //jump attack
+                StartCoroutine(JumpAttacked());
+            }
+            else if(attackMethod == 3) {
+                //dash attack
+                StartCoroutine(IsAttacked(3.0f));
+            }
         }
-        else if(attackMethod == 2) {
-            //jump attack
-            StartCoroutine(JumpAttacked());
-        }
-        else if(attackMethod == 3) {
-            //dash attack
-            StartCoroutine(IsAttacked(3.0f));
-        }
+        
         
 
         // 피격 애니메이션 적용
@@ -399,6 +402,13 @@ public class Enemy : MonoBehaviour
     {
         Debug.Log("Enemy died!");
         isDead = true;
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+        if (rb != null)
+        {
+            rb.velocity = Vector2.zero;
+            rb.constraints = RigidbodyConstraints2D.FreezeAll;
+        }
 
         // 죽는 애니메이션 시작
         animator.SetBool("enemy_die", true);
