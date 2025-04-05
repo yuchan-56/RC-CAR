@@ -1,28 +1,44 @@
 using UnityEngine;
-using UnityEngine.UI;
 using System.Collections;
 
 public class PlayerHP : MonoBehaviour
 {
     public PlayerEffect playerEffect;
     public PlayerMove playerMove;
-    public Image image;
+    public SpriteRenderer spriteRenderer;
     public Sprite[] sprites;
-    public int currentHP = 10;
+    public int currentHP = 3;
     public float animationDuration = 0.01f;
     private bool isHit = false;
+    private bool isAutoRecovering = false;
+    private Coroutine hpRecoverCoroutine;
+    private float recoverDelayAfterHit = 5f;
+    private float hpRecoverInterval = 2f;
+    private Coroutine hpFadeCoroutine;
 
 
     private bool gameOver = false;
     void Start()
     {
-        if (image == null)
-            image = GetComponent<Image>();
+        spriteRenderer = GetComponent<SpriteRenderer>();
 
+        SetHpBarAlpha(0f);
+        Canvas.ForceUpdateCanvases();
         playerMove = FindObjectOfType<PlayerMove>();
         playerEffect = FindObjectOfType<PlayerEffect>(); // isHit값 받기 위한 상호작용
         UpdateHPUI();
     }
+
+    private void Update()
+    {
+        if (isAutoRecovering && hpRecoverCoroutine == null)
+        {
+            hpRecoverCoroutine = StartCoroutine(AutoHpRecoveryLoop());
+        }
+
+        HandleHpBarFade();
+    }
+
 
     public void TriggerDamage()
     {
@@ -42,7 +58,7 @@ public class PlayerHP : MonoBehaviour
 
     IEnumerator StartGameOverUI()
     {
-        yield return new WaitForSecondsRealtime(2f);
+        yield return new WaitForSeconds(2f);
         Managers.UI.ShowPopUpUI<GameOver>();
     }
 
@@ -50,6 +66,12 @@ public class PlayerHP : MonoBehaviour
     {
         if (Managers.Game.isHit) return;
 
+        if (hpFadeCoroutine != null)
+        {
+            StopCoroutine(hpFadeCoroutine);
+            hpFadeCoroutine = null;
+        }
+        SetHpBarAlpha(1f);
 
         TriggerDamage();
         currentHP -= damageAmount;
@@ -58,6 +80,17 @@ public class PlayerHP : MonoBehaviour
                 currentHP = 0;
 
         UpdateHPUI();
+
+        isAutoRecovering = false;
+
+        if (hpRecoverCoroutine != null)
+        {
+            StopCoroutine(hpRecoverCoroutine);
+            hpRecoverCoroutine = null;
+        }
+
+
+        StartCoroutine(DelayRecovery());
 
         if (currentHP == 0 && !gameOver)
         {
@@ -69,23 +102,84 @@ public class PlayerHP : MonoBehaviour
         }
     }
 
-    public void HpRecovery()
+    private void SetHpBarAlpha(float alpha)
     {
-        if (currentHP >= 3)
+        var color = spriteRenderer.color;
+        color.a = alpha;
+        spriteRenderer.color = color;
+    }
+
+    private IEnumerator FadeOutHpBar()
+    {
+        yield return new WaitForSeconds(1f);
+
+        float duration = 1f;
+        float elapsed = 0f;
+        float startAlpha = spriteRenderer.color.a;
+        float endAlpha = 0f;
+
+        while (elapsed < duration)
         {
-            Debug.Log("HP already Full");
-            return;
+            elapsed += Time.unscaledDeltaTime;
+            float t = elapsed / duration;
+            float alpha = Mathf.Lerp(startAlpha, endAlpha, t);
+            SetHpBarAlpha(alpha);
+            Canvas.ForceUpdateCanvases();
+            yield return null;
         }
 
-        currentHP++;
-        UpdateHPUI();
+        SetHpBarAlpha(0f);
+        Canvas.ForceUpdateCanvases();
+        hpFadeCoroutine = null;
+    }
+
+    private void HandleHpBarFade()
+    {
+        if (currentHP < 3)
+        {
+            if (hpFadeCoroutine != null)
+            {
+                StopCoroutine(hpFadeCoroutine);
+                hpFadeCoroutine = null;
+            }
+
+            SetHpBarAlpha(1f);
+        }
+        else if (currentHP == 3)
+        {
+            if (hpFadeCoroutine == null)
+            {
+                hpFadeCoroutine = StartCoroutine(FadeOutHpBar());
+            }
+        }
+    }
+
+    private IEnumerator DelayRecovery()
+    {
+        yield return new WaitForSeconds(recoverDelayAfterHit);
+        isAutoRecovering = true;
+    }
+
+    private IEnumerator AutoHpRecoveryLoop()
+    {
+        while (isAutoRecovering && currentHP < 3)
+        {
+            currentHP++;
+            UpdateHPUI();
+            Debug.Log("HP 자동 회복됨: " + currentHP);
+
+            yield return new WaitForSeconds(hpRecoverInterval);
+        }
+
+        hpRecoverCoroutine = null;
     }
 
     private void UpdateHPUI()
     {
+
         if (currentHP >= 0 && currentHP < sprites.Length)
         {
-            image.sprite = sprites[currentHP];
+            spriteRenderer.sprite = sprites[currentHP];
         }
     }
 }
