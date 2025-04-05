@@ -19,7 +19,7 @@ public class PlayerMove : MonoBehaviour
     float acceleration = 10f;
     float deceleration = 10f;
     float jumpforce = 20f;
-    float enhancedgravity = -50;
+    float enhancedgravity = -40;
     bool isground = false;
     float dashSpeed = 25f;
     int dashToken = 0;
@@ -306,6 +306,7 @@ public class PlayerMove : MonoBehaviour
     }
     void Resetstate()
     {
+        rigid.velocity = Vector2.zero;
         isDashAttacking = false;
         isJumpAttacking = false;
         isJumpDashing = false;
