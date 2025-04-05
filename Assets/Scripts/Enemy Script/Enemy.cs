@@ -266,6 +266,7 @@ public class Enemy : MonoBehaviour
     // throwing 마지막 프레임 
     public void CanMove() {
         Invoke("RealCanMove", 0.3f);
+        
     }
 
     void RealCanMove() {
@@ -328,8 +329,6 @@ public class Enemy : MonoBehaviour
             }
         }
         
-        
-
         // 피격 애니메이션 적용
         IsHit();
 
@@ -377,8 +376,7 @@ public class Enemy : MonoBehaviour
 
 
         yield return new WaitForSeconds(0.5f);
-        animator.SetBool("enemy_attacked", false);
-        canMove = true;
+        
     }
 
     IEnumerator JumpAttacked() {
@@ -407,10 +405,13 @@ public class Enemy : MonoBehaviour
 
         
         yield return new WaitForSeconds(1.0f);
+    }
+
+    public void CanMoveAtt() {
+        canMove = true;
         animator.SetBool("enemy_attacked", false);
 
-        
-        canMove = true;
+        //currentState = EnemyState.Following;
     }
 
     void Die()
