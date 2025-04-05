@@ -43,9 +43,9 @@ public class Enemy : MonoBehaviour
 
     // Throw
     public GameObject throwableObjPrefab;
-    public float throwForce = 12f;
+    public float throwForce = 15f;
     public float throwCooldown = 1.5f;
-    private float nextThrowAttack = 0f;
+    Vector2 throwVelocity;
 
 
     //attack
@@ -88,70 +88,72 @@ public class Enemy : MonoBehaviour
     void Update()
     {
         if (isDead) { return; }
+        
+        if(canMove) {
 
-        float distanceToPlayer = Mathf.Abs(transform.position.x - player.transform.position.x);
-        float distanceToPlayerY = Mathf.Abs(transform.position.y - player.transform.position.y);
+            float distanceToPlayer = Mathf.Abs(transform.position.x - player.transform.position.x);
+            float distanceToPlayerY = Mathf.Abs(transform.position.y - player.transform.position.y);
 
-        if (distanceToPlayer <= attackDistance && distanceToPlayerY <= followDistanceY)
-        {
-            if(isMale) {
-                currentState = EnemyState.Attacking;
-            } else {
-                currentState = EnemyState.Throwing;
+            if (distanceToPlayer <= attackDistance && distanceToPlayerY <= followDistanceY)
+            {
+                if(isMale) {
+                    currentState = EnemyState.Attacking;
+                } else {
+                    currentState = EnemyState.Throwing;
+                }
+                
             }
-            
-        }
-        else if (distanceToPlayer <= throwDistance && distanceToPlayerY <= followDistanceY)
-        {
-            if(!isMale) {
-                currentState = EnemyState.Throwing;
-            } else {
+            else if (distanceToPlayer <= throwDistance && distanceToPlayerY <= followDistanceY)
+            {
+                if(!isMale) {
+                    currentState = EnemyState.Throwing;
+                } else {
+                    currentState = EnemyState.Following;
+                }
+                
+            }
+            else if (distanceToPlayer <= followDistance&&distanceToPlayerY <= followDistanceY)
+            {
                 currentState = EnemyState.Following;
             }
+            else
+            {
+                currentState = EnemyState.Idle;
+            }
             
-        }
-        else if (distanceToPlayer <= followDistance&&distanceToPlayerY <= followDistanceY)
-        {
-            
-            currentState = EnemyState.Following;
-        }
-        else
-        {
-            
-            currentState = EnemyState.Idle;
-        }
-        
 
-        switch (currentState)
-        {
-            case EnemyState.Attacking:
-                AttackPlayer();
-                break;
-            
-            case EnemyState.Throwing:
-                animator.SetBool("enemy_throw", true);
-                animator.SetBool("enemy_attack", false);
+            switch (currentState)
+            {
+                case EnemyState.Attacking:
+                    AttackPlayer();
+                    break;
+                
+                case EnemyState.Throwing:
+                    canMove = false;
+                    animator.SetBool("enemy_throw", true);
+                    animator.SetBool("enemy_attack", false);
 
-                attackObject.SetActive(false);
-                isFollowing = false;
-                break;
-            
-            case EnemyState.Following:
-                attackObject.SetActive(false);
-                SpeechPopUp();
-                FollowPlayer();
-                isWandering = false;
-                break;
-            
-            case EnemyState.Idle:
-                attackObject.SetActive(false);
-                if (!isWandering)
-                {
-                    stopPosition = transform.position;
-                    isWandering = true;
-                }
-                Wander();
-                break;
+                    attackObject.SetActive(false);
+                    isFollowing = false;
+                    break;
+                
+                case EnemyState.Following:
+                    attackObject.SetActive(false);
+                    SpeechPopUp();
+                    FollowPlayer();
+                    isWandering = false;
+                    break;
+                
+                case EnemyState.Idle:
+                    attackObject.SetActive(false);
+                    if (!isWandering)
+                    {
+                        stopPosition = transform.position;
+                        isWandering = true;
+                    }
+                    Wander();
+                    break;
+            }
         }
         
 
@@ -206,8 +208,6 @@ public class Enemy : MonoBehaviour
 
     void FollowPlayer()
     {
-        if (!canMove) return;
-
         animator.SetBool("enemy_attack", false);
         animator.SetBool("enemy_throw", false);
 
@@ -253,10 +253,24 @@ public class Enemy : MonoBehaviour
             animator.SetBool("enemy_throw", true);
             animator.SetBool("enemy_attack", false);
 
-            Vector2 direction = ((Vector2)player.transform.position - (Vector2)transform.position).normalized;
-            Vector2 throwVelocity = new Vector2(direction.x, direction.y + 0.3f) * throwForce;
+            float directionX = facingRight ? 1f : -1f;
+            throwVelocity = new Vector2(directionX, 0.8f) * throwForce;
+            
             throwableRb.velocity = throwVelocity;
         }
+    }
+
+
+
+
+    // throwing 마지막 프레임 
+    public void CanMove() {
+        Invoke("RealCanMove", 0.3f);
+        
+    }
+
+    void RealCanMove() {
+        canMove = true;
     }
 
 
@@ -265,7 +279,7 @@ public class Enemy : MonoBehaviour
     // 일반 공격
     void AttackPlayer()
     {
-        if (!canMove) return;
+        canMove = false;
 
         animator.SetBool("enemy_throw", false);
         animator.SetBool("enemy_attack", true);
@@ -279,6 +293,7 @@ public class Enemy : MonoBehaviour
     public void OnAttackEnd()
     {
         attackObject.SetActive(false);
+        canMove = true;
     }
 
 
@@ -301,8 +316,8 @@ public class Enemy : MonoBehaviour
         
         if(!isDead) {
             if(attackMethod == 1) {
-            //attack
-            StartCoroutine(IsAttacked(1.8f));
+                //attack
+                StartCoroutine(IsAttacked(1.8f));
             }
             else if(attackMethod == 2) {
                 //jump attack
@@ -314,8 +329,6 @@ public class Enemy : MonoBehaviour
             }
         }
         
-        
-
         // 피격 애니메이션 적용
         IsHit();
 
@@ -362,9 +375,8 @@ public class Enemy : MonoBehaviour
         transform.position = targetPos; // 마지막 위치 보정
 
 
-        yield return new WaitForSeconds(1.0f);
-        animator.SetBool("enemy_attacked", false);
-        canMove = true;
+        yield return new WaitForSeconds(0.5f);
+        
     }
 
     IEnumerator JumpAttacked() {
@@ -374,7 +386,7 @@ public class Enemy : MonoBehaviour
         Vector2 peakPos = startPos + new Vector2(0, 1.2f);
         Vector2 endPos = startPos;
 
-        float duration = 0.3f; // 전체 시간
+        float duration = 0.6f; // 전체 시간
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -383,7 +395,7 @@ public class Enemy : MonoBehaviour
 
             float height = 4f * t * (1 - t);
             Vector2 midPos = Vector2.Lerp(startPos, endPos, t); 
-            transform.position = new Vector2(midPos.x, startPos.y + height * 2.5f);
+            transform.position = new Vector2(midPos.x, startPos.y + height * 1.5f);
 
             elapsed += Time.deltaTime;
             yield return null;
@@ -393,9 +405,13 @@ public class Enemy : MonoBehaviour
 
         
         yield return new WaitForSeconds(1.0f);
-        animator.SetBool("enemy_attacked", false);
-        canMove = true;
+    }
 
+    public void CanMoveAtt() {
+        canMove = true;
+        animator.SetBool("enemy_attacked", false);
+
+        //currentState = EnemyState.Following;
     }
 
     void Die()
