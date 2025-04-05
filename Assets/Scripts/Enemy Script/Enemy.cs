@@ -388,7 +388,7 @@ public class Enemy : MonoBehaviour
         Vector2 peakPos = startPos + new Vector2(0, 1.2f);
         Vector2 endPos = startPos;
 
-        float duration = 0.3f; // 전체 시간
+        float duration = 0.6f; // 전체 시간
         float elapsed = 0f;
 
         while (elapsed < duration)
@@ -397,7 +397,7 @@ public class Enemy : MonoBehaviour
 
             float height = 4f * t * (1 - t);
             Vector2 midPos = Vector2.Lerp(startPos, endPos, t); 
-            transform.position = new Vector2(midPos.x, startPos.y + height * 2.5f);
+            transform.position = new Vector2(midPos.x, startPos.y + height * 1.5f);
 
             elapsed += Time.deltaTime;
             yield return null;
