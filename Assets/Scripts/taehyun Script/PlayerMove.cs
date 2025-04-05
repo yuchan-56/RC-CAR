@@ -10,7 +10,7 @@ public class PlayerMove : MonoBehaviour
     float currentspeed;
     float movedirection;
     bool IsJumping = false;
-  public  bool IsAttacking = false;
+    public bool IsAttacking = false;
     int IsComboAttacking;
     bool HasDoubleJumped = false;
     bool isDashAttacking = false;
@@ -53,7 +53,7 @@ public class PlayerMove : MonoBehaviour
             movedirection = 0;
             return;
         }
-  
+
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             TriggerDash();
@@ -92,13 +92,13 @@ public class PlayerMove : MonoBehaviour
                 currentspeed = Mathf.Lerp(currentspeed, 0, deceleration * Time.fixedDeltaTime);
             }
             rigid.velocity = new Vector2(currentspeed, rigid.velocity.y);
-            }
+        }
 
-            if (rigid.velocity.y<0)
-            {
-                rigid.velocity += Vector2.up * enhancedgravity * Time.fixedDeltaTime;
-            }
-        
+        if (rigid.velocity.y < 0)
+        {
+            rigid.velocity += Vector2.up * enhancedgravity * Time.fixedDeltaTime;
+        }
+
 
     }
     public IEnumerator Jump()
@@ -108,7 +108,7 @@ public class PlayerMove : MonoBehaviour
         {
             IsJumping = true; // 점프 시작
             isground = false; // 착지 상태 초기화 (Raycast가 정확히 감지되도록)
-            rigid.velocity = Vector2.zero; 
+            rigid.velocity = Vector2.zero;
             rigid.velocity = new Vector2(movedirection * maxspeed, 0);
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             animator.SetTrigger("jump");
@@ -124,7 +124,7 @@ public class PlayerMove : MonoBehaviour
             }
 
             IsJumping = false; // 착지 완료 후 점프 가능
-        HasDoubleJumped= false;
+            HasDoubleJumped = false;
         }
     }
 
@@ -194,7 +194,8 @@ public class PlayerMove : MonoBehaviour
         transform.localScale = new Vector2(direction > 0 ? Mathf.Abs(initialScale.x) : -Mathf.Abs(initialScale.x), initialScale.y);
     }
 
-    public void TriggerDash() {
+    public void TriggerDash()
+    {
         if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
         if (canDash)
         {
@@ -212,20 +213,23 @@ public class PlayerMove : MonoBehaviour
         rigid.velocity = Vector2.zero;
         if (isDashAttacking)
         {
+
             rigid.AddForce(new Vector2(dashDirection * dashSpeed / 1.2f, 0f), ForceMode2D.Impulse);
         }
         else if (isJumpDashing)
         {
+
             rigid.AddForce(new Vector2(dashDirection * dashSpeed / 1.5f, 0f), ForceMode2D.Impulse);
         }
         else
         {
+
             rigid.AddForce(new Vector2(dashDirection * dashSpeed, 0f), ForceMode2D.Impulse);
         }
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         canDash = true;
-        
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -264,13 +268,13 @@ public class PlayerMove : MonoBehaviour
     }
     public void SkillMotionActive(string ComboType)
     {
-       
-            StartActionCoroutine(PerformAttack(ComboType));
+
+        StartActionCoroutine(PerformAttack(ComboType));
     }
     IEnumerator PerformAttack(string ComboType)
     {
 
-        if (ComboType == "Attack" && !IsAttacking) 
+        if (ComboType == "Attack" && !IsAttacking)
         {
             IsAttacking = true;
             animator.SetTrigger("Attack");
@@ -284,17 +288,17 @@ public class PlayerMove : MonoBehaviour
             ForceDash();
             animator.SetTrigger("DashAttack");
             yield return new WaitForSeconds(0.917f);
-            isDashAttacking=false;
+            isDashAttacking = false;
         }
         else if (ComboType == "JumpAttack" && !isJumpAttacking && IsComboAttacking < 2)
         {
             rigid.velocity = Vector2.zero;
             isJumpAttacking = true;
             IsComboAttacking++;
-            rigid.AddForce(Vector2.up * jumpforce/1.5f, ForceMode2D.Impulse);
+            rigid.AddForce(Vector2.up * jumpforce / 1.5f, ForceMode2D.Impulse);
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(0.75f);
-            isJumpAttacking=false;
+            isJumpAttacking = false;
 
         }
         else if (ComboType == "JumpDash" && !isJumpDashing && IsComboAttacking < 2)
@@ -305,13 +309,13 @@ public class PlayerMove : MonoBehaviour
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(0.667f);
-            isJumpDashing=false;
+            isJumpDashing = false;
 
         }
     }
     void StartActionCoroutine(IEnumerator newAction)
     {
-        
+
         currentAction = StartCoroutine(newAction);
     }
     public void ForceDash()
@@ -326,7 +330,7 @@ public class PlayerMove : MonoBehaviour
 
         dashCoroutine = StartCoroutine(Dash());
     }
-
+ 
     /* public IEnumerator ForcedAniReset()
      {
          if (Managers.Game.SkillAniReset == true)
@@ -350,3 +354,4 @@ public class PlayerMove : MonoBehaviour
      }*/
 
 }
+
