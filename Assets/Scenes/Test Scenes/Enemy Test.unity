@@ -160,22 +160,6 @@ PrefabInstance:
       propertyPath: m_SpriteTilingProperty.newSize.y
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 2381754514401615302, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
-      propertyPath: m_Size.x
-      value: 0.33863986
-      objectReference: {fileID: 0}
-    - target: {fileID: 2381754514401615302, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
-      propertyPath: m_Size.y
-      value: 0.3899107
-      objectReference: {fileID: 0}
-    - target: {fileID: 2381754514401615302, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
-      propertyPath: m_Offset.x
-      value: -0.40395802
-      objectReference: {fileID: 0}
-    - target: {fileID: 2381754514401615302, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
-      propertyPath: m_Offset.y
-      value: 0.07029572
-      objectReference: {fileID: 0}
     - target: {fileID: 2643588255197526461, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
       propertyPath: knockbackForce
       value: 100
@@ -246,7 +230,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6480154966291780104, guid: 3880e2b447457415787e6d4af60e82de, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1677,18 +1661,6 @@ PrefabInstance:
     - target: {fileID: 2521304787980258994, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4080950068982105090, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
-      propertyPath: m_Mass
-      value: 99
-      objectReference: {fileID: 0}
-    - target: {fileID: 4080950068982105090, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
-      propertyPath: m_BodyType
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4080950068982105090, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
-      propertyPath: m_Constraints
-      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 4964193175455898709, guid: 37822bc9166f74a54b06993782b37d66, type: 3}
       propertyPath: player

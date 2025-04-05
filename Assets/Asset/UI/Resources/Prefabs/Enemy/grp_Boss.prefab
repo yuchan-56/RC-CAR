@@ -334,7 +334,7 @@ MonoBehaviour:
   followDistance: 20
   minFollowDistance: 2.5
   framePrefab: {fileID: 1603253122592858171, guid: 0b6444fb36b834c4780a55a53ebdda3a, type: 3}
-  bulletPrefab: {fileID: 9116340468406217664, guid: 4d015fad217e74f739f26a7d650f6696, type: 3}
+  bulletPrefab: {fileID: 8630802576741259720, guid: 59c86cc46edb44db2ad154a66979341d, type: 3}
   bulletSpeed: 10
   fireRate: 1
   p1Object:
@@ -412,7 +412,7 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 99
   m_LinearDrag: 0
   m_AngularDrag: 0.05
   m_GravityScale: 0
@@ -426,7 +426,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 4
+  m_Constraints: 6
 --- !u!114 &8684675417993848437
 MonoBehaviour:
   m_ObjectHideFlags: 0

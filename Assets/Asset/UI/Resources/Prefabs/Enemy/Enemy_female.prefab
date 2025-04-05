@@ -140,6 +140,7 @@ MonoBehaviour:
   throwForce: 6
   throwCooldown: 1.5
   attackObject: {fileID: 8866317631368105938}
+  isMale: 0
   hpBarPrefab: {fileID: 1362356448488977189, guid: 0f16a2e045a294e86afb45044e9a5405, type: 3}
   hpSprites:
   - {fileID: -1239266905, guid: c5a4eabbe570d45398e46543e97a041c, type: 3}
@@ -278,7 +279,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.40395802, y: 0.07029572}
+  m_Offset: {x: -0.22980481, y: 0.07029572}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -289,7 +290,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.33863986, y: 0.3899107}
+  m_Size: {x: 0.6869463, y: 0.3899107}
   m_EdgeRadius: 0
 --- !u!114 &7601275476603764383
 MonoBehaviour:
