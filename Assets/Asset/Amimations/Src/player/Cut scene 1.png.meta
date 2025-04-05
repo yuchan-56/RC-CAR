@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: efb1670082240834c91b89c7a211f953
+guid: f72fc840defd0b54bafbcf2c6c6f1800
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 8192
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 0
+    textureCompression: 1
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -123,7 +123,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Cut scene_0
+      name: Cut scene 1_0
       rect:
         serializedVersion: 2
         x: 0
@@ -137,14 +137,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7d1cf864578e33741aa42b20e49b330a
-      internalID: 1503264565
+      spriteID: a6c916ff0e140a340a78a570a1537ecd
+      internalID: -1560742936
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_1
+      name: Cut scene 1_1
       rect:
         serializedVersion: 2
         x: 200
@@ -158,14 +158,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e1abb36056edf3644a07e2068024d58c
-      internalID: 1979742415
+      spriteID: 2abb2ef12ac663747acaaee4200be2b9
+      internalID: -1165483759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_2
+      name: Cut scene 1_2
       rect:
         serializedVersion: 2
         x: 400
@@ -179,14 +179,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1e4544c91fb250049a473737bea64567
-      internalID: -1002517142
+      spriteID: 04390a05ba3c7794ca6c4a1d714afd74
+      internalID: 1350114672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_3
+      name: Cut scene 1_3
       rect:
         serializedVersion: 2
         x: 600
@@ -200,14 +200,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 11a578a11269d474eb60446701a0eca7
-      internalID: 1422889306
+      spriteID: 82bb1f034049a834e80db01d7be69061
+      internalID: 1822574685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_4
+      name: Cut scene 1_4
       rect:
         serializedVersion: 2
         x: 800
@@ -221,14 +221,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5985aae3c26bd454caaf2d654883c339
-      internalID: -263274571
+      spriteID: 818e04d1a06a84b4eb315ba593fdb3f3
+      internalID: -198980451
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_5
+      name: Cut scene 1_5
       rect:
         serializedVersion: 2
         x: 1000
@@ -242,14 +242,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 6ab5d10ae1007044c9236728b0df4be3
-      internalID: -1425159625
+      spriteID: ec862c3e7606fd942b41a592b0db5bfe
+      internalID: 1900315304
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_6
+      name: Cut scene 1_6
       rect:
         serializedVersion: 2
         x: 1200
@@ -263,14 +263,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 80e6779c24b2ebb4084bb0cf98f2db95
-      internalID: 2079406771
+      spriteID: f7f967f3b41506046b5fd9bb67fad8e3
+      internalID: -464922528
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_7
+      name: Cut scene 1_7
       rect:
         serializedVersion: 2
         x: 1400
@@ -284,14 +284,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e52ef2c21b6b72940a01ff2665588d48
-      internalID: -1220015367
+      spriteID: d68738a2208d1eb4cb34d5863d3fbb95
+      internalID: 1411175748
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_8
+      name: Cut scene 1_8
       rect:
         serializedVersion: 2
         x: 1600
@@ -305,14 +305,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b9f7a0c71055d93449e06ce8416bd55c
-      internalID: -246384066
+      spriteID: 881768c9bd0e1244a8695aef010b7863
+      internalID: 167491433
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_9
+      name: Cut scene 1_9
       rect:
         serializedVersion: 2
         x: 1800
@@ -326,14 +326,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fb3c81a6f626a8d45880459074afb88f
-      internalID: 1559406802
+      spriteID: 15f894089939ed645a6ee8ae9c131f9b
+      internalID: 621497876
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_10
+      name: Cut scene 1_10
       rect:
         serializedVersion: 2
         x: 2000
@@ -347,14 +347,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 51096adc57f4df74ebafe8922363d245
-      internalID: -1207475952
+      spriteID: 703c501d6d45a194587d9bd37dda1d5b
+      internalID: -803018389
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Cut scene_11
+      name: Cut scene 1_11
       rect:
         serializedVersion: 2
         x: 2200
@@ -368,8 +368,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3a5eeaa2497502840bc2748b12a9e0a9
-      internalID: -1588970758
+      spriteID: 53bdc7367646d1a429e42cfdfd0ed78c
+      internalID: 541774979
       vertices: []
       indices: 
       edges: []
@@ -385,18 +385,18 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      Cut scene_0: 1503264565
-      Cut scene_1: 1979742415
-      Cut scene_10: -1207475952
-      Cut scene_11: -1588970758
-      Cut scene_2: -1002517142
-      Cut scene_3: 1422889306
-      Cut scene_4: -263274571
-      Cut scene_5: -1425159625
-      Cut scene_6: 2079406771
-      Cut scene_7: -1220015367
-      Cut scene_8: -246384066
-      Cut scene_9: 1559406802
+      Cut scene 1_0: -1560742936
+      Cut scene 1_1: -1165483759
+      Cut scene 1_10: -803018389
+      Cut scene 1_11: 541774979
+      Cut scene 1_2: 1350114672
+      Cut scene 1_3: 1822574685
+      Cut scene 1_4: -198980451
+      Cut scene 1_5: 1900315304
+      Cut scene 1_6: -464922528
+      Cut scene 1_7: 1411175748
+      Cut scene 1_8: 167491433
+      Cut scene 1_9: 621497876
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
