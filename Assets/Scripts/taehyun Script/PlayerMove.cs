@@ -18,15 +18,19 @@ public class PlayerMove : MonoBehaviour
     bool isJumpDashing = false;
     float acceleration = 10f;
     float deceleration = 10f;
-    float jumpforce = 22f;
+    float jumpforce = 20f;
+    float enhancedgravity = -50;
     bool isground = false;
-    float dashSpeed = 35f;
+    float dashSpeed = 25f;
+    int dashToken = 0;
     public float dashDuration = 0.1f;
     bool isDashing = false;
     bool canDash = true;
     public Animator animator;
     private CameraMove camera;
     private Vector3 initialScale;
+    Coroutine currentAction;
+    Coroutine dashCoroutine;
     Rigidbody2D rigid;
     // Start is called before the first frame update
     void Start()
@@ -82,6 +86,11 @@ public class PlayerMove : MonoBehaviour
                 currentspeed = Mathf.Lerp(currentspeed, 0, deceleration * Time.fixedDeltaTime);
             }
             rigid.velocity = new Vector2(currentspeed, rigid.velocity.y);
+
+        if (rigid.velocity.y<0)
+            {
+                rigid.velocity += Vector2.up * enhancedgravity * Time.fixedDeltaTime;
+            }
         }
 
     }
@@ -92,7 +101,8 @@ public class PlayerMove : MonoBehaviour
         {
             IsJumping = true; // 점프 시작
             isground = false; // 착지 상태 초기화 (Raycast가 정확히 감지되도록)
-            rigid.velocity = new Vector2(rigid.velocity.x, jumpforce);
+            rigid.velocity = new Vector2(rigid.velocity.x, 0); // 기존 Y속도 제거
+            rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             animator.SetTrigger("jump");
             Debug.Log("Jump");
 
@@ -116,16 +126,16 @@ public class PlayerMove : MonoBehaviour
         if (isground)
         {
 
-            StartCoroutine(Jump());
+            StartActionCoroutine(Jump());
         }
         else if (!isground && IsComboAttacking == 1 && !HasDoubleJumped)//점프어택 or 점프대쉬 and 점프
         {
             HasDoubleJumped = true;
-            StartCoroutine(Jump());
+            StartActionCoroutine(Jump());
         }
         else if (IsComboAttacking == 2)// 점프어택 and 점프대쉬
         {
-            StartCoroutine(Jump());
+            StartActionCoroutine(Jump());
         }
         else
         {
@@ -186,13 +196,21 @@ public class PlayerMove : MonoBehaviour
 
         }
     }
+    public void ForceDash()
+    {
+        if (dashCoroutine != null)
+        { 
+        StopCoroutine(dashCoroutine);
+            isDashing = false;
+        }
+       dashCoroutine= StartCoroutine(Dash());
+    }
     public IEnumerator Dash()
     {
-
         isDashing = true;
         canDash = false;
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
-        rigid.velocity = new Vector2(dashDirection * dashSpeed, rigid.velocity.y);
+        rigid.AddForce(new Vector2(dashDirection * dashSpeed, 0f), ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         canDash = true;
@@ -236,13 +254,11 @@ public class PlayerMove : MonoBehaviour
     public void SkillMotionActive(string ComboType)
     {
        
-            StartCoroutine(PerformAttack(ComboType));
+            StartActionCoroutine(PerformAttack(ComboType));
     }
     IEnumerator PerformAttack(string ComboType)
     {
-        // 공격 중이면 새로운 공격 실행하지 않음
 
-        
         if (ComboType == "Attack" && !IsAttacking) 
         {
             IsAttacking = true;
@@ -254,7 +270,7 @@ public class PlayerMove : MonoBehaviour
         {
             isDashAttacking = true;
             IsComboAttacking++;
-            TriggerDash();
+            ForceDash();
             animator.SetTrigger("DashAttack");
             yield return new WaitForSeconds(0.917f);
             isDashAttacking=false;
@@ -271,36 +287,51 @@ public class PlayerMove : MonoBehaviour
         }
         else if (ComboType == "JumpDash" && !isJumpDashing && IsComboAttacking < 2)
         {
-            isJumpDashing= true;
+            isJumpDashing = true;
             IsComboAttacking++;
             TriggerJump();
-            TriggerDash();
+            ForceDash();
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(0.667f);
             isJumpDashing=false;
+
         }
     }
-
-   /* public IEnumerator ForcedAniReset()
+    void StartActionCoroutine(IEnumerator newAction)
     {
-        if (Managers.Game.SkillAniReset == true)
-        {
-            IsJumping = false;
-            IsAttacking = false;
-            IsComboAttacking = false;
-            IsComboDashing = false;
-            isJumpattacking = false;
-            isJumpdashing = false;
-            isDashattacking = false;
+        if (currentAction != null)
+            StopCoroutine(currentAction);
+        Resetstate();
+        currentAction = StartCoroutine(newAction);
+    }
+    void Resetstate()
+    {
+        isDashAttacking = false;
+        isJumpAttacking = false;
+        isJumpDashing = false;
 
-            animator.ResetTrigger("Attack");
-            animator.ResetTrigger("JumpAttack");
-            animator.ResetTrigger("DashAttack");
-            animator.ResetTrigger("JumpDash");
-        }
-        yield return null;
-        StopCoroutine(PerformAttack(""));
-        StopCoroutine(ForcedAniReset());
-    }*/
+    }
+
+    /* public IEnumerator ForcedAniReset()
+     {
+         if (Managers.Game.SkillAniReset == true)
+         {
+             IsJumping = false;
+             IsAttacking = false;
+             IsComboAttacking = false;
+             IsComboDashing = false;
+             isJumpattacking = false;
+             isJumpdashing = false;
+             isDashattacking = false;
+
+             animator.ResetTrigger("Attack");
+             animator.ResetTrigger("JumpAttack");
+             animator.ResetTrigger("DashAttack");
+             animator.ResetTrigger("JumpDash");
+         }
+         yield return null;
+         StopCoroutine(PerformAttack(""));
+         StopCoroutine(ForcedAniReset());
+     }*/
 
 }

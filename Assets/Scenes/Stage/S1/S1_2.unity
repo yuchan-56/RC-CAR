@@ -9461,8 +9461,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 822014124495543704, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_Mass
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 822014124495543704, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_BodyType
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 822014124495543704, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: m_Material
+      value: 
       objectReference: {fileID: 0}
     - target: {fileID: 822014124495543704, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_LinearDrag
@@ -9474,7 +9482,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 822014124495543704, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_GravityScale
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2222412872880897373, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_LocalPosition.x
