@@ -48,6 +48,12 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
+        if (IsAttacking)
+        {
+            movedirection = 0;
+            return;
+        }
+  
         if (Input.GetKeyDown(KeyCode.Space) && canDash)
         {
             TriggerDash();
@@ -86,12 +92,13 @@ public class PlayerMove : MonoBehaviour
                 currentspeed = Mathf.Lerp(currentspeed, 0, deceleration * Time.fixedDeltaTime);
             }
             rigid.velocity = new Vector2(currentspeed, rigid.velocity.y);
+            }
 
-        if (rigid.velocity.y<0)
+            if (rigid.velocity.y<0)
             {
                 rigid.velocity += Vector2.up * enhancedgravity * Time.fixedDeltaTime;
             }
-        }
+        
 
     }
     public IEnumerator Jump()
@@ -101,7 +108,8 @@ public class PlayerMove : MonoBehaviour
         {
             IsJumping = true; // 점프 시작
             isground = false; // 착지 상태 초기화 (Raycast가 정확히 감지되도록)
-            rigid.velocity = new Vector2(rigid.velocity.x, 0); // 기존 Y속도 제거
+            rigid.velocity = Vector2.zero; 
+            rigid.velocity = new Vector2(movedirection * maxspeed, 0);
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             animator.SetTrigger("jump");
             Debug.Log("Jump");
@@ -196,20 +204,12 @@ public class PlayerMove : MonoBehaviour
 
         }
     }
-    public void ForceDash()
-    {
-        if (dashCoroutine != null)
-        { 
-        StopCoroutine(dashCoroutine);
-            isDashing = false;
-        }
-       dashCoroutine= StartCoroutine(Dash());
-    }
     public IEnumerator Dash()
     {
         isDashing = true;
         canDash = false;
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
+        rigid.velocity = Vector2.zero;
         rigid.AddForce(new Vector2(dashDirection * dashSpeed, 0f), ForceMode2D.Impulse);
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
@@ -270,16 +270,17 @@ public class PlayerMove : MonoBehaviour
         {
             isDashAttacking = true;
             IsComboAttacking++;
-            ForceDash();
+            TriggerDash();
             animator.SetTrigger("DashAttack");
             yield return new WaitForSeconds(0.917f);
             isDashAttacking=false;
         }
         else if (ComboType == "JumpAttack" && !isJumpAttacking && IsComboAttacking < 2)
         {
+            rigid.velocity = Vector2.zero;
             isJumpAttacking = true;
             IsComboAttacking++;
-            TriggerJump();
+            rigid.AddForce(Vector2.up * jumpforce/2, ForceMode2D.Impulse);
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(0.75f);
             isJumpAttacking=false;
@@ -287,10 +288,14 @@ public class PlayerMove : MonoBehaviour
         }
         else if (ComboType == "JumpDash" && !isJumpDashing && IsComboAttacking < 2)
         {
+            rigid.velocity = Vector2.zero;
             isJumpDashing = true;
             IsComboAttacking++;
-            TriggerJump();
-            ForceDash();
+            float dashDir = transform.localScale.x > 0 ? 1f : -1f;
+            float jumpDashX = 50f;
+            float jumpDashY = 20f;
+            Vector2 jumpDashForce = new Vector2(dashDir * jumpDashX, jumpDashY);
+            rigid.AddForce(jumpDashForce, ForceMode2D.Impulse);
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(0.667f);
             isJumpDashing=false;
@@ -299,19 +304,10 @@ public class PlayerMove : MonoBehaviour
     }
     void StartActionCoroutine(IEnumerator newAction)
     {
-        if (currentAction != null)
-            StopCoroutine(currentAction);
-        Resetstate();
+        
         currentAction = StartCoroutine(newAction);
     }
-    void Resetstate()
-    {
-        rigid.velocity = Vector2.zero;
-        isDashAttacking = false;
-        isJumpAttacking = false;
-        isJumpDashing = false;
 
-    }
 
     /* public IEnumerator ForcedAniReset()
      {
