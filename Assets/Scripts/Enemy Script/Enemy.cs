@@ -397,11 +397,6 @@ public class Enemy : MonoBehaviour
 
     void Die()
     {
-        StartCoroutine(DieCoroutine()); 
-    }
-
-    IEnumerator DieCoroutine()
-    {
         Debug.Log("Enemy died!");
         isDead = true;
 
@@ -413,18 +408,11 @@ public class Enemy : MonoBehaviour
         {
             Destroy(hpBarImage.gameObject);
         }
+    }
 
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        float animationLength = stateInfo.length; // 애니메이션 길이 가져오기
-
-        yield return new WaitForSeconds(animationLength * 1.02f);
-
-        
-
-        // 적 오브젝트 삭제
+    public void EnemyDying() {
         Destroy(gameObject);
         Managers.Game.EnemyDied();
     }
-
 
 }
