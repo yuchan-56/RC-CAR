@@ -140,7 +140,7 @@ public class Boss : MonoBehaviour
         // 개별 HP 바 생성 및 Canvas의 자식으로 설정
         GameObject newHpBar = Instantiate(hpBarPrefab, canvasTransform);
         hpBarTransform = newHpBar.GetComponent<RectTransform>();
-        hpBarTransform.anchoredPosition = new Vector2(-170.0f, canvasTransform.GetComponent<RectTransform>().sizeDelta.y / 2 - 50);
+        hpBarTransform.anchoredPosition = new Vector2(-530.0f, canvasTransform.GetComponent<RectTransform>().sizeDelta.y / 2 - 50);
 
         initialWidth = hpBarTransform.sizeDelta.x; // 원래 체력바 길이 저장
 

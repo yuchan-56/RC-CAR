@@ -280,7 +280,7 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = Vector2.zero;
             isJumpAttacking = true;
             IsComboAttacking++;
-            rigid.AddForce(Vector2.up * jumpforce/2, ForceMode2D.Impulse);
+            rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(0.75f);
             isJumpAttacking=false;
