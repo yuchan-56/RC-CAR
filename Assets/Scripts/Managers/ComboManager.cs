@@ -242,12 +242,11 @@ public class ComboManager : MonoBehaviour
         {
             Debug.Log("마우스 업 감지됨");
 
-            if (player.IsAttacking)
+            /*if (player.IsAttacking)
             {
                 return;
-                Debug.Log("AniSetup도 true");
             
-            }
+            }*/
             if (Managers.Game.isHit)
             {
                 return;
