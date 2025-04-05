@@ -246,8 +246,9 @@ public class ComboManager : MonoBehaviour
             {
                 return;
             }
-            Debug.Log("HashSet Contents: " + string.Join(", ", InputButton));
-
+            playerAttackGeneral.AttackSetDeactive();
+            dashAttack.SkillMotionDeactive();
+            jumpAttack.SkillMotionDeactive();
             StopExistingCoroutine(ref atkAniCoroutine);
             StopExistingCoroutine(ref dashAniCoroutine);
             StopExistingCoroutine(ref jumpAniCoroutine);
@@ -270,6 +271,7 @@ public class ComboManager : MonoBehaviour
 
             if (player.IsAttacking)
             {
+                InputButton.Clear();
                 return;
             }
 
