@@ -40,7 +40,7 @@ public class PlayerAttackGeneral : MonoBehaviour
         {
             StopCoroutine(DeactiveCoroutine());
         }
-        yield return new WaitForSeconds(1f);
+        yield return new WaitForSeconds(0.5f);
         AttackSetDeactive();
         StopCoroutine(DeactiveCoroutine());
     }

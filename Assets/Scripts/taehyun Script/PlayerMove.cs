@@ -198,7 +198,7 @@ public class PlayerMove : MonoBehaviour
         if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
         if (canDash)
         {
-            
+
             StartCoroutine(Dash());
             animator.SetTrigger("dash");
 
@@ -212,7 +212,7 @@ public class PlayerMove : MonoBehaviour
         rigid.velocity = Vector2.zero;
         if (isDashAttacking)
         {
-            rigid.AddForce(new Vector2(dashDirection * dashSpeed / 1.3f, 0f), ForceMode2D.Impulse);
+            rigid.AddForce(new Vector2(dashDirection * dashSpeed / 1.2f, 0f), ForceMode2D.Impulse);
         }
         else if (isJumpDashing)
         {
@@ -228,7 +228,7 @@ public class PlayerMove : MonoBehaviour
         
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void OnTriggerStay2D(Collider2D collision)
     {
 
         if (tag != "Player")

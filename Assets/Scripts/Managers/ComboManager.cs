@@ -271,7 +271,6 @@ public class ComboManager : MonoBehaviour
             if (player.IsAttacking)
             {
                 return;
-
             }
 
             switch (InputButton.Count)
