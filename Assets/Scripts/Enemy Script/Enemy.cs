@@ -167,7 +167,7 @@ public class Enemy : MonoBehaviour
 
         // 확인용
         if(Input.GetKeyDown(KeyCode.Space)) {
-            EnemyDamage(10);
+            //EnemyDamage(10);
         }
     }
 
@@ -300,9 +300,21 @@ public class Enemy : MonoBehaviour
 
 
     // HP 감소
-    public void EnemyDamage(float damage)
+    public void EnemyDamage(float damage, int attackMethod)
     {
-        StartCoroutine(IsAttacked());
+        if(attackMethod == 1) {
+            //attack
+            StartCoroutine(IsAttacked(1.8f));
+        }
+        else if(attackMethod == 2) {
+            //jump attack
+            StartCoroutine(JumpAttacked());
+        }
+        else if(attackMethod == 3) {
+            //dash attack
+            StartCoroutine(IsAttacked(3.0f));
+        }
+        
 
         // 피격 애니메이션 적용
         IsHit();
@@ -330,20 +342,54 @@ public class Enemy : MonoBehaviour
         animator.SetBool("enemy_hit", false);
     }
 
-    IEnumerator IsAttacked() {
+    IEnumerator IsAttacked(float knockback) {
         animator.SetBool("enemy_attacked", true);
         canMove = false;
 
         Vector2 knockbackDir = (transform.position - player.transform.position).normalized;
 
         // 밀림 (살짝 뒤로 이동)
-        float knockbackDistance = 2.0f;
-        transform.Translate(knockbackDir * knockbackDistance);
+        //float knockbackDistance = 2.0f;
+        transform.Translate(knockbackDir * knockback);
 
 
         yield return new WaitForSeconds(1.0f);
         animator.SetBool("enemy_attacked", false);
         canMove = true;
+    }
+
+    IEnumerator JumpAttacked() {
+        animator.SetBool("enemy_attacked", true);
+        canMove = false;
+
+        Vector2 startPos = transform.position;
+
+        // 위로 튀는 위치 계산
+        Vector2 peakPos = startPos + new Vector2(0, 1.2f); // 얼마나 위로 올라갈지
+        Vector2 endPos = startPos; // 다시 원래 위치로 돌아오게
+
+        float duration = 0.3f; // 전체 시간
+        float elapsed = 0f;
+
+        while (elapsed < duration)
+        {
+            float t = elapsed / duration;
+
+            float height = 4f * t * (1 - t);
+            Vector2 midPos = Vector2.Lerp(startPos, endPos, t); 
+            transform.position = new Vector2(midPos.x, startPos.y + height * 2.5f);
+
+            elapsed += Time.deltaTime;
+            yield return null;
+        }
+
+        transform.position = endPos;
+
+        
+        yield return new WaitForSeconds(1.0f);
+        animator.SetBool("enemy_attacked", false);
+        canMove = true;
+
     }
 
     void Die()

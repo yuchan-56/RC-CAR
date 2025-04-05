@@ -59,7 +59,7 @@ public class DashAttack : MonoBehaviour
         
         if (collision.tag == "Enemy")
         {
-            collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage);
+            collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 3);
         }
     }
 
