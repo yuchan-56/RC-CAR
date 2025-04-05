@@ -14,6 +14,7 @@ public class Enemy : MonoBehaviour
 
 
     public enum EnemyState { Idle, Following, Attacking, Throwing }
+    bool canMove = true;
 
     private EnemyState currentState;
 
@@ -86,7 +87,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (isDead) { return; }  // 더 이상 Update 로직 실행하지 않음
+        if (isDead) { return; }
 
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.transform.position.x);
         float distanceToPlayerY = Mathf.Abs(transform.position.y - player.transform.position.y);
@@ -117,6 +118,7 @@ public class Enemy : MonoBehaviour
         {
             currentState = EnemyState.Idle;
         }
+        
 
         switch (currentState)
         {
@@ -183,6 +185,8 @@ public class Enemy : MonoBehaviour
 
     void Wander()
     {
+        if (!canMove) return;
+
         animator.SetBool("enemy_attack", false);
         animator.SetBool("enemy_throw", false);
 
@@ -202,6 +206,8 @@ public class Enemy : MonoBehaviour
 
     void FollowPlayer()
     {
+        if (!canMove) return;
+
         animator.SetBool("enemy_attack", false);
         animator.SetBool("enemy_throw", false);
 
@@ -240,6 +246,8 @@ public class Enemy : MonoBehaviour
     // Throw 공격
     void ThrowObject(Transform player)
     {
+        if (!canMove) return;
+
         Vector2 throwStartPosition = transform.position + new Vector3(0, 2.0f, 0); // 적의 키나 던지는 위치에 맞춰 조정
 
         GameObject throwable = Instantiate(throwableObjPrefab, throwStartPosition, Quaternion.identity);
@@ -262,6 +270,8 @@ public class Enemy : MonoBehaviour
     // 일반 공격
     void AttackPlayer()
     {
+        if (!canMove) return;
+
         animator.SetBool("enemy_throw", false);
         animator.SetBool("enemy_attack", true);
 
@@ -287,9 +297,6 @@ public class Enemy : MonoBehaviour
             speeched = true;
         }
     }
-
-
-
 
 
     // HP 감소
@@ -325,9 +332,18 @@ public class Enemy : MonoBehaviour
 
     IEnumerator IsAttacked() {
         animator.SetBool("enemy_attacked", true);
+        canMove = false;
 
-        yield return new WaitForSeconds(0.3f);
+        Vector2 knockbackDir = (transform.position - player.transform.position).normalized;
+
+        // 밀림 (살짝 뒤로 이동)
+        float knockbackDistance = 2.0f;
+        transform.Translate(knockbackDir * knockbackDistance);
+
+
+        yield return new WaitForSeconds(1.0f);
         animator.SetBool("enemy_attacked", false);
+        canMove = true;
     }
 
     void Die()
