@@ -57,7 +57,7 @@ public class DashAttack : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         
-        if (collision.tag == "Enemy" && enemy.isEnemyHit == false)
+        if (collision.tag == "Enemy" && Managers.Game.isEnemyHit == false)
         {
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 3);
         }
@@ -69,6 +69,7 @@ public class DashAttack : MonoBehaviour
         SkillActive_DashAttack = false;
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
+        Managers.Game.isEnemyHit = false;
         ani.SetBool("UltDashAtt", false);
         ani.SetBool("DashAtt", false);
         if (Managers.Game.SkillAniReset == true)

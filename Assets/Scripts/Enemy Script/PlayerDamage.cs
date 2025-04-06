@@ -18,7 +18,7 @@ public class PlayerDamage : MonoBehaviour
     void OnTriggerEnter2D(Collider2D other)
     {
         if(other.CompareTag("Player")&&!Managers.Game.isHit) {
-           
+            Debug.Log($"{other.name}");
             Debug.Log("player damage");
             playerHP.GetDamaged(1);
             player = other.GetComponent<PlayerEffect>();

@@ -54,7 +54,7 @@ public class JumpAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy" && enemy.isEnemyHit == false)
+        if (collision.tag == "Enemy" && Managers.Game.isEnemyHit == false)
         {
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 2);
         }
@@ -65,6 +65,7 @@ public class JumpAttack : MonoBehaviour
         SkillActive_JumpAttack = false;
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
+        Managers.Game.isEnemyHit = false;
         ani.SetBool("UltJumpAtt", false); 
         ani.SetBool("JumpAtt", false);
         if (Managers.Game.SkillAniReset == true)

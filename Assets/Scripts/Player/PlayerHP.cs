@@ -29,14 +29,6 @@ public class PlayerHP : MonoBehaviour
         playerMove = FindObjectOfType<PlayerMove>();
         playerEffect = FindObjectOfType<PlayerEffect>(); // isHit값 받기 위한 상호작용
         UpdateHPUI();
-        StartCoroutine(test());
-
-    }
-
-    IEnumerator test()
-    {
-        yield return new WaitForSecondsRealtime(2f);
-        GetDamaged(10);
     }
 
     private void Update()
@@ -93,6 +85,7 @@ public class PlayerHP : MonoBehaviour
 
     public void GetDamaged(int damageAmount)
     {
+        Debug.Log("데미지를 받음");
         if (Managers.Game.isHit) return;
 
         if (hpFadeCoroutine != null)

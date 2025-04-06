@@ -64,7 +64,7 @@ public class PlayerAttackGeneral : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy" && enemy.isEnemyHit == false)
+        if (collision.tag == "Enemy" && Managers.Game.isEnemyHit == false)
         {
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 1);
         }
@@ -75,6 +75,7 @@ public class PlayerAttackGeneral : MonoBehaviour
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
         SkillAttack_Active = false;
+        Managers.Game.isEnemyHit = false;
         ani.SetBool("UltAttack", false);
         ani.SetBool("Attack", false);
         if(Managers.Game.SkillAniReset == true)
