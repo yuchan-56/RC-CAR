@@ -124,6 +124,13 @@ public class PlayerHP : MonoBehaviour
         if (currentHP <= 0 && !gameOver)
         {
             gameOver = true;
+            foreach (var param in playerMove.animator.parameters)
+            {
+                if (param.type == AnimatorControllerParameterType.Trigger)
+                {
+                    playerMove.animator.ResetTrigger(param.name);
+                }
+            }
             Debug.Log("GameOver In PlayerHP");
             playerMove.animator.SetTrigger("IsDead");
             Time.timeScale = 0;

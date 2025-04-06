@@ -64,7 +64,7 @@ public class PlayerAttackGeneral : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy")
+        if (collision.tag == "Enemy" && enemy.isEnemyHit == false)
         {
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 1);
         }
