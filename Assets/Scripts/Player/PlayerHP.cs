@@ -18,8 +18,10 @@ public class PlayerHP : MonoBehaviour
 
 
     private bool gameOver = false;
+    private Rigidbody2D rb;
     void Start()
     {
+        rb = playerMove.gameObject.GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         SetHpBarAlpha(0f);
@@ -27,6 +29,14 @@ public class PlayerHP : MonoBehaviour
         playerMove = FindObjectOfType<PlayerMove>();
         playerEffect = FindObjectOfType<PlayerEffect>(); // isHit값 받기 위한 상호작용
         UpdateHPUI();
+        StartCoroutine(test());
+
+    }
+
+    IEnumerator test()
+    {
+        yield return new WaitForSecondsRealtime(2f);
+        GetDamaged(10);
     }
 
     private void Update()
@@ -37,6 +47,7 @@ public class PlayerHP : MonoBehaviour
         }
 
         HandleHpBarFade();
+
     }
 
 
@@ -49,7 +60,7 @@ public class PlayerHP : MonoBehaviour
         }
     }
 
-    private IEnumerator ResetDamageState()
+    private IEnumerator ResetDamageState()  
     {
         Debug.Log("강제 중지");
         yield return new WaitForSeconds(animationDuration);
@@ -58,8 +69,26 @@ public class PlayerHP : MonoBehaviour
 
     IEnumerator StartGameOverUI()
     {
-        yield return new WaitForSeconds(2f);
+        StartCoroutine(CheckGroundFallingWhenDead());
+        yield return new WaitForSecondsRealtime(1.3f);
         Managers.UI.ShowPopUpUI<GameOver>();
+    }
+    IEnumerator CheckGroundFallingWhenDead()
+    {
+        // 물리엔진 수동 모드
+        Physics2D.autoSimulation = false;
+
+        Debug.Log("땅에 닿을 때까지 플레이어 낙하 처리 시작");
+
+        while (playerMove.isground == false)
+        {
+            Physics2D.Simulate(Time.unscaledDeltaTime);
+
+            yield return null; // 중요! 프레임 넘겨줘야 함
+        }
+        Physics2D.autoSimulation = true;
+
+        yield return null;
     }
 
     public void GetDamaged(int damageAmount)
@@ -92,10 +121,10 @@ public class PlayerHP : MonoBehaviour
 
         StartCoroutine(DelayRecovery());
 
-        if (currentHP == 0 && !gameOver)
+        if (currentHP <= 0 && !gameOver)
         {
             gameOver = true;
-            Debug.Log("GameOver");
+            Debug.Log("GameOver In PlayerHP");
             playerMove.animator.SetTrigger("IsDead");
             Time.timeScale = 0;
             StartCoroutine(StartGameOverUI());

@@ -20,7 +20,7 @@ public class PlayerMove : MonoBehaviour
     float deceleration = 10f;
     float jumpforce = 25f;
     float enhancedgravity = -40;
-    bool isground = false;
+    public bool isground = false;
     float dashSpeed = 25f;
     int dashToken = 0;
     public float dashDuration = 0.1f;

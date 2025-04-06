@@ -70,7 +70,7 @@ public class Clock : MonoBehaviour
     void TriggerGameOver()
     {
         failImage.gameObject.SetActive(true);
-        Time.timeScale = 0;
+        // Time.timeScale = 0;
         Debug.Log("Game Over!");
 
 
