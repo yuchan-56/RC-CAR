@@ -26,7 +26,7 @@ public class GameManager
     }
     public enum GameGround
     {
-        Rx,R3,K1,K4,L4,G4,Q3,F2,E3, E2,B1,A2,C3,Cx
+        R4,R2,K1,K4,L4,G4,Q3,F2,E3, E2,B1,A2,C3,C8
     }
     public GameGround currentGround;
     public GameState currentState;
@@ -45,7 +45,7 @@ public class GameManager
     public void GameStart()
     {
         currentState = GameState.Battle;
-        currentGround = GameGround.Rx;
+        currentGround = GameGround.R4;
         gage = 0;
         GetHit = false;
     }
