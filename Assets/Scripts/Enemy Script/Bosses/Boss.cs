@@ -249,23 +249,15 @@ public class Boss : MonoBehaviour
 
     public virtual void Die()
     {
+        Debug.Log("boss died!");
+
         isWandering = false;
         isFollowing = false;
-        StartCoroutine(DieCoroutine());   
-    }
-
-    private IEnumerator DieCoroutine()
-    {
-        Debug.Log("boss died!");
         isDead = true;
         animator.SetBool("isDead", true);
+    }
 
-        AnimatorStateInfo stateInfo = animator.GetCurrentAnimatorStateInfo(0);
-        float animationLength = stateInfo.length; // 애니메이션 길이 가져오기
-
-        yield return new WaitForSeconds(animationLength * 2.02f);
-
-        Destroy(hpBarPrefab.gameObject);
+    public void BossDying() {
         Destroy(gameObject);
     }
 }

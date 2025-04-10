@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public class GrpBoss : Boss
@@ -39,6 +40,9 @@ public class GrpBoss : Boss
 
     bool p2Pos = true;
 
+    //p2
+    RigidbodyConstraints2D GrpRB;
+
 
     //p3
     public GameObject p3Object;
@@ -51,6 +55,8 @@ public class GrpBoss : Boss
     {
         base.Start();
         Debug.Log("그래픽 보스");
+
+        GrpRB = GetComponent<RigidbodyConstraints2D>();
     }
 
 
@@ -59,10 +65,6 @@ public class GrpBoss : Boss
         base.Update();
         if(showHP && !showFrame) {
             ShowFrame();
-        }
-
-        if(isDead) {
-            DeleteFrame();
         }
     }
 
@@ -234,10 +236,13 @@ public class GrpBoss : Boss
             StartCoroutine(GetHP());
         }
     }
-
+    
+    /// /////////////////////////////////
     IEnumerator GetHP() {
-        float targetHP = maxHP * 0.75f; // 회복 목표는 70%
+        float targetHP = maxHP * 0.65f; // 회복 목표는 70%
         float healSpeed = maxHP * 0.01f;
+        Vector3 currentPos = transform.position;
+        // 현재 Gravity 저장
 
         while (currentHP < targetHP)
         {
@@ -253,7 +258,14 @@ public class GrpBoss : Boss
         isFollowing = true;
         isStop = true;
         bmScript.attackPos = true;
+        // transform.position = currentPos; 자연스럽게
+        //gravity, position 다시 리셋
     }
+
+    public void GRPGravityControl() {
+        // gravity 1 만들기
+    }
+
 
 
 
@@ -300,9 +312,5 @@ public class GrpBoss : Boss
         isWandering = true;
         isFollowing = true;
         isStop = true;
-    }
-
-    void DeleteFrame() {
-        Destroy(framePrefab.gameObject);
     }
 }
