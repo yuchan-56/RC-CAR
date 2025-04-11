@@ -112,3 +112,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b6951558b4648948ae7d757235996cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  images: []
+  timerDuration: 60
+  imageComponent: {fileID: 0}
+  failImage: {fileID: 0}
+  SuccessImage: {fileID: 0}
