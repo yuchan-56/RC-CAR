@@ -295,6 +295,8 @@ public class PlayerMove : MonoBehaviour
             rigid.velocity = Vector2.zero;
             isJumpAttacking = true;
             IsComboAttacking++;
+            if(!isground)
+                HasDoubleJumped = true;
             rigid.AddForce(Vector2.up * jumpforce / 1.5f, ForceMode2D.Impulse);
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(0.75f);
@@ -306,6 +308,8 @@ public class PlayerMove : MonoBehaviour
             isJumpDashing = true;
             IsComboAttacking++;
             ForceDash();
+            if (!isground)
+                HasDoubleJumped = true;
             rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(0.667f);
