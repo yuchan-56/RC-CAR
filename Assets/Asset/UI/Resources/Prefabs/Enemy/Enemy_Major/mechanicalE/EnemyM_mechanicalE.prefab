@@ -223,7 +223,7 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 10
+  followDistance: 100
   followDistanceY: 3
   throwDistance: 5
   attackDistance: 2
