@@ -10,6 +10,7 @@ public class JumpAttack : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator ani;
     bool SkillActive_JumpAttack;
+    private List<Enemy> hitEnemies = new List<Enemy>();
 
     IEnumerator DeactiveCoroutine()
     {
@@ -54,8 +55,11 @@ public class JumpAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy" && Managers.Game.isEnemyHit == false)
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (collision.tag == "Enemy" && enemy.isEnemyHit == false)
         {
+            enemy.isEnemyHit = true;
+            hitEnemies.Add(enemy);
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 2);
         }
     }
@@ -65,7 +69,13 @@ public class JumpAttack : MonoBehaviour
         SkillActive_JumpAttack = false;
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
-        Managers.Game.isEnemyHit = false;
+        foreach (Enemy enemy in hitEnemies)
+        {
+            if (enemy != null)
+                enemy.isEnemyHit = false;
+        }
+
+        hitEnemies.Clear();
         ani.SetBool("UltJumpAtt", false); 
         ani.SetBool("JumpAtt", false);
         if (Managers.Game.SkillAniReset == true)
