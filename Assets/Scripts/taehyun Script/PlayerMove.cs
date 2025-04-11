@@ -32,6 +32,7 @@ public class PlayerMove : MonoBehaviour
     Coroutine currentAction;
     Coroutine dashCoroutine;
     Rigidbody2D rigid;
+    public GameObject dashEffect;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,6 +43,7 @@ public class PlayerMove : MonoBehaviour
         initialScale = transform.localScale;
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         IsComboAttacking = 0;
+        dashEffect.SetActive(false);
     }
 
     // Update is called once per frame
@@ -118,7 +120,7 @@ public class PlayerMove : MonoBehaviour
                 rigid.velocity = new Vector2(movedirection * maxspeed, 0);
                 rigid.AddForce(Vector2.up * jumpforce / 1.5f, ForceMode2D.Impulse);
             }
-            else 
+            else
             {
                 rigid.velocity = Vector2.zero;
                 rigid.velocity = new Vector2(movedirection * maxspeed, 0);
@@ -214,7 +216,7 @@ public class PlayerMove : MonoBehaviour
         if (canDash)
         {
 
-            dashCoroutine=StartCoroutine(Dash());
+            dashCoroutine = StartCoroutine(Dash());
             animator.SetTrigger("dash");
 
         }
@@ -226,6 +228,8 @@ public class PlayerMove : MonoBehaviour
         isDashing = true;
         canDash = false;
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
+        if(!isDashAttacking && !isJumpDashing)
+        StartCoroutine(ShowDashEffect());
 
         if (isDashAttacking)
         {
@@ -242,6 +246,7 @@ public class PlayerMove : MonoBehaviour
 
             rigid.AddForce(new Vector2(dashDirection * dashSpeed, 0f), ForceMode2D.Impulse);
         }
+
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         canDash = true;
@@ -345,28 +350,34 @@ public class PlayerMove : MonoBehaviour
 
         dashCoroutine = StartCoroutine(Dash());
     }
- 
-    /* public IEnumerator ForcedAniReset()
-     {
-         if (Managers.Game.SkillAniReset == true)
-         {
-             IsJumping = false;
-             IsAttacking = false;
-             IsComboAttacking = false;
-             IsComboDashing = false;
-             isJumpattacking = false;
-             isJumpdashing = false;
-             isDashattacking = false;
+    IEnumerator ShowDashEffect()
+    {
+        dashEffect.SetActive(true);
+        yield return new WaitForSeconds(0.5f); // 이펙트 보여줄 시간
+        dashEffect.SetActive(false);
+    }
 
-             animator.ResetTrigger("Attack");
-             animator.ResetTrigger("JumpAttack");
-             animator.ResetTrigger("DashAttack");
-             animator.ResetTrigger("JumpDash");
-         }
-         yield return null;
-         StopCoroutine(PerformAttack(""));
-         StopCoroutine(ForcedAniReset());
-     }*/
+        /* public IEnumerator ForcedAniReset()
+         {
+             if (Managers.Game.SkillAniReset == true)
+             {
+                 IsJumping = false;
+                 IsAttacking = false;
+                 IsComboAttacking = false;
+                 IsComboDashing = false;
+                 isJumpattacking = false;
+                 isJumpdashing = false;
+                 isDashattacking = false;
+
+                 animator.ResetTrigger("Attack");
+                 animator.ResetTrigger("JumpAttack");
+                 animator.ResetTrigger("DashAttack");
+                 animator.ResetTrigger("JumpDash");
+             }
+             yield return null;
+             StopCoroutine(PerformAttack(""));
+             StopCoroutine(ForcedAniReset());
+         }*/
 
 }
 
