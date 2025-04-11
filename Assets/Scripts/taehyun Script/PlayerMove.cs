@@ -106,7 +106,6 @@ public class PlayerMove : MonoBehaviour
 
         if (Managers.Game.currentState == GameManager.GameState.Battle)
         {
-            IsJumping = true; // 점프 시작
             isground = false; // 착지 상태 초기화 (Raycast가 정확히 감지되도록)
 
             if (isJumpDashing)
@@ -196,6 +195,7 @@ public class PlayerMove : MonoBehaviour
         {
             isground = true;
             IsComboAttacking = 0;
+            IsJumping = true;
         }
         else
         {
@@ -214,17 +214,19 @@ public class PlayerMove : MonoBehaviour
         if (canDash)
         {
 
-            StartCoroutine(Dash());
+            dashCoroutine=StartCoroutine(Dash());
             animator.SetTrigger("dash");
 
         }
     }
     public IEnumerator Dash()
     {
+        if (!isDashAttacking) // DashAttack이 아닌 경우에만 속도 리셋
+            rigid.velocity = Vector2.zero;
         isDashing = true;
         canDash = false;
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
-        rigid.velocity = Vector2.zero;
+
         if (isDashAttacking)
         {
 
