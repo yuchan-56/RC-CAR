@@ -9,6 +9,8 @@ public class MapMoving : UI_Popup
     public Image Black;
     Camera camera_m;
     private float FixedY = -1;
+
+    private bool moving = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -19,6 +21,9 @@ public class MapMoving : UI_Popup
     IEnumerator goBlack()
     {
         Time.timeScale = 0;
+        moving = true; // 맵이동중 
+        StartCoroutine(goFall());  // 떨어질 수 있게 하는 코드
+        
         Black.DOFade(1f, blackTime).SetUpdate(true);
         yield return new WaitForSecondsRealtime(blackTime*1.1f);
 
@@ -40,6 +45,16 @@ public class MapMoving : UI_Popup
 
 
         yield return null;
+    }
+    IEnumerator goFall()
+    {
+        Physics2D.autoSimulation = false; // 수동 물리 엔진
+        while (moving)
+        {
+            Physics2D.Simulate(Time.unscaledDeltaTime);
+            yield return null;
+        }
+        Physics2D.autoSimulation = true;
     }
 
 }
