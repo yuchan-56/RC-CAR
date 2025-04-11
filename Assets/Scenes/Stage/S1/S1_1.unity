@@ -2517,12 +2517,20 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8529539377960308912, guid: 616e307042fd84abaaaa734f7c4ae47b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.2613
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529539377960308912, guid: 616e307042fd84abaaaa734f7c4ae47b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.1639
+      objectReference: {fileID: 0}
+    - target: {fileID: 8529539377960308912, guid: 616e307042fd84abaaaa734f7c4ae47b, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1
+      value: -0.953
       objectReference: {fileID: 0}
     - target: {fileID: 8529539377960308912, guid: 616e307042fd84abaaaa734f7c4ae47b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -1
+      value: -0.909
       objectReference: {fileID: 0}
     - target: {fileID: 8529539377960308912, guid: 616e307042fd84abaaaa734f7c4ae47b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6166,6 +6174,10 @@ PrefabInstance:
       propertyPath: animator
       value: 
       objectReference: {fileID: 0}
+    - target: {fileID: 4169039272619583583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: dashEffect
+      value: 
+      objectReference: {fileID: 2137478892}
     - target: {fileID: 4169039272619583583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: dashEffectPrefab
       value: 

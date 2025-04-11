@@ -228,22 +228,21 @@ public class PlayerMove : MonoBehaviour
         isDashing = true;
         canDash = false;
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
-        if(!isDashAttacking && !isJumpDashing)
-        StartCoroutine(ShowDashEffect());
+
 
         if (isDashAttacking)
         {
-
+            dashEffect.SetActive(false);
             rigid.AddForce(new Vector2(dashDirection * dashSpeed / 1.2f, 0f), ForceMode2D.Impulse);
         }
         else if (isJumpDashing)
         {
-
+            dashEffect.SetActive(false);
             rigid.AddForce(new Vector2(dashDirection * dashSpeed / 1.5f, 0f), ForceMode2D.Impulse);
         }
         else
         {
-
+            StartCoroutine(ShowDashEffect());
             rigid.AddForce(new Vector2(dashDirection * dashSpeed, 0f), ForceMode2D.Impulse);
         }
 
