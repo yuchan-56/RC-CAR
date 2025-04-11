@@ -150,7 +150,7 @@ public class PlayerMove : MonoBehaviour
 
             StartActionCoroutine(Jump());
         }
-        else if (!isground && IsComboAttacking == 1 && !HasDoubleJumped)//점프어택 or 점프대쉬 and 점프
+        else if (!isground && !HasDoubleJumped)//점프어택 or 점프대쉬 and 점프
         {
             HasDoubleJumped = true;
             StartActionCoroutine(Jump());
