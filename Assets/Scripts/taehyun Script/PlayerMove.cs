@@ -108,9 +108,23 @@ public class PlayerMove : MonoBehaviour
         {
             IsJumping = true; // 점프 시작
             isground = false; // 착지 상태 초기화 (Raycast가 정확히 감지되도록)
-            rigid.velocity = Vector2.zero;
-            rigid.velocity = new Vector2(movedirection * maxspeed, 0);
-            rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+
+            if (isJumpDashing)
+            {
+                rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+            }
+            else if (isJumpAttacking)
+            {
+                rigid.velocity = Vector2.zero;
+                rigid.velocity = new Vector2(movedirection * maxspeed, 0);
+                rigid.AddForce(Vector2.up * jumpforce / 1.5f, ForceMode2D.Impulse);
+            }
+            else 
+            {
+                rigid.velocity = Vector2.zero;
+                rigid.velocity = new Vector2(movedirection * maxspeed, 0);
+                rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+            }
             animator.SetTrigger("jump");
             Debug.Log("Jump");
 
@@ -292,12 +306,9 @@ public class PlayerMove : MonoBehaviour
         }
         else if (ComboType == "JumpAttack" && !isJumpAttacking && IsComboAttacking < 2)
         {
-            rigid.velocity = Vector2.zero;
             isJumpAttacking = true;
             IsComboAttacking++;
-            if(!isground)
-                HasDoubleJumped = true;
-            rigid.AddForce(Vector2.up * jumpforce / 1.5f, ForceMode2D.Impulse);
+            TriggerJump();
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(0.75f);
             isJumpAttacking = false;
@@ -308,9 +319,7 @@ public class PlayerMove : MonoBehaviour
             isJumpDashing = true;
             IsComboAttacking++;
             ForceDash();
-            if (!isground)
-                HasDoubleJumped = true;
-            rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+            TriggerJump();
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(0.667f);
             isJumpDashing = false;
