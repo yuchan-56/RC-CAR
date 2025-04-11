@@ -6,6 +6,13 @@ using UnityEngine;
 public class MapMoving : UI_Popup
 {
     float blackTime = 1.5f;
+
+    //검은색 Panel 4개
+    public RectTransform panelTop;
+    public RectTransform panelBottom;
+    public RectTransform panelLeft;
+    public RectTransform panelRight;
+
     public Image Black;
     Camera camera_m;
     private float FixedY = -1;
