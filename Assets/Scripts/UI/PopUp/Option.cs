@@ -8,20 +8,28 @@ public class Option : UI_Popup
 {
     enum Buttons
     {
-        Play
+       Close,
+       Credit
     }
     public override void Init()
     {
         base.Init();
         Bind<Button>(typeof(Buttons));
 
-        GetButton((int)Buttons.Play).gameObject.AddUIEvent(GoPlay);
+        GetButton((int)Buttons.Close).gameObject.AddUIEvent(GoClose);
+        GetButton((int)Buttons.Credit).gameObject.AddUIEvent(GoCredit);
     }
     // Start is called before the first frame update
-    void GoPlay(PointerEventData eventData)
+    void GoClose(PointerEventData eventData)
     {
-        Managers.UI.ClosePopUpUI();
+        Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<Option>(this.gameObject));
     }
+
+    void GoCredit(PointerEventData eventData)
+    {
+        Managers.UI.ShowPopUpUI<Credit>();
+    }
+    
     void Start()
     {
         Init();
