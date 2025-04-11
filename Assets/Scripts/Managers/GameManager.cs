@@ -7,7 +7,6 @@ public class GameManager
     public float damage = 50;
     public int gage = 0;
     public bool GetHit = false;
-    public bool isEnemyHit = false;
     public int roundEnemy; // 적을 처치할때마다 줄어들게.
     public bool SkillAniReset = false;//모든 스킬관련 ani 강제 종료
 

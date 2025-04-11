@@ -23,6 +23,7 @@ public class Enemy : MonoBehaviour
     public float wanderDistance = 2f;
     bool isWandering = true;
     bool isFollowing = true;
+    public bool isEnemyHit = false;
 
     public float followDistance = 10f; // 따라가기 시작하는 거리
     public float followDistanceY = 3f; // 따라가기 시작하는 Y축거리
@@ -313,7 +314,6 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("enemy_attacked", true);
         canMove = false;
-        Managers.Game.isEnemyHit = true;
         
         if(!isDead) {
             if(attackMethod == 1) {

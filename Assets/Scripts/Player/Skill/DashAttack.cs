@@ -12,9 +12,14 @@ public class DashAttack : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator ani;
     bool SkillActive_DashAttack;
+    private List<Enemy> hitEnemies = new List<Enemy>();
 
     void Awake()
     {
+        if(enemy ==  null)
+        {
+            enemy = UnityEngine.Object.FindObjectOfType<Enemy>();
+        }
         spriteRenderer = GetComponent<SpriteRenderer>();
         boxCollider2D = GetComponent<BoxCollider2D>();
         ani = GetComponent<Animator>();
@@ -56,10 +61,12 @@ public class DashAttack : MonoBehaviour
     
     void OnTriggerEnter2D(Collider2D collision)
     {
-        
-        if (collision.tag == "Enemy" && Managers.Game.isEnemyHit == false)
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (collision.tag == "Enemy" && enemy.isEnemyHit == false)
         {
-            collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 3);
+            enemy.isEnemyHit = true;
+            hitEnemies.Add(enemy);
+            collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 2);
         }
     }
 
@@ -69,7 +76,13 @@ public class DashAttack : MonoBehaviour
         SkillActive_DashAttack = false;
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
-        Managers.Game.isEnemyHit = false;
+        foreach (Enemy enemy in hitEnemies)
+        {
+            if (enemy != null)
+                enemy.isEnemyHit = false;
+        }
+
+        hitEnemies.Clear();
         ani.SetBool("UltDashAtt", false);
         ani.SetBool("DashAtt", false);
         if (Managers.Game.SkillAniReset == true)
