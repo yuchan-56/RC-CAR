@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 public class MapMoving : UI_Popup
 {
-    float blackTime = 1.5f;
+    public float blackTime = 1.5f;
 
     //검은색 Panel 4개
     public RectTransform panelTop;
@@ -26,7 +26,7 @@ public class MapMoving : UI_Popup
     }
     IEnumerator goBlack()
     {
-        Time.timeScale = 0;
+        //Time.timeScale = 0;
         moving = true; // 맵이동중 
         StartCoroutine(goFall());  // 떨어질 수 있게 하는 코드
 
@@ -42,11 +42,12 @@ public class MapMoving : UI_Popup
       
         moving = false;
         StartCoroutine(OpenScreen());  // 화면 열기
+        Time.timeScale = 1;
 
         // Black.DOFade(0f, blackTime); // DOFadeOut이 올바르게 진행되려면 Time.timeScale이 1이어야함. 왜인지는..? 모름 Complete가 제대로 작동 안하는듯
         yield return new WaitForSecondsRealtime(blackTime);
 
-        Time.timeScale = 1;
+        
         Managers.Game.SkillAniReset = true;
         Managers.UI.ShowPopUpUI<StageGuide>(); // 맵이동이 끝날때 StageGuide 출력
 

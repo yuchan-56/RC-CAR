@@ -409,6 +409,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7abff58f8cc5d9c4380841d6f9b94e9a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  blackTime: 1
   panelTop: {fileID: 2969536865626998763}
   panelBottom: {fileID: 5652970464481420703}
   panelLeft: {fileID: 4513002968961375793}
