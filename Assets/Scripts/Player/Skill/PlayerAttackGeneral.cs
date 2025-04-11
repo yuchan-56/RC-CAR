@@ -12,9 +12,14 @@ public class PlayerAttackGeneral : MonoBehaviour
     SpriteRenderer spriteRenderer;
     bool SkillAttack_Active;
     public bool UltimateSkill_Active;
+    private List<Enemy> hitEnemies = new List<Enemy>();
 
     void Awake()
     {
+        if (enemy == null)
+        {
+            enemy = UnityEngine.Object.FindObjectOfType<Enemy>();
+        }
         boxCollider2D = GetComponent<BoxCollider2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         spriteRenderer.enabled = false;
@@ -64,8 +69,11 @@ public class PlayerAttackGeneral : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.tag == "Enemy" && Managers.Game.isEnemyHit == false)
+        Enemy enemy = collision.GetComponent<Enemy>();
+        if (collision.tag == "Enemy" && enemy.isEnemyHit == false)
         {
+            enemy.isEnemyHit = true;
+            hitEnemies.Add(enemy);
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 1);
         }
     }
@@ -75,7 +83,13 @@ public class PlayerAttackGeneral : MonoBehaviour
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
         SkillAttack_Active = false;
-        Managers.Game.isEnemyHit = false;
+        foreach (Enemy enemy in hitEnemies)
+        {
+            if (enemy != null)
+                enemy.isEnemyHit = false;
+        }
+
+        hitEnemies.Clear();
         ani.SetBool("UltAttack", false);
         ani.SetBool("Attack", false);
         if(Managers.Game.SkillAniReset == true)
