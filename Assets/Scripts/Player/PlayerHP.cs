@@ -9,7 +9,6 @@ public class PlayerHP : MonoBehaviour
     public Sprite[] sprites;
     public int currentHP = 3;
     public float animationDuration = 0.01f;
-    private bool isHit = false;
     private bool isAutoRecovering = false;
     private Coroutine hpRecoverCoroutine;
     private float recoverDelayAfterHit = 5f;
