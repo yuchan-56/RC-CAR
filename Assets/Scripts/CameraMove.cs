@@ -12,7 +12,7 @@ public class CameraMove : MonoBehaviour
     public float maxX = 1.9f;
 
     private Vector3 velocity = Vector3.zero;
-    public float FixedY;
+    public float FixedY =-1;
     private Vector3 targetPosition;
     private void Start()
     {
