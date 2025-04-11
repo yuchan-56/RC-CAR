@@ -280,7 +280,6 @@ GameObject:
   - component: {fileID: 5285431243031117072}
   - component: {fileID: 4679092246685870724}
   - component: {fileID: 9100387153009258192}
-  - component: {fileID: 6349962508484978794}
   m_Layer: 5
   m_Name: Jump
   m_TagString: Untagged
@@ -330,7 +329,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7882353}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 15, y: 17, z: 16, w: 4}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -421,18 +420,6 @@ MonoBehaviour:
   - {fileID: 1908863147, guid: 95dcdfaf0ddc621458f9f8d516848b10, type: 3}
   frameRate: 0.1
   isAnimating: 0
---- !u!114 &6349962508484978794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3026659843796333526}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c580b7865210848b79cd91dcf58c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &3826793138562731541
 GameObject:
   m_ObjectHideFlags: 0
@@ -623,7 +610,6 @@ GameObject:
   - component: {fileID: 2656394617951443850}
   - component: {fileID: 5153127847322419651}
   - component: {fileID: 5334446024605978020}
-  - component: {fileID: 6574589579285845791}
   - component: {fileID: 1302248360880814814}
   m_Layer: 5
   m_Name: Attack
@@ -674,7 +660,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7882353}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 16, y: 17, z: 13, w: 15}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -745,18 +731,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6574589579285845791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5005965730326375784}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c580b7865210848b79cd91dcf58c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &1302248360880814814
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1535,7 +1509,6 @@ GameObject:
   - component: {fileID: 5251979340764288889}
   - component: {fileID: 4890371287180511384}
   - component: {fileID: 6786104577049070411}
-  - component: {fileID: 6072553096456165400}
   - component: {fileID: 890301184903850485}
   m_Layer: 5
   m_Name: Dash
@@ -1586,7 +1559,7 @@ MonoBehaviour:
   m_Material: {fileID: 0}
   m_Color: {r: 1, g: 1, b: 1, a: 0.7882353}
   m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_RaycastPadding: {x: 12, y: 16, z: 16, w: 14}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
@@ -1657,18 +1630,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &6072553096456165400
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8535658156882596939}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e3c580b7865210848b79cd91dcf58c6f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &890301184903850485
 MonoBehaviour:
   m_ObjectHideFlags: 0
