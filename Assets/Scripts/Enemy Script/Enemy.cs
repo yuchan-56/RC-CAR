@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -24,6 +25,8 @@ public class Enemy : MonoBehaviour
     bool isWandering = true;
     bool isFollowing = true;
     public bool isEnemyHit = false;
+
+    private bool isHitOverride = false;
 
     public float followDistance = 10f; // 따라가기 시작하는 거리
     public float followDistanceY = 3f; // 따라가기 시작하는 Y축거리
@@ -91,11 +94,14 @@ public class Enemy : MonoBehaviour
         if (isDead) { return; }
         
         if(canMove) {
-
             float distanceToPlayer = Mathf.Abs(transform.position.x - player.transform.position.x);
             float distanceToPlayerY = Mathf.Abs(transform.position.y - player.transform.position.y);
 
-            if (distanceToPlayer <= attackDistance && distanceToPlayerY <= followDistanceY)
+            if (isHitOverride)
+            {
+                currentState = EnemyState.Following;
+            }
+            else if (distanceToPlayer <= attackDistance && distanceToPlayerY <= followDistanceY)
             {
                 if(isMale) {
                     currentState = EnemyState.Attacking;
@@ -356,6 +362,8 @@ public class Enemy : MonoBehaviour
     }
 
     IEnumerator IsAttacked(float knockback) {
+        isHitOverride = true;
+
         Vector2 knockbackDir = (transform.position - player.transform.position).normalized;
         float knockbackDistance = 1.0f;
 
@@ -375,11 +383,15 @@ public class Enemy : MonoBehaviour
         transform.position = targetPos; // 마지막 위치 보정
 
 
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.7f);
+
+        isHitOverride = false;
         
     }
 
     IEnumerator JumpAttacked() {
+        isHitOverride = true;
+
         Vector2 startPos = transform.position;
 
         // 위로 튀는 위치 계산
@@ -404,7 +416,8 @@ public class Enemy : MonoBehaviour
         transform.position = endPos;
 
         
-        yield return new WaitForSeconds(1.0f);
+        yield return new WaitForSeconds(0.7f);
+        isHitOverride = false;
     }
 
     public void CanMoveAtt() {

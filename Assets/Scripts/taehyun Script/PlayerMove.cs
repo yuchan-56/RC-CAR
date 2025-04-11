@@ -265,6 +265,7 @@ public class PlayerMove : MonoBehaviour
 
         if (collision.tag == "NextJumpUp")
         {
+            Debug.Log("NewctJumpUp");
             if (Managers.Game.CheckNextRound()) // 적이 모두 처치되었다면.
             {
                 Debug.Log("NextJumpUp 코드가 실행되었습니다");

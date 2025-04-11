@@ -47,6 +47,10 @@ public class GameManager
         currentGround = GameGround.R4;
         gage = 0;
         GetHit = false;
+        Time.timeScale = 1;
+        SkillAniReset = true;
+        isHit = false;
+        damage = 50;
     }
 
     public void GoJump()

@@ -41,8 +41,6 @@ public class GrpBoss : Boss
     bool p2Pos = true;
 
     //p2
-    RigidbodyConstraints2D GrpRB;
-
 
     //p3
     public GameObject p3Object;
@@ -55,8 +53,6 @@ public class GrpBoss : Boss
     {
         base.Start();
         Debug.Log("그래픽 보스");
-
-        GrpRB = GetComponent<RigidbodyConstraints2D>();
     }
 
 
