@@ -11,7 +11,7 @@ public class PrgBoss : Boss
 
 
     //attack
-    public GameObject attackObject;
+    public GameObject[] attackObject = new GameObject[4];
     //p1
     public GameObject p1Object;
     //P2
@@ -36,10 +36,6 @@ public class PrgBoss : Boss
         base.Update();
         if(showHP && !showFrame) {
             ShowFrame();
-        }
-
-        if(isDead) {
-            DeleteFrame();
         }
     }
 
@@ -71,13 +67,37 @@ public class PrgBoss : Boss
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", true);
-        
 
-        if (attackObject != null)
-        {
-            attackObject.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(attackObject, 4f));
-        }
+        StartCoroutine(DeactivateAfterDelay(3.7f));
+    }
+
+    public void Prg1stAttack() {
+        attackObject[0].SetActive(true);
+    }
+
+    public void Prg2ndAttack() {
+        attackObject[0].SetActive(false);
+
+        attackObject[1].SetActive(true);
+    }
+
+    public void Prg3rdAttack() {
+        attackObject[1].SetActive(false);
+
+        attackObject[2].SetActive(true);
+    }
+
+    public void Prg4thAttack() {
+        attackObject[2].SetActive(false);
+
+        attackObject[3].SetActive(true);
+    }
+
+    public void PrgAttackOff() {
+        attackObject[0].SetActive(false);
+        attackObject[1].SetActive(false);
+        attackObject[2].SetActive(false);
+        attackObject[3].SetActive(false);
     }
 
     public override void P1() {
@@ -90,13 +110,19 @@ public class PrgBoss : Boss
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", true);
-        
 
+        StartCoroutine(DeactivateAfterDelay(3f));
+    }
+
+    public void PrgP1Start() {
         if (p1Object != null)
         {
             p1Object.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(p1Object, 3f));
         }
+    }
+
+    public void PrgP1Off() {
+        p1Object.SetActive(false);
     }
 
 
@@ -167,18 +193,26 @@ public class PrgBoss : Boss
         animator.SetBool("isP2", false);
         animator.SetBool("isAttack", false);
         animator.SetBool("isP3", true);
-        
+
+        StartCoroutine(DeactivateAfterDelay(5f));
+    }
+
+    public void PrgP3Start() {
         if (p3Object != null)
         {
             p3Object.SetActive(true);
-            StartCoroutine(DeactivateAfterDelay(p3Object, 5f));
         }
     }
 
-    IEnumerator DeactivateAfterDelay(GameObject obj, float delay)
+    public void PrgP3Off() {
+        p3Object.SetActive(false);
+    }
+
+    IEnumerator DeactivateAfterDelay(float delay)
     {
         yield return new WaitForSeconds(delay);
-        obj.SetActive(false);
+
+
         animator.SetBool("isP3", false);
         animator.SetBool("isP2", false);
         animator.SetBool("isP1", false);
@@ -188,10 +222,12 @@ public class PrgBoss : Boss
         isFollowing = true;
         isStop = true;
         bmScript.attackPos = true;
-        
-    }
 
-    void DeleteFrame() {
-        Destroy(framePrefab);
+        p1Object.SetActive(false);
+        p3Object.SetActive(false);
+        attackObject[0].SetActive(false);
+        attackObject[1].SetActive(false);
+        attackObject[2].SetActive(false);
+        attackObject[3].SetActive(false);
     }
 }
