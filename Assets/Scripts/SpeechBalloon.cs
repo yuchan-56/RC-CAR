@@ -11,7 +11,7 @@ public class SpeechBalloon : UI_Popup
 
 
 
-    public static readonly Dictionary<Define.EnemyCategory, (string korean, string english)> enemyQuotes =
+    public static readonly Dictionary<Define.EnemyCategory, (string quote, string english)> enemyQuotes =
       new Dictionary<Define.EnemyCategory, (string, string)>
   {
           //prefab 폴더가 하나 더 많아서 신화를 그냥 chemicalE로 퉁치고 mechanicalE를 없앰.
