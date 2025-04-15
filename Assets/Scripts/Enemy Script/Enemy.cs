@@ -288,7 +288,7 @@ public class Enemy : MonoBehaviour
         FlipDirection(directionToPlayer.x);
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
         */
-
+        
         Vector2 direction = (player.transform.position - transform.position).normalized;
         float step = speed * Time.fixedDeltaTime;
 
@@ -298,6 +298,8 @@ public class Enemy : MonoBehaviour
         FlipDirection(direction.x);
 
         stopPosition = transform.position;
+
+        SpeechPopUp(); // 대사출력
     }
 
     void FlipDirection(float horizontalDirection)
