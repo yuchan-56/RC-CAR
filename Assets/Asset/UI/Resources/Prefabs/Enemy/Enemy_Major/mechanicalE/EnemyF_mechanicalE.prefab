@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 386485938869654352}
   - component: {fileID: 2018901380710706912}
   - component: {fileID: 2083231946158794868}
-  - component: {fileID: 6887865109552267374}
+  - component: {fileID: -1355658819053521969}
   m_Layer: 0
   m_Name: EnemyF_mechanicalE
   m_TagString: Enemy
@@ -223,7 +223,7 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 10
+  followDistance: 100
   followDistanceY: 3
   throwDistance: 5
   attackDistance: 2
@@ -261,7 +261,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &6887865109552267374
+--- !u!61 &-1355658819053521969
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,7 +293,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015, y: -0.03}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -304,5 +304,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.37, y: 0.95}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0

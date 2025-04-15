@@ -104,7 +104,7 @@ GameObject:
   - component: {fileID: 4684505024422458120}
   - component: {fileID: 7232127830777996697}
   - component: {fileID: 562718896322805208}
-  - component: {fileID: 6522180362706622303}
+  - component: {fileID: 8294854447763632846}
   m_Layer: 0
   m_Name: EnemyM_chemicalE
   m_TagString: Enemy
@@ -223,7 +223,7 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 10
+  followDistance: 100
   followDistanceY: 3
   throwDistance: 5
   attackDistance: 2
@@ -261,7 +261,7 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!61 &6522180362706622303
+--- !u!61 &8294854447763632846
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -293,7 +293,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.015, y: -0.04}
+  m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -304,5 +304,5 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.355, y: 0.93}
+  m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
