@@ -335,7 +335,7 @@ public class ComboManager : MonoBehaviour
 
         else if (Managers.Game.GetHit == true)
         {
-            Managers.Game.gage++;
+            Managers.Game.gage += 5;
             Debug.Log(Managers.Game.gage);
             Managers.Game.GetHit = false;
         }
