@@ -74,6 +74,7 @@ public class PlayerAttackGeneral : MonoBehaviour
         {
             enemy.isEnemyHit = true;
             hitEnemies.Add(enemy);
+            Managers.Game.gage += 1 * hitEnemies.Count;
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 1);
         }
     }
