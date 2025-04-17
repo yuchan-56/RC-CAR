@@ -18,6 +18,9 @@ public class Enemy : MonoBehaviour
     bool canMove = true;
 
     private EnemyState currentState;
+    private EnemyState previousState;
+    private float wanderStartTime;   // Wander 시작 시간 (PingPong 타이밍 기준)
+    private float lastWorldX; 
 
 
     // 거리제한
@@ -28,7 +31,7 @@ public class Enemy : MonoBehaviour
 
     private bool isHitOverride = false;
 
-    public float followDistance = 10f; // 따라가기 시작하는 거리
+    public float followDistance = 100f; // 따라가기 시작하는 거리
     public float followDistanceY = 3f; // 따라가기 시작하는 Y축거리
     public float throwDistance = 5f; // 오브젝트 던지기 시작하는 거리
     public float attackDistance = 2.0f; // 일반 공격 거리
@@ -89,6 +92,67 @@ public class Enemy : MonoBehaviour
         hpBarImage.sprite = hpSprites[(int)currentHP];
     }
 
+    void FixedUpdate()
+    {
+        if (isDead || !canMove) return;
+
+        if (currentState == EnemyState.Following)
+        {
+            FollowPlayer();
+        }
+    }
+
+    void Update()
+    {
+        if (isDead) return;
+
+        
+        float dx = Mathf.Abs(transform.position.x - player.transform.position.x);
+        float dy = Mathf.Abs(transform.position.y - player.transform.position.y);
+
+        if (isHitOverride)
+            currentState = EnemyState.Following;
+        else if (dx <= attackDistance && dy <= followDistanceY)
+            currentState = isMale ? EnemyState.Attacking : EnemyState.Throwing;
+        else if (dx <= throwDistance && dy <= followDistanceY)
+            currentState = isMale ? EnemyState.Following : EnemyState.Throwing;
+        else if (dx <= followDistance && dy <= followDistanceY)
+            currentState = EnemyState.Following;
+        else
+            currentState = EnemyState.Idle;
+
+        
+        switch (currentState)
+        {
+            case EnemyState.Attacking:
+                AttackPlayer();
+                break;
+            case EnemyState.Throwing:
+                canMove = false;
+                animator.SetBool("enemy_throw", true);
+                animator.SetBool("enemy_attack", false);
+                attackObject.SetActive(false);
+                isFollowing = false;
+                break;
+            case EnemyState.Idle:
+                attackObject.SetActive(false);
+                if (!isWandering)
+                {
+                    stopPosition = transform.position;
+                    isWandering = true;
+                }
+                Wander(); break;
+        }
+
+        // HP 슬라이더 위치 업데이트
+        if (hpBarImage != null)
+        {
+            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.7f, 0));
+            hpBarImage.transform.position = screenPosition;
+        }
+    }
+
+    /*
     void Update()
     {
         if (isDead) { return; }
@@ -179,6 +243,7 @@ public class Enemy : MonoBehaviour
             EnemyDamage(10, 1);
         }
     }
+    */
 
     void UpdateHPBar()
     {
@@ -207,7 +272,7 @@ public class Enemy : MonoBehaviour
         FlipDirection(horizontalDirection);
 
         // 위치 업데이트
-        transform.position = new Vector2(stopPosition.x + xPos, transform.position.y);
+        transform.position = new Vector2(stopPosition.x, transform.position.y);
 
         // 현재 X 위치 저장
         lastXPosition = xPos;
@@ -218,9 +283,23 @@ public class Enemy : MonoBehaviour
         animator.SetBool("enemy_attack", false);
         animator.SetBool("enemy_throw", false);
 
+        /*
         Vector2 directionToPlayer = player.transform.position - transform.position;
         FlipDirection(directionToPlayer.x);
         transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
+        */
+        
+        Vector2 direction = (player.transform.position - transform.position).normalized;
+        float step = speed * Time.fixedDeltaTime;
+
+        Rigidbody2D rb = GetComponent<Rigidbody2D>();
+
+        rb.MovePosition(rb.position + direction * step);
+        FlipDirection(direction.x);
+
+        stopPosition = transform.position;
+
+        SpeechPopUp(); // 대사출력
     }
 
     void FlipDirection(float horizontalDirection)

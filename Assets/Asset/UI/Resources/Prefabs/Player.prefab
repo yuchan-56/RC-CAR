@@ -571,8 +571,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 865d669b20e9db447bf7cc9c55cb1e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  IsAttacking: 0
+  isground: 0
   dashDuration: 0.4
   animator: {fileID: 0}
+  dashEffect: {fileID: 0}
 --- !u!95 &2709990556405850502
 Animator:
   serializedVersion: 5

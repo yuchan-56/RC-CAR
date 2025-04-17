@@ -5,7 +5,7 @@ using DG.Tweening;
 using UnityEngine;
 public class MapMoving : UI_Popup
 {
-    public float blackTime = 1.5f;
+    public float blackTime = 2f;
 
     //검은색 Panel 4개
     public RectTransform panelTop;
@@ -23,6 +23,10 @@ public class MapMoving : UI_Popup
         StartCoroutine(goBlack());
         camera_m = FindObjectOfType<Camera>();
         
+        panelTop.sizeDelta = new Vector2(Screen.width, Screen.height);
+        panelBottom.sizeDelta = new Vector2(Screen.width, Screen.height);
+        panelLeft.sizeDelta = new Vector2(Screen.width, Screen.height);
+        panelRight.sizeDelta = new Vector2(Screen.width, Screen.height);
     }
     IEnumerator goBlack()
     {
@@ -71,10 +75,10 @@ public class MapMoving : UI_Popup
     {
         float duration = blackTime;
 
-        panelTop.DOAnchorPosY(0, duration).SetUpdate(true);
-        panelBottom.DOAnchorPosY(0, duration).SetUpdate(true);
-        panelLeft.DOAnchorPosX(0, duration).SetUpdate(true);
-        panelRight.DOAnchorPosX(0, duration).SetUpdate(true);
+        //panelTop.DOAnchorPosY(-panelTop.rect.height, duration).SetUpdate(true);
+        //panelBottom.DOAnchorPosY(panelTop.rect.height, duration).SetUpdate(true);
+        panelLeft.DOAnchorPosX(-panelLeft.rect.width / 2, duration).SetUpdate(true);
+        panelRight.DOAnchorPosX(panelRight.rect.width / 2, duration).SetUpdate(true);
 
         yield return new WaitForSecondsRealtime(duration * 1.1f);
     }
@@ -83,8 +87,8 @@ public class MapMoving : UI_Popup
     {
         float duration = blackTime;
 
-        panelTop.DOAnchorPosY(panelTop.rect.height, duration).SetUpdate(true);
-        panelBottom.DOAnchorPosY(-panelBottom.rect.height, duration).SetUpdate(true);
+        //panelTop.DOAnchorPosY(0, duration).SetUpdate(true);
+        //panelBottom.DOAnchorPosY(0, duration).SetUpdate(true);
         panelLeft.DOAnchorPosX(-panelLeft.rect.width, duration).SetUpdate(true);
         panelRight.DOAnchorPosX(panelRight.rect.width, duration).SetUpdate(true);
 

@@ -19,7 +19,8 @@ public class MainTitle : BaseScene
     public Transform[] BuildingRec;
     public float BuildSpeed = 5;
 
-
+    public GameObject esterEggCat;
+    bool esterIn = false;
 
     public float resetPositionX = -35.84f; // 왼쪽으로 이동했을 때 재배치 위치
     public float startPositionOffset = 23.62f; // 새로운 위치 설정 시 기준 오프셋
@@ -29,7 +30,6 @@ public class MainTitle : BaseScene
     {
         StartCoroutine(PlaySpriteAnimation());
          Init();
-
         foreach (Transform ground in GroundRec)
         {
             MoveGround(ground,"ground");
@@ -75,6 +75,10 @@ public class MainTitle : BaseScene
                 if (St == "ground")
                 {
                     newX = Mathf.Round(lastGround.position.x + startPositionOffset * 10f) / 10f;
+                    if(Random.Range(0,100)<=10)
+                    {
+                        EsterEggOn();
+                    }
                 }
                 else if (St == "tree")
                 {
@@ -132,6 +136,16 @@ public class MainTitle : BaseScene
         return farthest;
     }
 
+    void EsterEggOn()
+    {
+        esterEggCat.SetActive(true);
+        esterEggCat.transform.DOMoveX(resetPositionX, 12, false)
+           .SetSpeedBased() // 속도 기반 이동 (시간이 아니라 속도로 설정)
+           .SetEase(Ease.Linear) // 일정한 속도로 이동
+           .OnComplete(() => {
+               esterEggCat.transform.position = new Vector3(30, -1.51f);
+               esterEggCat.SetActive(false); });
+    }
 
 
 
