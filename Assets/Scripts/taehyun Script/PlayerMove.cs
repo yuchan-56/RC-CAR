@@ -24,6 +24,7 @@ public class PlayerMove : MonoBehaviour
     float dashSpeed = 25f;
     int dashToken = 0;
     public float dashDuration = 0.1f;
+    bool HasJumped = false;
     bool isDashing = false;
     bool canDash = true;
     public Animator animator;
@@ -139,7 +140,6 @@ public class PlayerMove : MonoBehaviour
             }
 
             IsJumping = false; // 착지 완료 후 점프 가능
-            HasDoubleJumped = false;
         }
     }
 
@@ -148,15 +148,15 @@ public class PlayerMove : MonoBehaviour
         if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
         if (isground)
         {
-
+            HasJumped = true;
             StartActionCoroutine(Jump());
         }
-        else if (!isground && !HasDoubleJumped)//점프어택 or 점프대쉬 and 점프
+        else if (!isground && !HasDoubleJumped && !HasJumped)//점프어택 or 점프대쉬 and 점프
         {
             HasDoubleJumped = true;
             StartActionCoroutine(Jump());
         }
-        else if (IsComboAttacking == 2)// 점프어택 and 점프대쉬
+        else if (IsComboAttacking == 2 && !HasDoubleJumped)// 점프어택 and 점프대쉬
         {
             StartActionCoroutine(Jump());
         }
@@ -197,7 +197,8 @@ public class PlayerMove : MonoBehaviour
         {
             isground = true;
             IsComboAttacking = 0;
-            IsJumping = true;
+            HasJumped = false;
+            HasDoubleJumped = false;
         }
         else
         {
@@ -313,6 +314,7 @@ public class PlayerMove : MonoBehaviour
         }
         else if (ComboType == "JumpAttack" && !isJumpAttacking && IsComboAttacking < 2)
         {
+            dashEffect.SetActive(false);
             isJumpAttacking = true;
             IsComboAttacking++;
             TriggerJump();
