@@ -77,8 +77,8 @@ public class MapMoving : UI_Popup
 
         //panelTop.DOAnchorPosY(-panelTop.rect.height, duration).SetUpdate(true);
         //panelBottom.DOAnchorPosY(panelTop.rect.height, duration).SetUpdate(true);
-        panelLeft.DOAnchorPosX(0, duration).SetUpdate(true);
-        panelRight.DOAnchorPosX(0, duration).SetUpdate(true);
+        panelLeft.DOAnchorPosX(-panelLeft.rect.width / 2, duration).SetUpdate(true);
+        panelRight.DOAnchorPosX(panelRight.rect.width / 2, duration).SetUpdate(true);
 
         yield return new WaitForSecondsRealtime(duration * 1.1f);
     }
