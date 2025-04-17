@@ -66,7 +66,7 @@ public class DashAttack : MonoBehaviour
         {
             enemy.isEnemyHit = true;
             hitEnemies.Add(enemy);
-            Managers.Game.gage += 1 * hitEnemies.Count;
+            Managers.Game.gage += 5 * hitEnemies.Count;
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 3);
         }
     }
