@@ -32,9 +32,9 @@ public class Enemy : MonoBehaviour
 
     private bool isHitOverride = false;
 
-    private float followDistance = 5f; // 따라가기 시작하는 거리
+    private float followDistance = 6f; // 따라가기 시작하는 거리
     private float followDistanceY = 3f; // 따라가기 시작하는 Y축거리
-    private float throwDistance = 5f; // 오브젝트 던지기 시작하는 거리
+    private float throwDistance = 4f; // 오브젝트 던지기 시작하는 거리
     private float attackDistance = 2.0f; // 일반 공격 거리
     //private Vector2 stopPosition;
 
