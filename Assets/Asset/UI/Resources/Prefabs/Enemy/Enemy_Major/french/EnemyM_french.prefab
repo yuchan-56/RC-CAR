@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7967971224202557937}
   - component: {fileID: 1285881672053820577}
   - component: {fileID: 3227607072226871505}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyM_french
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,10 +132,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 1285881672053820577}
   throwableObjPrefab: {fileID: 7022752570033551266, guid: 6955e1cfee1fd4c32b0b7340f494da85, type: 3}
   throwForce: 6

@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 3028853951375040568}
   - component: {fileID: 3975217125211364491}
   - component: {fileID: 150487830531616056}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyM_wood
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -223,10 +223,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 3975217125211364491}
   throwableObjPrefab: {fileID: 2128086200761513050, guid: c39582f033abb4853a1522de6542b777, type: 3}
   throwForce: 6

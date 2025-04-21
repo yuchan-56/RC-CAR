@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 994819358046663305}
   - component: {fileID: 2098605258927177087}
   - component: {fileID: 5321130938226712109}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyF_business
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,10 +132,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 2098605258927177087}
   throwableObjPrefab: {fileID: 2607236910481682625, guid: 5ed54d8311ad24e63b16c25efd67ffe1, type: 3}
   throwForce: 7

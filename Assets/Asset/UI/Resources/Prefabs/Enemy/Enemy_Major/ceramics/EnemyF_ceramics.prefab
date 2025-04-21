@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7346897882312953214}
   - component: {fileID: 7927853570486618006}
   - component: {fileID: 5977605318030139840}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyF_ceramics
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,10 +132,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 7927853570486618006}
   throwableObjPrefab: {fileID: 7759491316904881286, guid: 911f5321cd3ff47009dd1cb10f9d816e, type: 3}
   throwForce: 7

@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3928009272444640765}
   - component: {fileID: 8805087306751217689}
   - component: {fileID: 2424275321670045555}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyF_finearts
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,10 +132,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 8805087306751217689}
   throwableObjPrefab: {fileID: 1427729692635950268, guid: 93388def419ff49b0826b74725d142c5, type: 3}
   throwForce: 7

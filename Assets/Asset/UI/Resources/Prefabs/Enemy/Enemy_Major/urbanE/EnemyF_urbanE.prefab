@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 6062305356469043267}
   - component: {fileID: 4176849428115722652}
   - component: {fileID: 1354966732529376786}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyF_urbanE
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,10 +132,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 4176849428115722652}
   throwableObjPrefab: {fileID: 6659263180029135134, guid: 6f0da7ce5a4fc4b168bb0848facf3722, type: 3}
   throwForce: 7
