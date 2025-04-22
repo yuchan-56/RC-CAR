@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 851830411511472113}
   - component: {fileID: 9197761962338599329}
   - component: {fileID: 4969949347943590496}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyM_print
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,10 +132,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 9197761962338599329}
   throwableObjPrefab: {fileID: 7779233267474362137, guid: 27058b960db1442f7b18d1e22730e640, type: 3}
   throwForce: 6

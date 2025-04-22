@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 7232127830777996697}
   - component: {fileID: 562718896322805208}
   - component: {fileID: 8294854447763632846}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyM_chemicalE
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -223,10 +223,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 562718896322805208}
   throwableObjPrefab: {fileID: 6871151761292332681, guid: e969d2f941c75411d8d77854bcd5a2b9, type: 3}
   throwForce: 6

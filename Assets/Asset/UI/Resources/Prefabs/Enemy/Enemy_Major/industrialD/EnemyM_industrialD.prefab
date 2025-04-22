@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 9032716846956798015}
   - component: {fileID: 2437627969793078664}
   - component: {fileID: 1918790278930393316}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyM_industrialD
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,10 +132,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 2437627969793078664}
   throwableObjPrefab: {fileID: 7948913608306229627, guid: f46fd6c35c12f4e36ac7957070f48f45, type: 3}
   throwForce: 6

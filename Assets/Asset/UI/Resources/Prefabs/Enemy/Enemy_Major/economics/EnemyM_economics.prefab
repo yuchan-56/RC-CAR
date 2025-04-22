@@ -105,7 +105,7 @@ GameObject:
   - component: {fileID: 1379272451878360931}
   - component: {fileID: 4077734041748526222}
   - component: {fileID: 2603623073653320844}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyM_economics
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -223,10 +223,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 4077734041748526222}
   throwableObjPrefab: {fileID: 8163495656019615409, guid: 5137ee180996744dc8ac65f3d4e5f81b, type: 3}
   throwForce: 6

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Data.Common;
+using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,7 +12,7 @@ public class Enemy : MonoBehaviour
     Collider2D enemyCollider;
     // 좌우이동 + following player
     public GameObject player;
-    public float speed = 2.5f;
+    public float speed = 5f;
 
 
     public enum EnemyState { Idle, Following, Attacking, Throwing }
@@ -31,15 +32,15 @@ public class Enemy : MonoBehaviour
 
     private bool isHitOverride = false;
 
-    public float followDistance = 100f; // 따라가기 시작하는 거리
-    public float followDistanceY = 3f; // 따라가기 시작하는 Y축거리
-    public float throwDistance = 5f; // 오브젝트 던지기 시작하는 거리
-    public float attackDistance = 2.0f; // 일반 공격 거리
-    private Vector2 stopPosition;
+    private float followDistance = 6f; // 따라가기 시작하는 거리
+    private float followDistanceY = 3f; // 따라가기 시작하는 Y축거리
+    private float throwDistance = 4f; // 오브젝트 던지기 시작하는 거리
+    private float attackDistance = 2.0f; // 일반 공격 거리
+    //private Vector2 stopPosition;
 
     // 방향전환
     private bool facingRight = false; // 적의 현재 바라보는 방향
-    private float lastXPosition = 0f;
+    private int facingRightSign => facingRight ? 1 : -1;
 
     private bool isDead = false;
 
@@ -75,7 +76,7 @@ public class Enemy : MonoBehaviour
      
     void Start()
     {
-        stopPosition = transform.position;
+        //stopPosition = transform.position;
         player = GameObject.FindWithTag("Player");
 
         playerCollider = player.GetComponent<Collider2D>();
@@ -90,6 +91,8 @@ public class Enemy : MonoBehaviour
         hpBarImage = newHpBar.GetComponent<Image>();
 
         hpBarImage.sprite = hpSprites[(int)currentHP];
+
+        if (Random.Range(0f, 1f) < 0.5f) Flip();
     }
 
     void FixedUpdate()
@@ -138,7 +141,6 @@ public class Enemy : MonoBehaviour
                 attackObject.SetActive(false);
                 if (!isWandering)
                 {
-                    stopPosition = transform.position;
                     isWandering = true;
                 }
                 Wander(); break;
@@ -264,18 +266,13 @@ public class Enemy : MonoBehaviour
         animator.SetBool("enemy_attack", false);
         animator.SetBool("enemy_throw", false);
 
-        // PingPong을 사용하여 이동 방향 결정
-        float xPos = Mathf.PingPong(Time.time * speed, wanderDistance) - (wanderDistance / 2);
-
-        // 이동 방향 변화 확인 및 FlipDirection 호출
-        float horizontalDirection = xPos - lastXPosition;
-        FlipDirection(horizontalDirection);
+        float rand = Random.Range(0, 100f);
+        if (rand < 0.5f) Flip();
 
         // 위치 업데이트
-        transform.position = new Vector2(stopPosition.x, transform.position.y);
+        transform.position = new Vector2(transform.position.x +
+            (speed * Time.deltaTime * facingRightSign), transform.position.y);
 
-        // 현재 X 위치 저장
-        lastXPosition = xPos;
     }
 
     void FollowPlayer()
@@ -290,14 +287,10 @@ public class Enemy : MonoBehaviour
         */
         
         Vector2 direction = (player.transform.position - transform.position).normalized;
-        float step = speed * Time.fixedDeltaTime;
-
-        Rigidbody2D rb = GetComponent<Rigidbody2D>();
-
-        rb.MovePosition(rb.position + direction * step);
         FlipDirection(direction.x);
 
-        stopPosition = transform.position;
+        transform.position = new Vector2(transform.position.x +
+            (speed * Time.deltaTime * facingRightSign), transform.position.y);
 
         SpeechPopUp(); // 대사출력
     }

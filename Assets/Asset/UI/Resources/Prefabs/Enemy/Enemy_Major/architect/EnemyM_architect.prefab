@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5399505426348252489}
   - component: {fileID: 5360248528427735770}
   - component: {fileID: 4125690487312455063}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyM_architect
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,10 +132,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 5360248528427735770}
   throwableObjPrefab: {fileID: 4820298456841042653, guid: 38a8f505663934761b2206ca63cafc8c, type: 3}
   throwForce: 6

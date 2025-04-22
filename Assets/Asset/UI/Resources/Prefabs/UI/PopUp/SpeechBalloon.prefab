@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &109735309679178152
+--- !u!1 &793666990139476871
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 6798026882515279939}
-  - component: {fileID: 1015218093675775201}
-  - component: {fileID: 6206487972614381138}
+  - component: {fileID: 8032141769925204457}
+  - component: {fileID: 2572268359153112115}
+  - component: {fileID: 7410937544543214093}
   m_Layer: 0
   m_Name: Name
   m_TagString: Untagged
@@ -18,13 +18,13 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &6798026882515279939
+--- !u!224 &8032141769925204457
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109735309679178152}
+  m_GameObject: {fileID: 793666990139476871}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0.2, y: 0.2, z: 1}
@@ -34,24 +34,24 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -1.2}
-  m_SizeDelta: {x: 11.8363, y: 4.6368}
+  m_AnchoredPosition: {x: 0, y: -0.95}
+  m_SizeDelta: {x: 11.3, y: 3.7}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!222 &1015218093675775201
+--- !u!222 &2572268359153112115
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109735309679178152}
+  m_GameObject: {fileID: 793666990139476871}
   m_CullTransparentMesh: 1
---- !u!114 &6206487972614381138
+--- !u!114 &7410937544543214093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 109735309679178152}
+  m_GameObject: {fileID: 793666990139476871}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -92,15 +92,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.5
-  m_fontSizeBase: 1.5
+  m_fontSize: 1.1
+  m_fontSizeBase: 1.1
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0
@@ -167,7 +167,7 @@ RectTransform:
   m_Children:
   - {fileID: 7706974567748145828}
   - {fileID: 4808829571745743682}
-  - {fileID: 6798026882515279939}
+  - {fileID: 8032141769925204457}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -220,7 +220,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   text: {fileID: 4041447390434940974}
-  Name: {fileID: 6206487972614381138}
+  Name: {fileID: 7410937544543214093}
   type: 0
 --- !u!1 &5006582920351517414
 GameObject:
@@ -257,7 +257,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -0.4536, y: 1.4699}
-  m_SizeDelta: {x: 11.8363, y: 4.6368}
+  m_SizeDelta: {x: 11.3, y: 3.7}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &8863573506527582360
 CanvasRenderer:
@@ -287,7 +287,8 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\uC548\uB155\uD558\uC138\uC694"
+  m_text: "\uB2E4\uB78C\uC950 \uD5CC \uCCC7\uBC14\uD034\uC5D0 \uD0C0\uACE0\uD30C
+    \uB2E4\uB78C\uC950 \uD5CC \uCCC7\uBC14\uD034\uC5D0 \uD0C0\uACE0"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: e4a0a2d9eee367c409f645c790603e8d, type: 2}
   m_sharedMaterial: {fileID: -9046333074698337893, guid: e4a0a2d9eee367c409f645c790603e8d, type: 2}
@@ -314,15 +315,15 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 1.5
-  m_fontSizeBase: 1.5
+  m_fontSize: 1.2
+  m_fontSizeBase: 1.2
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
   m_fontStyle: 0
   m_HorizontalAlignment: 2
-  m_VerticalAlignment: 256
+  m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
   m_wordSpacing: 0

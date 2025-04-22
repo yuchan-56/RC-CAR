@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 7799349912623978762}
   - component: {fileID: 8491882979953543417}
   - component: {fileID: 305213315989973280}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: EnemyM_german
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -132,10 +132,6 @@ MonoBehaviour:
   speed: 2
   wanderDistance: 1.5
   isEnemyHit: 0
-  followDistance: 100
-  followDistanceY: 3
-  throwDistance: 5
-  attackDistance: 2
   animator: {fileID: 8491882979953543417}
   throwableObjPrefab: {fileID: 8889965589780554420, guid: 0f1457140ce65461cb1fef407c7c282e, type: 3}
   throwForce: 6
