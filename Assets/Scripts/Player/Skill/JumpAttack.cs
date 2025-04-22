@@ -60,8 +60,10 @@ public class JumpAttack : MonoBehaviour
         {
             enemy.isEnemyHit = true;
             hitEnemies.Add(enemy);
-            Managers.Game.gage += 5;
-            Debug.Log($"{Managers.Game.gage}");
+            if (Managers.Game.gage < 100)
+            {
+                Managers.Game.gage += 5;
+            }
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 2);
         }
     }

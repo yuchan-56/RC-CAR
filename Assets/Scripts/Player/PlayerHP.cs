@@ -91,7 +91,6 @@ public class PlayerHP : MonoBehaviour
         if(Managers.Game.gage < 100)
         {
             Managers.Game.gage += 5;
-            Debug.Log($"{Managers.Game.gage}");
         }
 
         if (hpFadeCoroutine != null)
