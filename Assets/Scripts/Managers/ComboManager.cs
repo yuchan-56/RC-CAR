@@ -332,13 +332,6 @@ public class ComboManager : MonoBehaviour
             AniSetup2 = false;
             InputButton.Clear();
         }
-
-        else if (Managers.Game.GetHit == true)
-        {
-            Managers.Game.gage += 5;
-            Debug.Log(Managers.Game.gage);
-            Managers.Game.GetHit = false;
-        }
     }
 
     private void StopExistingCoroutine(ref Coroutine coroutine)

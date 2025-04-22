@@ -74,7 +74,8 @@ public class PlayerAttackGeneral : MonoBehaviour
         {
             enemy.isEnemyHit = true;
             hitEnemies.Add(enemy);
-            Managers.Game.gage += 5 * hitEnemies.Count;
+            Managers.Game.gage += 5;
+            Debug.Log($"{Managers.Game.gage}");
             collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 1);
         }
     }
@@ -89,7 +90,6 @@ public class PlayerAttackGeneral : MonoBehaviour
             if (enemy != null)
                 enemy.isEnemyHit = false;
         }
-
         hitEnemies.Clear();
         ani.SetBool("UltAttack", false);
         ani.SetBool("Attack", false);
@@ -105,13 +105,13 @@ public class PlayerAttackGeneral : MonoBehaviour
     {
         Managers.UI.ShowPopUpUI<UltGoAction>();
         UltimateSkill_Active = true;
-        Managers.Game.gage = 0;
         characterEffect.UltimateEffectActive();
         StartCoroutine(UltDeactiveCoroutine());
     }
 
     void UltimateSkillDeactive()
     {
+        Managers.Game.gage = 0;
         UltimateSkill_Active = false;
         characterEffect.UltimateEffectDeactive();
     }

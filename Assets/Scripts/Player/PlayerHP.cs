@@ -87,6 +87,13 @@ public class PlayerHP : MonoBehaviour
         Debug.Log("데미지를 받음");
         if (Managers.Game.isHit) return;
 
+
+        if(Managers.Game.gage < 100)
+        {
+            Managers.Game.gage += 5;
+            Debug.Log($"{Managers.Game.gage}");
+        }
+
         if (hpFadeCoroutine != null)
         {
             StopCoroutine(hpFadeCoroutine);
