@@ -67,6 +67,11 @@ public class SpeechBalloon : UI_Popup
     private void FixedUpdate()
     {
         playerPopup();
+
+        if(target==null)
+        {
+            Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<SpeechBalloon>(this.gameObject));
+        }
     }
     void playerPopup()
     {
@@ -82,7 +87,8 @@ public class SpeechBalloon : UI_Popup
     {
         yield return new WaitForSeconds(time);
 
-        Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<SpeechBalloon>(this.gameObject));
+        Destroy(text.gameObject.transform.parent.gameObject);
+        
         yield return null;
     }
 
