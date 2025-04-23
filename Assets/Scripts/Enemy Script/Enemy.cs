@@ -93,6 +93,9 @@ public class Enemy : MonoBehaviour
         hpBarImage.sprite = hpSprites[(int)currentHP];
 
         if (Random.Range(0f, 1f) < 0.5f) Flip();
+
+        // 시작할때 NameTag 붙히기
+        Managers.UI.ShowPopUpUI_handleTarget<NameTag>(this.gameObject);
     }
 
     void FixedUpdate()

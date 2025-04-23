@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Diagnostics;
+using System;
 
 public class UI_Manager
 {
@@ -94,12 +95,38 @@ public class UI_Manager
         {
             name = typeof(T).Name;
         }
+
         GameObject go = Managers.Resource.Instantiate($"UI/PopUP/{name}");
         T popUp = Util.GetOrAddComponent<T>(go);
         _popUpStack.Push(popUp);
         go.transform.SetParent(Root.transform);
+
         return popUp;
     }
+
+    public T ShowPopUpUI_handleTarget<T>(GameObject target) where T : UI_Popup // target을 호출하는 대신 T를 PopUp하고, target을 PopUp으로 넘겨주는 함수
+    {
+        string name;
+        name = typeof(T).Name;
+     
+
+        GameObject go = Managers.Resource.Instantiate($"UI/PopUP/{name}");
+        T popUp = Util.GetOrAddComponent<T>(go);
+        go.transform.SetParent(Root.transform);
+        var method = typeof(T).GetMethod("Init", new Type[] { typeof(GameObject) }); // Init함수가 있다면 자동실행
+        if (method != null)
+        {
+            method.Invoke(popUp, new object[] { target }); // { } 는 넘길 매개변수 목록 
+        }
+        return popUp;
+    }
+
+    public void ClosePopUp_handleTarget(UI_Popup popUp)
+    {
+        Managers.Resource.Destroy(popUp.gameObject);
+    }
+
+
     public T ShowSceneUI<T>(string name = null) where T : UI_Scene
     {
         if (string.IsNullOrEmpty(name))
@@ -122,6 +149,7 @@ public class UI_Manager
         UI_Popup popUP = _popUpStack.Pop();
         Debug.Log($"ClosePopUpUI : {popUP}");
         Managers.Resource.Destroy(popUP.gameObject);
+        Debug.Log($"{popUP} 이 삭제되었습니다.");
         popUP = null;
 
         _order--;
@@ -135,11 +163,13 @@ public class UI_Manager
         if (_popUpStack.Peek() != popUp)
         {
             Debug.Log($"{popUp} : Close PopUp Failed");
+            
             return;
         }
         ClosePopUpUI();
     }
-
+    
+   
     public void CloseAllPopUPUI()
     {
         while (_popUpStack.Count > 0)

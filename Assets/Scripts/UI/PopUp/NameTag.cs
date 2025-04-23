@@ -1,16 +1,16 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 
-public class SpeechBalloon : UI_Popup
+public class NameTag : UI_Popup
 {
-    public GameObject target;
-    public TMP_Text text;
-
+    private GameObject target;
+    public TMP_Text name;
     public static readonly Dictionary<Define.EnemyCategory, (string quote, string english)> enemyQuotes =
-      new Dictionary<Define.EnemyCategory, (string, string)>
-  {
+    new Dictionary<Define.EnemyCategory, (string, string)>
+{
           //prefab 폴더가 하나 더 많아서 신화를 그냥 chemicalE로 퉁치고 mechanicalE를 없앰.
     { Define.EnemyCategory.건축, ("와! 오늘은 무려 1시간 10분이나 잤어!", "architect") },
     { Define.EnemyCategory.예술, ("내 얼굴이 뒤샹의 작품 같다고 놀리지 마!", "arts") },
@@ -33,16 +33,12 @@ public class SpeechBalloon : UI_Popup
     { Define.EnemyCategory.도공, ("우리 과가 뭐하는지 좀 그만 물어봐...", "urbanE") },
     { Define.EnemyCategory.시디, ("시디라 쓰고 노예라고 읽어줘!", "visualD") },
     { Define.EnemyCategory.목조, ("의자만 만드는 학과는 아니야...", "wood") }
-  };
-
-
-
+};
     public Define.EnemyCategory type;
-    private void Start()
-    {
-        target = Managers.Speech.speechTmp;
-        Debug.Log($"{target.name}의 SpeechBalloon 추출");
 
+    public void Init(GameObject t)
+    {
+        target =t;
         // target.name 을 기반으로 Dictionary에서 type 찾기
         string targetName = target.name.ToLower(); // 영어 이름
         targetName = targetName.Substring(7);
@@ -50,16 +46,14 @@ public class SpeechBalloon : UI_Popup
         {
             if (pair.Value.english.ToLower() == targetName) // english에 맞는 target이름을 찾으면
             {
-                Debug.Log(pair.Key);
                 type = pair.Key; // Key의 값이 type
                 break;
             }
         }
 
+        
         setText();
-        StartCoroutine(PopUping_timeSet(3));
     }
-
 
     private void FixedUpdate()
     {
@@ -71,28 +65,23 @@ public class SpeechBalloon : UI_Popup
         {
             this.transform.position = target.transform.position;
         }
-        else { Destroy(this.gameObject); }
+        else {
+            
+            Managers.UI.ClosePopUp_handleTarget(Util.GetOrAddComponent<NameTag>(this.gameObject));
         
+        }
+
     }
 
-    IEnumerator PopUping_timeSet(int time)
-    {
-        yield return new WaitForSeconds(time);
-        Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<SpeechBalloon>(this.gameObject));
-
-        yield return null;
-    }
-
-    void setText()
+    private void setText()
     {
         if (enemyQuotes.TryGetValue(type, out var pair))
         {
-            text.text = pair.quote; // 대사 출력
+            name.text = type.ToString(); // Key 한국어 출력
         }
         else
         {
             Debug.LogWarning($"'{type}'에 해당하는 대사가 없습니다.");
         }
     }
-
 }
