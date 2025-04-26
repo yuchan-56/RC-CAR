@@ -40,7 +40,7 @@ public class PrgBoss : Boss
 
         if(isDead)
         {
-            Destroy(frameInstance);
+            Destroy(frameInstance.gameObject);
         }
     }
 
@@ -176,15 +176,19 @@ public class PrgBoss : Boss
         }
         else
         {
-            while (fallingObj.transform.position.y > transform.position.y - 5f)
+            if(fallingObj != null)
             {
-                if (fallingObj == null)
+                while (fallingObj.transform.position.y > transform.position.y - 5f)
                 {
-                    break;
+                    if(fallingObj == null)
+                    {
+                        yield return null;
+                    }
+                    fallingObj.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+                    yield return null;
                 }
-                fallingObj.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-                yield return null;
             }
+            
 
 
 
