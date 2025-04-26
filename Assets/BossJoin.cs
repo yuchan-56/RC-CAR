@@ -9,9 +9,10 @@ using UnityEngine.UI;
         IEnumerator showImage()
         {
             Time.timeScale = 0;
-            yield return new WaitForSecondsRealtime(2f);
+            yield return new WaitForSecondsRealtime(3f);
             Time.timeScale = 1;
-            Managers.UI.ClosePopUp_handleTarget(Util.GetOrAddComponent<BossJoin>(this.gameObject));
+            Destroy(this.gameObject);
+    
     }
         public void setBossImage(string boss) // Graphic,Programming,Sound,System
         {

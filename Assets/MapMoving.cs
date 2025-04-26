@@ -61,7 +61,7 @@ public class MapMoving : UI_Popup
         Managers.UI.ShowPopUpUI<StageGuide>(); // 맵이동이 끝날때 StageGuide 출력
 
         playerMove.buttonDeactive = false;
-        Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<MapMoving>(this.gameObject));
+        Destroy(this.gameObject);
 
 
         yield return null;

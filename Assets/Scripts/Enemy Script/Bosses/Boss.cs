@@ -97,9 +97,8 @@ public class Boss : MonoBehaviour, EnemyHP
     private  void ShowAnimation()
     {
         Managers.UI.ShowPopUpUI<BossJoin>();
-        BossJoin join = FindObjectOfType<BossJoin>();
+        BossJoin join = FindFirstObjectByType<BossJoin>();
         join.setBossImage(this.gameObject.name);
-        Debug.Log(this.gameObject.name);
     }
     
     protected virtual void Update()

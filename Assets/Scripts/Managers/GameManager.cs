@@ -13,6 +13,7 @@ public class GameManager
     public int[] roundEnemyCount = new int[14];// GameGround마다의 적 숫자 설정
 
     public bool isHit = false;
+    public string joinBossName;
 
     //게임 상태를 나눠서 상태에 따라 스크립트들이 돌아가게 함
     public enum GameState
@@ -43,12 +44,15 @@ public class GameManager
     //인게임 데이터 초기화 
     public void GameStart()
     {
+        joinBossName = null;
         Debug.Log("GameStart");
         if (GameObject.FindWithTag("@LoadingScene")==null) // 로딩씬 없다면
         {
             GameObject go = Managers.Resource.Instantiate($"@LoadingScene");
             go.transform.SetParent(Managers.UI.Root.transform);
         };
+
+   
         currentState = GameState.Battle;
         currentGround = GameGround.R4;
         gage = 0;
