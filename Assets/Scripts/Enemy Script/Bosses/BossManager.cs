@@ -10,6 +10,8 @@ public class BossManager : MonoBehaviour
 
     public bool attackPos = true;
 
+    public Boss bossScript;
+
 
 
     void Start()
@@ -33,6 +35,7 @@ public class BossManager : MonoBehaviour
         {
             // 공격이 끝날 때까지 대기
             yield return new WaitUntil(() => attackPos == true);
+            bossScript.isAttacking = false;
             yield return new WaitForSeconds(attackInterval);
             
             if (allBosses.Count > 0)
@@ -52,6 +55,7 @@ public class BossManager : MonoBehaviour
     {
         int attackType = Random.Range(0, 4); // 0~3 사이 랜덤 선택
 
+        bossScript.isAttacking = true;
         switch (attackType)
         {
             case 0:

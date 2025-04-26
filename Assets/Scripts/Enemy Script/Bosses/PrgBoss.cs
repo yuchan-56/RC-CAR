@@ -55,13 +55,14 @@ public class PrgBoss : Boss
         showFrame = true;
     }
 
+    
 
     public override void Attack() {
         isWandering = false;
         isFollowing = false;
         isStop = false;
         bmScript.attackPos = false;
-        
+
 
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);
@@ -73,24 +74,22 @@ public class PrgBoss : Boss
 
     public void Prg1stAttack() {
         attackObject[0].SetActive(true);
+        StartCoroutine(AttackColliderOff(attackObject[0]));
     }
 
     public void Prg2ndAttack() {
-        attackObject[0].SetActive(false);
-
         attackObject[1].SetActive(true);
+        StartCoroutine(AttackColliderOff(attackObject[1]));
     }
 
     public void Prg3rdAttack() {
-        attackObject[1].SetActive(false);
-
         attackObject[2].SetActive(true);
+        StartCoroutine(AttackColliderOff(attackObject[2]));
     }
 
     public void Prg4thAttack() {
-        attackObject[2].SetActive(false);
-
-        attackObject[3].SetActive(true);
+       attackObject[3].SetActive(true);
+       StartCoroutine(AttackColliderOff(attackObject[3]));
     }
 
     public void PrgAttackOff() {
@@ -98,6 +97,14 @@ public class PrgBoss : Boss
         attackObject[1].SetActive(false);
         attackObject[2].SetActive(false);
         attackObject[3].SetActive(false);
+    }
+
+    IEnumerator AttackColliderOff(GameObject g)
+    {
+        yield return new WaitForSeconds(0.15f);
+        
+        g.SetActive(false);
+
     }
 
     public override void P1() {
@@ -133,7 +140,7 @@ public class PrgBoss : Boss
         isFollowing = false;
         isStop = false;
         bmScript.attackPos = false;
-        
+
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP3", false);
@@ -155,7 +162,7 @@ public class PrgBoss : Boss
    IEnumerator FallObject(GameObject obj)
     {
         // 랜덤 X 좌표 설정
-        float randomX = UnityEngine.Random.Range(transform.position.x - 15f, transform.position.x - 1f);
+        float randomX = UnityEngine.Random.Range(transform.position.x - 15f, transform.position.x + 15f);
 
         // 초기 위치 설정
         Vector3 startPosition = new Vector3(randomX, transform.position.y + 7f, 0);
@@ -163,11 +170,18 @@ public class PrgBoss : Boss
 
         float fallSpeed = UnityEngine.Random.Range(2f, 5f);
 
+        
         while (fallingObj.transform.position.y > transform.position.y - 5f)
         {
+            if(fallingObj == null)
+            {
+                break;
+            }
             fallingObj.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
             yield return null;
         }
+        
+        
 
         Destroy(fallingObj);
         animator.SetBool("isP2", false);
@@ -187,7 +201,7 @@ public class PrgBoss : Boss
         isFollowing = false;
         isStop = false;
         bmScript.attackPos = false;
-        
+
 
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", false);

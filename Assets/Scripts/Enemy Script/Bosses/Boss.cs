@@ -25,6 +25,8 @@ public class Boss : MonoBehaviour
     public Animator animator;
     public bool isDead = false;
 
+    public bool isAttacking = false;
+
     // 좌우이동 + following player
     public Transform player;
     public float speed = 1.4f;
@@ -97,7 +99,7 @@ public class Boss : MonoBehaviour
 
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
-
+        /*
         if (distanceToPlayer <= followDistance && distanceToPlayer > minFollowDistance) 
         {
             currentState = BossState.Following;
@@ -110,7 +112,27 @@ public class Boss : MonoBehaviour
         {
             currentState = BossState.Idle;
         }
+        */
 
+        if(isAttacking)
+        {
+            return;
+        }
+
+        
+        if (distanceToPlayer <= minFollowDistance)
+        {
+            currentState = BossState.Stopping;
+        }
+        else
+        {
+            currentState = BossState.Following;
+        }
+    
+
+        
+
+        /*
         switch (currentState) 
         {
             case BossState.Following:
@@ -129,9 +151,24 @@ public class Boss : MonoBehaviour
                 }
                 break;
                 
+        }*/
+
+        
+        switch (currentState)
+        {
+            case BossState.Following:
+                if (isFollowing)
+                {
+                    if (AnimatorHasParameter("isStop")) animator.SetBool("isStop", false);
+                    FollowPlayer();
+                }
+                break;
+            case BossState.Stopping:
+                if (isStop) { StopMoving(); }
+                break;
         }
 
-        if(Input.GetKeyDown(KeyCode.Space)) {
+        if (Input.GetKeyDown(KeyCode.Space)) {
             BossDamage(10);
         }
     }
@@ -176,7 +213,7 @@ public class Boss : MonoBehaviour
         return false;
     }
     
-
+    /*
     protected virtual void Wander()
     {
         animator.SetBool("isP1", false);
@@ -193,6 +230,7 @@ public class Boss : MonoBehaviour
 
         lastXPosition = xPos;
     }
+    */
 
     protected virtual void FollowPlayer()
     {

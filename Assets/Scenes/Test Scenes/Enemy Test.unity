@@ -1123,8 +1123,8 @@ MonoBehaviour:
   player: {fileID: 681378138}
   smoothSpeed: 0.05
   offset: {x: 0, y: 0, z: -2}
-  minX: -3
-  maxX: 3
+  limitLeft: {fileID: 0}
+  limitRight: {fileID: 0}
   FixedY: 0
 --- !u!1001 &2076541203
 PrefabInstance:
@@ -1486,6 +1486,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5415262176845343050, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5927446090006884465, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
