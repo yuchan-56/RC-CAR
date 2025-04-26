@@ -42,7 +42,7 @@ public class Enemy : MonoBehaviour
     private bool facingRight = false; // 적의 현재 바라보는 방향
     private int facingRightSign => facingRight ? 1 : -1;
 
-    private bool isDead = false;
+    public bool isDead = false;
 
 
     // Animation
