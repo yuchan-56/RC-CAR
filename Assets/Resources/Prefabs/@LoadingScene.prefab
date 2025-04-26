@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &9154720283601533757
 RectTransform:
   m_ObjectHideFlags: 0
@@ -115,7 +115,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &7393892400510228424
 RectTransform:
   m_ObjectHideFlags: 0
@@ -248,16 +248,20 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   LoadingPanel: {fileID: 3977183901973343285}
-  running: {fileID: 0}
-  loading: {fileID: 0}
+  running: {fileID: 902537911070233149}
+  loading: {fileID: 8252050538760816960}
   runSprites:
   - {fileID: -1855528832, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
   - {fileID: -681807316, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
   - {fileID: -78785377, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
   - {fileID: 1394216995, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
   - {fileID: 1394156578, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
-  - {fileID: -1749841003, guid: c03263c8514761c43ac59bbec86cd589, type: 3}
-  loadingSprties: []
+  - {fileID: 1815537764, guid: 7781432177f0146d7ab83a08c00b6fb9, type: 3}
+  loadingSprties:
+  - {fileID: -1061620862, guid: 8c82b7aad70294e54ab9ec3e655a6f15, type: 3}
+  - {fileID: 1168874241, guid: 8c82b7aad70294e54ab9ec3e655a6f15, type: 3}
+  - {fileID: 51641705, guid: 8c82b7aad70294e54ab9ec3e655a6f15, type: 3}
+  - {fileID: 1562494750, guid: 8c82b7aad70294e54ab9ec3e655a6f15, type: 3}
 --- !u!222 &1355231464791958619
 CanvasRenderer:
   m_ObjectHideFlags: 0
