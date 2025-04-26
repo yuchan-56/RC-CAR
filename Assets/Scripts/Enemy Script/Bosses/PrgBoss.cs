@@ -170,27 +170,34 @@ public class PrgBoss : Boss
 
         float fallSpeed = UnityEngine.Random.Range(2f, 5f);
 
-        
-        while (fallingObj.transform.position.y > transform.position.y - 5f)
+
+        if (fallingObj == null)
         {
-            if(fallingObj == null)
-            {
-                break;
-            }
-            fallingObj.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-            yield return null;
+            Debug.Log("fallingObj Null 오류");
+
         }
-        
-        
+        else
+        {
+            while (fallingObj.transform.position.y > transform.position.y - 5f)
+            {
+                if (fallingObj == null)
+                {
+                    break;
+                }
+                fallingObj.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
+                yield return null;
+            }
 
-        Destroy(fallingObj);
-        animator.SetBool("isP2", false);
 
-        isWandering = true;
-        isFollowing = true;
-        isStop = true;
-        bmScript.attackPos = true;
-        
+
+            Destroy(fallingObj);
+            animator.SetBool("isP2", false);
+
+            isWandering = true;
+            isFollowing = true;
+            isStop = true;
+            bmScript.attackPos = true;
+        }
     }
 
 

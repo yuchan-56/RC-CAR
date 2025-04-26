@@ -6,21 +6,16 @@ using UnityEngine.UI;
     public class BossJoin : UI_Popup
     {
         public Image image;
-        private void Start()
-        {
-            StartCoroutine(showImage());
-        }
-
         IEnumerator showImage()
         {
             Time.timeScale = 0;
-            yield return new WaitForSecondsRealtime(0.4f);
+            yield return new WaitForSecondsRealtime(2f);
             Time.timeScale = 1;
-            Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<BossJoin>(this.gameObject));
-        }
+            Managers.UI.ClosePopUp_handleTarget(Util.GetOrAddComponent<BossJoin>(this.gameObject));
+    }
         public void setBossImage(string boss) // Graphic,Programming,Sound,System
         {
             image.sprite = Resources.Load<Sprite>($"EnemyBoss/{boss}");
-
-        }
+            StartCoroutine(showImage());
+    }
     }

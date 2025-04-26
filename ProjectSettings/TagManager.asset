@@ -11,6 +11,7 @@ TagManager:
   - NextJumpUp
   - Enemy
   - Boss
+  - '@LoadingScene'
   layers:
   - Default
   - TransparentFX

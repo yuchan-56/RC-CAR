@@ -43,6 +43,12 @@ public class GameManager
     //인게임 데이터 초기화 
     public void GameStart()
     {
+        Debug.Log("GameStart");
+        if (GameObject.FindWithTag("@LoadingScene")==null) // 로딩씬 없다면
+        {
+            GameObject go = Managers.Resource.Instantiate($"@LoadingScene");
+            go.transform.SetParent(Managers.UI.Root.transform);
+        };
         currentState = GameState.Battle;
         currentGround = GameGround.R4;
         gage = 0;
