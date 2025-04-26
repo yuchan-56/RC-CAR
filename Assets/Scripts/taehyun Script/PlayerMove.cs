@@ -251,7 +251,6 @@ public class PlayerMove : MonoBehaviour
             StartCoroutine(ShowDashEffect());
             rigid.AddForce(new Vector2(dashDirection * dashSpeed, 0f), ForceMode2D.Impulse);
         }
-
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         canDash = true;

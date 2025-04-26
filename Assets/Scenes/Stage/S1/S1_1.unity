@@ -5765,7 +5765,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3436781759386662008, guid: 3a5d320ff551c6c4d82652259be1286c, type: 3}
       propertyPath: timerDuration
-      value: 60
+      value: 200
       objectReference: {fileID: 0}
     - target: {fileID: 3436781759386662008, guid: 3a5d320ff551c6c4d82652259be1286c, type: 3}
       propertyPath: imageComponent
