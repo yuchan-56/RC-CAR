@@ -111,6 +111,7 @@ public class PlayerAttackGeneral : MonoBehaviour
     public void UltimateSkillActive()
     {
         Managers.UI.ShowPopUpUI<UltGoAction>();
+        Managers.Game.UltimateDamageUp();
         StartCoroutine(ActivateUltimateSkillAfterDelay(0.11f));
         StartCoroutine(UltDeactiveCoroutine());
     }
