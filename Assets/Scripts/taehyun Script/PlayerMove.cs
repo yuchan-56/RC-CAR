@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody2D rigid;
     public GameObject dashEffect;
     public GameObject dashEffectUlt;
-    PlayerAttackGeneral attackGeneral;
+    [SerializeField] private PlayerAttackGeneral attackGeneral;
     // Start is called before the first frame update
     void Start()
     {
@@ -224,8 +224,7 @@ public class PlayerMove : MonoBehaviour
             animator.SetTrigger("dash");
 
         }
-        else if(isDashing)
-            ForceDash();
+
     }
     public IEnumerator Dash()
     {
@@ -354,20 +353,19 @@ public class PlayerMove : MonoBehaviour
             isDashing = false;
             canDash = true;
         }
-
         dashCoroutine = StartCoroutine(Dash());
     }
     IEnumerator ShowDashEffect()
-    {   if (attackGeneral.UltimateSkill_Active == false)
+    {  if (attackGeneral.UltimateSkill_Active == false)
         {
             dashEffect.SetActive(true);
-            yield return new WaitForSeconds(0.5f); // 이펙트 보여줄 시간
+            yield return new WaitForSeconds(0.4f); // 이펙트 보여줄 시간
             dashEffect.SetActive(false);
         }
         else if (attackGeneral.UltimateSkill_Active == true)
         {
             dashEffectUlt.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
             dashEffectUlt.SetActive(false);
 
 
