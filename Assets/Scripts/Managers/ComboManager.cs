@@ -241,11 +241,6 @@ public class ComboManager : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && AniSetup == true)
         {
             Debug.Log("마우스 업 감지됨");
-
-            if (Managers.Game.isHit)
-            {
-                return;
-            }
             playerAttackGeneral.AttackSetDeactive();
             dashAttack.SkillMotionDeactive();
             jumpAttack.SkillMotionDeactive();
@@ -268,6 +263,11 @@ public class ComboManager : MonoBehaviour
             atkAni.isAnimating = false;
             dashAni.isAnimating = false;
             jumpAni.isAnimating = false;
+
+            if (Managers.Game.isHit)
+            {
+                return;
+            }
 
             if (player.IsAttacking)
             {

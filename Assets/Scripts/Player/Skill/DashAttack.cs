@@ -62,7 +62,7 @@ public class DashAttack : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy enemy = collision.GetComponent<Enemy>();
-        if (collision.tag == "Enemy" && enemy.isEnemyHit == false)
+        if (collision.tag == "Enemy" && enemy.isEnemyHit == false && enemy.isDead == false)
         {
             enemy.isEnemyHit = true;
             hitEnemies.Add(enemy);

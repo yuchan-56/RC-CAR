@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour
     Rigidbody2D rigid;
     public GameObject dashEffect;
     public GameObject dashEffectUlt;
-    PlayerAttackGeneral attackGeneral;
+    [SerializeField] private PlayerAttackGeneral attackGeneral;
     // Start is called before the first frame update
     void Start()
     {
@@ -224,6 +224,7 @@ public class PlayerMove : MonoBehaviour
             animator.SetTrigger("dash");
 
         }
+
     }
     public IEnumerator Dash()
     {
@@ -312,7 +313,7 @@ public class PlayerMove : MonoBehaviour
             IsComboAttacking++;
             ForceDash();
             animator.SetTrigger("DashAttack");
-            yield return new WaitForSeconds(0.917f);
+            yield return new WaitForSeconds(0f);
             isDashAttacking = false;
         }
         else if (ComboType == "JumpAttack" && !isJumpAttacking && IsComboAttacking < 2)
@@ -352,20 +353,19 @@ public class PlayerMove : MonoBehaviour
             isDashing = false;
             canDash = true;
         }
-
         dashCoroutine = StartCoroutine(Dash());
     }
     IEnumerator ShowDashEffect()
-    {   if (attackGeneral.UltimateSkill_Active == false)
+    {  if (attackGeneral.UltimateSkill_Active == false)
         {
             dashEffect.SetActive(true);
-            yield return new WaitForSeconds(0.5f); // 이펙트 보여줄 시간
+            yield return new WaitForSeconds(0.4f); // 이펙트 보여줄 시간
             dashEffect.SetActive(false);
         }
         else if (attackGeneral.UltimateSkill_Active == true)
         {
             dashEffectUlt.SetActive(true);
-            yield return new WaitForSeconds(0.5f);
+            yield return new WaitForSeconds(0.4f);
             dashEffectUlt.SetActive(false);
 
 

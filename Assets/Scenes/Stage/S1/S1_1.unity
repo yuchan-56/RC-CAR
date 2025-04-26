@@ -1473,7 +1473,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.924
+      value: -0.78
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1506,6 +1506,14 @@ PrefabInstance:
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678020650968405917, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
+      propertyPath: m_BodyType
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2678020650968405917, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
+      propertyPath: m_CollisionDetection
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5927446090006884465, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: player
@@ -2350,11 +2358,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6401948938187977088, guid: b849c918cb2724e4ebe133ebd91a08f1, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -1.0241
+      value: -1.034
       objectReference: {fileID: 0}
     - target: {fileID: 6401948938187977088, guid: b849c918cb2724e4ebe133ebd91a08f1, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.816
+      value: -0.845
       objectReference: {fileID: 0}
     - target: {fileID: 6401948938187977088, guid: b849c918cb2724e4ebe133ebd91a08f1, type: 3}
       propertyPath: m_LocalPosition.z
@@ -2446,7 +2454,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_Sprite: {fileID: 443864619, guid: 797653d3fb2154764bb297407517f371, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6494,7 +6502,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2222412872880897373, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -4
+      value: -3.1
       objectReference: {fileID: 0}
     - target: {fileID: 2222412872880897373, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: m_LocalPosition.z
@@ -6552,6 +6560,10 @@ PrefabInstance:
       propertyPath: dashEffect
       value: 
       objectReference: {fileID: 2137478892}
+    - target: {fileID: 4169039272619583583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: attackGeneral
+      value: 
+      objectReference: {fileID: 146984232}
     - target: {fileID: 4169039272619583583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: dashEffectUlt
       value: 

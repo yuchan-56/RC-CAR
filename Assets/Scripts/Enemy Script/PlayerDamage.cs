@@ -6,6 +6,7 @@ public class PlayerDamage : MonoBehaviour
 {
     public PlayerHP playerHP;
     private PlayerEffect player;
+    private Enemy enemyScript;
 
 
     // Start is called before the first frame update
@@ -13,10 +14,13 @@ public class PlayerDamage : MonoBehaviour
     {
         playerHP = FindObjectOfType<PlayerHP>();
         player = FindObjectOfType<PlayerEffect>();
+        enemyScript = FindObjectOfType<Enemy>();
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
+        if(enemyScript.isDead) return;
+
         if(other.CompareTag("Player")&&!Managers.Game.isHit) {
             Debug.Log($"{other.name}");
             Debug.Log("player damage");
