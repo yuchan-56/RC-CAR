@@ -5,8 +5,7 @@ using System.Collections;
 public class BossManager : MonoBehaviour
 {
     private List<Boss> allBosses = new List<Boss>(); // 모든 보스 리스트
-    private float attackInterval = 1.5f;
-    //private float timer = 0f;
+    private float attackInterval = 4.0f;
 
     public bool attackPos = true;
 
@@ -28,6 +27,7 @@ public class BossManager : MonoBehaviour
         
     }
 
+
     
     IEnumerator RandomBossAttackRoutine()
     {
@@ -35,9 +35,14 @@ public class BossManager : MonoBehaviour
         {
             // 공격이 끝날 때까지 대기
             yield return new WaitUntil(() => attackPos == true);
-            bossScript.isAttacking = false;
-            yield return new WaitForSeconds(attackInterval);
-            
+
+            if(attackPos == true)
+            {
+                bossScript.isAttacking = false;
+                yield return new WaitForSeconds(attackInterval);
+            }
+           
+
             if (allBosses.Count > 0)
             {
                 List<Boss> aliveBosses = allBosses.FindAll(b => b != null && !b.isDead);
@@ -50,7 +55,9 @@ public class BossManager : MonoBehaviour
             }
         }
     }
+    
 
+    
     void ExecuteRandomAttack(Boss boss)
     {
         int attackType = Random.Range(0, 4); // 0~3 사이 랜덤 선택
@@ -77,6 +84,7 @@ public class BossManager : MonoBehaviour
                 break;
         }
     }
+
 
 
 

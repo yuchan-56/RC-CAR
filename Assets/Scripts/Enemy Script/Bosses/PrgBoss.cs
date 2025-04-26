@@ -128,9 +128,11 @@ public class PrgBoss : Boss
         }
     }
 
+    /*
     public void PrgP1Off() {
         p1Object.SetActive(false);
     }
+    */
 
 
     //------
@@ -190,7 +192,8 @@ public class PrgBoss : Boss
         isFollowing = true;
         isStop = true;
         bmScript.attackPos = true;
-        
+        isAttacking = false;
+
     }
 
 
@@ -236,6 +239,7 @@ public class PrgBoss : Boss
         isFollowing = true;
         isStop = true;
         bmScript.attackPos = true;
+        isAttacking = false;
 
         p1Object.SetActive(false);
         p3Object.SetActive(false);

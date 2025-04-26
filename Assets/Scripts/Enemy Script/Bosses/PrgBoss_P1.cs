@@ -61,8 +61,10 @@ public class PrgBoss_P1 : MonoBehaviour
             playerRb.drag = dragAmount; // 드래그 적용
             playerRb.gravityScale = gravityScaleDuringKnockback; // 중력 조절
 
-            bossRb.constraints |= RigidbodyConstraints2D.FreezePositionX;
-            bossRb.constraints |= RigidbodyConstraints2D.FreezePositionY;
+            if (bossRb != null)
+            {
+                bossRb.velocity = Vector2.zero;
+            }
 
             playerRb.AddForce(knockbackDirection * knockbackForce, ForceMode2D.Impulse);
 
@@ -89,11 +91,6 @@ public class PrgBoss_P1 : MonoBehaviour
             Debug.Log("player null");
             yield break;
         }
-
-        //Debug.Log("시시시작");
-
-        bossRb.constraints &= ~RigidbodyConstraints2D.FreezePositionX;
-        bossRb.constraints &= ~RigidbodyConstraints2D.FreezePositionY;
 
         // 원래 드래그 및 중력 값 복원
         playerRb.drag = 0f; // 드래그 초기화
