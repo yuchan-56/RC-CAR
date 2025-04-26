@@ -220,7 +220,7 @@ public class PlayerMove : MonoBehaviour
         if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
         if (canDash)
         {
-
+            isJumpDashing = false;
             dashCoroutine = StartCoroutine(Dash());
             animator.SetTrigger("dash");
 
@@ -234,7 +234,6 @@ public class PlayerMove : MonoBehaviour
         isDashing = true;
         canDash = false;
         float dashDirection = transform.localScale.x > 0 ? 1f : -1f;
-
 
         if (isDashAttacking)
         {
