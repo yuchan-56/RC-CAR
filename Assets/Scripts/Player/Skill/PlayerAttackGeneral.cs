@@ -92,7 +92,7 @@ public class PlayerAttackGeneral : MonoBehaviour
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
         SkillAttack_Active = false;
-        foreach (Enemy enemy in hitEnemies)
+        foreach (EnemyHP enemy in hitEnemies)
         {
             if (enemy != null)
                 enemy.IsEnemyHit = false;
