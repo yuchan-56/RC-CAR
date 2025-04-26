@@ -36,7 +36,7 @@ public class PlayerAttackGeneral : MonoBehaviour
         {
             StopCoroutine(UltDeactiveCoroutine());
         }
-        yield return new WaitForSeconds(5);
+        yield return new WaitForSeconds(10);
         UltimateSkillDeactive();
         StopCoroutine(UltDeactiveCoroutine());
     }

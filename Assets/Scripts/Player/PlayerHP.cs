@@ -11,7 +11,7 @@ public class PlayerHP : MonoBehaviour
     public float animationDuration = 0.01f;
     private bool isAutoRecovering = false;
     private Coroutine hpRecoverCoroutine;
-    private float recoverDelayAfterHit = 5f;
+    private float recoverDelayAfterHit = 10f;
     private float hpRecoverInterval = 2f;
     private Coroutine hpFadeCoroutine;
 
