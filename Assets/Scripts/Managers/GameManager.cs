@@ -52,12 +52,18 @@ public class GameManager
             go.transform.SetParent(Managers.UI.Root.transform);
         };
 
-   
+        Debug.Log(PlayerPrefs.GetInt("StageData"));
+
+        if(PlayerPrefs.GetInt("StageData")==1)
+        {
+            Time.timeScale = 0;
+            Managers.UI.ShowPopUpUI<HowToPlay>();
+        }
+        else { Time.timeScale = 1; }
         currentState = GameState.Battle;
         currentGround = GameGround.R4;
         gage = 0;
         GetHit = false;
-        Time.timeScale = 1;
         SkillAniReset = true;
         isHit = false;
         damage = 1;
