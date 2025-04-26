@@ -768,8 +768,8 @@ GameObject:
   - component: {fileID: 1745439278421897617}
   - component: {fileID: 4631396746638158172}
   - component: {fileID: 6445535665509536591}
-  - component: {fileID: 4741898798600160313}
-  - component: {fileID: 3133716655518812282}
+  - component: {fileID: 6681285851771700594}
+  - component: {fileID: 5661429222126610248}
   m_Layer: 5
   m_Name: HowToPlay
   m_TagString: Untagged
@@ -873,7 +873,7 @@ Canvas:
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!114 &4741898798600160313
+--- !u!114 &6681285851771700594
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -890,7 +890,7 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &3133716655518812282
+--- !u!114 &5661429222126610248
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

@@ -16,7 +16,10 @@ public class HowToPlay : UI_Popup
 
         GetButton((int)Buttons.Skip).gameObject.AddUIEvent(Skipped);
 
-
+    }
+    private void Start()
+    {
+        Init();
     }
 
     void Skipped(PointerEventData eventData)

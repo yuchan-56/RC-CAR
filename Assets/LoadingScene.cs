@@ -62,8 +62,6 @@ public class LoadingScene : MonoBehaviour
         setActive(false);
 
         LoadingPanel.DOFade(0f, 0.3f).SetUpdate(true);
-
-        Time.timeScale = 1;
         Managers.UI.ReSet();
     }
 
