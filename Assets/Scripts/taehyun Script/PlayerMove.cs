@@ -372,7 +372,7 @@ public class PlayerMove : MonoBehaviour
         }
     }
 
-        /* public IEnumerator ForcedAniReset()
+         /*public IEnumerator ForcedAniReset()
          {
              if (Managers.Game.SkillAniReset == true)
              {

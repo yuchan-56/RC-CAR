@@ -28,6 +28,7 @@ public class PlayerAttackGeneral : MonoBehaviour
         SkillAttack_Active = false;
         ani.SetBool("UltAttack", false);
         ani.SetBool("Attack", false);
+        UltimateSkill_Active = false;
     }
     IEnumerator UltDeactiveCoroutine()
     {
