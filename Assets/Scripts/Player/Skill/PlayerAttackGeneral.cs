@@ -12,7 +12,7 @@ public class PlayerAttackGeneral : MonoBehaviour
     SpriteRenderer spriteRenderer;
     bool SkillAttack_Active;
     public bool UltimateSkill_Active;
-    private List<Enemy> hitEnemies = new List<Enemy>();
+    private List<EnemyHP> hitEnemies = new List<EnemyHP>();
 
     void Awake()
     {
@@ -70,16 +70,20 @@ public class PlayerAttackGeneral : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (collision.tag == "Enemy" && enemy.IsEnemyHit == false && enemy.IsEnemyDead == false)
+        EnemyHP enemy = collision.GetComponent<EnemyHP>();
+
+        if (collision.CompareTag("Enemy") && enemy != null
+            && enemy.IsEnemyHit == false && enemy.IsEnemyDead == false)
         {
             enemy.IsEnemyHit = true;
             hitEnemies.Add(enemy);
-            if(Managers.Game.gage < 100)
+
+            if (Managers.Game.gage < 100)
             {
                 Managers.Game.gage += 5;
             }
-            collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 1);
+
+            enemy.EnemyDamage(Managers.Game.damage, 1);
         }
     }
 

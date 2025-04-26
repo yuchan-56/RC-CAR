@@ -10,7 +10,7 @@ public class JumpAttack : MonoBehaviour
     SpriteRenderer spriteRenderer;
     Animator ani;
     bool SkillActive_JumpAttack;
-    private List<Enemy> hitEnemies = new List<Enemy>();
+    private List<EnemyHP> hitEnemies = new List<EnemyHP>();
 
     IEnumerator DeactiveCoroutine()
     {
@@ -55,16 +55,20 @@ public class JumpAttack : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (collision.tag == "Enemy" && enemy.IsEnemyHit == false && enemy.IsEnemyDead == false)
+        EnemyHP enemy = collision.GetComponent<EnemyHP>();
+
+        if (collision.CompareTag("Enemy") && enemy != null
+            && enemy.IsEnemyHit == false && enemy.IsEnemyDead == false)
         {
             enemy.IsEnemyHit = true;
             hitEnemies.Add(enemy);
+
             if (Managers.Game.gage < 100)
             {
                 Managers.Game.gage += 5;
             }
-            collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 2);
+
+            enemy.EnemyDamage(Managers.Game.damage, 1);
         }
     }
 
