@@ -77,7 +77,7 @@ public class JumpAttack : MonoBehaviour
         SkillActive_JumpAttack = false;
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
-        foreach (Enemy enemy in hitEnemies)
+        foreach (EnemyHP enemy in hitEnemies)
         {
             if (enemy != null)
                 enemy.IsEnemyHit = false;

@@ -84,7 +84,7 @@ public class DashAttack : MonoBehaviour
         SkillActive_DashAttack = false;
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
-        foreach (Enemy enemy in hitEnemies)
+        foreach (EnemyHP enemy in hitEnemies)
         {
             if (enemy != null)
                 enemy.IsEnemyHit = false;
