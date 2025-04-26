@@ -56,7 +56,7 @@ public class GameManager
         Time.timeScale = 1;
         SkillAniReset = true;
         isHit = false;
-        damage = 50;
+        damage = 1;
     }
 
     public void GoJump()
