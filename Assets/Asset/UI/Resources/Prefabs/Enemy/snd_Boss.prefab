@@ -94,7 +94,7 @@ GameObject:
   - component: {fileID: 4603602336885974227}
   m_Layer: 0
   m_Name: snd_Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -276,6 +276,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPos: 1
+  bossScript: {fileID: 0}
 --- !u!114 &4603602336885974227
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -293,6 +294,7 @@ MonoBehaviour:
   maxHP: 100
   animator: {fileID: 9180770424745071920}
   isDead: 0
+  isAttacking: 0
   player: {fileID: 0}
   speed: 2
   wanderDistance: 2
@@ -301,8 +303,7 @@ MonoBehaviour:
   isStop: 1
   followDistance: 20
   minFollowDistance: 2.5
-  hpFramePref: {fileID: 0}
-  hpFrameImg: {fileID: 0}
+  framePrefab: {fileID: 0}
   attackPrefab: {fileID: 1754301823302252970, guid: 1fca036728f644b8d8a0e46cd8c787bb, type: 3}
   bulletSpeed: 10
   fireRate: 1

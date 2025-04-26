@@ -1455,25 +1455,13 @@ PrefabInstance:
       propertyPath: m_Name
       value: prg_Boss
       objectReference: {fileID: 0}
-    - target: {fileID: 316324923393244241, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 0.5
-      objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0.182
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -0.84
+      value: -0.67
       objectReference: {fileID: 0}
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalPosition.z
@@ -1506,14 +1494,6 @@ PrefabInstance:
     - target: {fileID: 1883437628332680505, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2678020650968405917, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
-      propertyPath: m_BodyType
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 2678020650968405917, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
-      propertyPath: m_CollisionDetection
-      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5927446090006884465, guid: 24145b550dd0c44789c78490111f8f3b, type: 3}
       propertyPath: player

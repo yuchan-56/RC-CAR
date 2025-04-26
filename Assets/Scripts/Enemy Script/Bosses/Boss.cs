@@ -4,8 +4,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Boss : MonoBehaviour
+public class Boss : MonoBehaviour, EnemyHP
 {
+    //인터페이스
+    public int EnemyHp { get; set; }
+    public bool IsEnemyHit { get; set; }
+    public bool IsEnemyDead { get; set; }
+
     Collider2D playerCollider;
     Collider2D bossCollider;
     Rigidbody2D bossRB;
@@ -72,6 +77,8 @@ public class Boss : MonoBehaviour
 
     protected virtual void Start()
     {
+        EnemyHp = 100;
+
         stopPosition = transform.position;
 
         currentHP = maxHP;
@@ -141,7 +148,7 @@ public class Boss : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            BossDamage(10);
+            EnemyDamage(10, 0);
         }
     }
 
@@ -239,11 +246,12 @@ public class Boss : MonoBehaviour
     }
 
 
-    public virtual void BossDamage(float damage)
+    public void EnemyDamage(int damage, int attackMethod)
     {
         if(!sysP1) {
             if(currentHP > 0) {
                 currentHP -= damage;
+                Debug.Log(currentHP);
                 UpdateHPBar();
             }
             else if (currentHP < 0) { currentHP = 0; }
