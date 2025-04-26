@@ -119,6 +119,7 @@ public class PlayerAttackGeneral : MonoBehaviour
     void UltimateSkillDeactive()
     {
         Managers.Game.gage = 0;
+        Managers.Game.DamangeDown();
         UltimateSkill_Active = false;
         characterEffect.UltimateEffectDeactive();
     }
