@@ -4,18 +4,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Boss : MonoBehaviour, EnemyHP
+public class Boss : MonoBehaviour
 {
-    //인터페이스
-    public int EnemyHp { get; set; }
-    public bool IsEnemyHit { get; set; }
-    public bool IsEnemyDead { get; set; }
-
     Collider2D playerCollider;
     Collider2D bossCollider;
-    Rigidbody2D bossRB;
-
-
     // HP
     public GameObject hpBarPrefab; // HP Bar 프리팹 (UI Image)
     public RectTransform hpBarTransform; // 개별 HP 바의 RectTransform
@@ -33,10 +25,6 @@ public class Boss : MonoBehaviour, EnemyHP
     public Animator animator;
     public bool isDead = false;
 
-    private SpriteRenderer spriteRenderer;
-    private Color originalColor; // 원래 색 저장
-
-
     public bool isAttacking = false;
 
     // 좌우이동 + following player
@@ -51,6 +39,8 @@ public class Boss : MonoBehaviour, EnemyHP
 
     public float followDistance = 20.0f; // 따라가기 시작하는 거리
     public float minFollowDistance = 2.5f;
+
+
     
     private Vector2 stopPosition;
 
@@ -77,25 +67,15 @@ public class Boss : MonoBehaviour, EnemyHP
 
     protected virtual void Start()
     {
-        EnemyHp = 100;
-
         stopPosition = transform.position;
 
         currentHP = maxHP;
 
         canvasTransform = GameObject.Find("EnemyHPCanvas").transform; 
 
-        bossRB = GetComponent<Rigidbody2D>();
         playerCollider = player.GetComponent<Collider2D>();
         bossCollider = GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(playerCollider, bossCollider);
-
-        spriteRenderer = GetComponent<SpriteRenderer>();
-
-        if (spriteRenderer != null)
-        {
-            originalColor = spriteRenderer.color; // 원래 색 저장
-        }
     }
 
 
@@ -119,18 +99,59 @@ public class Boss : MonoBehaviour, EnemyHP
 
         float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
-
-        if(!isAttacking)
+        /*
+        if (distanceToPlayer <= followDistance && distanceToPlayer > minFollowDistance) 
         {
-            if (distanceToPlayer <= minFollowDistance)
-            {
-                currentState = BossState.Stopping;
-            }
-            else
-            {
-                currentState = BossState.Following;
-            }
+            currentState = BossState.Following;
+        } 
+        else if (distanceToPlayer <= minFollowDistance) 
+        {
+            currentState = BossState.Stopping;
+        } 
+        else 
+        {
+            currentState = BossState.Idle;
         }
+        */
+
+        if(isAttacking)
+        {
+            return;
+        }
+
+        
+        if (distanceToPlayer <= minFollowDistance)
+        {
+            currentState = BossState.Stopping;
+        }
+        else
+        {
+            currentState = BossState.Following;
+        }
+    
+
+        
+
+        /*
+        switch (currentState) 
+        {
+            case BossState.Following:
+                if(isFollowing) {
+                    if (AnimatorHasParameter("isStop")) animator.SetBool("isStop", false);
+                    FollowPlayer();
+                }
+                break;
+            case BossState.Stopping:
+                if(isStop) { StopMoving(); }
+                break;
+            case BossState.Idle:
+                if(isWandering)  {
+                    if (AnimatorHasParameter("isStop")) animator.SetBool("isStop", false);
+                    Wander();
+                }
+                break;
+                
+        }*/
 
         
         switch (currentState)
@@ -148,7 +169,7 @@ public class Boss : MonoBehaviour, EnemyHP
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            EnemyDamage(10, 0);
+            BossDamage(10);
         }
     }
 
@@ -246,22 +267,16 @@ public class Boss : MonoBehaviour, EnemyHP
     }
 
 
-    public void EnemyDamage(int damage, int attackMethod)
+    public virtual void BossDamage(float damage)
     {
         if(!sysP1) {
             if(currentHP > 0) {
                 currentHP -= damage;
-                Debug.Log(currentHP);
                 UpdateHPBar();
             }
             else if (currentHP < 0) { currentHP = 0; }
 
             Managers.Game.GetHit = true;
-
-            if (spriteRenderer != null)
-            {
-                StartCoroutine(FlashWhite());
-            }
 
             if (currentHP <= 0)
             {
@@ -270,25 +285,14 @@ public class Boss : MonoBehaviour, EnemyHP
         }
     }
 
-    private IEnumerator FlashWhite()
-    {
-        spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f); // R, G, B = 1(흰색), A = 0.5(반투명)
-        yield return new WaitForSeconds(0.5f);
-        spriteRenderer.color = originalColor;
-    }
-
-
     public virtual void Die()
     {
         Debug.Log("boss died!");
-
-        bossRB.velocity = Vector2.zero;
 
         isWandering = false;
         isFollowing = false;
         isDead = true;
         animator.SetBool("isDead", true);
-        Destroy(hpBarTransform);
     }
 
     public void BossDying() {

@@ -58,7 +58,7 @@ public class PlayerHP : MonoBehaviour
         playerMove.animator.SetTrigger("GetDamagedDisable");
     }
 
-    IEnumerator StartGameOverUI()
+    public IEnumerator StartGameOverUI()
     {
         StartCoroutine(CheckGroundFallingWhenDead());
         yield return new WaitForSecondsRealtime(1.3f);
@@ -130,12 +130,16 @@ public class PlayerHP : MonoBehaviour
                 }
             }
             Debug.Log("GameOver In PlayerHP");
-            playerMove.animator.SetTrigger("IsDead");
+            dieAnimation();
             Time.timeScale = 0;
             StartCoroutine(StartGameOverUI());
         }
     }
 
+    public void dieAnimation()
+    {
+        playerMove.animator.SetTrigger("IsDead");
+    }
     private void SetHpBarAlpha(float alpha)
     {
         var color = spriteRenderer.color;

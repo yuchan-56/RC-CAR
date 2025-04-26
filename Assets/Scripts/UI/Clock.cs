@@ -70,8 +70,12 @@ public class Clock : MonoBehaviour
     }
     void TriggerGameOver()
     {
+        
         failImage.gameObject.SetActive(true);
          Time.timeScale = 0;
+        PlayerHP playerhp = FindFirstObjectByType<PlayerHP>();
+        playerhp.dieAnimation();
+        StartCoroutine(playerhp.StartGameOverUI());
         Debug.Log("Game Over!");
 
 
