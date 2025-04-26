@@ -7,10 +7,10 @@ using TMPro;
 public class Clock : MonoBehaviour
 {
     public Sprite[] images;  // 15개의 이미지 배열
-    public float timerDuration = 60f;  // 타이머 지속 시간 (60초)
+    public float timerDuration;  // 타이머 지속 시간 (60초)
     private float currentTime;  // 현재 시간
     private int currentImageIndex = 0;  // 현재 이미지 인덱스
-    private float changeInterval = 4f;  // 이미지 변경 간격 (4초)
+    private float changeInterval;  // 이미지 변경 간격 (4초)
     private float nextChangeTime;  // 다음 이미지 변경 시간
     public Image imageComponent;
     public Image failImage;
@@ -21,6 +21,7 @@ public class Clock : MonoBehaviour
     void Start()
     {
         currentTime = timerDuration;
+        changeInterval = timerDuration / 14;
         nextChangeTime = changeInterval;
         imageComponent.sprite = images[currentImageIndex];  // 이미지 변경
         currentImageIndex++;  // 다음 이미지로 이동
@@ -70,20 +71,20 @@ public class Clock : MonoBehaviour
     void TriggerGameOver()
     {
         failImage.gameObject.SetActive(true);
-        // Time.timeScale = 0;
+         Time.timeScale = 0;
         Debug.Log("Game Over!");
 
 
     
     }
-    /*void TriggerSuccess()
+    void TriggerSuccess()
     {
         SuccessImage.gameObject.SetActive(true);
         Time.timeScale = 0;
         Debug.Log("Game Clear!");
 
     }
-    public void EnemyDied(GameObject enemy)
+    /*public void EnemyDied(GameObject enemy)
     {
         // 적 제거 시 리스트에서 삭제
         enemies.Remove(enemy);

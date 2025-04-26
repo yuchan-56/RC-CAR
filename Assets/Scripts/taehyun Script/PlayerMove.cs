@@ -34,6 +34,8 @@ public class PlayerMove : MonoBehaviour
     Coroutine dashCoroutine;
     Rigidbody2D rigid;
     public GameObject dashEffect;
+    public GameObject dashEffectUlt;
+    PlayerAttackGeneral attackGeneral;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,6 +47,7 @@ public class PlayerMove : MonoBehaviour
         animator.updateMode = AnimatorUpdateMode.UnscaledTime;
         IsComboAttacking = 0;
         dashEffect.SetActive(false);
+        dashEffectUlt.SetActive(false);
     }
 
     // Update is called once per frame
@@ -353,10 +356,20 @@ public class PlayerMove : MonoBehaviour
         dashCoroutine = StartCoroutine(Dash());
     }
     IEnumerator ShowDashEffect()
-    {
-        dashEffect.SetActive(true);
-        yield return new WaitForSeconds(0.5f); // 이펙트 보여줄 시간
-        dashEffect.SetActive(false);
+    {   if (attackGeneral.UltimateSkill_Active == false)
+        {
+            dashEffect.SetActive(true);
+            yield return new WaitForSeconds(0.5f); // 이펙트 보여줄 시간
+            dashEffect.SetActive(false);
+        }
+        else if (attackGeneral.UltimateSkill_Active == true)
+        {
+            dashEffectUlt.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            dashEffectUlt.SetActive(false);
+
+
+        }
     }
 
         /* public IEnumerator ForcedAniReset()
