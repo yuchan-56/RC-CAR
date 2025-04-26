@@ -107,8 +107,7 @@ public class PlayerAttackGeneral : MonoBehaviour
     public void UltimateSkillActive()
     {
         Managers.UI.ShowPopUpUI<UltGoAction>();
-        UltimateSkill_Active = true;
-        characterEffect.UltimateEffectActive();
+        StartCoroutine(ActivateUltimateSkillAfterDelay(0.3f));
         StartCoroutine(UltDeactiveCoroutine());
     }
 
@@ -117,5 +116,12 @@ public class PlayerAttackGeneral : MonoBehaviour
         Managers.Game.gage = 0;
         UltimateSkill_Active = false;
         characterEffect.UltimateEffectDeactive();
+    }
+
+    private IEnumerator ActivateUltimateSkillAfterDelay(float delay)
+    {
+        yield return new WaitForSeconds(delay);
+        UltimateSkill_Active = true;
+        characterEffect.UltimateEffectActive();
     }
 }
