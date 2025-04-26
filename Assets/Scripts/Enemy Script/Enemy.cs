@@ -320,7 +320,7 @@ public class Enemy : MonoBehaviour, EnemyHP
         IsHit();
 
         if(currentHP > 0) {
-            currentHP --;
+            currentHP -=damage;
             UpdateHPBar();
         }
         
