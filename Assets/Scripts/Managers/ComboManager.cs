@@ -348,7 +348,8 @@ public class ComboManager : MonoBehaviour
                     break;
 
                 case 3:
-                    if (Managers.Game.gage >= 100 && InputButton.Contains("Jump") && InputButton.Contains("Attack") && InputButton.Contains("Dash"))
+                    if (Managers.Game.gage >= 100 && InputButton.Contains("Jump") && InputButton.Contains("Attack") && InputButton.Contains("Dash")
+                        && playerAttackGeneral.UltimateSkill_Active == false)
                     {
                         Debug.Log("Ultimate skill active");
                         playerAttackGeneral.UltimateSkillActive();
