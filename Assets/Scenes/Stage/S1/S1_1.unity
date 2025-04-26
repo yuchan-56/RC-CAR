@@ -6529,6 +6529,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2137478892}
     - target: {fileID: 4169039272619583583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
+      propertyPath: attackGeneral
+      value: 
+      objectReference: {fileID: 146984232}
+    - target: {fileID: 4169039272619583583, guid: ab602f9ea11924945bd85addd2480900, type: 3}
       propertyPath: dashEffectUlt
       value: 
       objectReference: {fileID: 782755147}
