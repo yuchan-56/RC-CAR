@@ -28,6 +28,7 @@ public class ComboManager : MonoBehaviour
     public Jumpblink jumpblink;
     public Dashblink dashblink;
     public Atkblink atkblink;
+    public MapMoving mapMoving;
     private Coroutine dashAniCoroutine;
     private Coroutine jumpAniCoroutine;
     private Coroutine atkAniCoroutine;
@@ -47,7 +48,8 @@ public class ComboManager : MonoBehaviour
 
     void Update()
     {
-        if(Managers.Game.SkillAniReset == true)
+
+        if(Managers.Game.SkillAniReset == true || player.buttonDeactive == true)
         {
             StopExistingCoroutine(ref atkAniCoroutine);
             StopExistingCoroutine(ref dashAniCoroutine);
@@ -77,6 +79,31 @@ public class ComboManager : MonoBehaviour
             Managers.Game.SkillAniReset = false;
         }
 
+        else if(Managers.Game.isHit)
+        {
+            playerAttackGeneral.AttackSetDeactive();
+            dashAttack.SkillMotionDeactive();
+            jumpAttack.SkillMotionDeactive();
+            StopExistingCoroutine(ref atkAniCoroutine);
+            StopExistingCoroutine(ref dashAniCoroutine);
+            StopExistingCoroutine(ref jumpAniCoroutine);
+            lgo.ImageDisabled();
+            rgo.ImageDisabled();
+            lugo.ImageDisabled();
+            ldgo.ImageDisabled();
+            rugo.ImageDisabled();
+            rdgo.ImageDisabled();
+            atkblink.ImageDisabled();
+            jumpblink.ImageDisabled();
+            dashblink.ImageDisabled();
+
+            atkAni.ResetImage();
+            dashAni.ResetImage();
+            jumpAni.ResetImage();
+            atkAni.isAnimating = false;
+            dashAni.isAnimating = false;
+            jumpAni.isAnimating = false;
+        }
         else
         {
             //empty
@@ -240,6 +267,12 @@ public class ComboManager : MonoBehaviour
 
         else if (Input.GetMouseButtonUp(0) && AniSetup == true)
         {
+
+            if (Managers.Game.isHit || player.buttonDeactive == true)
+            {
+                return;
+            }
+
             Debug.Log("마우스 업 감지됨");
             playerAttackGeneral.AttackSetDeactive();
             dashAttack.SkillMotionDeactive();
@@ -263,11 +296,6 @@ public class ComboManager : MonoBehaviour
             atkAni.isAnimating = false;
             dashAni.isAnimating = false;
             jumpAni.isAnimating = false;
-
-            if (Managers.Game.isHit)
-            {
-                return;
-            }
 
             if (player.IsAttacking)
             {

@@ -37,6 +37,11 @@ public class PrgBoss : Boss
         if(showHP && !showFrame) {
             ShowFrame();
         }
+
+        if(isDead)
+        {
+            Destroy(frameInstance);
+        }
     }
 
     private void ShowFrame()
@@ -127,13 +132,6 @@ public class PrgBoss : Boss
             p1Object.SetActive(true);
         }
     }
-
-    public void PrgP1Off() {
-        p1Object.SetActive(false);
-    }
-
-
-    //------
 
     public override void P2() {
         isWandering = false;

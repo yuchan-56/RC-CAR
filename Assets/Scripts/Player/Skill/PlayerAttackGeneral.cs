@@ -12,7 +12,7 @@ public class PlayerAttackGeneral : MonoBehaviour
     SpriteRenderer spriteRenderer;
     bool SkillAttack_Active;
     public bool UltimateSkill_Active;
-    private List<Enemy> hitEnemies = new List<Enemy>();
+    private List<EnemyHP> hitEnemies = new List<EnemyHP>();
 
     void Awake()
     {
@@ -70,16 +70,20 @@ public class PlayerAttackGeneral : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        Enemy enemy = collision.GetComponent<Enemy>();
-        if (collision.tag == "Enemy" && enemy.isEnemyHit == false && enemy.isDead == false)
+        EnemyHP enemy = collision.GetComponent<EnemyHP>();
+
+        if (collision.CompareTag("Enemy") && enemy != null
+            && enemy.IsEnemyHit == false && enemy.IsEnemyDead == false)
         {
-            enemy.isEnemyHit = true;
+            enemy.IsEnemyHit = true;
             hitEnemies.Add(enemy);
-            if(Managers.Game.gage < 100)
+
+            if (Managers.Game.gage < 100)
             {
                 Managers.Game.gage += 5;
             }
-            collision.GetComponent<Enemy>().EnemyDamage(Managers.Game.damage, 1);
+
+            enemy.EnemyDamage(Managers.Game.damage, 1);
         }
     }
 
@@ -88,10 +92,10 @@ public class PlayerAttackGeneral : MonoBehaviour
         boxCollider2D.enabled = false;
         spriteRenderer.enabled = false;
         SkillAttack_Active = false;
-        foreach (Enemy enemy in hitEnemies)
+        foreach (EnemyHP enemy in hitEnemies)
         {
             if (enemy != null)
-                enemy.isEnemyHit = false;
+                enemy.IsEnemyHit = false;
         }
         hitEnemies.Clear();
         ani.SetBool("UltAttack", false);
@@ -107,7 +111,8 @@ public class PlayerAttackGeneral : MonoBehaviour
     public void UltimateSkillActive()
     {
         Managers.UI.ShowPopUpUI<UltGoAction>();
-        StartCoroutine(ActivateUltimateSkillAfterDelay(0.3f));
+        Managers.Game.UltimateDamageUp();
+        StartCoroutine(ActivateUltimateSkillAfterDelay(0.11f));
         StartCoroutine(UltDeactiveCoroutine());
     }
 

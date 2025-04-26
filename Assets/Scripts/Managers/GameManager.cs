@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 public class GameManager
 {
-    public float damage = 50;
+    public int damage = 1;
     public int gage = 0;
     public bool GetHit = false;
     public int roundEnemy; // 적을 처치할때마다 줄어들게.
@@ -56,7 +56,7 @@ public class GameManager
         Time.timeScale = 1;
         SkillAniReset = true;
         isHit = false;
-        damage = 50;
+        damage = 1;
     }
 
     public void GoJump()

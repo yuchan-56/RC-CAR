@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 6207128947237039076}
   m_Layer: 0
   m_Name: sys_Boss
-  m_TagString: Boss
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -381,6 +381,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackPos: 1
+  bossScript: {fileID: 0}
 --- !u!114 &6207128947237039076
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -398,6 +399,7 @@ MonoBehaviour:
   maxHP: 100
   animator: {fileID: 8947144704617956347}
   isDead: 0
+  isAttacking: 0
   player: {fileID: 0}
   speed: 2.3
   wanderDistance: 2
