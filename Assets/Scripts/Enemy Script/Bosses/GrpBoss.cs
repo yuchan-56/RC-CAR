@@ -41,6 +41,8 @@ public class GrpBoss : Boss
     bool p2Pos = true;
 
     //p2
+    private Rigidbody2D rb;
+    private Vector3 initialFlyingPos;
 
     //p3
     public GameObject p3Object;
@@ -53,6 +55,9 @@ public class GrpBoss : Boss
     {
         base.Start();
         Debug.Log("그래픽 보스");
+
+        rb = GetComponent<Rigidbody2D>();
+        initialFlyingPos = transform.position;
     }
 
 
@@ -61,6 +66,11 @@ public class GrpBoss : Boss
         base.Update();
         if(showHP && !showFrame) {
             ShowFrame();
+        }
+
+        if (isDead)
+        {
+            Destroy(frameInstance.gameObject);
         }
     }
 
@@ -229,10 +239,34 @@ public class GrpBoss : Boss
             animator.SetBool("isStop", false);
             animator.SetBool("isP2", true);
 
-            StartCoroutine(GetHP());
+            StartCoroutine(DescendAndHeal());
+            //StartCoroutine(GetHP());
         }
     }
-    
+
+    IEnumerator DescendAndHeal()
+    {
+        // ★ 1. Gravity를 켜서 땅으로 내려오게 만들자
+        rb.gravityScale = 3f; // 중력 세기 (조절 가능)
+
+        // ★ 2. 땅에 닿을 때까지 기다린다 (간단하게 y축 위치로 체크)
+        while (transform.position.y > 0.5f) // 바닥 높이가 0쯤이라고 가정
+        {
+            yield return null;
+        }
+
+        // ★ 3. 땅에 닿으면 Gravity를 끄고 위치 고정
+        rb.gravityScale = 0f;
+        rb.velocity = Vector2.zero;
+        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z); // 정확히 바닥 위치 고정
+
+        // ★ 4. 이제 피 회복 시작
+        yield return StartCoroutine(GetHP());
+
+        // ★ 5. 회복 끝나면 다시 하늘로 올라가자
+        yield return StartCoroutine(AscendToSky());
+    }
+
     /// /////////////////////////////////
     IEnumerator GetHP() {
         float targetHP = maxHP * 0.65f; // 회복 목표는 70%
@@ -258,8 +292,19 @@ public class GrpBoss : Boss
         //gravity, position 다시 리셋
     }
 
-    public void GRPGravityControl() {
-        // gravity 1 만들기
+    IEnumerator AscendToSky()
+    {
+        Vector3 targetPos = initialFlyingPos + new Vector3(0f, 3f, 0f); // 원하는 높이까지 상승
+        float ascendSpeed = 3f;
+
+        while (Vector3.Distance(transform.position, targetPos) > 0.1f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, ascendSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        // 다 올라가면
+        transform.position = targetPos;
     }
 
 

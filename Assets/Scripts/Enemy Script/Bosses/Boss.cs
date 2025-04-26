@@ -4,8 +4,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Boss : MonoBehaviour
+public class Boss : MonoBehaviour, EnemyHP
 {
+    public int EnemyHp { get; set; }
+    public bool IsEnemyHit { get; set; }
+    public bool IsEnemyDead { get; set; }
+
+    private SpriteRenderer spriteRenderer;
+    private Color originalColor;
+
     Collider2D playerCollider;
     Collider2D bossCollider;
     // HP
@@ -67,11 +74,19 @@ public class Boss : MonoBehaviour
 
     protected virtual void Start()
     {
+
         stopPosition = transform.position;
 
         currentHP = maxHP;
 
-        canvasTransform = GameObject.Find("EnemyHPCanvas").transform; 
+        canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
+
+        spriteRenderer = GetComponent<SpriteRenderer>();
+
+        if (spriteRenderer != null)
+        {
+            originalColor = spriteRenderer.color; // 원래 색 저장
+        }
 
         playerCollider = player.GetComponent<Collider2D>();
         bossCollider = GetComponent<Collider2D>();
@@ -169,7 +184,7 @@ public class Boss : MonoBehaviour
         }
 
         if (Input.GetKeyDown(KeyCode.Space)) {
-            BossDamage(10);
+            EnemyDamage(10, 0);
         }
     }
 
@@ -212,7 +227,13 @@ public class Boss : MonoBehaviour
         }
         return false;
     }
-    
+
+    public void EnemyDying()
+    {
+        Destroy(gameObject);
+        Managers.Game.EnemyDied();
+    }
+
     /*
     protected virtual void Wander()
     {
@@ -267,9 +288,14 @@ public class Boss : MonoBehaviour
     }
 
 
-    public virtual void BossDamage(float damage)
+    public virtual void EnemyDamage(int damage, int attackMethod)
     {
-        if(!sysP1) {
+        if (spriteRenderer != null)
+        {
+            StartCoroutine(FlashWhite());
+        }
+
+        if (!sysP1) {
             if(currentHP > 0) {
                 currentHP -= damage;
                 UpdateHPBar();
@@ -285,9 +311,23 @@ public class Boss : MonoBehaviour
         }
     }
 
+    private IEnumerator FlashWhite()
+    {
+        // 1. 흰색 반투명으로 변경
+        spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f); // R, G, B = 1(흰색), A = 0.5(반투명)
+        yield return new WaitForSeconds(0.4f);
+        spriteRenderer.color = originalColor;
+    }
+
+
     public virtual void Die()
     {
         Debug.Log("boss died!");
+
+        if (hpBarTransform != null)
+        {
+            Destroy(hpBarTransform.gameObject);
+        }
 
         isWandering = false;
         isFollowing = false;
