@@ -227,7 +227,13 @@ public class Boss : MonoBehaviour, EnemyHP
         }
         return false;
     }
-    
+
+    public void EnemyDying()
+    {
+        Destroy(gameObject);
+        Managers.Game.EnemyDied();
+    }
+
     /*
     protected virtual void Wander()
     {

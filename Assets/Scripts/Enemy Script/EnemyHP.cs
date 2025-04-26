@@ -9,4 +9,6 @@ public interface EnemyHP
     bool IsEnemyDead { get; set; }
 
     void EnemyDamage(int damage, int attackMethod);
+
+    public void EnemyDying();
 }
