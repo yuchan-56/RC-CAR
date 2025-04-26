@@ -314,7 +314,7 @@ public class PlayerMove : MonoBehaviour
             IsComboAttacking++;
             ForceDash();
             animator.SetTrigger("DashAttack");
-            yield return new WaitForSeconds(0.917f);
+            yield return new WaitForSeconds(0f);
             isDashAttacking = false;
         }
         else if (ComboType == "JumpAttack" && !isJumpAttacking && IsComboAttacking < 2)
