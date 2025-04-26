@@ -81,6 +81,11 @@ public class GameManager
         damage = 1000;
     }
 
+    public void DamangeDown()
+    {
+        damage = 1;
+    }
+
     public bool CheckNextRound()
     {
         if(roundEnemyCount[(int)currentGround] ==0) // 적의 수가 0 이면 true
