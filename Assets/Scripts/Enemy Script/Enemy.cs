@@ -157,99 +157,6 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    /*
-    void Update()
-    {
-        if (isDead) { return; }
-        
-        if(canMove) {
-            float distanceToPlayer = Mathf.Abs(transform.position.x - player.transform.position.x);
-            float distanceToPlayerY = Mathf.Abs(transform.position.y - player.transform.position.y);
-
-            if (isHitOverride)
-            {
-                currentState = EnemyState.Following;
-            }
-            else if (distanceToPlayer <= attackDistance && distanceToPlayerY <= followDistanceY)
-            {
-                if(isMale) {
-                    currentState = EnemyState.Attacking;
-                } else {
-                    currentState = EnemyState.Throwing;
-                }
-                
-            }
-            else if (distanceToPlayer <= throwDistance && distanceToPlayerY <= followDistanceY)
-            {
-                if(!isMale) {
-                    currentState = EnemyState.Throwing;
-                } else {
-                    currentState = EnemyState.Following;
-                }
-                
-            }
-            else if (distanceToPlayer <= followDistance&&distanceToPlayerY <= followDistanceY)
-            {
-                currentState = EnemyState.Following;
-            }
-            else
-            {
-                currentState = EnemyState.Idle;
-            }
-            
-
-            switch (currentState)
-            {
-                case EnemyState.Attacking:
-                    AttackPlayer();
-                    break;
-                
-                case EnemyState.Throwing:
-                    canMove = false;
-                    animator.SetBool("enemy_throw", true);
-                    animator.SetBool("enemy_attack", false);
-
-                    attackObject.SetActive(false);
-                    isFollowing = false;
-                    break;
-                
-                case EnemyState.Following:
-                    attackObject.SetActive(false);
-                    SpeechPopUp();
-                    FollowPlayer();
-                    isWandering = false;
-                    break;
-                
-                case EnemyState.Idle:
-                    attackObject.SetActive(false);
-                    if (!isWandering)
-                    {
-                        stopPosition = transform.position;
-                        isWandering = true;
-                    }
-                    Wander();
-                    break;
-            }
-        }
-        
-
-        // HP 슬라이더 위치 업데이트
-        if (hpBarImage != null)
-        {
-            Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.7f, 0));
-            hpBarImage.transform.position = screenPosition;
-        }
-
-
-
-
-        // 확인용
-        if(Input.GetKeyDown(KeyCode.Space)) {
-            EnemyDamage(10, 1);
-        }
-    }
-    */
-
     void UpdateHPBar()
     {
         if (currentHP >= 0 && currentHP < hpSprites.Length)
@@ -282,12 +189,6 @@ public class Enemy : MonoBehaviour
     {
         animator.SetBool("enemy_attack", false);
         animator.SetBool("enemy_throw", false);
-
-        /*
-        Vector2 directionToPlayer = player.transform.position - transform.position;
-        FlipDirection(directionToPlayer.x);
-        transform.position = Vector2.MoveTowards(transform.position, player.transform.position, speed * Time.deltaTime);
-        */
         
         Vector2 direction = (player.transform.position - transform.position).normalized;
         FlipDirection(direction.x);
