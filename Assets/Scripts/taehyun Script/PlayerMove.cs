@@ -224,6 +224,8 @@ public class PlayerMove : MonoBehaviour
             animator.SetTrigger("dash");
 
         }
+        else if(isDashing)
+            ForceDash();
     }
     public IEnumerator Dash()
     {
