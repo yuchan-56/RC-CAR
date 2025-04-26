@@ -6,8 +6,13 @@ using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Enemy : MonoBehaviour
+public class Enemy : MonoBehaviour, EnemyHP
 {
+    //공통 인터페이스
+    public int EnemyHp { get; set; }
+    public bool IsEnemyHit { get; set; }
+    public bool IsEnemyDead { get; set; }
+
     Collider2D playerCollider;
     Collider2D enemyCollider;
     // 좌우이동 + following player
@@ -28,7 +33,6 @@ public class Enemy : MonoBehaviour
     public float wanderDistance = 2f;
     bool isWandering = true;
     bool isFollowing = true;
-    public bool isEnemyHit = false;
 
     private bool isHitOverride = false;
 
@@ -41,8 +45,6 @@ public class Enemy : MonoBehaviour
     // 방향전환
     private bool facingRight = false; // 적의 현재 바라보는 방향
     private int facingRightSign => facingRight ? 1 : -1;
-
-    public bool isDead = false;
 
 
     // Animation
@@ -65,7 +67,6 @@ public class Enemy : MonoBehaviour
     public GameObject hpBarPrefab;
     private Image hpBarImage;
     public Sprite[] hpSprites;
-    public int maxHP = 3;
     private int currentHP;
     private Transform canvasTransform;
 
@@ -83,7 +84,10 @@ public class Enemy : MonoBehaviour
         enemyCollider = GetComponent<Collider2D>();
         Physics2D.IgnoreCollision(playerCollider, enemyCollider);
 
-        currentHP = maxHP;
+        EnemyHp = 3;
+        IsEnemyHit = false;
+        IsEnemyDead = false;
+        currentHP = EnemyHp;
 
         canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
 
@@ -100,7 +104,7 @@ public class Enemy : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isDead || !canMove) return;
+        if (IsEnemyDead || !canMove) return;
 
         if (currentState == EnemyState.Following)
         {
@@ -110,7 +114,7 @@ public class Enemy : MonoBehaviour
 
     void Update()
     {
-        if (isDead) return;
+        if (IsEnemyDead) return;
 
         
         float dx = Mathf.Abs(transform.position.x - player.transform.position.x);
@@ -292,12 +296,12 @@ public class Enemy : MonoBehaviour
 
 
     // HP 감소
-    public void EnemyDamage(float damage, int attackMethod)
+    public void EnemyDamage(int damage, int attackMethod)
     {
         animator.SetBool("enemy_attacked", true);
         canMove = false;
         
-        if(!isDead) {
+        if(!IsEnemyDead) {
             if(attackMethod == 1) {
                 //attack
                 StartCoroutine(IsAttacked(1.8f));
@@ -405,7 +409,7 @@ public class Enemy : MonoBehaviour
     void Die()
     {
         Debug.Log("Enemy died!");
-        isDead = true;
+        IsEnemyDead = true;
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();
         if (rb != null)

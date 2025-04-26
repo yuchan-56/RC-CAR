@@ -19,7 +19,7 @@ public class PlayerDamage : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if(enemyScript.isDead) return;
+        if(enemyScript.IsEnemyDead) return;
 
         if(other.CompareTag("Player")&&!Managers.Game.isHit) {
             Debug.Log($"{other.name}");

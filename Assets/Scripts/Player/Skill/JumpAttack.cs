@@ -56,9 +56,9 @@ public class JumpAttack : MonoBehaviour
     void OnTriggerEnter2D(Collider2D collision)
     {
         Enemy enemy = collision.GetComponent<Enemy>();
-        if (collision.tag == "Enemy" && enemy.isEnemyHit == false && enemy.isDead == false)
+        if (collision.tag == "Enemy" && enemy.IsEnemyHit == false && enemy.IsEnemyDead == false)
         {
-            enemy.isEnemyHit = true;
+            enemy.IsEnemyHit = true;
             hitEnemies.Add(enemy);
             if (Managers.Game.gage < 100)
             {
@@ -76,7 +76,7 @@ public class JumpAttack : MonoBehaviour
         foreach (Enemy enemy in hitEnemies)
         {
             if (enemy != null)
-                enemy.isEnemyHit = false;
+                enemy.IsEnemyHit = false;
         }
         hitEnemies.Clear();
         ani.SetBool("UltJumpAtt", false); 
