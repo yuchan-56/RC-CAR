@@ -36,6 +36,7 @@ public class JsonManager
         fileStream.Write(bytes, 0, bytes.Length);
         fileStream.Close();
     }
+
     public T Load<T>(string name = null) where T : new()
     {
         T data;
@@ -43,56 +44,70 @@ public class JsonManager
         {
             name = typeof(T).Name + ".json";
         }
+
         string loadPath = Application.dataPath;
         string directory = "/userData";
         string appender = $"/{name}";
-#if UNITY_EDITOR_WIN
-
-#endif
 
 #if UNITY_ANDROID
         loadPath = Application.persistentDataPath;
 #endif
+
         StringBuilder builder = new StringBuilder(loadPath);
         builder.Append(directory);
-        //위까지는 세이브랑 똑같다
-        //파일스트림을 만들어준다. 파일모드를 open으로 해서 열어준다. 다 구글링이다
+
         if (!Directory.Exists(builder.ToString()))
         {
-            //디렉토리가 없는경우 만들어준다
             Directory.CreateDirectory(builder.ToString());
         }
+
         builder.Append(appender);
 
         if (File.Exists(builder.ToString()))
         {
-            //세이브 파일이 있는경우
             FileStream stream = new FileStream(builder.ToString(), FileMode.Open);
-
             byte[] bytes = new byte[stream.Length];
             stream.Read(bytes, 0, bytes.Length);
             stream.Close();
             string jsonData = Encoding.UTF8.GetString(bytes);
 
-            //텍스트를 string으로 바꾼다음에 FromJson에 넣어주면은 우리가 쓸 수 있는 객체로 바꿀 수 있다
             data = JsonUtility.FromJson<T>(jsonData);
         }
         else
         {
+            // Resources에서 기본 파일 찾기
             TextAsset textAsset = Resources.Load<TextAsset>($"Data/{typeof(T).Name}");
 
-            if (textAsset == null) // Json파일찾기
+            if (textAsset != null)
             {
-                Debug.LogError($"파일을 찾을 수 없습니다: Data/{typeof(T).Name}");
-                return default;
+                data = JsonUtility.FromJson<T>(textAsset.text);
+                Save(data); // 읽은 기본 데이터를 저장
             }
-
-            Debug.Log(textAsset.text);
-            data = JsonUtility.FromJson<T>(textAsset.text);
-            Save<T>(data);
+            else
+            {
+                Debug.LogWarning($"StageData 파일이 없습니다. 새로 생성합니다.");
+                data = new T(); // 새 인스턴스 생성
+                Save(data); // 저장
+            }
         }
+
         return data;
-        //이 정보를 게임매니저나, 로딩으로 넘겨주는 것이당
+    }
+
+    public void ResetStageData()
+    {
+        string path = Application.dataPath + "/userData/StageData.json";
+
+        if (File.Exists(path))
+        {
+            File.Delete(path);
+            Debug.Log("StageData.json 삭제 완료");
+
+            // 기본값으로 새로 저장
+            JsonManager manager = new JsonManager();
+            var newData = new StageData(); // 기본값 객체
+            manager.Save(newData);
+        }
     }
 
 }

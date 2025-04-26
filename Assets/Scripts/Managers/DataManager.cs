@@ -22,8 +22,19 @@ public class DataManager
 
     public void Init()
     {
-      
-                                                                       
+        // 데이터 PlayerPref로 저장
+        if (PlayerPrefs.GetInt("FirstPlay", 0) == 0)
+        {
+            PlayerPrefs.SetInt("StageData", 1);
+            PlayerPrefs.SetInt("FirstPlay", 1); // 다음부터는 1로 저장
+            PlayerPrefs.Save();
+        }
+        else
+        {
+            // 이미 실행한 적 있음
+            Debug.Log("이미 실행한 적 있음!");
+        }
+
     }
 
     Loader LoadJson<Loader, Key, Value>(string path) where Loader : ILoader<Key, Value>
@@ -35,7 +46,36 @@ public class DataManager
 
 }
 
+#region Stage
+[System.Serializable]
+public class StageData
+{
+    public int currentStage = 1;
+    public void SaveCurrentStage(int stageNumber)
+    {
+        StageData data = new StageData();
+        data.currentStage = stageNumber;
 
+        JsonManager jsonManager = new JsonManager();
+        jsonManager.Save(data, "StageData.json");
+    }
+    public int LoadCurrentStage()
+    {
+        JsonManager jsonManager = new JsonManager();
+        StageData data = jsonManager.Load<StageData>("StageData.json");
+
+        if (data == null)
+        {
+            Debug.LogWarning("StageData 로드 실패, 기본값 반환");
+            return 1; // 기본 스테이지
+        }
+
+        return data.currentStage;
+    }
+}
+
+
+#endregion
 #region Stat
 
 [Serializable]

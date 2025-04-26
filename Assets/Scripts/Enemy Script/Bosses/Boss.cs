@@ -114,20 +114,20 @@ public class Boss : MonoBehaviour
         }
         */
 
-        if(!isAttacking)
+        if(isAttacking)
         {
-            if (distanceToPlayer <= minFollowDistance)
-            {
-                currentState = BossState.Stopping;
-            }
-            else
-            {
-                currentState = BossState.Following;
-            }
+            return;
         }
 
         
-        
+        if (distanceToPlayer <= minFollowDistance)
+        {
+            currentState = BossState.Stopping;
+        }
+        else
+        {
+            currentState = BossState.Following;
+        }
     
 
         

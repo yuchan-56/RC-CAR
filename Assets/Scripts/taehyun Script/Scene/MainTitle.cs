@@ -44,6 +44,7 @@ public class MainTitle : BaseScene
         {
             MoveGround(building,"building");
         }
+
     }
 
     void MoveGround(Transform obj,string St)

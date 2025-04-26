@@ -283,7 +283,7 @@ public class PlayerMove : MonoBehaviour
 
         if (collision.tag == "Final")
         {
-            Managers.UI.ShowPopUpUI<StageInfo>();
+            Managers.UI.ShowPopUpUI<GameClear>();
         }
     }
 
