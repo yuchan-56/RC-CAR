@@ -122,8 +122,8 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 1.2407634, y: -2.8645096, z: 0}
-  m_LocalScale: {x: 3.1, y: 3.1, z: 3.1}
-  m_ConstrainProportionsScale: 1
+  m_LocalScale: {x: 0.62, y: 0.62, z: 3.1}
+  m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5724100157176439453}
   m_Father: {fileID: 0}
@@ -222,7 +222,6 @@ MonoBehaviour:
   player: {fileID: 0}
   speed: 2
   wanderDistance: 1.5
-  isEnemyHit: 0
   animator: {fileID: 562718896322805208}
   throwableObjPrefab: {fileID: 6871151761292332681, guid: e969d2f941c75411d8d77854bcd5a2b9, type: 3}
   throwForce: 6
@@ -235,7 +234,6 @@ MonoBehaviour:
   - {fileID: 491587811, guid: c5a4eabbe570d45398e46543e97a041c, type: 3}
   - {fileID: 167256863, guid: c5a4eabbe570d45398e46543e97a041c, type: 3}
   - {fileID: 1441090756, guid: c5a4eabbe570d45398e46543e97a041c, type: 3}
-  maxHP: 3
 --- !u!95 &562718896322805208
 Animator:
   serializedVersion: 5
