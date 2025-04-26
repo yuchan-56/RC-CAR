@@ -15,6 +15,8 @@ public class Clock : MonoBehaviour
     public Image imageComponent;
     public Image failImage;
     public Image SuccessImage;
+
+    bool dead = false;
     //private List<GameObject> enemies;
     // 이미지가 표시될 스프라이트 렌더러
     // Start is called before the first frame update
@@ -55,10 +57,11 @@ public class Clock : MonoBehaviour
 
 
         }
-        else if(currentTime<=0)
+        else if(currentTime<=0&&dead==false)
         {
             // 타이머가 끝나면 게임 오버 애니메이션이나 화면 변경 등을 처리
             TriggerGameOver();
+            dead = true;
         }
     }
     void ChangeImage()
