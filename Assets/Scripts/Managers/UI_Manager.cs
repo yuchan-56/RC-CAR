@@ -146,8 +146,13 @@ public class UI_Manager
         {
             return;
         }
+        
         UI_Popup popUP = _popUpStack.Pop();
         Debug.Log($"ClosePopUpUI : {popUP}");
+        if(popUP==null)
+        {
+            return;
+        }
         Managers.Resource.Destroy(popUP.gameObject);
         Debug.Log($"{popUP} 이 삭제되었습니다.");
         popUP = null;
