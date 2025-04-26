@@ -12,13 +12,18 @@ public class MapMoving : UI_Popup
     public RectTransform panelBottom;
     public RectTransform panelLeft;
     public RectTransform panelRight;
+    public PlayerMove playerMove;
     Camera camera_m;
     private float FixedY = -1;
 
-    private bool moving = false;
+    public bool moving = false;
     // Start is called before the first frame update
     void Start()
     {
+        if(playerMove == null)
+        {
+            playerMove = FindFirstObjectByType<PlayerMove>();
+        }
         Debug.Log("맵이동구현");
         StartCoroutine(goBlack());
         camera_m = FindObjectOfType<Camera>();
@@ -55,6 +60,7 @@ public class MapMoving : UI_Popup
         Managers.Game.SkillAniReset = true;
         Managers.UI.ShowPopUpUI<StageGuide>(); // 맵이동이 끝날때 StageGuide 출력
 
+        playerMove.buttonDeactive = false;
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<MapMoving>(this.gameObject));
 
 

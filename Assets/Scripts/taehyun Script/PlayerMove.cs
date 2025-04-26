@@ -27,6 +27,7 @@ public class PlayerMove : MonoBehaviour
     bool HasJumped = false;
     bool isDashing = false;
     bool canDash = true;
+    public bool buttonDeactive = false;
     public Animator animator;
     private CameraMove camera;
     private Vector3 initialScale;
@@ -275,6 +276,7 @@ public class PlayerMove : MonoBehaviour
                 Debug.Log("NextJumpUp 코드가 실행되었습니다");
                 camera.CameraGoUp();
                 Managers.UI.ShowPopUpUI<MapMoving>();
+                buttonDeactive = true;
                 Managers.Game.GoJump();
                 return;
 

@@ -28,6 +28,7 @@ public class ComboManager : MonoBehaviour
     public Jumpblink jumpblink;
     public Dashblink dashblink;
     public Atkblink atkblink;
+    public MapMoving mapMoving;
     private Coroutine dashAniCoroutine;
     private Coroutine jumpAniCoroutine;
     private Coroutine atkAniCoroutine;
@@ -47,7 +48,8 @@ public class ComboManager : MonoBehaviour
 
     void Update()
     {
-        if(Managers.Game.SkillAniReset == true)
+
+        if(Managers.Game.SkillAniReset == true || player.buttonDeactive == true)
         {
             StopExistingCoroutine(ref atkAniCoroutine);
             StopExistingCoroutine(ref dashAniCoroutine);
@@ -266,7 +268,7 @@ public class ComboManager : MonoBehaviour
         else if (Input.GetMouseButtonUp(0) && AniSetup == true)
         {
 
-            if (Managers.Game.isHit)
+            if (Managers.Game.isHit || player.buttonDeactive == true)
             {
                 return;
             }
