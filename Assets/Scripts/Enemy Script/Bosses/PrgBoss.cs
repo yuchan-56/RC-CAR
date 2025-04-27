@@ -37,6 +37,14 @@ public class PrgBoss : Boss
         if(showHP && !showFrame) {
             ShowFrame();
         }
+
+        if(!doAttack)
+        {
+            attackObject[0].SetActive(false);
+            attackObject[1].SetActive(false);
+            attackObject[2].SetActive(false);
+            attackObject[3].SetActive(false);
+        }
     }
 
     private void ShowFrame()
@@ -55,30 +63,35 @@ public class PrgBoss : Boss
         showFrame = true;
     }
 
-    
+    bool doAttack = false;
 
     public override void Attack() {
         this.isAttacking = true;
         bmScript.attackPos = false;
         animator.SetBool("isAttack", true);
+        doAttack = true;
 
         StartCoroutine(EndPattern(0, 3.0f));
     }
 
     public void Prg1stAttack() {
+        attackObject[3].SetActive(false);
         attackObject[0].SetActive(true);
     }
 
     public void Prg2ndAttack() {
+        attackObject[0].SetActive(false);
         attackObject[1].SetActive(true);
     }
 
     public void Prg3rdAttack() {
+        attackObject[1].SetActive(false);
         attackObject[2].SetActive(true);
     }
 
     public void Prg4thAttack() {
-       attackObject[3].SetActive(true);
+        attackObject[2].SetActive(false);
+        attackObject[3].SetActive(true);
     }
 
     public override void P1() {
@@ -204,12 +217,14 @@ public class PrgBoss : Boss
         switch (attackNum)
         {
             case 0:
+                animator.SetBool("isAttack", false);
+                doAttack = false;
+
                 attackObject[0].SetActive(false);
                 attackObject[1].SetActive(false);
                 attackObject[2].SetActive(false);
                 attackObject[3].SetActive(false);
 
-                animator.SetBool("isAttack", false);
                 break;
             case 1:
                 p1Object.SetActive(false);

@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7454239228205075473}
   - component: {fileID: 559869335871833777}
+  - component: {fileID: 6378485886565367367}
   m_Layer: 0
   m_Name: collider2
   m_TagString: Untagged
@@ -77,6 +78,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 11.177844, y: 2.098188}
   m_EdgeRadius: 0
+--- !u!114 &6378485886565367367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3061259247604601185}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &3966258215023697314
 GameObject:
   m_ObjectHideFlags: 0
@@ -87,6 +101,7 @@ GameObject:
   m_Component:
   - component: {fileID: 12803393118995140}
   - component: {fileID: 2520753668098868907}
+  - component: {fileID: 6188271116982766390}
   m_Layer: 0
   m_Name: sound_Boss_P3_amp_9
   m_TagString: Untagged
@@ -163,6 +178,19 @@ PolygonCollider2D:
       - {x: 1.125, y: -0.1875}
       - {x: 0.90625, y: -0.125}
   m_UseDelaunayMesh: 0
+--- !u!114 &6188271116982766390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3966258215023697314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &4155950526792988941
 GameObject:
   m_ObjectHideFlags: 0
@@ -173,6 +201,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3285479294807609550}
   - component: {fileID: 3867765563642665056}
+  - component: {fileID: 8048683556226331996}
   m_Layer: 0
   m_Name: collider0
   m_TagString: Untagged
@@ -240,6 +269,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.39207554, y: 2.0393562}
   m_EdgeRadius: 0
+--- !u!114 &8048683556226331996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4155950526792988941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &4679217756035247602
 GameObject:
   m_ObjectHideFlags: 0
@@ -250,6 +292,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3628783123633693429}
   - component: {fileID: 7246357448885111593}
+  - component: {fileID: 3874040218589125259}
   m_Layer: 0
   m_Name: collider1
   m_TagString: Untagged
@@ -317,6 +360,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 3.863131, y: 2.000135}
   m_EdgeRadius: 0
+--- !u!114 &3874040218589125259
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679217756035247602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &6128298700615448055
 GameObject:
   m_ObjectHideFlags: 0
@@ -549,6 +605,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7415169520216446349}
   - component: {fileID: 2242207837801243083}
+  - component: {fileID: 6600880198957768085}
   m_Layer: 0
   m_Name: sound_Boss_P3_amp_10
   m_TagString: Untagged
@@ -628,6 +685,19 @@ PolygonCollider2D:
       - {x: 1.25, y: 0.0625}
       - {x: 1.1875, y: 0.0625}
   m_UseDelaunayMesh: 0
+--- !u!114 &6600880198957768085
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7127371440684432683}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &7536564173946483010
 GameObject:
   m_ObjectHideFlags: 0
@@ -638,6 +708,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4682115926765161333}
   - component: {fileID: 3910796707685506697}
+  - component: {fileID: 3325352294763118982}
   m_Layer: 0
   m_Name: sound_Boss_P3_amp_8
   m_TagString: Untagged
@@ -711,6 +782,19 @@ PolygonCollider2D:
       - {x: 1.09375, y: -0.25}
       - {x: 1.0625, y: -0.15625}
   m_UseDelaunayMesh: 0
+--- !u!114 &3325352294763118982
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7536564173946483010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerHP: {fileID: 0}
 --- !u!1 &7972150759265757408
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,7 +806,6 @@ GameObject:
   - component: {fileID: 8507011121353416635}
   - component: {fileID: 931119281795549976}
   - component: {fileID: 3689493068096031551}
-  - component: {fileID: 4292895289895596411}
   - component: {fileID: 2629391224754961273}
   m_Layer: 0
   m_Name: snd_amp
@@ -822,19 +905,6 @@ Animator:
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
   m_WriteDefaultValuesOnDisable: 0
---- !u!114 &4292895289895596411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7972150759265757408}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHP: {fileID: 0}
 --- !u!114 &2629391224754961273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -938,9 +1008,6 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6894463876954067031, guid: 1b13ac2ccff11489fa1249dafb632209, type: 3}
       insertIndex: -1
       addedObject: {fileID: 3668115060277704555}
-    - targetCorrespondingSourceObject: {fileID: 6894463876954067031, guid: 1b13ac2ccff11489fa1249dafb632209, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3704048074069273858}
   m_SourcePrefab: {fileID: 100100000, guid: 1b13ac2ccff11489fa1249dafb632209, type: 3}
 --- !u!1 &5108786503844715315 stripped
 GameObject:
@@ -962,19 +1029,6 @@ MonoBehaviour:
   collider0: {fileID: 4155950526792988941}
   collider1: {fileID: 4679217756035247602}
   collider2: {fileID: 3061259247604601185}
---- !u!114 &3704048074069273858
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5108786503844715315}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1a94564157a5148a8b20f309d70a8ea7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerHP: {fileID: 0}
 --- !u!4 &9090641316699701791 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7449079141317822843, guid: 1b13ac2ccff11489fa1249dafb632209, type: 3}
