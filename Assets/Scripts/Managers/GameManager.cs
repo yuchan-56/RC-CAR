@@ -88,7 +88,7 @@ public class GameManager
 
     public void UltimateDamageUp()
     {
-        damage = 1000;
+        damage = 5;
     }
 
     public void DamangeDown()

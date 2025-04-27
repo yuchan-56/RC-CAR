@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.SceneManagement;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -76,8 +77,9 @@ public class Boss : MonoBehaviour, EnemyHP
     protected virtual void Start()
     {
         stopPosition = transform.position;
+        int currentStage = SceneManager.GetActiveScene().buildIndex - 2;
 
-        currentHP = maxHP;
+        currentHP = maxHP + (currentStage * 20);
 
         canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
