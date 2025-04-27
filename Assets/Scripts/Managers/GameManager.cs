@@ -53,8 +53,9 @@ public class GameManager
         };
 
         Debug.Log(PlayerPrefs.GetInt("StageData"));
+        SoundManager.Instance.AudioPlay("Normal");
 
-        if(PlayerPrefs.GetInt("StageData")==1)
+        if (PlayerPrefs.GetInt("StageData")==1)
         {
             Time.timeScale = 0;
             Managers.UI.ShowPopUpUI<HowToPlay>();

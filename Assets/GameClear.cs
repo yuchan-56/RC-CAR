@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UnityEngine.EventSystems;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameClear : UI_Popup
 {
@@ -19,9 +20,15 @@ public class GameClear : UI_Popup
 
         // ¿˙¿Â
         int stage = PlayerPrefs.GetInt("StageData");
-        stage++;
+        if (stage == 0 && SceneManager.GetActiveScene().name == "S1_1") stage++;
+        if (stage == 1 && SceneManager.GetActiveScene().name == "S1_2") stage++;
+        if (stage == 2 && SceneManager.GetActiveScene().name == "S1_3") stage++;
+        if (stage == 3 && SceneManager.GetActiveScene().name == "S1_4") stage++;
         PlayerPrefs.SetInt("StageData", stage);
         PlayerPrefs.Save();
+
+        SoundManager.Instance.AudioStop();
+        SoundManager.Instance.SFXPlay("Stage Clear");
     }
     void GameClearClicked(PointerEventData eventData)
     {

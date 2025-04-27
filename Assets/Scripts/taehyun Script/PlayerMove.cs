@@ -57,6 +57,7 @@ public class PlayerMove : MonoBehaviour
         if (IsAttacking)
         {
             movedirection = 0;
+            animator.SetBool("player_run", false);
             return;
         }
 
@@ -68,11 +69,13 @@ public class PlayerMove : MonoBehaviour
         {
             movedirection = -1;
             animator.SetBool("player_run", true);
+            StartCoroutine(RunSFX());
         }
         else if (Input.GetKey(KeyCode.RightArrow))
         {
             movedirection = 1;
             animator.SetBool("player_run", true);
+            StartCoroutine(RunSFX());
         }
         else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
         {
@@ -80,8 +83,21 @@ public class PlayerMove : MonoBehaviour
             animator.SetBool("player_run", false);
         }
 
-
     }
+
+    private bool isRunningSFX = false;
+    IEnumerator RunSFX()
+    {
+        if(!isRunningSFX && animator.GetCurrentAnimatorStateInfo(0).IsName("player_run"))
+        {
+            SoundManager.Instance.SFXPlay("Player Run");
+            isRunningSFX = true;
+            yield return new WaitForSeconds(0.2f);
+
+            isRunningSFX = false;
+        }
+    }
+
     void FixedUpdate()
     {
 
@@ -129,7 +145,9 @@ public class PlayerMove : MonoBehaviour
                 rigid.velocity = Vector2.zero;
                 rigid.velocity = new Vector2(movedirection * maxspeed, 0);
                 rigid.AddForce(Vector2.up * jumpforce, ForceMode2D.Impulse);
+                SoundManager.Instance.SFXPlay("Player Jump");
             }
+            
             animator.SetTrigger("jump");
             Debug.Log("Jump");
 
@@ -248,7 +266,9 @@ public class PlayerMove : MonoBehaviour
         {
             StartCoroutine(ShowDashEffect());
             rigid.AddForce(new Vector2(dashDirection * dashSpeed, 0f), ForceMode2D.Impulse);
+            SoundManager.Instance.SFXPlay("Dash Attack");
         }
+        
         yield return new WaitForSeconds(dashDuration);
         isDashing = false;
         canDash = true;
@@ -303,6 +323,7 @@ public class PlayerMove : MonoBehaviour
         {
             IsAttacking = true;
             animator.SetTrigger("Attack");
+            SoundManager.Instance.SFXPlay("Player Attack");
             yield return new WaitForSeconds(0.583f);
             IsAttacking = false;
         }
@@ -312,6 +333,7 @@ public class PlayerMove : MonoBehaviour
             IsComboAttacking++;
             ForceDash();
             animator.SetTrigger("DashAttack");
+            SoundManager.Instance.SFXPlay("Dash Attack");
             yield return new WaitForSeconds(0f);
             isDashAttacking = false;
         }
@@ -321,6 +343,7 @@ public class PlayerMove : MonoBehaviour
             isJumpAttacking = true;
             IsComboAttacking++;
             TriggerJump();
+            SoundManager.Instance.SFXPlay("Jump Attack");
             animator.SetTrigger("JumpAttack");
             yield return new WaitForSeconds(0.75f);
             isJumpAttacking = false;
@@ -332,6 +355,7 @@ public class PlayerMove : MonoBehaviour
             IsComboAttacking++;
             ForceDash();
             TriggerJump();
+            SoundManager.Instance.SFXPlay("Dash Jump");
             animator.SetTrigger("JumpDash");
             yield return new WaitForSeconds(0.667f);
             isJumpDashing = false;

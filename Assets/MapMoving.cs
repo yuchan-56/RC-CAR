@@ -80,6 +80,7 @@ public class MapMoving : UI_Popup
     IEnumerator CloseScreen()
     {
         float duration = blackTime;
+        SoundManager.Instance.SFXPlay("Map Transition");
 
         //panelTop.DOAnchorPosY(-panelTop.rect.height, duration).SetUpdate(true);
         //panelBottom.DOAnchorPosY(panelTop.rect.height, duration).SetUpdate(true);
@@ -92,6 +93,13 @@ public class MapMoving : UI_Popup
     IEnumerator OpenScreen()
     {
         float duration = blackTime;
+        SoundManager.Instance.SFXPlay("Map Transition");
+        if(Managers.Game.currentGround==GameManager.GameGround.G4||
+            Managers.Game.currentGround == GameManager.GameGround.A2)
+            SoundManager.Instance.AudioPlay("Boss");
+        if (Managers.Game.currentGround == GameManager.GameGround.Q3 ||
+            Managers.Game.currentGround == GameManager.GameGround.C3)
+            SoundManager.Instance.AudioPlay("Normal");
 
         //panelTop.DOAnchorPosY(0, duration).SetUpdate(true);
         //panelBottom.DOAnchorPosY(0, duration).SetUpdate(true);

@@ -68,7 +68,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.02}
+  m_Offset: {x: -0.15, y: 0.02}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -79,7 +79,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.8, y: 0.7}
+  m_Size: {x: 0.9, y: 0.7}
   m_EdgeRadius: 0
 --- !u!114 &3650686185560753695
 MonoBehaviour:
@@ -265,7 +265,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.01, y: 0.13}
+  m_Offset: {x: -0.03, y: 0.13}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -276,7 +276,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.5, y: 1.1}
+  m_Size: {x: 0.7, y: 1.1}
   m_EdgeRadius: 0
 --- !u!95 &5534470668484005499
 Animator:
@@ -574,8 +574,11 @@ MonoBehaviour:
   IsAttacking: 0
   isground: 0
   dashDuration: 0.4
+  buttonDeactive: 0
   animator: {fileID: 0}
   dashEffect: {fileID: 0}
+  dashEffectUlt: {fileID: 0}
+  attackGeneral: {fileID: 0}
 --- !u!95 &2709990556405850502
 Animator:
   serializedVersion: 5
@@ -684,7 +687,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.02, y: 0.067}
+  m_Offset: {x: -0.11, y: 0.067}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -695,7 +698,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1.2601801, y: 0.73}
+  m_Size: {x: 1.42, y: 0.73}
   m_EdgeRadius: 0
 --- !u!95 &3106365994087946635
 Animator:

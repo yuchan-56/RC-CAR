@@ -242,6 +242,7 @@ public class Enemy : MonoBehaviour, EnemyHP
 
         if (throwableRb != null)
         {
+            SoundManager.Instance.SFXPlay("Enemy FarAttack");
             animator.SetBool("enemy_throw", true);
             animator.SetBool("enemy_attack", false);
 
@@ -280,6 +281,7 @@ public class Enemy : MonoBehaviour, EnemyHP
     public void OnAttackStart()
     {
         attackObject.SetActive(true);
+        SoundManager.Instance.SFXPlay("Enemy NearAttack");
     }
 
     public void OnAttackEnd()
@@ -304,6 +306,7 @@ public class Enemy : MonoBehaviour, EnemyHP
     public void EnemyDamage(int damage, int attackMethod)
     {
         animator.SetBool("enemy_attacked", true);
+        SoundManager.Instance.SFXPlay("Enemy Hit");
         canMove = false;
         
         if(!IsEnemyDead) {
@@ -339,7 +342,7 @@ public class Enemy : MonoBehaviour, EnemyHP
     }
 
     IEnumerator IsHit()
-    { 
+    {
         animator.SetBool("enemy_hit", true);
 
         yield return new WaitForSeconds(0.22f);

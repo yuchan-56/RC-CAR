@@ -77,9 +77,9 @@ public class Boss : MonoBehaviour, EnemyHP
     protected virtual void Start()
     {
         stopPosition = transform.position;
-        int currentStage = SceneManager.GetActiveScene().buildIndex - 2;
+        //int currentStage = SceneManager.GetActiveScene().buildIndex - 2;
 
-        currentHP = maxHP + (currentStage * 20);
+        //currentHP = maxHP + (currentStage * 20);
 
         canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
@@ -253,6 +253,7 @@ public class Boss : MonoBehaviour, EnemyHP
             }
             else if (currentHP < 0) { currentHP = 0; }
 
+            SoundManager.Instance.SFXPlay("Enemy Hit");
             Managers.Game.GetHit = true;
 
             if (currentHP <= 0)

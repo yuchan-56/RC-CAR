@@ -44,6 +44,7 @@ public class LoadingScene : MonoBehaviour
         }
 
         Debug.Log(scene);
+        SoundManager.Instance.AudioStop();
         StartCoroutine(Loading(scene));
     }
     IEnumerator Loading(string scene)
@@ -63,6 +64,7 @@ public class LoadingScene : MonoBehaviour
 
         LoadingPanel.DOFade(0f, 0.3f).SetUpdate(true);
         Managers.UI.ReSet();
+
     }
 
     IEnumerator Animation_RunGo()

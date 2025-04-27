@@ -32,8 +32,9 @@ public class EveryTimeSchedule : UI_Popup
         Managers.UI.SetCanvasNumber(this.gameObject, 1); // SortOrder1로
 
         int stage = PlayerPrefs.GetInt("StageData");
+        SoundManager.Instance.AudioPlay("Stage Select");
         // 스테이지에 해당하는 것들만 하얗게 나머지는 빨갛게
-        for(int i=0;i<stage;i++)
+        for (int i=0;i<=stage;i++)
         {
             Image im = Click_obj[i].GetComponent<Image>();
             im.color = new Color(0, 0, 0,0);

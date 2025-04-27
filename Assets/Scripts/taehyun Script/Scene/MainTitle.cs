@@ -25,6 +25,27 @@ public class MainTitle : BaseScene
     public float resetPositionX = -35.84f; // 왼쪽으로 이동했을 때 재배치 위치
     public float startPositionOffset = 23.62f; // 새로운 위치 설정 시 기준 오프셋
 
+    public GameObject rccar;
+
+    private bool isBlink = false;
+
+    private void Update()
+    {
+        StartCoroutine(RccarBlink());
+    }
+    IEnumerator RccarBlink()
+    {
+        if (!isBlink)
+        {
+            isBlink = true;
+            rccar.SetActive(true);
+            yield return new WaitForSeconds(0.5f);
+            rccar.SetActive(false);
+            yield return new WaitForSeconds(0.5f);
+            isBlink = false;
+        }
+        
+    }
 
     void Start()
     {
@@ -44,7 +65,7 @@ public class MainTitle : BaseScene
         {
             MoveGround(building,"building");
         }
-
+        SoundManager.Instance.AudioPlay("Start");
     }
 
     void MoveGround(Transform obj,string St)

@@ -17,7 +17,6 @@ public class Managers : MonoBehaviour
     DataManager _data = new DataManager(); //DataManager가 겹쳐서 추가
     JsonManager _json = new JsonManager();
     SpeechManager _speech = new SpeechManager();
-    SoundManager _sound = new SoundManager();
     public static GameManager Game { get { return Instance._game; } }
     public static UI_Manager UI { get { return Instance._ui; } }
     public static InputManager Input { get { return Instance._input; } }
@@ -29,7 +28,6 @@ public class Managers : MonoBehaviour
 
 
     public static SceneManagerEx Scene { get { return Instance._scene; } }
-    public static SoundManager Sound { get { return Instance._sound; } }
 
 
     void Start()
@@ -60,6 +58,13 @@ public class Managers : MonoBehaviour
             s_instance = go.GetComponent<Managers>();
             s_instance._pool.Init();
             s_instance._data.Init();
+
+            if (!PlayerPrefs.HasKey("StageData") || PlayerPrefs.GetInt("StageData") >= 5)
+            {
+                PlayerPrefs.SetInt("StageData", 0);
+                PlayerPrefs.Save();
+            }
+            
         }
     }
 

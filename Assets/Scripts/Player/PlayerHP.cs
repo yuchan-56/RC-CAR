@@ -47,6 +47,7 @@ public class PlayerHP : MonoBehaviour
         if (playerMove.animator != null)    
         {
             playerMove.animator.SetTrigger("GetDamaged");
+            SoundManager.Instance.SFXPlay("Player Hit");
             StartCoroutine(ResetDamageState());
         }
     }

@@ -1,90 +1,50 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class SoundManager: MonoBehaviour
+public class SoundManager : MonoBehaviour
 {
-    #region Singleton Init
+    public static SoundManager Instance { get; private set; }
 
-    private void Awake()
-    {
-        InitAudioSource();
-    }
+    public AudioSource audioSource;
+    public AudioSource SFXSource;
+    public List<AudioClip> clipList;
 
-    public void InitAudioSource()
+    public void Awake()
     {
-        if (bgmSource == null)
+        if (Instance != null)
         {
-            bgmSource = gameObject.AddComponent<AudioSource>();
-            bgmSource.loop = true;
-        }
-
-        if (sfxSource == null)
-            sfxSource = gameObject.AddComponent<AudioSource>();
-    }
-    #endregion
-
-    #region Privates
-    AudioSource bgmSource;
-    AudioSource sfxSource;
-
-    bool isBGMPlaying = false;
-
-    #endregion
-
-    #region Dependencies
-    [Header("Sound Database")]
-    [SerializeField] SoundDB soundDB;
-    #endregion
-
-    #region Sound Play Util
-
-
-    public void PlayBGM(string bgmName)
-    {
-        SoundData bgm = FindSound(soundDB.bgmList, bgmName);
-        isBGMPlaying = true;
-    }
-
-
-    public void StopBGM()
-    {
-        if (!isBGMPlaying)
+            Destroy(this);
             return;
-        bgmSource.Stop();
+        }
 
-        isBGMPlaying = false;
+        Instance = this;
+        DontDestroyOnLoad(gameObject);
     }
 
-
-    public void PlaySFX(string sfxName)
+    public void AudioPlay(string audioName)
     {
-        SoundData sfx = FindSound(soundDB.sfxList, sfxName);
-        if (sfx == null)
-        {
-            Debug.Log($"Failed to find sound data_SFX : {sfxName}");
-        }
-        else
-        {
-            sfxSource.pitch = sfx.pitch;
-            sfxSource.volume = sfx.volume;
-            sfxSource.PlayOneShot(sfx.audioClip);
-
-        }
+        audioSource.clip = clipList.Find(x => x.name == audioName);
+        audioSource.Play();
     }
 
-    private SoundData FindSound(SoundData[] soundList, string soundName)
+    public void AudioStop()
     {
-        foreach (SoundData sound in soundList)
-        {
-            if (sound.soundName == soundName)
-            {
-                return sound;
-            }
-        }
-        return null;
+        audioSource.Stop();
     }
 
+    public void SFXPlay(string SFXName)
+    {
+        SFXSource.PlayOneShot(clipList.Find(x => x.name == SFXName));
+    }
 
+    public void ButtonClicked()
+    {
+        SoundManager.Instance.SFXPlay("Button Click");
+    }
+
+    public void ChangeVolume(float value)
+    {
+        audioSource.volume = value;
+        SFXSource.volume = value;
+    }
 }
-#endregion
