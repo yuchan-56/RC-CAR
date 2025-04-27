@@ -25,8 +25,8 @@ public class Enemy : MonoBehaviour, EnemyHP
 
     private EnemyState currentState;
     private EnemyState previousState;
-    private float wanderStartTime;   // Wander 시작 시간 (PingPong 타이밍 기준)
-    private float lastWorldX; 
+    //private float wanderStartTime;   // Wander 시작 시간 (PingPong 타이밍 기준)
+    //private float lastWorldX; 
 
 
     // 거리제한

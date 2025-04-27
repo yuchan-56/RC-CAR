@@ -5,36 +5,31 @@ using UnityEngine.UI;
 
 public class SndBoss : Boss
 {
-    [SerializeField] private GameObject framePrefab; // Inspector에 연결
+    public BossManager bmScript;
 
+    [SerializeField] private GameObject framePrefab; // Inspector에 연결
     private GameObject frameInstance;
     bool showFrame = false;
-
-    public BossManager bmScript;
 
 
     //attack
     public GameObject attackPrefab; // 총알 프리팹
-    public float bulletSpeed = 9f; // 총알 속도
-    //public float fireRate = 1.0f;
-
+    public float bulletSpeed = 15f; // 총알 속도
+    public float fireRate = 1.5f;
     Vector3 firePoint = new Vector3(0, 2.0f, 0);
 
 
     //p1
     public GameObject P1Object;
-    bool didP1 = false;
 
     //p2
-    
+    public float p2SpeedMultiplier = 1.7f;
     public GameObject p2Prefab;
-    public float p2Duration = 14.0f;
+    public float p2PhaseDuration = 2f;
+    public float p2Duration = 9.0f;
 
     //p3
     public GameObject P3Object;
-    public float p3SpeedMultiplier = 1.7f;
-    public float p3Duration = 10.0f;
-    bool didP3 = false;
 
 
     protected override void Start()
@@ -75,20 +70,11 @@ public class SndBoss : Boss
 
 
     public override void Attack() {
-        //isWandering = false;
-        //isFollowing = false;
-        //isStop = false;
         isAttacking = true;
         bmScript.attackPos = false;
 
-
+        animator.SetBool("isStop", false);
         animator.SetBool("isAttack", true);
-        //animator.SetBool("isP1", false);
-        //animator.SetBool("isP2", false);
-        //animator.SetBool("isP3", false);
-        //animator.SetBool("isStop", false);
-
-        StartCoroutine(HoldOn(3.0f));
     }
 
     public void SndAttRoutine()
@@ -96,33 +82,17 @@ public class SndBoss : Boss
         if (attackPrefab != null)
         {
             Vector2 dir = facingRight ? Vector2.right : Vector2.left;
+            var wave = Instantiate(attackPrefab, transform.position + firePoint, Quaternion.identity);
 
-            var wave = Instantiate(attackPrefab, transform.position + firePoint, transform.rotation);
-
-            var rb2 = wave.GetComponent<Rigidbody2D>();
+            if (wave.TryGetComponent<Rigidbody2D>(out var rb2)) rb2.velocity = dir * bulletSpeed;
 
             if (rb2 != null) rb2.velocity = dir * bulletSpeed;
+            wave.transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
 
             Destroy(wave, 1.5f);
         }
-    }
 
-    IEnumerator HoldOn(float f)
-    {
-        yield return new WaitForSeconds(f);
-
-        animator.SetBool("isAttack", false);
-        //p1
-        animator.SetBool("isP1", false);
-        didP1 = false;
-
-        //p3
-        animator.SetBool("isP3", false);
-        didP3 = false;
-
-        isWandering = isFollowing = isStop = true;
-        isAttacking = false;
-        bmScript.attackPos = true;
+        StartCoroutine(EndPattern(0, 3.0f));
     }
 
     // 콜라이더
@@ -130,87 +100,85 @@ public class SndBoss : Boss
     {
         isAttacking = true;
         bmScript.attackPos = false;
+        animator.SetBool("isStop", false);
         animator.SetBool("isP1", true);
     }
 
     public void SndP1Routine()
     {
-        if (!didP1)
-        {
-            P1Object.SetActive(true);
-            didP1 = true;
-        }
-    }
-
-    public void SndP1RoutineOff()
-    {
-        StartCoroutine(HoldOn(0.1f));
-        P1Object.SetActive(false);
+        P1Object.SetActive(true);
+        StartCoroutine(EndPattern(1, 1.2f));
     }
 
 
-    //following, 공제대로 던지셈
+    //싱크 안맞음, 마지막에 공격만하고 루프걸림
     public override void P2()
     {
         isAttacking = true;
         bmScript.attackPos = false;
-        animator.SetBool("isP2", true);
 
-        StartCoroutine(P2Routine());
+        animator.SetBool("isStop", false);
+        
+
+        StartCoroutine(P2Routine(1.0f));
     }
 
-    private IEnumerator P2Routine()
+    private IEnumerator P2Routine(float f)
     {
-        // 속도 강화
+        animator.SetBool("isP2", true);
+        yield return new WaitForSeconds(f + 1.2f);
+
         float originalSpeed = speed;
-        speed *= p3SpeedMultiplier;
 
-        float rest = p2Duration;
+        float endTime = Time.time + p2Duration;
+        float phaseTime = p2PhaseDuration;
+        
 
-        while(rest > 0)
+        while (Time.time < endTime)
         {
-            float elapsed = 0f;
-            while (elapsed < 2f && rest > 0f)
-            {
-                float dt = Time.deltaTime;
-                rest -= dt;
-                elapsed += dt;
-                yield return null;
-            }
-            animator.SetBool("isAttack", true);
+            animator.SetBool("isP2Walk", true);
+            animator.SetBool("isP2Attack", false);
 
-            elapsed = 0f;
-            while (elapsed < 2.5f && rest > 0f)
+            speed = originalSpeed * p2SpeedMultiplier;
+
+            float phaseEnd = Time.time + p2PhaseDuration;
+            while (Time.time < phaseEnd && Time.time < endTime)
             {
-                float dt = Time.deltaTime;
-                rest -= dt;
-                elapsed += dt;
+                FollowPlayer();
                 yield return null;
             }
-            animator.SetBool("isAttack", false);
+
+            // --- phase 2: attack with ultimate attack anim ---
+            animator.SetBool("isP2Walk", false);
+            animator.SetBool("isP2Attack", true);
+            speed = originalSpeed;
+
+            phaseEnd = Time.time + p2PhaseDuration;
+            while (Time.time < phaseEnd && Time.time < endTime)
+            {
+                yield return new WaitForSeconds(fireRate);
+            }
+            animator.SetBool("isP2Attack", false);
         }
-        animator.SetBool("isAttack", false);
 
-        // 리셋
+        animator.SetBool("isP2Walk", false);
+        animator.SetBool("isP2Attack", false);
+        animator.SetBool("isP2", false) ;
         speed = originalSpeed;
-        animator.SetBool("isP2", false);
-        isWandering = isFollowing = isStop = true;
-        isAttacking = false;
-        bmScript.attackPos = true;
+        StartCoroutine(EndPattern(2, 0));
     }
 
     public void SndP2AttRoutine()
     {
-        if (p2Prefab != null)
+        if (attackPrefab != null)
         {
-            float dirX = transform.localScale.x > 0 ? 1f : -1f;
-            Vector2 dir = new Vector2(dirX, 0f);
-
+            Vector2 dir = facingRight ? Vector2.right : Vector2.left;
             var wave = Instantiate(p2Prefab, transform.position + firePoint, Quaternion.identity);
 
-            var rb2 = wave.GetComponent<Rigidbody2D>();
+            if (wave.TryGetComponent<Rigidbody2D>(out var rb2)) rb2.velocity = dir * bulletSpeed;
 
             if (rb2 != null) rb2.velocity = dir * bulletSpeed;
+            wave.transform.localScale = new Vector3(Mathf.Sign(dir.x), 1, 1);
 
             Destroy(wave, 1.5f);
         }
@@ -223,20 +191,46 @@ public class SndBoss : Boss
         bmScript.attackPos = false;
 
         animator.SetBool("isP3", true);
+        animator.SetBool("isStop", false);
     }
 
     public void SndP3Routine()
     {
-        if (!didP3)
-        {
-            P3Object.SetActive(true);
-            didP3 = true;
-        }
+        P3Object.SetActive(true);
+        StartCoroutine(EndPattern(3, 2.25f));
     }
 
-    public void SndP3RoutineOff()
+    IEnumerator EndPattern(int attackNum, float min)
     {
-        StartCoroutine(HoldOn(0.1f));
-        P3Object.SetActive(false);
+        yield return new WaitForSeconds(min);
+
+        isWandering = isFollowing = isStop = true;
+        isAttacking = false;
+        bmScript.attackPos = true;
+
+        switch(attackNum)
+        {
+            case 0:
+                animator.SetBool("isAttack", false);
+                break;
+            case 1:
+                P1Object?.SetActive(false);
+                animator.SetBool("isP1", false);
+                break;
+            case 2:
+                animator.SetBool("isP2Walk", false);
+                animator.SetBool("isP2Attack", false);
+                animator.SetBool("isP2", false);
+                break;
+            case 3:
+                P3Object?.SetActive(false);
+                animator.SetBool("isP3", false);
+                break;
+            default:
+                break;
+
+        }
+
+       
     }
 }

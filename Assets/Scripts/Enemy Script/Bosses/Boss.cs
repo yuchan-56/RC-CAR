@@ -54,6 +54,7 @@ public class Boss : MonoBehaviour, EnemyHP
 
     // 방향전환
     protected bool facingRight = false; // 적의 현재 바라보는 방향
+    private int FacingRightSign => facingRight ? 1 : -1;
     private float lastXPosition = 0f;
 
     protected enum BossState {
@@ -223,9 +224,14 @@ public class Boss : MonoBehaviour, EnemyHP
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
 
-        Vector2 directionToPlayer = player.position - transform.position;
-        FlipDirection(directionToPlayer.x);
-        transform.position = Vector2.MoveTowards(transform.position, player.position, speed * Time.deltaTime);
+        float dirX = player.position.x - transform.position.x;
+        FlipDirection(dirX);
+
+        Vector2 currentPos = transform.position;
+        Vector2 targetPos = new Vector2(player.position.x, currentPos.y);
+
+        transform.position = Vector2.MoveTowards(currentPos, targetPos, speed * Time.deltaTime);
+
 
         stopPosition = transform.position; 
     }
