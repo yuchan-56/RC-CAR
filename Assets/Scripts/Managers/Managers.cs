@@ -59,8 +59,9 @@ public class Managers : MonoBehaviour
             s_instance._pool.Init();
             s_instance._data.Init();
 
-            if (!PlayerPrefs.HasKey("StageData") || PlayerPrefs.GetInt("StageData") >= 5)
+            if (!PlayerPrefs.HasKey("FirstOpen"))
             {
+                PlayerPrefs.SetInt("FirstOpen", 1);
                 PlayerPrefs.SetInt("StageData", 0);
                 PlayerPrefs.Save();
             }
