@@ -10,11 +10,12 @@ public class Boss : MonoBehaviour, EnemyHP
     public bool IsEnemyHit { get; set; }
     public bool IsEnemyDead { get; set; }
 
-    private SpriteRenderer spriteRenderer;
-    private Color originalColor;
+    protected SpriteRenderer spriteRenderer;
+    protected Color originalColor;
 
     Collider2D playerCollider;
     Collider2D bossCollider;
+
     // HP
     public GameObject hpBarPrefab; // HP Bar 프리팹 (UI Image)
     public RectTransform hpBarTransform; // 개별 HP 바의 RectTransform
@@ -38,7 +39,7 @@ public class Boss : MonoBehaviour, EnemyHP
     public bool isAttacking = false;
 
     // 좌우이동 + following player
-    public Transform player;
+    public GameObject player;
     public float speed = 1.4f;
 
     // 거리제한
@@ -54,8 +55,6 @@ public class Boss : MonoBehaviour, EnemyHP
 
     // 방향전환
     protected bool facingRight = false; // 적의 현재 바라보는 방향
-    private int FacingRightSign => facingRight ? 1 : -1;
-    private float lastXPosition = 0f;
 
     protected enum BossState {
         Idle,
@@ -76,19 +75,19 @@ public class Boss : MonoBehaviour, EnemyHP
 
     protected virtual void Start()
     {
-
         stopPosition = transform.position;
 
         currentHP = maxHP;
 
         canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
-
         spriteRenderer = GetComponent<SpriteRenderer>();
 
         if (spriteRenderer != null)
         {
             originalColor = spriteRenderer.color; // 원래 색 저장
         }
+
+        player = GameObject.FindWithTag("Player");
 
         playerCollider = player.GetComponent<Collider2D>();
         bossCollider = GetComponent<Collider2D>();
@@ -105,7 +104,7 @@ public class Boss : MonoBehaviour, EnemyHP
     
     protected virtual void Update()
     {
-        float heightWPlayer = Mathf.Abs(transform.position.y - player.position.y);
+        float heightWPlayer = Mathf.Abs(transform.position.y - player.transform.position.y);
         attackPossible = (heightWPlayer <= floorThreshold);
 
         if (attackPossible && !showHP) {
@@ -120,7 +119,7 @@ public class Boss : MonoBehaviour, EnemyHP
         }
 
 
-        float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
+        float distanceToPlayer = Mathf.Abs(transform.position.x - player.transform.position.x);
 
         
         if (distanceToPlayer <= minFollowDistance)
@@ -198,25 +197,6 @@ public class Boss : MonoBehaviour, EnemyHP
         Managers.Game.EnemyDied();
     }
 
-    /*
-    protected virtual void Wander()
-    {
-        animator.SetBool("isP1", false);
-        //animator.SetBool("isP2", false);
-        animator.SetBool("isP3", false);
-        animator.SetBool("isAttack", false);
-
-        float xPos = Mathf.PingPong(Time.time * speed, wanderDistance) - (wanderDistance / 2);
-
-        float horizontalDirection = xPos - lastXPosition;
-        FlipDirection(horizontalDirection);
-
-        transform.position = new Vector2(stopPosition.x + xPos, transform.position.y);
-
-        lastXPosition = xPos;
-    }
-    */
-
     protected virtual void FollowPlayer()
     {
         animator.SetBool("isP1", false);
@@ -224,11 +204,11 @@ public class Boss : MonoBehaviour, EnemyHP
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
 
-        float dirX = player.position.x - transform.position.x;
+        float dirX = player.transform.position.x - transform.position.x;
         FlipDirection(dirX);
 
         Vector2 currentPos = transform.position;
-        Vector2 targetPos = new Vector2(player.position.x, currentPos.y);
+        Vector2 targetPos = new Vector2(player.transform.position.x, currentPos.y);
 
         transform.position = Vector2.MoveTowards(currentPos, targetPos, speed * Time.deltaTime);
 

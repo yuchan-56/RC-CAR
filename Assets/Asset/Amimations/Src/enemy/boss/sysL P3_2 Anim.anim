@@ -50,8 +50,6 @@ AnimationClip:
       value: {fileID: -1608255788, guid: 17afe21ea9e26463a8deed80e102d975, type: 3}
     - time: 2.3333333
       value: {fileID: -1816655566, guid: 17afe21ea9e26463a8deed80e102d975, type: 3}
-    - time: 2.5
-      value: {fileID: 1163413124, guid: 17afe21ea9e26463a8deed80e102d975, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -89,13 +87,12 @@ AnimationClip:
     - {fileID: -2026485445, guid: 17afe21ea9e26463a8deed80e102d975, type: 3}
     - {fileID: -1608255788, guid: 17afe21ea9e26463a8deed80e102d975, type: 3}
     - {fileID: -1816655566, guid: 17afe21ea9e26463a8deed80e102d975, type: 3}
-    - {fileID: 1163413124, guid: 17afe21ea9e26463a8deed80e102d975, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 2.5166667
+    m_StopTime: 2.35
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -114,4 +111,18 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0.68333334
+    functionName: sysP3On
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.5
+    functionName: sysP3Off
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0

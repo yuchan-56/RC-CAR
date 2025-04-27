@@ -140,20 +140,11 @@ public class GrpBoss : Boss
 
 
     public override void P1() {
-        //isWandering = false;
-        //isFollowing = false;
-        //isStop = false;
         isAttacking = true;
         bmScript.attackPos = false;
 
-        //animator.SetBool("isAttack", false);
-        //animator.SetBool("isP2", false);
-        //animator.SetBool("isP3", false);
-        //animator.SetBool("isDead", false);
-        //animator.SetBool("isStop", false);
         animator.SetBool("isP1", true);
 
-        
         StartCoroutine(P1Routine());
     }
 
@@ -189,7 +180,7 @@ public class GrpBoss : Boss
             if (o != null)
             {
                 o.transform.localScale *= 1.4f;
-                o.transform.position = player.position + fallStartPositions[i];
+                o.transform.position = player.transform.position + fallStartPositions[i];
             }
         }
 

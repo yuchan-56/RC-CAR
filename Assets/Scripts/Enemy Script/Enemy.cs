@@ -159,6 +159,11 @@ public class Enemy : MonoBehaviour, EnemyHP
             Vector3 screenPosition = Camera.main.WorldToScreenPoint(transform.position + new Vector3(0, 1.7f, 0));
             hpBarImage.transform.position = screenPosition;
         }
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            EnemyDamage(10, 0);
+        }
     }
 
     void UpdateHPBar()

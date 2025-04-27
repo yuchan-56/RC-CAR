@@ -67,7 +67,7 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
-        this.isAttacking = true;    // ← 추가
+        this.isAttacking = true;
         bmScript.attackPos = false;
 
 
@@ -118,7 +118,7 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
-        this.isAttacking = true;    // ← 추가
+        this.isAttacking = true;
         bmScript.attackPos = false;
 
         animator.SetBool("isP2", false);
@@ -140,7 +140,7 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
-        this.isAttacking = true;    // ← 추가
+        this.isAttacking = true;
         bmScript.attackPos = false;
 
 
@@ -208,58 +208,6 @@ public class PrgBoss : Boss
 
 
 
-
-
-    /*
-   IEnumerator FallObject(GameObject obj)
-    {
-        // 랜덤 X 좌표 설정
-        float randomX = UnityEngine.Random.Range(transform.position.x - 15f, transform.position.x + 15f);
-
-        // 초기 위치 설정
-        Vector3 startPosition = new Vector3(randomX, transform.position.y + 7f, 0);
-        GameObject fallingObj = Instantiate(obj, startPosition, Quaternion.identity);
-
-        float fallSpeed = UnityEngine.Random.Range(2f, 5f);
-
-
-        if (fallingObj == null)
-        {
-            Debug.Log("fallingObj Null 오류");
-
-        }
-        else
-        {
-            if(fallingObj != null)
-            {
-                while (fallingObj.transform.position.y > transform.position.y - 5f)
-                {
-                    if(fallingObj == null)
-                    {
-                        yield return null;
-                    }
-                    fallingObj.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
-                    yield return null;
-                }
-            }
-            
-
-
-
-            Destroy(fallingObj);
-            animator.SetBool("isP2", false);
-
-            isWandering = true;
-            isFollowing = true;
-            isStop = true;
-            bmScript.attackPos = true;    // 다음 공격 가능 신호
-            this.isAttacking = false;
-        }
-    }
-    */
-
-
-    // ------
 
     public override void P3() {
         isWandering = false;

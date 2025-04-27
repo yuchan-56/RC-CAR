@@ -42,8 +42,6 @@ AnimationClip:
       value: {fileID: 1984247534, guid: 193dc932352e448a08e858fd8606d437, type: 3}
     - time: 1.6666666
       value: {fileID: -278377015, guid: 193dc932352e448a08e858fd8606d437, type: 3}
-    - time: 1.8333334
-      value: {fileID: -1712814858, guid: 193dc932352e448a08e858fd8606d437, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -77,13 +75,12 @@ AnimationClip:
     - {fileID: 338712116, guid: 193dc932352e448a08e858fd8606d437, type: 3}
     - {fileID: 1984247534, guid: 193dc932352e448a08e858fd8606d437, type: 3}
     - {fileID: -278377015, guid: 193dc932352e448a08e858fd8606d437, type: 3}
-    - {fileID: -1712814858, guid: 193dc932352e448a08e858fd8606d437, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 1.85
+    m_StopTime: 1.6833333
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -102,4 +99,32 @@ AnimationClip:
   m_EulerEditorCurves: []
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 1
+    functionName: sysP2C0
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.1666666
+    functionName: sysP2C1
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.3333334
+    functionName: sysP2C2
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: 1.6666666
+    functionName: sysP2Off
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
