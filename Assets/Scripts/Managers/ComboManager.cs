@@ -273,7 +273,7 @@ public class ComboManager : MonoBehaviour
                 return;
             }
 
-            Debug.Log("마우스 업 감지됨");
+            
             playerAttackGeneral.AttackSetDeactive();
             dashAttack.SkillMotionDeactive();
             jumpAttack.SkillMotionDeactive();
@@ -306,17 +306,9 @@ public class ComboManager : MonoBehaviour
             switch (InputButton.Count)
             {
                 case 1:
-                    if (InputButton.Contains("Jump"))
+                    if (InputButton.Contains("Attack"))
                     {
-                        Debug.Log("Jump");
-                    }
-                    else if (InputButton.Contains("Dash"))
-                    {
-                        Debug.Log("Dash");
-                    }
-                    else if (InputButton.Contains("Attack"))
-                    {
-                        Debug.Log("Attack");
+                        
                         playerAttackGeneral.AttackSetActive();
                         player.SkillMotionActive("Attack");
                     }
@@ -326,21 +318,21 @@ public class ComboManager : MonoBehaviour
                     if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))
                     {
 
-                        Debug.Log("JumpDash active");
+                        
                        
                         player.SkillMotionActive("JumpDash");
 
                     }
                     else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))
                     {
-                        Debug.Log("DashAttack active");
+                        
                         
                         dashAttack.SkillMotionActive();
                         player.SkillMotionActive("DashAttack");
                     }
                     else if (InputButton.Contains("Jump") && InputButton.Contains("Attack"))
                     {
-                        Debug.Log("JumpAttack active");
+                        
                     
                         jumpAttack.SkillMotionActive();
                         player.SkillMotionActive("JumpAttack");
@@ -351,7 +343,7 @@ public class ComboManager : MonoBehaviour
                     if (Managers.Game.gage >= 100 && InputButton.Contains("Jump") && InputButton.Contains("Attack") && InputButton.Contains("Dash")
                         && playerAttackGeneral.UltimateSkill_Active == false)
                     {
-                        Debug.Log("Ultimate skill active");
+                        
                         playerAttackGeneral.UltimateSkillActive();
                     }
                     break;

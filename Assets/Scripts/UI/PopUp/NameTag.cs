@@ -79,9 +79,6 @@ public class NameTag : UI_Popup
         {
             name.text = type.ToString(); // Key 한국어 출력
         }
-        else
-        {
-            Debug.LogWarning($"'{type}'에 해당하는 대사가 없습니다.");
-        }
+        
     }
 }

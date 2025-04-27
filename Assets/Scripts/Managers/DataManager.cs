@@ -29,11 +29,7 @@ public class DataManager
             PlayerPrefs.SetInt("FirstPlay", 1); // 다음부터는 1로 저장
             PlayerPrefs.Save();
         }
-        else
-        {
-            // 이미 실행한 적 있음
-            Debug.Log("이미 실행한 적 있음!");
-        }
+        
 
     }
 
@@ -66,7 +62,7 @@ public class StageData
 
         if (data == null)
         {
-            Debug.LogWarning("StageData 로드 실패, 기본값 반환");
+            
             return 1; // 기본 스테이지
         }
 

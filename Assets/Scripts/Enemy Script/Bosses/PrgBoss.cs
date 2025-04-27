@@ -27,7 +27,7 @@ public class PrgBoss : Boss
     protected override void Start()
     {
         base.Start();
-        Debug.Log("프로그래밍 보스");
+        
     }
 
 

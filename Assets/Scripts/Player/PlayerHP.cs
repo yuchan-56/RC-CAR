@@ -54,7 +54,7 @@ public class PlayerHP : MonoBehaviour
 
     private IEnumerator ResetDamageState()  
     {
-        Debug.Log("강제 중지");
+        
         yield return new WaitForSeconds(animationDuration);
         playerMove.animator.SetTrigger("GetDamagedDisable");
     }
@@ -70,7 +70,7 @@ public class PlayerHP : MonoBehaviour
         // 물리엔진 수동 모드
         Physics2D.autoSimulation = false;
 
-        Debug.Log("땅에 닿을 때까지 플레이어 낙하 처리 시작");
+        
 
         while (playerMove.isground == false)
         {
@@ -85,7 +85,7 @@ public class PlayerHP : MonoBehaviour
 
     public void GetDamaged(int damageAmount)
     {
-        Debug.Log("데미지를 받음");
+        
         if (Managers.Game.isHit) return;
 
 
@@ -130,7 +130,7 @@ public class PlayerHP : MonoBehaviour
                     playerMove.animator.ResetTrigger(param.name);
                 }
             }
-            Debug.Log("GameOver In PlayerHP");
+            
             dieAnimation();
             Time.timeScale = 0;
             StartCoroutine(StartGameOverUI());
@@ -205,7 +205,7 @@ public class PlayerHP : MonoBehaviour
         {
             currentHP++;
             UpdateHPUI();
-            Debug.Log("HP 자동 회복됨: " + currentHP);
+            
 
             yield return new WaitForSeconds(hpRecoverInterval);
         }

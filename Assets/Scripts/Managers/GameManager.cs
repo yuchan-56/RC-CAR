@@ -45,14 +45,14 @@ public class GameManager
     public void GameStart()
     {
         joinBossName = null;
-        Debug.Log("GameStart");
+        
         if (GameObject.FindWithTag("@LoadingScene")==null) // 로딩씬 없다면
         {
             GameObject go = Managers.Resource.Instantiate($"@LoadingScene");
             go.transform.SetParent(Managers.UI.Root.transform);
         };
 
-        Debug.Log(PlayerPrefs.GetInt("StageData"));
+        
         SoundManager.Instance.AudioPlay("Normal");
 
         if (PlayerPrefs.GetInt("StageData")==1)
@@ -84,7 +84,7 @@ public class GameManager
         // Enum을 인덱스로 변경하여 설정
         currentGround = (GameGround)nextIndex;
 
-        Debug.Log($"현재 라운드는 {currentGround} 입니다.");
+        
     }
 
     public void UltimateDamageUp()

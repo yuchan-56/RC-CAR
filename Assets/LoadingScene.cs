@@ -33,17 +33,9 @@ public class LoadingScene : MonoBehaviour
     }
     public void GoLoading(string scene)
     {
-        if (LoadingPanel == null)
-        {
-            Debug.LogError("LoadingPanel is not assigned!");
-        }
+        
 
-        if (Managers.Scene == null)
-        {
-            Debug.LogError("Managers.Scene is not initialized!");
-        }
-
-        Debug.Log(scene);
+        
         SoundManager.Instance.AudioStop();
         StartCoroutine(Loading(scene));
     }
@@ -58,7 +50,7 @@ public class LoadingScene : MonoBehaviour
 
 
         yield return new WaitForSecondsRealtime(2f);
-        Debug.Log("이곳에 진입했습니다");
+        
 
         setActive(false);
 

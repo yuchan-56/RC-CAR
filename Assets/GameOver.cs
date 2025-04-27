@@ -25,7 +25,7 @@ public class GameOver : UI_Popup
     void ReTryClicked(PointerEventData eventData)
     {
         SoundManager.Instance.SFXPlay("Button Click");
-        Debug.Log("ReTryClicked");
+        
         LoadingScene.Instance.GoLoading("MainTitle");
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<GameOver>(this.gameObject));
     }

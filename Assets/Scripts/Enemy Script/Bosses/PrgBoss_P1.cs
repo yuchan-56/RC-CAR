@@ -46,7 +46,7 @@ public class PrgBoss_P1 : MonoBehaviour
                     knockbackDirection = Vector2.left; // 기본 방향
                 }
 
-                Debug.Log("Knockback Direction: " + knockbackDirection);
+                
 
                 shouldKnockback = true;
             }
@@ -83,12 +83,12 @@ public class PrgBoss_P1 : MonoBehaviour
         //Debug.Log("준비중");
 
         if(bossRb == null) {
-            Debug.LogError("boss null");
+           
             yield break;
         }
 
         if(playerRb == null) {
-            Debug.Log("player null");
+            
             yield break;
         }
 

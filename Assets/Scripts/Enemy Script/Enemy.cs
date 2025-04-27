@@ -335,7 +335,7 @@ public class Enemy : MonoBehaviour, EnemyHP
         if(currentHP <= 0) {
             Die();
         }
-        Debug.Log(currentHP);
+        
         
         Managers.Game.GetHit = true;        
     }
@@ -415,7 +415,7 @@ public class Enemy : MonoBehaviour, EnemyHP
 
     void Die()
     {
-        Debug.Log("Enemy died!");
+        
         IsEnemyDead = true;
 
         Rigidbody2D rb = GetComponent<Rigidbody2D>();

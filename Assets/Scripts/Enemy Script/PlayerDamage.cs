@@ -22,8 +22,7 @@ public class PlayerDamage : MonoBehaviour
         if(enemyScript.IsEnemyDead) return;
 
         if(other.CompareTag("Player")&&!Managers.Game.isHit) {
-            Debug.Log($"{other.name}");
-            Debug.Log("player damage");
+            
             playerHP.GetDamaged(1);
             player = other.GetComponent<PlayerEffect>();
             if (player != null)
@@ -31,7 +30,7 @@ public class PlayerDamage : MonoBehaviour
                 Vector2 knockbackDriection = (player.transform.position - transform.position).normalized;
                 player.TakeHit(knockbackDriection);
             }
-            else Debug.Log("Playerã�� ����");
+            
         }
     }
 }

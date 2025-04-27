@@ -65,7 +65,7 @@ public class GrpBoss : Boss
     protected override void Start()
     {
         base.Start();
-        Debug.Log("그래픽 보스");
+        
 
         rb = GetComponent<Rigidbody2D>();
     }
@@ -210,7 +210,7 @@ public class GrpBoss : Boss
 
 
     public override void P2() {
-        Debug.Log("P2 호출됨: currentHP=" + currentHP + " _p2Done=" + _p2Done);
+       
 
         if (_p2Done || currentHP > maxHP * healThreshold)
         {

@@ -281,8 +281,6 @@ public class Boss : MonoBehaviour, EnemyHP
 
     public virtual void Die()
     {
-        Debug.Log("boss died!");
-
         if (hpBarTransform != null)
         {
             Destroy(hpBarTransform.gameObject);

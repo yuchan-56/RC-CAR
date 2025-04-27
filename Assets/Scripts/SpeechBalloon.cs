@@ -41,7 +41,7 @@ public class SpeechBalloon : UI_Popup
     private void Start()
     {
         target = Managers.Speech.speechTmp;
-        Debug.Log($"{target.name}의 SpeechBalloon 추출");
+        
 
         // target.name 을 기반으로 Dictionary에서 type 찾기
         string targetName = target.name.ToLower(); // 영어 이름
@@ -50,7 +50,7 @@ public class SpeechBalloon : UI_Popup
         {
             if (pair.Value.english.ToLower() == targetName) // english에 맞는 target이름을 찾으면
             {
-                Debug.Log(pair.Key);
+                
                 type = pair.Key; // Key의 값이 type
                 break;
             }
@@ -89,10 +89,7 @@ public class SpeechBalloon : UI_Popup
         {
             text.text = pair.quote; // 대사 출력
         }
-        else
-        {
-            Debug.LogWarning($"'{type}'에 해당하는 대사가 없습니다.");
-        }
+        
     }
 
 }

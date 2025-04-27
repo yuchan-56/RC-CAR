@@ -21,10 +21,7 @@ public class ResourceManager
             }
         }
 
-        if (Resources.Load<T>(path) == null)
-        {
-            Debug.Log($"Failed to load Resource : {path}");
-        }
+        
 
         return Resources.Load<T>(path);
     }
@@ -34,7 +31,7 @@ public class ResourceManager
         GameObject original = Load<GameObject>($"Prefabs/{path}");
         if (original == null)
         {
-            Debug.Log($"Failed to load prefab : {path}");
+            
             return null;
         }
         if (original.GetComponent<Poolable>() != null)
@@ -52,7 +49,7 @@ public class ResourceManager
         GameObject prefab = Load<GameObject>($"Prefabs/{path}");
         if (prefab == null)
         {
-            Debug.Log($"Failed to load prefab : {path}");
+            
             return null;
         }
         return Object.Instantiate(prefab, position, Quaternion.identity, parent);

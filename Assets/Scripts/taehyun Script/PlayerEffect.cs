@@ -23,7 +23,7 @@ public class PlayerEffect : MonoBehaviour
 
     private IEnumerator HandleHit(Vector2 hitDirection)
     {
-            Debug.Log("피격불가");  // (1) 이제 정확한 시점에 실행됨
+           
             isHit = true;
             Managers.Game.isHit = true;
 
@@ -53,7 +53,7 @@ public class PlayerEffect : MonoBehaviour
     private IEnumerator InvincibilityTimer()
     {
         yield return new WaitForSeconds(shakeDuration); // 무적 시간 유지
-        Debug.Log("피격가능");
+        
         Managers.Game.isHit = false; // 무적 해제
         isHit = false;
     }

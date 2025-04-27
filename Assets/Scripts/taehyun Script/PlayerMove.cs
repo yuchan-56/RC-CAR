@@ -149,7 +149,7 @@ public class PlayerMove : MonoBehaviour
             }
             
             animator.SetTrigger("jump");
-            Debug.Log("Jump");
+            
 
             // 착지 전까지 점프 불가능
             yield return new WaitForSeconds(0.1f);
@@ -181,10 +181,7 @@ public class PlayerMove : MonoBehaviour
         {
             StartActionCoroutine(Jump());
         }
-        else
-        {
-            Debug.Log("Cant Jump");
-        }
+        
     }
     public void OnLeftButtonDown()
     {
@@ -289,10 +286,10 @@ public class PlayerMove : MonoBehaviour
 
         if (collision.tag == "NextJumpUp")
         {
-            Debug.Log("NewctJumpUp");
+            
             if (Managers.Game.CheckNextRound()) // 적이 모두 처치되었다면.
             {
-                Debug.Log("NextJumpUp 코드가 실행되었습니다");
+                
                 camera.CameraGoUp();
                 Managers.UI.ShowPopUpUI<MapMoving>();
                 buttonDeactive = true;

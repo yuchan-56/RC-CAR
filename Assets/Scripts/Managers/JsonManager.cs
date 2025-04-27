@@ -85,7 +85,7 @@ public class JsonManager
             }
             else
             {
-                Debug.LogWarning($"StageData 파일이 없습니다. 새로 생성합니다.");
+                
                 data = new T(); // 새 인스턴스 생성
                 Save(data); // 저장
             }
@@ -101,8 +101,7 @@ public class JsonManager
         if (File.Exists(path))
         {
             File.Delete(path);
-            Debug.Log("StageData.json 삭제 완료");
-
+            
             // 기본값으로 새로 저장
             JsonManager manager = new JsonManager();
             var newData = new StageData(); // 기본값 객체

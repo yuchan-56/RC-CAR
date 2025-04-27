@@ -35,7 +35,7 @@ public class SndBoss : Boss
     protected override void Start()
     {
         base.Start();
-        Debug.Log("sound boss 등장!");
+        
     }
 
     protected override void Update()

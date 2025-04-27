@@ -24,7 +24,7 @@ public class MapMoving : UI_Popup
         {
             playerMove = FindFirstObjectByType<PlayerMove>();
         }
-        Debug.Log("맵이동구현");
+        
         StartCoroutine(goBlack());
         camera_m = FindObjectOfType<Camera>();
         

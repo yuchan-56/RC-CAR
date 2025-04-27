@@ -35,7 +35,7 @@ public class SysBoss : Boss
     protected override void Start()
     {
         base.Start();
-        Debug.Log("시스템 보스");
+        
     }
 
     protected override void Update()

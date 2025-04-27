@@ -79,7 +79,7 @@ public class Clock : MonoBehaviour
         PlayerHP playerhp = FindFirstObjectByType<PlayerHP>();
         playerhp.dieAnimation();
         StartCoroutine(playerhp.StartGameOverUI());
-        Debug.Log("Game Over!");
+        
 
 
     
@@ -88,7 +88,7 @@ public class Clock : MonoBehaviour
     {
         SuccessImage.gameObject.SetActive(true);
         Time.timeScale = 0;
-        Debug.Log("Game Clear!");
+        
 
     }
     /*public void EnemyDied(GameObject enemy)
