@@ -48,7 +48,7 @@ public class SysBoss : Boss
         }
 
 
-        if (currentHP > 50)
+        if (currentHP / maxHP > 0.5f)
         {
             animator.SetBool("isLowHP", false);
         }
