@@ -282,9 +282,9 @@ public class Boss : MonoBehaviour, EnemyHP
         isFollowing = false;
         isDead = true;
         animator.SetBool("isDead", true);
+
+        EnemyDying();
     }
 
-    public void BossDying() {
-        Destroy(gameObject);
-    }
+
 }
