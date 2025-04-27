@@ -275,6 +275,8 @@ public class PlayerMove : MonoBehaviour
 
     }
 
+    private bool isFinished = false;
+
     private void OnTriggerStay2D(Collider2D collision)
     {
 
@@ -300,9 +302,11 @@ public class PlayerMove : MonoBehaviour
             }
         }
 
-        if (collision.tag == "Final")
+        if (collision.tag == "Final" && !isFinished && Managers.Game.CheckNextRound())
         {
+            Time.timeScale = 0;
             Managers.UI.ShowPopUpUI<GameClear>();
+            isFinished = true;
         }
     }
 
