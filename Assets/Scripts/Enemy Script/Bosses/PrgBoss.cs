@@ -37,12 +37,6 @@ public class PrgBoss : Boss
         if(showHP && !showFrame) {
             ShowFrame();
         }
-
-        if(isDead)
-        {
-            Destroy(frameInstance);
-            frameInstance = null;
-        }
     }
 
     private void ShowFrame()
@@ -64,69 +58,35 @@ public class PrgBoss : Boss
     
 
     public override void Attack() {
-        isWandering = false;
-        isFollowing = false;
-        isStop = false;
         this.isAttacking = true;
         bmScript.attackPos = false;
-
-
-        animator.SetBool("isP1", false);
-        animator.SetBool("isP2", false);
-        animator.SetBool("isP3", false);
         animator.SetBool("isAttack", true);
 
-        StartCoroutine(DeactivateAfterDelay(3.7f));
+        StartCoroutine(EndPattern(0, 3.0f));
     }
 
     public void Prg1stAttack() {
         attackObject[0].SetActive(true);
-        StartCoroutine(AttackColliderOff(attackObject[0]));
     }
 
     public void Prg2ndAttack() {
         attackObject[1].SetActive(true);
-        StartCoroutine(AttackColliderOff(attackObject[1]));
     }
 
     public void Prg3rdAttack() {
         attackObject[2].SetActive(true);
-        StartCoroutine(AttackColliderOff(attackObject[2]));
     }
 
     public void Prg4thAttack() {
        attackObject[3].SetActive(true);
-       StartCoroutine(AttackColliderOff(attackObject[3]));
-    }
-
-    public void PrgAttackOff() {
-        attackObject[0].SetActive(false);
-        attackObject[1].SetActive(false);
-        attackObject[2].SetActive(false);
-        attackObject[3].SetActive(false);
-    }
-
-    IEnumerator AttackColliderOff(GameObject g)
-    {
-        yield return new WaitForSeconds(0.15f);
-        
-        g.SetActive(false);
-
     }
 
     public override void P1() {
-        isWandering = false;
-        isFollowing = false;
-        isStop = false;
         this.isAttacking = true;
         bmScript.attackPos = false;
-
-        animator.SetBool("isP2", false);
-        animator.SetBool("isP3", false);
-        animator.SetBool("isAttack", false);
         animator.SetBool("isP1", true);
 
-        StartCoroutine(DeactivateAfterDelay(3f));
+        StartCoroutine(EndPattern(1, 3.0f));
     }
 
     public void PrgP1Start() {
@@ -154,12 +114,11 @@ public class PrgBoss : Boss
 
     private IEnumerator P2Routine()
     {
-        // 1) 프리팹을 Instantiate 해서 리스트에 담는다
         List<GameObject> fallingObjs = new List<GameObject>();
         foreach (var prefab in printW)
         {
             if (prefab == null) continue;
-            // 원하는 시작 위치 계산
+            
             float randomX = Random.Range(transform.position.x - 15f, transform.position.x + 15f);
             float randomY = Random.Range(7, 11);
 
@@ -168,7 +127,7 @@ public class PrgBoss : Boss
             fallingObjs.Add(fo);
         }
 
-        // 2) 모두 땅에 닿고 Destroy 될 때까지 매 프레임 위치 갱신
+        
         float fallSpeedMin = 2f, fallSpeedMax = 5f;
         while (fallingObjs.Count > 0)
         {
@@ -177,16 +136,16 @@ public class PrgBoss : Boss
                 var obj = fallingObjs[i];
                 if (obj == null)
                 {
-                    // 이미 Destroy 됐으면 리스트에서 제거
+                    
                     fallingObjs.RemoveAt(i);
                     continue;
                 }
 
-                // 떨어뜨리기
+                
                 float fs = Random.Range(fallSpeedMin, fallSpeedMax);
                 obj.transform.position += Vector3.down * fs * Time.deltaTime;
 
-                // 땅에 닿으면 제거
+                
                 if (obj.transform.position.y <= transform.position.y - 5f)
                 {
                     Destroy(obj);
@@ -196,7 +155,7 @@ public class PrgBoss : Boss
             yield return null;
         }
 
-        // 3) 모든 낙하 완료 후 리셋
+       
         animator.SetBool("isP2", false);
         isWandering = true;
         isFollowing = true;
@@ -213,7 +172,7 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
-        this.isAttacking = true;    // ← 추가
+        this.isAttacking = true;
         bmScript.attackPos = false;
 
 
@@ -222,7 +181,7 @@ public class PrgBoss : Boss
         animator.SetBool("isAttack", false);
         animator.SetBool("isP3", true);
 
-        StartCoroutine(DeactivateAfterDelay(5f));
+        StartCoroutine(EndPattern(3, 4.0f));
     }
 
     public void PrgP3Start() {
@@ -232,31 +191,45 @@ public class PrgBoss : Boss
         }
     }
 
-    public void PrgP3Off() {
-        p3Object.SetActive(false);
-    }
-
-    IEnumerator DeactivateAfterDelay(float delay)
+    IEnumerator EndPattern(int attackNum, float min)
     {
-        yield return new WaitForSeconds(delay);
+        yield return new WaitForSeconds(min);
 
-
-        animator.SetBool("isP3", false);
-        animator.SetBool("isP2", false);
-        animator.SetBool("isP1", false);
-        animator.SetBool("isAttack", false);
-
+        isAttacking = false;
         isWandering = true;
         isFollowing = true;
         isStop = true;
-        bmScript.attackPos = true;    // 다음 공격 가능 신호
-        this.isAttacking = false;
+        bmScript.attackPos = true;
 
-        p1Object.SetActive(false);
-        p3Object.SetActive(false);
-        attackObject[0].SetActive(false);
-        attackObject[1].SetActive(false);
-        attackObject[2].SetActive(false);
-        attackObject[3].SetActive(false);
+        switch (attackNum)
+        {
+            case 0:
+                attackObject[0].SetActive(false);
+                attackObject[1].SetActive(false);
+                attackObject[2].SetActive(false);
+                attackObject[3].SetActive(false);
+
+                animator.SetBool("isAttack", false);
+                break;
+            case 1:
+                p1Object.SetActive(false);
+                animator.SetBool("isP1", false);
+                break;
+            case 2:
+                break;
+            case 3:
+                animator.SetBool("isP3", false);
+                p3Object.SetActive(false);
+                break;
+            default:
+                break;
+        }
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        if (frameInstance != null)
+            Destroy(frameInstance);
     }
 }
