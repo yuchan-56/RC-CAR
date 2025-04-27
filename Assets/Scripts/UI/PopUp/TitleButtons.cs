@@ -23,11 +23,13 @@ public class TitleButtons : UI_Popup
     }
     void GoBackClicked(PointerEventData eventData)
     {
+        SoundManager.Instance.SFXPlay("Button Click");
         LoadingScene.Instance.GoLoading("MainTitle");
 
     }
     void OptionClicked(PointerEventData eventData)
     {
+        SoundManager.Instance.SFXPlay("Button Click");
         Managers.UI.ShowPopUpUI<Option>();
     }
 

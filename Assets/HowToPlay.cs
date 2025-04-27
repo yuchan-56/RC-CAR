@@ -24,6 +24,7 @@ public class HowToPlay : UI_Popup
 
     void Skipped(PointerEventData eventData)
     {
+        SoundManager.Instance.SFXPlay("Button Click");
         Time.timeScale = 1;
         Destroy(this.gameObject);
     }

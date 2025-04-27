@@ -26,12 +26,14 @@ public class Option_InGame : UI_Popup
     void GoClose(PointerEventData eventData)
     {
         Time.timeScale = 1;
+        SoundManager.Instance.SFXPlay("Button Click");
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<Option_InGame>(this.gameObject));
     }
 
     void GoRePlay(PointerEventData eventData)
     {
         Time.timeScale = 1;
+        SoundManager.Instance.SFXPlay("Button Click");
         Scene scene = SceneManager.GetActiveScene();
         LoadingScene.Instance.GoLoading($"{scene.name}");
         
@@ -39,6 +41,7 @@ public class Option_InGame : UI_Popup
     void GoGoBack(PointerEventData eventData)
     {
         Time.timeScale = 1;
+        SoundManager.Instance.SFXPlay("Button Click");
         LoadingScene.Instance.GoLoading("MainTitle");
     }
 

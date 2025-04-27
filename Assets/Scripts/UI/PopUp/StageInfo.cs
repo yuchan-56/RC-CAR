@@ -52,7 +52,8 @@ public class StageInfo : UI_Popup
         every =  GetComponent<EveryTimeSchedule>();
     }
     void GoStage(PointerEventData eventData)
-    {      
+    {
+        SoundManager.Instance.SFXPlay("Button Click");
         LoadingScene.Instance.GoLoading(StageName);
     }
     void CloseButtonClicked(PointerEventData eventData)

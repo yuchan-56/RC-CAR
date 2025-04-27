@@ -69,8 +69,9 @@ public class EveryTimeSchedule : UI_Popup
     {
         string StageName = eventData.pointerClick.name; // 클릭한 오브젝트의 이름 
         warning.SetActive(false);
+        SoundManager.Instance.SFXPlay("Button Click");
 
-        if(!string.IsNullOrEmpty(StageName))
+        if (!string.IsNullOrEmpty(StageName))
         {
             if(Managers.UI.isPopuping==true) // Popuping되는게 있다
             {

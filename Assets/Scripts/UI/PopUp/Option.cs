@@ -22,11 +22,13 @@ public class Option : UI_Popup
     // Start is called before the first frame update
     void GoClose(PointerEventData eventData)
     {
+        SoundManager.Instance.SFXPlay("Button Click");
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<Option>(this.gameObject));
     }
 
     void GoCredit(PointerEventData eventData)
     {
+        SoundManager.Instance.SFXPlay("Button Click");
         Managers.UI.ShowPopUpUI<Credit>();
     }
     

@@ -32,6 +32,7 @@ public class GameClear : UI_Popup
     }
     void GameClearClicked(PointerEventData eventData)
     {
+        SoundManager.Instance.SFXPlay("Button Click");
         LoadingScene.Instance.GoLoading("MainTitle");
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<GameClear>(this.gameObject));
         Managers.Clear();
