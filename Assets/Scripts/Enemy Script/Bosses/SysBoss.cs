@@ -47,12 +47,6 @@ public class SysBoss : Boss
             ShowFrame();
         }
 
-        if (isDead)
-        {
-            Destroy(frameInstance);
-            frameInstance = null;
-        }
-
 
         if (currentHP > 50)
         {
@@ -307,5 +301,12 @@ public class SysBoss : Boss
                 break;
 
         }
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        if (frameInstance != null)
+            Destroy(frameInstance);
     }
 }

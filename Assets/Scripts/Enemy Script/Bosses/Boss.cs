@@ -38,6 +38,7 @@ public class Boss : MonoBehaviour, EnemyHP
     public bool isDead = false;
 
     public bool isAttacking = false;
+    protected bool isHit = false;
 
     // 좌우이동 + following player
     public GameObject player;
@@ -114,6 +115,9 @@ public class Boss : MonoBehaviour, EnemyHP
             ShowAnimation(); // 보스가 Player 조우시 애니메이션 출력
             showHP = true;
         }
+
+        if (isHit)
+            return;
 
         if (isAttacking)
         {
@@ -243,6 +247,7 @@ public class Boss : MonoBehaviour, EnemyHP
     {
         if (spriteRenderer != null)
         {
+            isHit = true;
             StartCoroutine(FlashWhite());
         }
 
@@ -269,6 +274,8 @@ public class Boss : MonoBehaviour, EnemyHP
         spriteRenderer.color = new Color(1f, 1f, 1f, 0.5f); // R, G, B = 1(흰색), A = 0.5(반투명)
         yield return new WaitForSeconds(0.4f);
         spriteRenderer.color = originalColor;
+
+        isHit = false;
     }
 
 

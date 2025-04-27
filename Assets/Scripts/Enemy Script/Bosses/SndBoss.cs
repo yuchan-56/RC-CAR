@@ -45,11 +45,6 @@ public class SndBoss : Boss
         if(showHP && !showFrame) {
             ShowFrame();
         }
-
-        if(isDead) {
-            Destroy(frameInstance);
-            frameInstance = null;
-        }
     }
 
     private void ShowFrame()
@@ -232,5 +227,12 @@ public class SndBoss : Boss
         }
 
        
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        if (frameInstance != null)
+            Destroy(frameInstance);
     }
 }

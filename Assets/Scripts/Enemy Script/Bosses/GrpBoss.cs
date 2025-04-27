@@ -78,12 +78,6 @@ public class GrpBoss : Boss
         if(showHP && !showFrame) {
             ShowFrame();
         }
-
-        if (isDead && frameInstance != null)
-        {
-            Destroy(frameInstance);
-            frameInstance = null;
-        }
     }
 
     private void ShowFrame()
@@ -246,7 +240,7 @@ public class GrpBoss : Boss
         // 2) 착지 후 힐
         //rb.gravityScale = 0f;
         //rb.velocity = Vector2.zero;
-        transform.position = new Vector3(transform.position.x, groundY, 0);
+        transform.position = new Vector3(transform.position.x, groundY, transform.position.z);
 
         float targetHP = maxHP * healTarget;
         while (currentHP < targetHP)
@@ -314,6 +308,10 @@ public class GrpBoss : Boss
 
     public override void Die()
     {
+        base.Die();
+        if (frameInstance != null)
+            Destroy(frameInstance);
+
         // 1) 즉시 중단
         StopAllCoroutines();
         isWandering = false;
