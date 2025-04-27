@@ -80,7 +80,7 @@ public class Boss : MonoBehaviour, EnemyHP
         stopPosition = transform.position;
         //int currentStage = SceneManager.GetActiveScene().buildIndex - 2;
 
-        //currentHP = maxHP + (currentStage * 20);
+        currentHP = maxHP;
 
         canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
         spriteRenderer = GetComponent<SpriteRenderer>();
