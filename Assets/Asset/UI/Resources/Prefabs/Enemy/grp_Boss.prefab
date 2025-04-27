@@ -210,7 +210,6 @@ GameObject:
   - component: {fileID: 4964193175455898709}
   - component: {fileID: 8721448465734512055}
   - component: {fileID: 4080950068982105090}
-  - component: {fileID: 8684675417993848437}
   m_Layer: 0
   m_Name: grp_Boss
   m_TagString: Enemy
@@ -228,7 +227,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 3.22, y: -2.7, z: 0}
-  m_LocalScale: {x: 2.5, y: 2.5, z: 2.5}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 2.5}
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 424521703610430049}
@@ -281,7 +280,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 1.5, y: 1.5}
+  m_Size: {x: 1.875, y: 1.5}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -323,6 +322,8 @@ MonoBehaviour:
   hpBarPrefab: {fileID: 7002623525333000537, guid: 617563a7b7e934fb1b5e170d9b372c77, type: 3}
   hpBarTransform: {fileID: 0}
   maxHP: 100
+  attackPossible: 0
+  floorThreshold: 10
   animator: {fileID: 1240018279953373444}
   isDead: 0
   isAttacking: 0
@@ -334,6 +335,7 @@ MonoBehaviour:
   isStop: 1
   followDistance: 20
   minFollowDistance: 2.5
+  bmScript: {fileID: 0}
   framePrefab: {fileID: 1603253122592858171, guid: 0b6444fb36b834c4780a55a53ebdda3a, type: 3}
   bulletPrefab: {fileID: 8630802576741259720, guid: 59c86cc46edb44db2ad154a66979341d, type: 3}
   bulletSpeed: 10
@@ -343,8 +345,9 @@ MonoBehaviour:
   - {fileID: 3223701447684176875, guid: adbfd5b9090ac47e9b3b2ddf265fdfed, type: 3}
   - {fileID: 1497598141660779633, guid: d776ecc247866432ab13633fa3659fc2, type: 3}
   rotationSpeed: 500
-  fallDelay: 2
-  fallStartY: 10
+  orbitRadius: 2
+  orbitTime: 2
+  dropSpeed: 10
   spawnPositions:
   - {x: -2, y: 3, z: 0}
   - {x: 0, y: 4.5, z: 0}
@@ -353,9 +356,15 @@ MonoBehaviour:
   - {x: -5, y: 10, z: 0}
   - {x: 0, y: 10, z: 0}
   - {x: 5, y: 10, z: 0}
+  healThreshold: 0.5
+  healTarget: 0.65
+  healRate: 0.01
+  fallSpeed: 6
+  groundY: -1.11
   p3Object: {fileID: 8933629631502924030}
   p3Collider: {fileID: 5901431083878962934}
-  bmScript: {fileID: 8684675417993848437}
+  beamDelay: 0.4
+  beamDuration: 2
 --- !u!61 &8721448465734512055
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -393,7 +402,7 @@ BoxCollider2D:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
     oldSize: {x: 1.5, y: 1.5}
-    newSize: {x: 1.5, y: 1.5}
+    newSize: {x: 1.875, y: 1.5}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
@@ -427,21 +436,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 1
-  m_Constraints: 6
---- !u!114 &8684675417993848437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8590839111561154068}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8dab13f34bcd14509928cccd75ed899b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  attackPos: 1
-  bossScript: {fileID: 0}
+  m_Constraints: 4
 --- !u!1001 &6450378328918288472
 PrefabInstance:
   m_ObjectHideFlags: 0

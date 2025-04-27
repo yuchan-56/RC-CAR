@@ -1,11 +1,11 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
 
 public class GrpBoss : Boss
 {
+    public BossManager bmScript;
+
     [SerializeField] private GameObject framePrefab; // Inspector에 연결
     private GameObject frameInstance;
     bool showFrame = false;
@@ -15,14 +15,16 @@ public class GrpBoss : Boss
     public GameObject bulletPrefab; // 총알 프리팹
     public float bulletSpeed = 13f; // 총알 속도
     public float fireRate = 1.0f;
-
-    Vector3 firePoint = new Vector3(0, 2.0f, 0);
+    private Vector3 fireOffset = new Vector3(0, 2f, 0);
 
     //p1
     public GameObject[] p1Object = new GameObject[3];
-    public float rotationSpeed = 500f; // 회전 속도
-    public float fallDelay = 2f; // 회전 후 낙하하는 시간
-    public float fallStartY = 10f;
+    public float rotationSpeed = 5f;
+    public float orbitRadius = 2f;
+    public float orbitTime = 2f;
+    public float dropSpeed = 10f;
+    private List<GameObject> _orbiters = new List<GameObject>();
+
     public Vector3[] spawnPositions = new Vector3[3]
     {
         new Vector3(-2f, 3f, 0),  // 왼쪽 위
@@ -32,23 +34,32 @@ public class GrpBoss : Boss
 
     public Vector3[] fallStartPositions = new Vector3[3]
     {
-        new Vector3(-5f, 10f, 0),  
-        new Vector3(0, 10f, 0),   
+        new Vector3(-5f, 10f, 0),
+        new Vector3(0, 10f, 0),
         new Vector3(5f, 10f, 0)
     };
-    private List<GameObject> spawnedObjects = new List<GameObject>();
 
-    bool p2Pos = true;
+  
 
     //p2
-    private Rigidbody2D rb;
-    private Vector3 initialFlyingPos;
+    public float healThreshold = 0.5f;
+    public float healTarget = 0.65f;       // 목표 비율
+    public float healRate = 0.01f;         // 1회당 회복 비율
+    private bool _p2Done = false;
+    public float fallSpeed = 6f;
+    public float groundY = -1.11f;
+    bool hadLanded = false;
+    //private bool p2Started = false;
 
     //p3
     public GameObject p3Object;
     public GameObject p3Collider;
+    public float beamDelay = 0.4f;
+    public float beamDuration = 2.0f;
 
-    public BossManager bmScript;
+    
+
+    private Rigidbody2D rb;
 
 
     protected override void Start()
@@ -57,20 +68,21 @@ public class GrpBoss : Boss
         Debug.Log("그래픽 보스");
 
         rb = GetComponent<Rigidbody2D>();
-        initialFlyingPos = transform.position;
     }
 
 
     protected override void Update()
     {
         base.Update();
+
         if(showHP && !showFrame) {
             ShowFrame();
         }
 
-        if (isDead)
+        if (isDead && frameInstance != null)
         {
-            Destroy(frameInstance.gameObject);
+            Destroy(frameInstance);
+            frameInstance = null;
         }
     }
 
@@ -92,266 +104,254 @@ public class GrpBoss : Boss
    
 
     public override void Attack() {
-        isWandering = false;
-        isFollowing = false;
-        isStop = false;
+        isAttacking = true;
         bmScript.attackPos = false;
 
         animator.SetBool("isAttack", true);
-        animator.SetBool("isStop", false);
-        animator.SetBool("isP2", false);
-        animator.SetBool("isP3", false);
-        animator.SetBool("isDead", false);
-        animator.SetBool("isP1", false);
 
-        StartCoroutine(ShootBullets(3));
+        StartCoroutine(AttackRoutine());
     }
 
     
 
-    IEnumerator ShootBullets(int shotCount)
+    IEnumerator AttackRoutine()
     {
-        for (int i = 0; i < shotCount; i++)
+        Vector2 dir = facingRight ? Vector2.right : Vector2.left;
+
+        for (int i = 0; i < 3; i++)
         {
-            Shoot();
+            // 보스가 바라보는 방향(transform.right)으로 발사
+            if (bulletPrefab != null)
+            {
+                var b = Instantiate(bulletPrefab, transform.position + fireOffset, transform.rotation);
+                var rb2 = b.GetComponent<Rigidbody2D>();
+                if (rb2 != null)
+                    rb2.velocity = dir * bulletSpeed;
+            }
             yield return new WaitForSeconds(fireRate);
         }
 
         animator.SetBool("isAttack", false);
-        isWandering = true;
-        isFollowing = true;
-        isStop = true;
+        isWandering = isFollowing = isStop = true;
         bmScript.attackPos = true;
-        Debug.Log("attackPos = true");
-    }
-
-    void Shoot()
-    {
-        if (bulletPrefab == null || player == null) return; // 플레이어가 없으면 실행 X
-
-        GameObject bullet = Instantiate(bulletPrefab, transform.position + firePoint, Quaternion.identity);
-        Rigidbody2D bulletRb = bullet.GetComponent<Rigidbody2D>();
-
-        if (bulletRb != null)
-        {
-            Vector2 direction = (player.position - transform.position).normalized; // 방향 벡터 계산
-            bulletRb.velocity = direction * bulletSpeed; // 방향 적용
-        }
+        isAttacking = false;
     }
 
 
 
     public override void P1() {
-        isWandering = false;
-        isFollowing = false;
-        isStop = false;
+        //isWandering = false;
+        //isFollowing = false;
+        //isStop = false;
+        isAttacking = true;
         bmScript.attackPos = false;
 
-        animator.SetBool("isAttack", false);
-        animator.SetBool("isP2", false);
-        animator.SetBool("isP3", false);
-        animator.SetBool("isDead", false);
-        animator.SetBool("isStop", false);
+        //animator.SetBool("isAttack", false);
+        //animator.SetBool("isP2", false);
+        //animator.SetBool("isP3", false);
+        //animator.SetBool("isDead", false);
+        //animator.SetBool("isStop", false);
         animator.SetBool("isP1", true);
 
         
-        StartCoroutine(SpawnRotateAndFallObjects());
+        StartCoroutine(P1Routine());
     }
 
-    IEnumerator SpawnRotateAndFallObjects()
+    IEnumerator P1Routine()
     {
+        _orbiters.Clear();
+
         for (int i = 0; i < p1Object.Length; i++)
         {
-            if (p1Object[i] != null)
+            if (p1Object[i] == null) continue;
+
+            Vector3 spawnPos = transform.position + spawnPositions[i];
+            var o = Instantiate(p1Object[i], spawnPos, Quaternion.identity);
+
+            _orbiters.Add(o);
+        }
+
+        float t = 0f;
+        while (t < orbitTime)
+        {
+            t += Time.deltaTime;
+            foreach (var o in _orbiters)
             {
-                
-                Vector3 spawnPosition = transform.position + spawnPositions[i];
-                GameObject newObj = Instantiate(p1Object[i], spawnPosition, Quaternion.identity);
-
-                spawnedObjects.Add(newObj);
-                StartCoroutine(RotateObject(newObj));
+                if (o != null)
+                    o.transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
             }
-        }
-
-        // 일정 시간 대기 후 낙하 시작
-        yield return new WaitForSeconds(fallDelay);
-
-        for(int i = 0; i < spawnedObjects.Count; i++)
-        {
-            if (spawnedObjects[i] != null)
-            {
-                StartCoroutine(FallObject(spawnedObjects[i], fallStartPositions[i]));
-            }
-        }
-    }
-    IEnumerator RotateObject(GameObject obj)
-    {
-        float rotationTime = fallDelay;
-        float elapsedTime = 0f;
-
-        while (elapsedTime < rotationTime)
-        {
-            obj.transform.Rotate(Vector3.forward * rotationSpeed * Time.deltaTime);
-            elapsedTime += Time.deltaTime;
-            yield return null;
-        }
-    }
-
-    IEnumerator FallObject(GameObject obj, Vector3 fallStartPos)
-    {
-        float fallSpeed = 10f;
-        float scaleMultiplier = 1.5f;
-
-        obj.transform.position = player.transform.position + fallStartPos;
-        obj.transform.localScale *= scaleMultiplier;
-
-        while (obj.transform.position.y > transform.position.y - 4f) // 땅까지 떨어질 때까지
-        {
-            obj.transform.position += Vector3.down * fallSpeed * Time.deltaTime;
             yield return null;
         }
 
-        Destroy(obj); // 바닥에 닿으면 삭제
+        for (int i = 0; i < _orbiters.Count; i++)
+        {
+            var o = _orbiters[i];
+            if (o != null)
+            {
+                o.transform.localScale *= 1.4f;
+                o.transform.position = player.position + fallStartPositions[i];
+            }
+        }
 
-        spawnedObjects.Clear();
+        // 3) 낙하
+        float bottomY = transform.position.y - 1f;
+        while (_orbiters.Count > 0)
+        {
+            for (int i = _orbiters.Count - 1; i >= 0; i--)
+            {
+                var o = _orbiters[i];
+                if (o == null)
+                {
+                    _orbiters.RemoveAt(i);
+                    continue;
+                }
+                o.transform.position += Vector3.down * dropSpeed * Time.deltaTime;
+                if (o.transform.position.y <= bottomY)
+                {
+                    Destroy(o);
+                    _orbiters.RemoveAt(i);
+                }
+            }
+            yield return null;
+        }
+
+        // 4) 패턴 종료 리셋
         animator.SetBool("isP1", false);
-        
-        isWandering = true;
-        isFollowing = true;
-        isStop = true;
+        isWandering = isFollowing = isStop = true;
         bmScript.attackPos = true;
+        isAttacking = false;
     }
+    
 
 
     public override void P2() {
-        if((currentHP <= maxHP * 0.5f) && p2Pos) {
-            isWandering = false;
-            isFollowing = false;
-            isStop = false;
-            bmScript.attackPos = false;
-            p2Pos = false;
+        Debug.Log("P2 호출됨: currentHP=" + currentHP + " _p2Done=" + _p2Done);
 
-            // 피회복
-            animator.SetBool("isAttack", false);
-            animator.SetBool("isP1", false);
-            animator.SetBool("isP3", false);
-            animator.SetBool("isDead", false);
-            animator.SetBool("isStop", false);
-            animator.SetBool("isP2", true);
-
-            StartCoroutine(DescendAndHeal());
-            //StartCoroutine(GetHP());
+        if (_p2Done || currentHP > maxHP * healThreshold)
+        {
+            isAttacking = false;    
+            bmScript.attackPos = true;
+            return;
         }
+
+        _p2Done = true;
+        isAttacking = true;
+        bmScript.attackPos = false;
+        animator.SetBool("isP2", true);
+        StartCoroutine(P2Routine());
     }
 
-    IEnumerator DescendAndHeal()
+    private IEnumerator P2Routine()
     {
-        // ★ 1. Gravity를 켜서 땅으로 내려오게 만들자
-        rb.gravityScale = 3f; // 중력 세기 (조절 가능)
+        Vector3 start = transform.position;
+        Vector3 target = new Vector3(start.x, groundY, start.z);
 
-        // ★ 2. 땅에 닿을 때까지 기다린다 (간단하게 y축 위치로 체크)
-        while (transform.position.y > 0.5f) // 바닥 높이가 0쯤이라고 가정
+        while (transform.position.y > groundY + 0.01f)
         {
+            transform.position = Vector3.MoveTowards(transform.position, target, fallSpeed * Time.deltaTime);
             yield return null;
         }
 
-        // ★ 3. 땅에 닿으면 Gravity를 끄고 위치 고정
-        rb.gravityScale = 0f;
-        rb.velocity = Vector2.zero;
-        transform.position = new Vector3(transform.position.x, 0.5f, transform.position.z); // 정확히 바닥 위치 고정
+        // 2) 착지 후 힐
+        //rb.gravityScale = 0f;
+        //rb.velocity = Vector2.zero;
+        transform.position = new Vector3(transform.position.x, groundY, 0);
 
-        // ★ 4. 이제 피 회복 시작
-        yield return StartCoroutine(GetHP());
-
-        // ★ 5. 회복 끝나면 다시 하늘로 올라가자
-        yield return StartCoroutine(AscendToSky());
-    }
-
-    /// /////////////////////////////////
-    IEnumerator GetHP() {
-        float targetHP = maxHP * 0.65f; // 회복 목표는 70%
-        float healSpeed = maxHP * 0.01f;
-        Vector3 currentPos = transform.position;
-        // 현재 Gravity 저장
-
+        float targetHP = maxHP * healTarget;
         while (currentHP < targetHP)
         {
-            currentHP += healSpeed;
-            currentHP = Mathf.Min(currentHP, targetHP); // 넘치지 않게
-            UpdateHPBar(); // HP 바 실시간 갱신
-            yield return new WaitForSeconds(0.1f); // 회복 간격
+            currentHP = Mathf.Min(currentHP + maxHP * healRate, targetHP);
+            UpdateHPBar();
+            yield return new WaitForSeconds(0.1f);
         }
 
-        // 회복 종료 후 애니메이션 리셋
+        // 3) 리셋 및 하늘로 복귀
         animator.SetBool("isP2", false);
-        isWandering = true;
-        isFollowing = true;
-        isStop = true;
+        isWandering = isFollowing = isStop = true;
         bmScript.attackPos = true;
-        // transform.position = currentPos; 자연스럽게
-        //gravity, position 다시 리셋
-    }
+        isAttacking = false;
 
-    IEnumerator AscendToSky()
-    {
-        Vector3 targetPos = initialFlyingPos + new Vector3(0f, 3f, 0f); // 원하는 높이까지 상승
-        float ascendSpeed = 3f;
-
-        while (Vector3.Distance(transform.position, targetPos) > 0.1f)
+        // 4) Ascend
+        //Vector3 sky = transform.position + new Vector3(0, 3f, 0);
+        while (transform.position.y < start.y)
         {
-            transform.position = Vector3.MoveTowards(transform.position, targetPos, ascendSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, start, Time.deltaTime * 3f);
             yield return null;
         }
-
-        // 다 올라가면
-        transform.position = targetPos;
     }
+
+
 
 
 
 
     public override void P3() {
+        //isWandering = false;
+        //isFollowing = false;
+        //isStop = false;
+        isAttacking = true;
+        bmScript.attackPos = false;
+
+        //animator.SetBool("isAttack", false);
+        //animator.SetBool("isP2", false);
+        animator.SetBool("isP3", true);
+        //animator.SetBool("isDead", false);
+        //animator.SetBool("isP1", false);
+        //animator.SetBool("isStop", false);
+
+        StartCoroutine(P3Routine());
+    }
+
+    private IEnumerator P3Routine()
+    {
+        // 1) 빔 이펙트 & 콜라이더
+        p3Object?.SetActive(true);
+        yield return new WaitForSeconds(beamDelay);
+        p3Collider?.SetActive(true);
+
+        // 2) 지속
+        yield return new WaitForSeconds(beamDuration);
+
+        // 3) 리셋
+        p3Collider?.SetActive(false);
+        p3Object?.SetActive(false);
+        animator.SetBool("isP3", false);
+        isWandering = isFollowing = isStop = true;
+        bmScript.attackPos = true;
+        isAttacking = false;
+    }
+
+    public override void Die()
+    {
+        // 1) 즉시 중단
+        StopAllCoroutines();
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        isAttacking = true;    // 더 이상 다른 공격 안 나가게
         bmScript.attackPos = false;
 
-        animator.SetBool("isAttack", false);
-        animator.SetBool("isP2", false);
-        animator.SetBool("isP3", true);
-        animator.SetBool("isDead", false);
-        animator.SetBool("isP1", false);
-        animator.SetBool("isStop", false);
-
-        StartCoroutine(Delay(0.4f));
-        StartCoroutine(ShootBeam());
+        // 2) 땅으로 자연 하강
+        StartCoroutine(DieRoutine());
     }
 
-    IEnumerator Delay(float sec) {
-        yield return new WaitForSeconds(sec);
-        
-        p3Object.SetActive(true);
+    private IEnumerator DieRoutine()
+    {
+        Vector3 start = transform.position;
+        Vector3 target = new Vector3(start.x, groundY, start.z);
+        while (transform.position.y > groundY + 0.01f)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, target, fallSpeed * Time.deltaTime);
+            yield return null;
+        }
 
-        StartCoroutine(DelayForCollider(1.2f));
+        // 3) 땅에 닿으면 완전 삭제
+        animator.SetBool("isDead", true);
     }
 
-    IEnumerator DelayForCollider(float sec) {
-        yield return new WaitForSeconds(sec);
-
-        p3Collider.SetActive(true);
-    }
-
-
-    IEnumerator ShootBeam() {
-        yield return new WaitForSeconds(2.4f);
-
-        animator.SetBool("isP3", false);
-        p3Object.SetActive(false);
-        p3Collider.SetActive(false);
-
-        bmScript.attackPos = true;
-        isWandering = true;
-        isFollowing = true;
-        isStop = true;
+    private void OnCollisionEnter2D(Collision2D c)
+    {
+        if (c.gameObject.CompareTag("Ground"))
+            hadLanded = true;
     }
 }

@@ -25,6 +25,9 @@ public class Boss : MonoBehaviour, EnemyHP
     protected float initialWidth;
     protected bool showHP = false;
 
+    public bool attackPossible = false;
+    public float floorThreshold = 10.0f;
+
     protected bool sysP1 = false;
 
 
@@ -47,12 +50,10 @@ public class Boss : MonoBehaviour, EnemyHP
     public float followDistance = 20.0f; // 따라가기 시작하는 거리
     public float minFollowDistance = 2.5f;
 
-
-    
     private Vector2 stopPosition;
 
     // 방향전환
-    private bool facingRight = false; // 적의 현재 바라보는 방향
+    protected bool facingRight = false; // 적의 현재 바라보는 방향
     private float lastXPosition = 0f;
 
     protected enum BossState {
@@ -104,34 +105,21 @@ public class Boss : MonoBehaviour, EnemyHP
     protected virtual void Update()
     {
         float heightWPlayer = Mathf.Abs(transform.position.y - player.position.y);
-        if(heightWPlayer <= 10.0f && !showHP) {
+        attackPossible = (heightWPlayer <= floorThreshold);
+
+        if (attackPossible && !showHP) {
             StartCoroutine(ShowHPBar());
             ShowAnimation(); // 보스가 Player 조우시 애니메이션 출력
             showHP = true;
         }
 
-
-        float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
-
-        /*
-        if (distanceToPlayer <= followDistance && distanceToPlayer > minFollowDistance) 
-        {
-            currentState = BossState.Following;
-        } 
-        else if (distanceToPlayer <= minFollowDistance) 
-        {
-            currentState = BossState.Stopping;
-        } 
-        else 
-        {
-            currentState = BossState.Idle;
-        }
-        */
-
-        if(isAttacking)
+        if (isAttacking)
         {
             return;
         }
+
+
+        float distanceToPlayer = Mathf.Abs(transform.position.x - player.position.x);
 
         
         if (distanceToPlayer <= minFollowDistance)
@@ -142,30 +130,6 @@ public class Boss : MonoBehaviour, EnemyHP
         {
             currentState = BossState.Following;
         }
-    
-
-        
-
-        /*
-        switch (currentState) 
-        {
-            case BossState.Following:
-                if(isFollowing) {
-                    if (AnimatorHasParameter("isStop")) animator.SetBool("isStop", false);
-                    FollowPlayer();
-                }
-                break;
-            case BossState.Stopping:
-                if(isStop) { StopMoving(); }
-                break;
-            case BossState.Idle:
-                if(isWandering)  {
-                    if (AnimatorHasParameter("isStop")) animator.SetBool("isStop", false);
-                    Wander();
-                }
-                break;
-                
-        }*/
 
         
         switch (currentState)

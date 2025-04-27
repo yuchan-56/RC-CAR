@@ -40,7 +40,8 @@ public class PrgBoss : Boss
 
         if(isDead)
         {
-            Destroy(frameInstance.gameObject);
+            Destroy(frameInstance);
+            frameInstance = null;
         }
     }
 
@@ -66,6 +67,7 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        this.isAttacking = true;    // ← 추가
         bmScript.attackPos = false;
 
 
@@ -116,8 +118,9 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        this.isAttacking = true;    // ← 추가
         bmScript.attackPos = false;
-        
+
         animator.SetBool("isP2", false);
         animator.SetBool("isP3", false);
         animator.SetBool("isAttack", false);
@@ -137,6 +140,7 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        this.isAttacking = true;    // ← 추가
         bmScript.attackPos = false;
 
 
@@ -144,19 +148,69 @@ public class PrgBoss : Boss
         animator.SetBool("isP3", false);
         animator.SetBool("isP1", false);
         animator.SetBool("isP2", true);
-    
 
-        foreach (GameObject obj in printW)
-        {
-            if (obj != null)
-            {
-                StartCoroutine(FallObject(obj));
-            }
-        }
+        StartCoroutine(P2Routine());
     }
 
-    
+    private IEnumerator P2Routine()
+    {
+        // 1) 프리팹을 Instantiate 해서 리스트에 담는다
+        List<GameObject> fallingObjs = new List<GameObject>();
+        foreach (var prefab in printW)
+        {
+            if (prefab == null) continue;
+            // 원하는 시작 위치 계산
+            float randomX = Random.Range(transform.position.x - 15f, transform.position.x + 15f);
+            float randomY = Random.Range(7, 11);
 
+            Vector3 startPos = new Vector3(randomX, transform.position.y + randomY, 0);
+            GameObject fo = Instantiate(prefab, startPos, Quaternion.identity);
+            fallingObjs.Add(fo);
+        }
+
+        // 2) 모두 땅에 닿고 Destroy 될 때까지 매 프레임 위치 갱신
+        float fallSpeedMin = 2f, fallSpeedMax = 5f;
+        while (fallingObjs.Count > 0)
+        {
+            for (int i = fallingObjs.Count - 1; i >= 0; i--)
+            {
+                var obj = fallingObjs[i];
+                if (obj == null)
+                {
+                    // 이미 Destroy 됐으면 리스트에서 제거
+                    fallingObjs.RemoveAt(i);
+                    continue;
+                }
+
+                // 떨어뜨리기
+                float fs = Random.Range(fallSpeedMin, fallSpeedMax);
+                obj.transform.position += Vector3.down * fs * Time.deltaTime;
+
+                // 땅에 닿으면 제거
+                if (obj.transform.position.y <= transform.position.y - 5f)
+                {
+                    Destroy(obj);
+                    fallingObjs.RemoveAt(i);
+                }
+            }
+            yield return null;
+        }
+
+        // 3) 모든 낙하 완료 후 리셋
+        animator.SetBool("isP2", false);
+        isWandering = true;
+        isFollowing = true;
+        isStop = true;
+
+        bmScript.attackPos = true;   // 다음 공격 신호
+        this.isAttacking = false;  // 공격 중 플래그 해제
+    }
+
+
+
+
+
+    /*
    IEnumerator FallObject(GameObject obj)
     {
         // 랜덤 X 좌표 설정
@@ -198,9 +252,11 @@ public class PrgBoss : Boss
             isWandering = true;
             isFollowing = true;
             isStop = true;
-            bmScript.attackPos = true;
+            bmScript.attackPos = true;    // 다음 공격 가능 신호
+            this.isAttacking = false;
         }
     }
+    */
 
 
     // ------
@@ -209,6 +265,7 @@ public class PrgBoss : Boss
         isWandering = false;
         isFollowing = false;
         isStop = false;
+        this.isAttacking = true;    // ← 추가
         bmScript.attackPos = false;
 
 
@@ -244,7 +301,8 @@ public class PrgBoss : Boss
         isWandering = true;
         isFollowing = true;
         isStop = true;
-        bmScript.attackPos = true;
+        bmScript.attackPos = true;    // 다음 공격 가능 신호
+        this.isAttacking = false;
 
         p1Object.SetActive(false);
         p3Object.SetActive(false);
