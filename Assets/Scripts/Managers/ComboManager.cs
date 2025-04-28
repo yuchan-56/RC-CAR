@@ -135,6 +135,8 @@ public class ComboManager : MonoBehaviour
                     }
                 }
             }
+            InputButton.Remove("Left");
+            InputButton.Remove("Right");
 
             if (InputButton.Count == 1 && AniSetup == false)
             {
