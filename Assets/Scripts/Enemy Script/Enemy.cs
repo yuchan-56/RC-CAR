@@ -33,6 +33,9 @@ public class Enemy : MonoBehaviour, EnemyHP
     bool isWandering = true;
     bool isFollowing = true;
 
+    public bool attackPossible = false;
+    public float floorThreshold = 10.0f;
+
     private bool isHitOverride = false;
 
     private float followDistance = 6f; // 따라가기 시작하는 거리
@@ -68,6 +71,7 @@ public class Enemy : MonoBehaviour, EnemyHP
     public Sprite[] hpSprites;
     private int currentHP;
     private Transform canvasTransform;
+    bool showHP = false;
 
     // Speech
     private bool speeched = false;
@@ -90,10 +94,12 @@ public class Enemy : MonoBehaviour, EnemyHP
 
         canvasTransform = GameObject.Find("EnemyHPCanvas").transform;
 
+        /*
         GameObject newHpBar = Instantiate(hpBarPrefab, canvasTransform);
         hpBarImage = newHpBar.GetComponent<Image>();
 
         hpBarImage.sprite = hpSprites[(int)currentHP];
+        */
 
         if (Random.Range(0f, 1f) < 0.5f) Flip();
 
@@ -115,9 +121,26 @@ public class Enemy : MonoBehaviour, EnemyHP
     {
         if (IsEnemyDead) return;
 
-        
+
         float dx = Mathf.Abs(transform.position.x - player.transform.position.x);
         float dy = Mathf.Abs(transform.position.y - player.transform.position.y);
+
+        attackPossible = (dy <= floorThreshold);
+
+        if(!attackPossible) {
+            return;
+        }
+        else if(attackPossible && !showHP)
+        {
+            GameObject newHpBar = Instantiate(hpBarPrefab, canvasTransform);
+            hpBarImage = newHpBar.GetComponent<Image>();
+
+            hpBarImage.sprite = hpSprites[(int)currentHP];
+
+            showHP = true;
+        }
+
+            
 
         if (isHitOverride)
             currentState = EnemyState.Following;
