@@ -120,7 +120,8 @@ public class ComboManager : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Began ||
                     touch.phase == TouchPhase.Moved ||
-                    touch.phase == TouchPhase.Stationary)
+                    touch.phase == TouchPhase.Stationary ||
+                     touch.phase == TouchPhase.Ended)
                 {
                     PointerEventData pointerData = new PointerEventData(EventSystem.current);
                     pointerData.position = touch.position;
