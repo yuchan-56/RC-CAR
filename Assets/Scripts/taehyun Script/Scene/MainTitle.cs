@@ -49,6 +49,7 @@ public class MainTitle : BaseScene
 
     void Start()
     {
+        Managers.Data.Init();
         StartCoroutine(PlaySpriteAnimation());
          Init();
         foreach (Transform ground in GroundRec)

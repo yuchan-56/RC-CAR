@@ -22,14 +22,18 @@ public class DataManager
 
     public void Init()
     {
+#if UNITY_EDITOR
+        PlayerPrefs.SetInt("FirstOpen", 0);
+        PlayerPrefs.SetInt("StageData", 1);
+#endif
         // 데이터 PlayerPref로 저장
-        if (PlayerPrefs.GetInt("FirstPlay", 0) == 0)
+        if (!PlayerPrefs.HasKey("FirstOpen") || PlayerPrefs.GetInt("FirstOpen") == 0)
         {
+            Debug.Log("ManagerInit?");
+            PlayerPrefs.SetInt("FirstOpen", 1);
             PlayerPrefs.SetInt("StageData", 1);
-            PlayerPrefs.SetInt("FirstPlay", 1); // 다음부터는 1로 저장
             PlayerPrefs.Save();
         }
-        
 
     }
 

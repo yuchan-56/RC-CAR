@@ -43,7 +43,6 @@ public class Managers : MonoBehaviour
 
     static void Init()
     {
-
         if (s_instance == null)
         {
             GameObject go = GameObject.Find("@Manager");
@@ -58,14 +57,6 @@ public class Managers : MonoBehaviour
             s_instance = go.GetComponent<Managers>();
             s_instance._pool.Init();
             s_instance._data.Init();
-
-            if (!PlayerPrefs.HasKey("FirstOpen"))
-            {
-                PlayerPrefs.SetInt("FirstOpen", 1);
-                PlayerPrefs.SetInt("StageData", 1);
-                PlayerPrefs.Save();
-            }
-            
         }
     }
 
