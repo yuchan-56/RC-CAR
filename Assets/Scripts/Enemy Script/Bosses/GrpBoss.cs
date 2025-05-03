@@ -47,8 +47,8 @@ public class GrpBoss : Boss
     public float healRate = 0.01f;         // 1회당 회복 비율
     private bool _p2Done = false;
     public float fallSpeed = 6f;
-    public float groundY = -1.11f;
-    bool hadLanded = false;
+    public float groundY = 0.3f;
+    //bool hadLanded = false;
     //private bool p2Started = false;
 
     //p3
@@ -228,8 +228,9 @@ public class GrpBoss : Boss
 
     private IEnumerator P2Routine()
     {
+        /*
         Vector3 start = transform.position;
-        Vector3 target = new Vector3(start.x, groundY, start.z);
+        Vector3 target = new Vector3(start.x, transform.position.y - groundY, start.z);
 
         while (transform.position.y > groundY + 0.01f)
         {
@@ -241,7 +242,7 @@ public class GrpBoss : Boss
         //rb.gravityScale = 0f;
         //rb.velocity = Vector2.zero;
         transform.position = new Vector3(transform.position.x, groundY, transform.position.z);
-
+        */
         float targetHP = maxHP * healTarget;
         while (currentHP < targetHP)
         {
@@ -250,12 +251,14 @@ public class GrpBoss : Boss
             yield return new WaitForSeconds(0.1f);
         }
 
-        // 3) 리셋 및 하늘로 복귀
+        
+        // 3) 리셋
         animator.SetBool("isP2", false);
         isWandering = isFollowing = isStop = true;
         bmScript.attackPos = true;
         isAttacking = false;
 
+        /*
         // 4) Ascend
         //Vector3 sky = transform.position + new Vector3(0, 3f, 0);
         while (transform.position.y < start.y)
@@ -263,6 +266,7 @@ public class GrpBoss : Boss
             transform.position = Vector3.MoveTowards(transform.position, start, Time.deltaTime * 3f);
             yield return null;
         }
+        */
     }
 
 
@@ -308,6 +312,7 @@ public class GrpBoss : Boss
 
     public override void Die()
     {
+        /*
         base.Die();
         if (frameInstance != null)
             Destroy(frameInstance);
@@ -322,12 +327,18 @@ public class GrpBoss : Boss
 
         // 2) 땅으로 자연 하강
         StartCoroutine(DieRoutine());
+        */
+
+        base.Die();
+        if (frameInstance != null)
+            Destroy(frameInstance);
     }
 
+    /*
     private IEnumerator DieRoutine()
     {
         Vector3 start = transform.position;
-        Vector3 target = new Vector3(start.x, groundY, start.z);
+        Vector3 target = new Vector3(start.x, transform.position.y - groundY, start.z);
         while (transform.position.y > groundY + 0.01f)
         {
             transform.position = Vector3.MoveTowards(transform.position, target, fallSpeed * Time.deltaTime);
@@ -337,10 +348,5 @@ public class GrpBoss : Boss
         // 3) 땅에 닿으면 완전 삭제
         animator.SetBool("isDead", true);
     }
-
-    private void OnCollisionEnter2D(Collision2D c)
-    {
-        if (c.gameObject.CompareTag("Ground"))
-            hadLanded = true;
-    }
+    */
 }

@@ -294,5 +294,10 @@ public class Boss : MonoBehaviour, EnemyHP
         EnemyDying();
     }
 
+    public void BossDying()
+    {
+        Destroy(this.gameObject);
+    }
+
 
 }

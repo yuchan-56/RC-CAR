@@ -360,7 +360,7 @@ MonoBehaviour:
   healTarget: 0.65
   healRate: 0.01
   fallSpeed: 6
-  groundY: -1.11
+  groundY: 0.3
   p3Object: {fileID: 8933629631502924030}
   p3Collider: {fileID: 5901431083878962934}
   beamDelay: 0.4
