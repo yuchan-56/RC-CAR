@@ -20,10 +20,10 @@ public class GameClear : UI_Popup
 
         // ÀúÀå
         int stage = PlayerPrefs.GetInt("StageData");
-        if (stage == 0 && SceneManager.GetActiveScene().name == "S1_1") stage++;
-        if (stage == 1 && SceneManager.GetActiveScene().name == "S1_2") stage++;
-        if (stage == 2 && SceneManager.GetActiveScene().name == "S1_3") stage++;
-        if (stage == 3 && SceneManager.GetActiveScene().name == "S1_4") stage++;
+        if (stage == 1 && SceneManager.GetActiveScene().name == "S1_1") stage++;
+        if (stage == 2 && SceneManager.GetActiveScene().name == "S1_2") stage++;
+        if (stage == 3 && SceneManager.GetActiveScene().name == "S1_3") stage++;
+        if (stage == 4 && SceneManager.GetActiveScene().name == "S1_4") stage++;
         PlayerPrefs.SetInt("StageData", stage);
         PlayerPrefs.Save();
 

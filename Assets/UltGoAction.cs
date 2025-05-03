@@ -24,6 +24,6 @@ public class UltGoAction : UI_Popup
         }
         yield return new WaitForSecondsRealtime(0.2f);
         Time.timeScale = 1;
-        Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<UltGoAction>(this.gameObject));
+        Destroy(this.gameObject);
     }
 }

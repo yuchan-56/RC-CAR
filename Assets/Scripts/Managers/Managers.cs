@@ -62,7 +62,7 @@ public class Managers : MonoBehaviour
             if (!PlayerPrefs.HasKey("FirstOpen"))
             {
                 PlayerPrefs.SetInt("FirstOpen", 1);
-                PlayerPrefs.SetInt("StageData", 0);
+                PlayerPrefs.SetInt("StageData", 1);
                 PlayerPrefs.Save();
             }
             
