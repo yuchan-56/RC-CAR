@@ -49,6 +49,9 @@ public class PrgBoss : Boss
 
     private void ShowFrame()
     {
+        bmScript.attackPos = true;
+        isAttacking = false;
+
         if (hpBarTransform == null) return;
 
         // 프레임 생성 및 HP 바에 붙이기
