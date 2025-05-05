@@ -38,6 +38,12 @@ public class PlayerMove : MonoBehaviour
     public GameObject dashEffectUlt;
     [SerializeField] private PlayerAttackGeneral attackGeneral;
     // Start is called before the first frame update
+
+    private bool isTouching = false;
+    private string currentTouchRegion = ""; // "Left", "Right", ""
+    public RectTransform leftButtonRect;
+    public RectTransform rightButtonRect;
+
     void Start()
     {
         rigid = GetComponent<Rigidbody2D>();
@@ -53,37 +59,103 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Managers.Game.isHit) return; // 피격상태면 키 안먹기
-        if (IsAttacking)
+        if (Managers.Game.isHit || IsAttacking)
         {
             movedirection = 0;
             animator.SetBool("player_run", false);
             return;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space) && canDash)
-        {
-            TriggerDash();
-        }
-        if (Input.GetKey(KeyCode.LeftArrow))
-        {
-            movedirection = -1;
-            animator.SetBool("player_run", true);
-            StartCoroutine(RunSFX());
-        }
-        else if (Input.GetKey(KeyCode.RightArrow))
-        {
-            movedirection = 1;
-            animator.SetBool("player_run", true);
-            StartCoroutine(RunSFX());
-        }
-        else if (Input.GetKeyUp(KeyCode.LeftArrow) || Input.GetKeyUp(KeyCode.RightArrow))
-        {
-            movedirection = 0;
-            animator.SetBool("player_run", false);
-        }
-
+#if UNITY_EDITOR || UNITY_STANDALONE
+        HandleMouseSlide();
+#else
+    HandleTouchSlide();
+#endif
     }
+
+    void HandleMouseSlide()
+    {
+        if (Input.GetMouseButton(0)) // 마우스를 누르고 있는 중
+        {
+            Vector2 pointerPos = Input.mousePosition;
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(leftButtonRect, pointerPos))
+            {
+                if (currentTouchRegion != "Left")
+                {
+                    currentTouchRegion = "Left";
+                    OnLeftButtonDown();
+                }
+            }
+            else if (RectTransformUtility.RectangleContainsScreenPoint(rightButtonRect, pointerPos))
+            {
+                if (currentTouchRegion != "Right")
+                {
+                    currentTouchRegion = "Right";
+                    OnRightButtonDown();
+                }
+            }
+            else
+            {
+                if (currentTouchRegion != "")
+                {
+                    currentTouchRegion = "";
+                    ButtonUp();
+                }
+            }
+        }
+        else
+        {
+            if (currentTouchRegion != "")
+            {
+                currentTouchRegion = "";
+                ButtonUp();
+            }
+        }
+    }
+
+    void HandleTouchSlide()
+    {
+        if (Input.touchCount > 0)
+        {
+            Vector2 pointerPos = Input.GetTouch(0).position;
+
+            if (RectTransformUtility.RectangleContainsScreenPoint(leftButtonRect, pointerPos))
+            {
+                if (currentTouchRegion != "Left")
+                {
+                    currentTouchRegion = "Left";
+                    OnLeftButtonDown();
+                }
+            }
+            else if (RectTransformUtility.RectangleContainsScreenPoint(rightButtonRect, pointerPos))
+            {
+                if (currentTouchRegion != "Right")
+                {
+                    currentTouchRegion = "Right";
+                    OnRightButtonDown();
+                }
+            }
+            else
+            {
+                if (currentTouchRegion != "")
+                {
+                    currentTouchRegion = "";
+                    ButtonUp();
+                }
+            }
+        }
+        else
+        {
+            if (currentTouchRegion != "")
+            {
+                currentTouchRegion = "";
+                ButtonUp();
+            }
+        }
+    }
+
+
 
     private bool isRunningSFX = false;
     IEnumerator RunSFX()
