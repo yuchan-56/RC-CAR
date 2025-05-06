@@ -37,6 +37,7 @@ public class ComboManager : MonoBehaviour
     GameObject CurrentObject;
 
     List<RaycastResult> raycastResults = new List<RaycastResult>();
+    Dictionary<int, string> validTouchButtons = new();
 
 
     void Start()
@@ -49,7 +50,7 @@ public class ComboManager : MonoBehaviour
     void Update()
     {
 
-        if(Managers.Game.SkillAniReset == true || player.buttonDeactive == true)
+        if (Managers.Game.SkillAniReset == true || player.buttonDeactive == true)
         {
             StopExistingCoroutine(ref atkAniCoroutine);
             StopExistingCoroutine(ref dashAniCoroutine);
@@ -75,11 +76,11 @@ public class ComboManager : MonoBehaviour
             jumpAttack.SkillMotionDeactive();
             dashAttack.SkillMotionDeactive();
 
-           // player.ForcedAniReset();
+            // player.ForcedAniReset();
             Managers.Game.SkillAniReset = false;
         }
 
-        else if(Managers.Game.isHit)
+        else if (Managers.Game.isHit)
         {
             playerAttackGeneral.AttackSetDeactive();
             dashAttack.SkillMotionDeactive();
@@ -114,14 +115,14 @@ public class ComboManager : MonoBehaviour
 
         if (Input.touchCount > 0)
         {
+
+            InputButton.Clear();
+
             for (int i = 0; i < Input.touchCount; i++)
             {
                 Touch touch = Input.GetTouch(i);
 
-                if (touch.phase == TouchPhase.Began ||
-                    touch.phase == TouchPhase.Moved ||
-                    touch.phase == TouchPhase.Stationary ||
-                     touch.phase == TouchPhase.Ended)
+                if (touch.phase == TouchPhase.Began)
                 {
                     PointerEventData pointerData = new PointerEventData(EventSystem.current);
                     pointerData.position = touch.position;
@@ -131,130 +132,149 @@ public class ComboManager : MonoBehaviour
 
                     if (raycastResults.Count > 0)
                     {
-                        CurrentObject = raycastResults[0].gameObject;
-                        InputButton.Add(CurrentObject.name);
-                    }
-                }
-            }
-            InputButton.Remove("Left");
-            InputButton.Remove("Right");
+                        var hitName = raycastResults[0].gameObject.name;
 
-            if (InputButton.Count == 1 && AniSetup == false)
-            {
-                AniSetup = true;
-                if (InputButton.Contains("Dash"))
-                {
-                    if (dashAni != null)
-                    {
-                        rgo.ImageAbled();
-                        rugo.ImageAbled();
-                        jumpblink.ImageAbled();
-                        atkblink.ImageAbled();
-                        StopExistingCoroutine(ref dashAniCoroutine);
-                        dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
-                    }
-                }
-                else if (InputButton.Contains("Jump"))
-                {
-                    if (jumpAni != null)
-                    {
-                        ldgo.ImageAbled();
-                        rdgo.ImageAbled();
-                        atkblink.ImageAbled();
-                        dashblink.ImageAbled();
-                        StopExistingCoroutine(ref jumpAniCoroutine);
-                        jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
-                    }
-                }
-                else if (InputButton.Contains("Attack"))
-                {
-                    if (atkAni != null)
-                    {
-                        lgo.ImageAbled();
-                        lugo.ImageAbled();
-                        dashblink.ImageAbled();
-                        jumpblink.ImageAbled();
-                        StopExistingCoroutine(ref atkAniCoroutine);
-                        atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
-                    }
-                }
-                else
-                {
-                    AniSetup = false;
-                    InputButton.Clear();
-                }
-            }
-
-            else if (InputButton.Count == 2 && AniSetup && AniSetup2 == false)
-            {
-                AniSetup2 = true;
-                lgo.ImageDisabled();
-                rgo.ImageDisabled();
-                lugo.ImageDisabled();
-                ldgo.ImageDisabled();
-                rugo.ImageDisabled();
-                rdgo.ImageDisabled();
-                if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))
-                {
-                    if (dashAniCoroutine != null)
-                    {
-                        jumpblink.ImageDisabled();
-                        jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
-                        rdgo.ImageAbled();
-                    }
-
-                    else if (jumpAniCoroutine != null)
-                    {
-                        dashblink.ImageDisabled();
-                        dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
-                        rgo.ImageAbled();
+                        if (hitName != "Left" && hitName != "Right")
+                        {
+                            validTouchButtons[touch.fingerId] = hitName;
+                        }
                     }
                 }
 
-                else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))
+                if (touch.phase == TouchPhase.Ended)
                 {
-                    if (dashAniCoroutine != null)
+                    if (validTouchButtons.TryGetValue(touch.fingerId, out string buttonName))
                     {
-                        atkblink.ImageDisabled();
-                        atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
-                        lugo.ImageAbled();
+                        InputButton.Add(buttonName);
+                        validTouchButtons.Remove(touch.fingerId);
+                        ExecuteSkill();
+                        validTouchButtons.Clear();
                     }
-
-                    else if (atkAniCoroutine != null)
-                    {
-                        dashblink.ImageDisabled();
-                        dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
-                        rugo.ImageAbled();
-                    }
-                }
-
-                else if (InputButton.Contains("Jump") && InputButton.Contains("Attack"))
-                {
-                    if (jumpAniCoroutine != null)
-                    {
-                        atkblink.ImageDisabled();
-                        atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
-                        lgo.ImageAbled();
-                    }
-
-                    else if (atkAniCoroutine != null)
-                    {
-                        jumpblink.ImageDisabled();
-                        jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
-                        ldgo.ImageAbled();
-                    }
-                }
-
-                else
-                {
-                    AniSetup = false;
-                    AniSetup2 = false;
-                    InputButton.Clear();
                 }
             }
         }
+    }
 
-        else if(Time.timeScale == 0f)
+    private void ExecuteSkill()
+    {
+        InputButton.Remove("Left");
+        InputButton.Remove("Right");
+
+        if (InputButton.Count == 1 && AniSetup == false)
+        {
+            AniSetup = true;
+            if (InputButton.Contains("Dash"))
+            {
+                if (dashAni != null)
+                {
+                    rgo.ImageAbled();
+                    rugo.ImageAbled();
+                    jumpblink.ImageAbled();
+                    atkblink.ImageAbled();
+                    StopExistingCoroutine(ref dashAniCoroutine);
+                    dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
+                }
+            }
+            else if (InputButton.Contains("Jump"))
+            {
+                if (jumpAni != null)
+                {
+                    ldgo.ImageAbled();
+                    rdgo.ImageAbled();
+                    atkblink.ImageAbled();
+                    dashblink.ImageAbled();
+                    StopExistingCoroutine(ref jumpAniCoroutine);
+                    jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
+                }
+            }
+            else if (InputButton.Contains("Attack"))
+            {
+                if (atkAni != null)
+                {
+                    lgo.ImageAbled();
+                    lugo.ImageAbled();
+                    dashblink.ImageAbled();
+                    jumpblink.ImageAbled();
+                    StopExistingCoroutine(ref atkAniCoroutine);
+                    atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
+                }
+            }
+            else
+            {
+                AniSetup = false;
+                InputButton.Clear();
+            }
+        }
+
+        else if (InputButton.Count == 2 && AniSetup && AniSetup2 == false)
+        {
+            AniSetup2 = true;
+            lgo.ImageDisabled();
+            rgo.ImageDisabled();
+            lugo.ImageDisabled();
+            ldgo.ImageDisabled();
+            rugo.ImageDisabled();
+            rdgo.ImageDisabled();
+            if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))
+            {
+                if (dashAniCoroutine != null)
+                {
+                    jumpblink.ImageDisabled();
+                    jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
+                    rdgo.ImageAbled();
+                }
+
+                else if (jumpAniCoroutine != null)
+                {
+                    dashblink.ImageDisabled();
+                    dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
+                    rgo.ImageAbled();
+                }
+            }
+
+            else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))
+            {
+                if (dashAniCoroutine != null)
+                {
+                    atkblink.ImageDisabled();
+                    atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
+                    lugo.ImageAbled();
+                }
+
+                else if (atkAniCoroutine != null)
+                {
+                    dashblink.ImageDisabled();
+                    dashAniCoroutine = StartCoroutine(dashAni.AnimateButton());
+                    rugo.ImageAbled();
+                }
+            }
+
+            else if (InputButton.Contains("Jump") && InputButton.Contains("Attack"))
+            {
+                if (jumpAniCoroutine != null)
+                {
+                    atkblink.ImageDisabled();
+                    atkAniCoroutine = StartCoroutine(atkAni.AnimateButton());
+                    lgo.ImageAbled();
+                }
+
+                else if (atkAniCoroutine != null)
+                {
+                    jumpblink.ImageDisabled();
+                    jumpAniCoroutine = StartCoroutine(jumpAni.AnimateButton());
+                    ldgo.ImageAbled();
+                }
+            }
+
+            else
+            {
+                AniSetup = false;
+                AniSetup2 = false;
+                InputButton.Clear();
+            }
+        }
+
+        else if (Time.timeScale == 0f)
         {
             StopExistingCoroutine(ref atkAniCoroutine);
             StopExistingCoroutine(ref dashAniCoroutine);
@@ -276,40 +296,6 @@ public class ComboManager : MonoBehaviour
             dashAni.isAnimating = false;
             jumpAni.isAnimating = false;
         }
-
-        if(InputButton.Count > 0)
-        {
-            for (int i = 0; i < Input.touchCount; i++)
-            {
-                Touch touch = Input.GetTouch(i);
-
-                if (touch.phase == TouchPhase.Ended)
-                {
-                    PointerEventData pointerData = new PointerEventData(EventSystem.current);
-                    pointerData.position = touch.position;
-
-                    raycastResults.Clear();
-                    EventSystem.current.RaycastAll(pointerData, raycastResults);
-
-                    if (raycastResults.Count > 0)
-                    {
-                        GameObject releasedObject = raycastResults[0].gameObject;
-                        string releasedName = releasedObject.name;
-
-                        if (releasedName == "Attack" || releasedName == "Jump" || releasedName == "Dash")
-                        {
-                            ExecuteSkill();
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    private void ExecuteSkill()
-    {
-        InputButton.Remove("Left");
-        InputButton.Remove("Right");
 
         if (Managers.Game.isHit || player.buttonDeactive)
         {
