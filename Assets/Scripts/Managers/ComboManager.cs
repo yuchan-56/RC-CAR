@@ -143,12 +143,26 @@ public class ComboManager : MonoBehaviour
 
                 if (touch.phase == TouchPhase.Ended)
                 {
-                    if (validTouchButtons.TryGetValue(touch.fingerId, out string buttonName))
+                    PointerEventData pointerData = new PointerEventData(EventSystem.current);
+                    pointerData.position = touch.position;
+
+                    raycastResults.Clear();
+                    EventSystem.current.RaycastAll(pointerData, raycastResults);
+
+                    if (raycastResults.Count > 0)
                     {
-                        InputButton.Add(buttonName);
-                        validTouchButtons.Remove(touch.fingerId);
-                        ExecuteSkill();
-                        validTouchButtons.Clear();
+                        var hitName = raycastResults[0].gameObject.name;
+
+                        if (validTouchButtons.TryGetValue(touch.fingerId, out string buttonName))
+                        {
+                            if (hitName == "Dash" || hitName == "Jump" || hitName == "Attack")
+                            {
+                                InputButton.Add(buttonName);
+                                ExecuteSkill();
+                            }
+
+                            validTouchButtons.Remove(touch.fingerId);
+                        }
                     }
                 }
             }
