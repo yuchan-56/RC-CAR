@@ -15,7 +15,7 @@ public class Clock : MonoBehaviour
     public Image imageComponent;
     public Image failImage;
     public Image SuccessImage;
-
+    public PlayerMove player;
     bool dead = false;
     //private List<GameObject> enemies;
     // 이미지가 표시될 스프라이트 렌더러
@@ -79,7 +79,7 @@ public class Clock : MonoBehaviour
         PlayerHP playerhp = FindFirstObjectByType<PlayerHP>();
         playerhp.dieAnimation();
         StartCoroutine(playerhp.StartGameOverUI());
-        
+        player.dashEffect.SetActive(false);
 
 
     
@@ -88,7 +88,7 @@ public class Clock : MonoBehaviour
     {
         SuccessImage.gameObject.SetActive(true);
         Time.timeScale = 0;
-        
+        player.dashEffect.SetActive(false);
 
     }
     /*public void EnemyDied(GameObject enemy)
