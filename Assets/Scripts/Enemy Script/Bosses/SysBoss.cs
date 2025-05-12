@@ -176,6 +176,7 @@ public class SysBoss : Boss
         while (_p1Enemies.Exists(e => e != null)) yield return null;
 
         animator.SetBool("isP1", false);
+        sysP1 = false;
         
         StartCoroutine(EndPattern(1, 0.5f));
     }
@@ -291,6 +292,7 @@ public class SysBoss : Boss
             case 1:
                 animator.SetBool("isP1", false);
                 didP1 = false;
+                sysP1 = false;
                 break;
             case 2:
                 p2Object[0].SetActive(false);
