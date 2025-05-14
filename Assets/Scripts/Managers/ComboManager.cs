@@ -149,20 +149,22 @@ public class ComboManager : MonoBehaviour
                     raycastResults.Clear();
                     EventSystem.current.RaycastAll(pointerData, raycastResults);
 
+                    string hitName = "None";
+
                     if (raycastResults.Count > 0)
                     {
-                        var hitName = raycastResults[0].gameObject.name;
+                        hitName = raycastResults[0].gameObject.name;
+                    }
 
-                        if (validTouchButtons.TryGetValue(touch.fingerId, out string buttonName))
+                    if (validTouchButtons.TryGetValue(touch.fingerId, out string buttonName))
+                    {
+                        if (hitName != "Left" && hitName != "Right")
                         {
-                            if (hitName != "Left" && hitName != "Right")
-                            {
-                                InputButton.Add(buttonName);
-                                ExecuteSkill();
-                            }
-
-                            validTouchButtons.Remove(touch.fingerId);
+                            InputButton.Add(buttonName);
+                            ExecuteSkill();
                         }
+
+                        validTouchButtons.Remove(touch.fingerId);
                     }
                 }
             }
