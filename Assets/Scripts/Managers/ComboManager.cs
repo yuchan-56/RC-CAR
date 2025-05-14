@@ -139,6 +139,16 @@ public class ComboManager : MonoBehaviour
                         {
                             validTouchButtons[touch.fingerId] = hitName;
                         }
+
+                        if(Input.touchCount == 1)
+                        {
+                            if (hitName == "Left" || hitName == "Right")
+                            {
+                                validTouchButtons.Clear();
+                                InputButton.Clear();
+                                SkillReset();
+                            }
+                        }
                     }
                 }
 
