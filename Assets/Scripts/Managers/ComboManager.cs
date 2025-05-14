@@ -117,8 +117,6 @@ public class ComboManager : MonoBehaviour
         if (Input.touchCount > 0)
         {
 
-            InputButton.Clear();
-
             for (int i = 0; i < Input.touchCount; i++)
             {
                 Touch touch = Input.GetTouch(i);
