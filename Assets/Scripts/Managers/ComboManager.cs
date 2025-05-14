@@ -155,7 +155,7 @@ public class ComboManager : MonoBehaviour
 
                         if (validTouchButtons.TryGetValue(touch.fingerId, out string buttonName))
                         {
-                            if (hitName != "Left" && hitName != "Right")
+                            if (hitName != "Left" || hitName != "Right")
                             {
                                 InputButton.Add(buttonName);
                                 ExecuteSkill();
