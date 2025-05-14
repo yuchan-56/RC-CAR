@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 using Unity.VisualScripting;
 using UnityEditor;
 using System.Runtime.Serialization.Formatters;
+using UnityEditor.Experimental.GraphView;
 
 public class ComboManager : MonoBehaviour
 {
@@ -122,7 +123,7 @@ public class ComboManager : MonoBehaviour
             {
                 Touch touch = Input.GetTouch(i);
 
-                if (touch.phase == TouchPhase.Began)
+                if (touch.phase == TouchPhase.Began || touch.phase == TouchPhase.Moved || touch.phase == TouchPhase.Stationary)
                 {
                     PointerEventData pointerData = new PointerEventData(EventSystem.current);
                     pointerData.position = touch.position;
@@ -169,6 +170,36 @@ public class ComboManager : MonoBehaviour
                 }
             }
         }
+
+        else if(Input.touchCount == 0)
+        {
+            validTouchButtons.Clear();
+            InputButton.Clear();
+            SkillReset();
+        }
+    }
+
+    private void SkillReset()
+    {
+        StopExistingCoroutine(ref atkAniCoroutine);
+        StopExistingCoroutine(ref dashAniCoroutine);
+        StopExistingCoroutine(ref jumpAniCoroutine);
+        lgo.ImageDisabled();
+        rgo.ImageDisabled();
+        lugo.ImageDisabled();
+        ldgo.ImageDisabled();
+        rugo.ImageDisabled();
+        rdgo.ImageDisabled();
+        atkblink.ImageDisabled();
+        jumpblink.ImageDisabled();
+        dashblink.ImageDisabled();
+
+        atkAni.ResetImage();
+        dashAni.ResetImage();
+        jumpAni.ResetImage();
+        atkAni.isAnimating = false;
+        dashAni.isAnimating = false;
+        jumpAni.isAnimating = false;
     }
 
     private void ExecuteSkill()
