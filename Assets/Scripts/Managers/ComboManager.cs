@@ -116,7 +116,6 @@ public class ComboManager : MonoBehaviour
 
         if (Input.touchCount > 0)
         {
-
             for (int i = 0; i < Input.touchCount; i++)
             {
                 Touch touch = Input.GetTouch(i);
@@ -169,7 +168,6 @@ public class ComboManager : MonoBehaviour
                     {
                         if (hitName != "Left" && hitName != "Right")
                         {
-                            InputButton.Add(buttonName);
                             ExecuteSkill();
                         }
 
@@ -177,13 +175,6 @@ public class ComboManager : MonoBehaviour
                     }
                 }
             }
-        }
-
-        else if(Input.touchCount == 0)
-        {
-            validTouchButtons.Clear();
-            InputButton.Clear();
-            SkillReset();
         }
     }
 
