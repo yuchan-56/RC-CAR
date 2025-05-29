@@ -1,12 +1,12 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.UI;
-using UnityEngine.EventSystems;
+using System.Runtime.Serialization.Formatters;
 using Unity.VisualScripting;
 using UnityEditor;
-using System.Runtime.Serialization.Formatters;
-using UnityEditor.Experimental.GraphView;
+using UnityEngine;
+using UnityEngine.EventSystems;
+using UnityEngine.UI;
+using static UnityEngine.EventSystems.PointerEventData;
 
 public class ComboManager : MonoBehaviour
 {
@@ -343,84 +343,97 @@ public class ComboManager : MonoBehaviour
             jumpAni.isAnimating = false;
         }
 
-        if (Managers.Game.isHit || player.buttonDeactive)
+        else if (Input.GetMouseButtonUp(0) && AniSetup == true)
         {
-            return;
-        }
+            InputButton.Remove("Left");
+            InputButton.Remove("Right");
+            if (Managers.Game.isHit || player.buttonDeactive == true)
+            {
+                return;
+            }
 
-        playerAttackGeneral.AttackSetDeactive();
-        dashAttack.SkillMotionDeactive();
-        jumpAttack.SkillMotionDeactive();
-        StopExistingCoroutine(ref atkAniCoroutine);
-        StopExistingCoroutine(ref dashAniCoroutine);
-        StopExistingCoroutine(ref jumpAniCoroutine);
 
-        lgo.ImageDisabled();
-        rgo.ImageDisabled();
-        lugo.ImageDisabled();
-        ldgo.ImageDisabled();
-        rugo.ImageDisabled();
-        rdgo.ImageDisabled();
-        atkblink.ImageDisabled();
-        jumpblink.ImageDisabled();
-        dashblink.ImageDisabled();
+            playerAttackGeneral.AttackSetDeactive();
+            dashAttack.SkillMotionDeactive();
+            jumpAttack.SkillMotionDeactive();
+            StopExistingCoroutine(ref atkAniCoroutine);
+            StopExistingCoroutine(ref dashAniCoroutine);
+            StopExistingCoroutine(ref jumpAniCoroutine);
+            lgo.ImageDisabled();
+            rgo.ImageDisabled();
+            lugo.ImageDisabled();
+            ldgo.ImageDisabled();
+            rugo.ImageDisabled();
+            rdgo.ImageDisabled();
+            atkblink.ImageDisabled();
+            jumpblink.ImageDisabled();
+            dashblink.ImageDisabled();
 
-        atkAni.ResetImage();
-        dashAni.ResetImage();
-        jumpAni.ResetImage();
-        atkAni.isAnimating = false;
-        dashAni.isAnimating = false;
-        jumpAni.isAnimating = false;
+            atkAni.ResetImage();
+            dashAni.ResetImage();
+            jumpAni.ResetImage();
+            atkAni.isAnimating = false;
+            dashAni.isAnimating = false;
+            jumpAni.isAnimating = false;
 
-        if (player.IsAttacking)
-        {
+            if (player.IsAttacking)
+            {
+                InputButton.Clear();
+                return;
+            }
+
+            switch (InputButton.Count)
+            {
+                case 1:
+                    if (InputButton.Contains("Attack"))
+                    {
+
+                        playerAttackGeneral.AttackSetActive();
+                        player.SkillMotionActive("Attack");
+                    }
+                    break;
+
+                case 2:
+                    if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))
+                    {
+
+                        player.SkillMotionActive("JumpDash");
+
+                    }
+                    else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))
+                    {
+
+
+                        dashAttack.SkillMotionActive();
+                        player.SkillMotionActive("DashAttack");
+                    }
+                    else if (InputButton.Contains("Jump") && InputButton.Contains("Attack"))
+                    {
+
+
+                        jumpAttack.SkillMotionActive();
+                        player.SkillMotionActive("JumpAttack");
+                    }
+                    break;
+
+                case 3:
+                    if (Managers.Game.gage >= 100 && InputButton.Contains("Jump") && InputButton.Contains("Attack") && InputButton.Contains("Dash")
+                        && playerAttackGeneral.UltimateSkill_Active == false)
+                    {
+
+                        playerAttackGeneral.UltimateSkillActive();
+                    }
+                    break;
+            }
+
+            AniSetup = false;
+            AniSetup2 = false;
             InputButton.Clear();
-            return;
         }
-
-        switch (InputButton.Count)
-        {
-            case 1:
-                if (InputButton.Contains("Attack"))
-                {
-                    playerAttackGeneral.AttackSetActive();
-                    player.SkillMotionActive("Attack");
-                }
-                break;
-
-            case 2:
-                if (InputButton.Contains("Jump") && InputButton.Contains("Dash"))
-                {
-                    player.SkillMotionActive("JumpDash");
-                }
-                else if (InputButton.Contains("Dash") && InputButton.Contains("Attack"))
-                {
-                    dashAttack.SkillMotionActive();
-                    player.SkillMotionActive("DashAttack");
-                }
-                else if (InputButton.Contains("Jump") && InputButton.Contains("Attack"))
-                {
-                    jumpAttack.SkillMotionActive();
-                    player.SkillMotionActive("JumpAttack");
-                }
-                break;
-
-            case 3:
-                if (Managers.Game.gage >= 100 &&
-                    InputButton.Contains("Jump") &&
-                    InputButton.Contains("Attack") &&
-                    InputButton.Contains("Dash") &&
-                    playerAttackGeneral.UltimateSkill_Active == false)
-                {
-                    playerAttackGeneral.UltimateSkillActive();
-                }
-                break;
-        }
-
-        AniSetup = false;
-        AniSetup2 = false;
-        InputButton.Clear();
     }
+
+
+
 
     private void StopExistingCoroutine(ref Coroutine coroutine)
     {
