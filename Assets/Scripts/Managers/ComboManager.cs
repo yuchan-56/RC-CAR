@@ -299,7 +299,7 @@ public class ComboManager : MonoBehaviour
                         GameObject releasedObject = raycastResults[0].gameObject;
                         string releasedName = releasedObject.name;
 
-                        if (releasedName != "Left" || releasedName != "Right")
+                        if (releasedName != "Left" && releasedName != "Right")
                         {
                             ExecuteSkill();
                         }
