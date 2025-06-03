@@ -116,9 +116,11 @@ public class PlayerMove : MonoBehaviour
 
     void HandleTouchSlide()
     {
-        if (Input.touchCount > 0)
+		for (int i = 0; i < Input.touchCount; i++)
+		{
+        	if (Input.touchCount > 0)
         {
-            Vector2 pointerPos = Input.GetTouch(0).position;
+            Vector2 pointerPos = Input.GetTouch(i).position;
 
             if (RectTransformUtility.RectangleContainsScreenPoint(leftButtonRect, pointerPos))
             {
@@ -153,6 +155,7 @@ public class PlayerMove : MonoBehaviour
                 ButtonUp();
             }
         }
+		}
     }
 
 
