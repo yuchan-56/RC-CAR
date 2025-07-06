@@ -60,8 +60,8 @@ public class Clock : MonoBehaviour
         else if(currentTime<=0&&dead==false)
         {
             // 타이머가 끝나면 게임 오버 애니메이션이나 화면 변경 등을 처리
-            TriggerGameOver();
             dead = true;
+            TriggerGameOver();
         }
     }
     void ChangeImage()

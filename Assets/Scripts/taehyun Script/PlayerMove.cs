@@ -116,45 +116,42 @@ public class PlayerMove : MonoBehaviour
 
     void HandleTouchSlide()
     {
-		for (int i = 0; i < Input.touchCount; i++)
+		for (int i = 0; i < Input.touchCount; i++) // 모든 터치 순회하며 검사하기
 		{
         	if (Input.touchCount > 0)
-        {
-            Vector2 pointerPos = Input.GetTouch(i).position;
+            {
+            Vector2 pointerPos = Input.GetTouch(i).position; // 해당터치의 포지션 검사 
 
-            if (RectTransformUtility.RectangleContainsScreenPoint(leftButtonRect, pointerPos))
-            {
-                if (currentTouchRegion != "Left")
+               if (RectTransformUtility.RectangleContainsScreenPoint(leftButtonRect, pointerPos)) //터치의 포지션이 LeftButton
                 {
+                  if (currentTouchRegion != "Left")
+                    {
                     currentTouchRegion = "Left";
-                    OnLeftButtonDown();
-                }
-            }
-            else if (RectTransformUtility.RectangleContainsScreenPoint(rightButtonRect, pointerPos))
-            {
-                if (currentTouchRegion != "Right")
-                {
+                    OnLeftButtonDown(); // Left로 
+                    StartCoroutine(RunSFX());
+                    }
+                 }
+                else if (RectTransformUtility.RectangleContainsScreenPoint(rightButtonRect, pointerPos)) // 터치의 포지션이 RightButton
+                 {
+                    if (currentTouchRegion != "Right")
+                    {
                     currentTouchRegion = "Right";
                     OnRightButtonDown();
+                        StartActionCoroutine(RunSFX());
+                    }
                 }
-            }
-            else
-            {
-                if (currentTouchRegion != "")
-                {
+                else // 터치의 포지션중에 LeftButton도 없고 RightButton도 없다면
+                 {
                     currentTouchRegion = "";
-                    ButtonUp();
-                }
+                    ButtonUp();  
+                 }
+
             }
-        }
-        else
-        {
-            if (currentTouchRegion != "")
+            else  // 감지된 터치가 없다면
             {
                 currentTouchRegion = "";
                 ButtonUp();
             }
-        }
 		}
     }
 
