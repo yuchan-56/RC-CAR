@@ -28,6 +28,7 @@ public class Option_InGame : UI_Popup
         Time.timeScale = 1;
         SoundManager.Instance.SFXPlay("Button Click");
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<Option_InGame>(this.gameObject));
+        Destroy(this.gameObject);
     }
 
     void GoRePlay(PointerEventData eventData)

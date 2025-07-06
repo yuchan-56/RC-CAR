@@ -58,6 +58,7 @@ public class StageInfo : UI_Popup
     }
     void CloseButtonClicked(PointerEventData eventData)
     {
+        Destroy(this.gameObject);
         Managers.UI.ClosePopUpUI();
         Managers.UI.isPopuping = false;
         

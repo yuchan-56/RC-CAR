@@ -24,6 +24,7 @@ public class Option : UI_Popup
     {
         SoundManager.Instance.SFXPlay("Button Click");
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<Option>(this.gameObject));
+        Destroy(this.gameObject);
     }
 
     void GoCredit(PointerEventData eventData)

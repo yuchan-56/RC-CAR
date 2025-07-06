@@ -36,5 +36,6 @@ public class GameClear : UI_Popup
         LoadingScene.Instance.GoLoading("MainTitle");
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<GameClear>(this.gameObject));
         Managers.Clear();
+        Destroy(this.gameObject);
     }
 }

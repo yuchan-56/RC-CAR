@@ -28,5 +28,6 @@ public class GameOver : UI_Popup
         
         LoadingScene.Instance.GoLoading("MainTitle");
         Managers.UI.ClosePopUpUI(Util.GetOrAddComponent<GameOver>(this.gameObject));
+        Destroy(this.gameObject);
     }
 }
