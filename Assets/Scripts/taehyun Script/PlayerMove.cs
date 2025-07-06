@@ -141,7 +141,7 @@ public class PlayerMove : MonoBehaviour
                     }
                 }
                 else // 터치의 포지션중에 LeftButton도 없고 RightButton도 없다면
-                 {
+                 { // 터치에 감지되지않는 TouchRegion에 따른 범위 테스트로 인한 값 전달 오류 
                     currentTouchRegion = "";
                     ButtonUp();  
                  }
