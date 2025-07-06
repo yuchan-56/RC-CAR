@@ -136,7 +136,7 @@ public class SysBoss : Boss
     {
         isAttacking = true;
         bmScript.attackPos = false;
-        sysP1 = true;
+        sysP1 = false;
 
         animator.SetBool("isAttack", false);
         animator.SetBool("isP1", true);
